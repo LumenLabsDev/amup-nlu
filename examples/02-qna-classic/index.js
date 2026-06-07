@@ -23,7 +23,7 @@
 
 const readline = require('readline');
 const { Nlp } = require('../../packages/nlp/src');
-const { LangEn } = require('../../packages/lang-en/src');
+const { LangEn } = require('../../packages/lang-en-us/src');
 const { fs } = require('../../packages/request/src');
 const trainnlp = require('./train-nlp');
 

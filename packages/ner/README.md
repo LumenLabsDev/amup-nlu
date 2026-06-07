@@ -40,7 +40,7 @@ In this example both versions, with language and without language, are used in o
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { NluNeural } = require('@lumen-labs-dev/nlu');
-const { LangEn } = require('@lumen-labs-dev/lang-en');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 const corpus = require('./corpus50.json');
 
 function prepareCorpus(input, isTests = false) {
@@ -97,7 +97,7 @@ It can be trained by domain or all together:
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { DomainManager, NluNeural } = require('@lumen-labs-dev/nlu');
-const { LangEn } = require('@lumen-labs-dev/lang-en');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 
 function addFoodDomain(manager) {
   manager.add('food', 'what do I have in my basket', 'order.check');
@@ -195,8 +195,8 @@ This is an example with two languages (english and spanish) with two domains eac
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { NluManager, NluNeural } = require('@lumen-labs-dev/nlu');
-const { LangEn } = require('@lumen-labs-dev/lang-en');
-const { LangEs } = require('@lumen-labs-dev/lang-es');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us');
+const { LangEs } = require('@lumen-labs-dev/lang-es-es');
 
 function addFoodDomainEn(manager) {
   manager.assignDomain('en', 'order.check', 'food');

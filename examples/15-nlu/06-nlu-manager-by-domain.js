@@ -23,12 +23,12 @@
 
 const { containerBootstrap } = require('../../packages/core/src');
 const { NluManager, NluNeural } = require('../../packages/nlu/src');
-const { LangEn } = require('../../packages/lang-en/src');
-const { LangEs } = require('../../packages/lang-es/src');
+const { LangEn } = require('../../packages/lang-en-us/src');
+const { LangEs } = require('../../packages/lang-es-es/src');
 // const { containerBootstrap } = require('@lumen-labs-dev/core');
 // const { NluManager, NluNeural } = require('@lumen-labs-dev/nlu');
-// const { LangEn } = require('@lumen-labs-dev/lang-en');
-// const { LangEs } = require('@lumen-labs-dev/lang-es');
+// const { LangEn } = require('@lumen-labs-dev/lang-en-us');
+// const { LangEs } = require('@lumen-labs-dev/lang-es-es');
 
 function addFoodDomainEn(manager) {
   manager.assignDomain('en', 'order.check', 'food');

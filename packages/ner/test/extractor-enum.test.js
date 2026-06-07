@@ -22,7 +22,7 @@
  */
 
 const { containerBootstrap } = require('@lumen-labs-dev/core');
-const { LangJa } = require('../../lang-ja');
+const { LangJa } = require('../../lang-ja-jp');
 const { Ner, ExtractorEnum } = require('../src');
 
 describe('Extractor Enum', () => {

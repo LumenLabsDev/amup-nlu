@@ -1,6 +1,6 @@
-# @lumen-labs-dev/lang-fr examples
+# @lumen-labs-dev/lang-fr-fr examples
 
-Those are examples to show how to use _@lumen-labs-dev/lang-fr_ package.
+Those are examples to show how to use _@lumen-labs-dev/lang-fr-fr_ package.
 
 ## 01 normalization
 Shows the usage of the _NormalizerFr_ class to normalize a sentence.

@@ -20,6 +20,6 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const registerTrigrams = require('@lumen-labs-dev/lang-pt/src/trigrams');
+const registerTrigrams = require('@lumen-labs-dev/lang-pt-pt/src/trigrams');
 
 module.exports = registerTrigrams;

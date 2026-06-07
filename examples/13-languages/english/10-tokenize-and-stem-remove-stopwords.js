@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StemmerEn, StopwordsEn } = require('../../../packages/lang-en/src');
-// const { StemmerEn, StopwordsEn } = require('@lumen-labs-dev/lang-en');
+const { StemmerEn, StopwordsEn } = require('../../../packages/lang-en-us/src');
+// const { StemmerEn, StopwordsEn } = require('@lumen-labs-dev/lang-en-us');
 
 const stemmer = new StemmerEn();
 stemmer.stopwords = new StopwordsEn();

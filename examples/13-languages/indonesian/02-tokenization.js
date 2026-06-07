@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { TokenizerId } = require('../../../packages/lang-id/src');
-// const { TokenizerId } = require('@lumen-labs-dev/lang-id');
+const { TokenizerId } = require('../../../packages/lang-id-id/src');
+// const { TokenizerId } = require('@lumen-labs-dev/lang-id-id');
 
 const tokenizer = new TokenizerId();
 const input = 'apa yang dikembangkan perusahaan Anda';

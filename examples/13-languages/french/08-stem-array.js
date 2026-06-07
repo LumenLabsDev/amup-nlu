@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StemmerFr } = require('../../../packages/lang-fr/src');
+const { StemmerFr } = require('../../../packages/lang-fr-fr/src');
 
 const stemmer = new StemmerFr();
 const input = ['Je', 'veux', "qu'il", 'sortir'];

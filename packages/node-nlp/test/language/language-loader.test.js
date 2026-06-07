@@ -35,9 +35,16 @@ describe('Language loader', () => {
       expect(getLocale('pt-br')).toEqual('pt-br');
     });
 
-    test('Should keep plain Portuguese behavior', () => {
-      expect(getLocale('pt')).toEqual('pt');
-      expect(getLocale('pt-PT')).toEqual('pt');
+    test('Should canonicalize plain Portuguese to Portugal Portuguese locale', () => {
+      expect(getLocale('pt')).toEqual('pt-pt');
+      expect(getLocale('pt-PT')).toEqual('pt-pt');
+      expect(getLocale('pt_PT')).toEqual('pt-pt');
+    });
+
+    test('Should canonicalize language codes to explicit locale packages', () => {
+      expect(getLocale('en')).toEqual('en-us');
+      expect(getLocale('en-US')).toEqual('en-us');
+      expect(getLocale('es')).toEqual('es-es');
     });
   });
 

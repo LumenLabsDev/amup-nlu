@@ -44,7 +44,7 @@ You can visit the section on Languages to find out how to register language plug
 
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
-const { LangEs } = require('@lumen-labs-dev/lang-es')
+const { LangEs } = require('@lumen-labs-dev/lang-es-es')
 
 const container = containerBootstrap();
 container.use(LangEs);

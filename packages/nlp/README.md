@@ -33,7 +33,7 @@ You can install @lumen-labs-dev/nlp:
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { Nlp } = require('@lumen-labs-dev/nlp');
-const { LangEn } = require('@lumen-labs-dev/lang-en-min');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us-min');
 
 (async () => {
   const container = await containerBootstrap();

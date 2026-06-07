@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { NormalizerId } = require('../../../packages/lang-id/src');
-// const { NormalizerId } = require('@lumen-labs-dev/lang-id');
+const { NormalizerId } = require('../../../packages/lang-id-id/src');
+// const { NormalizerId } = require('@lumen-labs-dev/lang-id-id');
 
 const normalizer = new NormalizerId();
 const input = 'apa yang dikembangkan perúsahaan Anda';

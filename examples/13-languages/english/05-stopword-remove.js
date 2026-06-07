@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StopwordsEn } = require('../../../packages/lang-en/src');
-// const { StopwordsEn } = require('@lumen-labs-dev/lang-en');
+const { StopwordsEn } = require('../../../packages/lang-en-us/src');
+// const { StopwordsEn } = require('@lumen-labs-dev/lang-en-us');
 
 const stopwords = new StopwordsEn();
 console.log(stopwords.removeStopwords(['who', 'is', 'your', 'develop']));

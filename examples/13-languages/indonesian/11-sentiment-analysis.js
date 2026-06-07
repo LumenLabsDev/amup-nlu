@@ -23,10 +23,10 @@
 
 const { Container } = require('../../../packages/core/src');
 const { SentimentAnalyzer } = require('../../../packages/sentiment/src');
-const { LangId } = require('../../../packages/lang-id/src');
+const { LangId } = require('../../../packages/lang-id-id/src');
 // const { Container } = require('@lumen-labs-dev/core');
 // const { SentimentAnalyzer } = require('@lumen-labs-dev/sentiment');
-// const { LangId } = require('@lumen-labs-dev/lang-id');
+// const { LangId } = require('@lumen-labs-dev/lang-id-id');
 
 (async () => {
   const container = new Container();

@@ -22,8 +22,8 @@
  */
 
 const measureCorpus = require('../measure-corpus');
-const { LangEn } = require('../../../packages/lang-en/src');
-// const { LangEn } = require('@lumen-labs-dev/lang-en');
+const { LangEn } = require('../../../packages/lang-en-us/src');
+// const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 const corpus = require('../corpora/corpus-en.json');
 
 (async () => {

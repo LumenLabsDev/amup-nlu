@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { TokenizerIt } = require('../../../packages/lang-it/src');
-// const { TokenizerIt } = require('@lumen-labs-dev/lang-it');
+const { TokenizerIt } = require('../../../packages/lang-it-it/src');
+// const { TokenizerIt } = require('@lumen-labs-dev/lang-it-it');
 
 const tokenizer = new TokenizerIt();
 const input = 'Questo dovrebbe essere tokenizzato';

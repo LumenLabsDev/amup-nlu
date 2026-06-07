@@ -63,7 +63,7 @@ const {
   TokenizerEn,
   NormalizerEn,
   SentimentEn,
-} = require('@lumen-labs-dev/lang-en');
+} = require('@lumen-labs-dev/lang-en-us');
 const { logger } = require('@lumen-labs-dev/logger');
 const { Nlp } = require('@lumen-labs-dev/nlp');
 

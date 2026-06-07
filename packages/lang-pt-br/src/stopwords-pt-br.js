@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const { StopwordsPt } = require('@lumen-labs-dev/lang-pt');
+const { StopwordsPt } = require('@lumen-labs-dev/lang-pt-pt');
 
 class StopwordsPtBr extends StopwordsPt {
   constructor(container, words) {

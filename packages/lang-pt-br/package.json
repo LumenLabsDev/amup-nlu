@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "@lumen-labs-dev/core": "^4.27.0",
-    "@lumen-labs-dev/lang-pt": "^4.27.0"
+    "@lumen-labs-dev/lang-pt-pt": "^4.27.0"
   }
 }

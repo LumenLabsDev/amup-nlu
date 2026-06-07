@@ -1,6 +1,6 @@
-# @lumen-labs-dev/lang-es examples
+# @lumen-labs-dev/lang-es-es examples
 
-Those are examples to show how to use _@lumen-labs-dev/lang-es_ package.
+Those are examples to show how to use _@lumen-labs-dev/lang-es-es_ package.
 
 ## 01 normalization
 Shows the usage of the _NormalizerEs_ class to normalize a sentence.

@@ -27,7 +27,7 @@
   "dependencies": {
     "@lumen-labs-dev/core-loader": "^4.27.0",
     "@lumen-labs-dev/evaluator": "^4.27.0",
-    "@lumen-labs-dev/lang-en": "^4.27.0",
+    "@lumen-labs-dev/lang-en-us": "^4.27.0",
     "@lumen-labs-dev/logger": "^4.27.0",
     "@lumen-labs-dev/nlp": "^4.27.0"
   },

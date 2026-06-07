@@ -22,8 +22,8 @@
  */
 
 const measureCorpus = require('../measure-corpus');
-const { LangId } = require('../../../packages/lang-id/src');
-// const { LangId } = require('@lumen-labs-dev/lang-id');
+const { LangId } = require('../../../packages/lang-id-id/src');
+// const { LangId } = require('@lumen-labs-dev/lang-id-id');
 const corpus = require('../corpora/corpus-id.json');
 
 (async () => {

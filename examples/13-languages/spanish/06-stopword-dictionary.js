@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StopwordsEs } = require('../../../packages/lang-es/src');
-// const { StopwordsEs } = require('@lumen-labs-dev/lang-es');
+const { StopwordsEs } = require('../../../packages/lang-es-es/src');
+// const { StopwordsEs } = require('@lumen-labs-dev/lang-es-es');
 
 const stopwords = new StopwordsEs();
 stopwords.dictionary = {};

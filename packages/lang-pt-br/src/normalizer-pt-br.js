@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const { NormalizerPt } = require('@lumen-labs-dev/lang-pt');
+const { NormalizerPt } = require('@lumen-labs-dev/lang-pt-pt');
 
 class NormalizerPtBr extends NormalizerPt {
   constructor(container) {

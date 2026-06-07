@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StopwordsId } = require('../../../packages/lang-id/src');
-// const { StopwordsId } = require('@lumen-labs-dev/lang-id');
+const { StopwordsId } = require('../../../packages/lang-id-id/src');
+// const { StopwordsId } = require('@lumen-labs-dev/lang-id-id');
 
 const stopwords = new StopwordsId();
 console.log(

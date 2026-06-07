@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { NormalizerEs } = require('../../../packages/lang-es/src');
-// const { NormalizerEs } = require('@lumen-labs-dev/lang-es');
+const { NormalizerEs } = require('../../../packages/lang-es-es/src');
+// const { NormalizerEs } = require('@lumen-labs-dev/lang-es-es');
 
 const normalizer = new NormalizerEs();
 const input = 'Esto debería ser normalizado';

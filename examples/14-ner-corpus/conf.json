@@ -11,6 +11,6 @@
     { "className": "JavascriptCompiler", "path": "../../packages/evaluator/src" },
     { "className": "Template", "path": "../../packages/evaluator/src" },
     { "className": "Nlp", "path": "../../packages/nlp/src" },
-    { "className": "LangEn", "path": "../../packages/lang-en/src" }
+    { "className": "LangEn", "path": "../../packages/lang-en-us/src" }
   ]
 }

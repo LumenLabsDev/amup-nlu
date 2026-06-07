@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StopwordsFr } = require('../../../packages/lang-fr/src');
+const { StopwordsFr } = require('../../../packages/lang-fr-fr/src');
 
 const stopwords = new StopwordsFr();
 console.log(stopwords.isStopword('pas'));

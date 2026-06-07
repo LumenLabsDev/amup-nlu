@@ -149,7 +149,7 @@ We are defining a pipeline called _main_ and it will be executed after loading t
 The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/07.multilanguage
 Now we want to add a corpus in spanish. First at all we must install the spanish language plugin:
 ```bash
-npm i @lumen-labs-dev/lang-es
+npm i @lumen-labs-dev/lang-es-es
 ```
 
 Then add the _LangEs_ plugin in the configuration, and of course the corpus to the corpora:

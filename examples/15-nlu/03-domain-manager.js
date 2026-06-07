@@ -23,10 +23,10 @@
 
 const { containerBootstrap } = require('../../packages/core/src');
 const { DomainManager, NluNeural } = require('../../packages/nlu/src');
-const { LangEn } = require('../../packages/lang-en/src');
+const { LangEn } = require('../../packages/lang-en-us/src');
 // const { containerBootstrap } = require('@lumen-labs-dev/core');
 // const { DomainManager, NluNeural } = require('@lumen-labs-dev/nlu');
-// const { LangEn } = require('@lumen-labs-dev/lang-en');
+// const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 
 function addFoodDomain(manager) {
   manager.add('food', 'what do I have in my basket', 'order.check');

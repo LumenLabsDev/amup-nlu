@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { TokenizerFr } = require('../../../packages/lang-fr/src');
+const { TokenizerFr } = require('../../../packages/lang-fr-fr/src');
 
 const tokenizer = new TokenizerFr();
 const input = "Ceci n'est pas encore tokenisé";

@@ -20,6 +20,6 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const { SentimentPt } = require('@lumen-labs-dev/lang-pt');
+const { SentimentPt } = require('@lumen-labs-dev/lang-pt-pt');
 
 module.exports = SentimentPt;

@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StemmerEs } = require('../../../packages/lang-es/src');
-// const { StemmerEs } = require('@lumen-labs-dev/lang-es');
+const { StemmerEs } = require('../../../packages/lang-es-es/src');
+// const { StemmerEs } = require('@lumen-labs-dev/lang-es-es');
 
 const stemmer = new StemmerEs();
 const input = 'He visto a un PROGRAMADOR';

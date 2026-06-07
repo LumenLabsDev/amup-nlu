@@ -28,7 +28,7 @@ const {
   StemmerAr,
   StopwordsAr,
   TokenizerAr,
-} = require('@lumen-labs-dev/lang-ar');
+} = require('@lumen-labs-dev/lang-ar-sa');
 const {
   LangBn,
   NormalizerBn,
@@ -36,7 +36,7 @@ const {
   StemmerBn,
   StopwordsBn,
   TokenizerBn,
-} = require('@lumen-labs-dev/lang-bn');
+} = require('@lumen-labs-dev/lang-bn-bd');
 const {
   LangCa,
   NormalizerCa,
@@ -44,7 +44,7 @@ const {
   StemmerCa,
   StopwordsCa,
   TokenizerCa,
-} = require('@lumen-labs-dev/lang-ca');
+} = require('@lumen-labs-dev/lang-ca-es');
 const {
   LangCs,
   NormalizerCs,
@@ -52,7 +52,7 @@ const {
   StemmerCs,
   StopwordsCs,
   TokenizerCs,
-} = require('@lumen-labs-dev/lang-cs');
+} = require('@lumen-labs-dev/lang-cs-cz');
 const {
   LangDa,
   NormalizerDa,
@@ -60,7 +60,7 @@ const {
   StemmerDa,
   StopwordsDa,
   TokenizerDa,
-} = require('@lumen-labs-dev/lang-da');
+} = require('@lumen-labs-dev/lang-da-dk');
 const {
   LangDe,
   NormalizerDe,
@@ -68,7 +68,7 @@ const {
   StemmerDe,
   StopwordsDe,
   TokenizerDe,
-} = require('@lumen-labs-dev/lang-de');
+} = require('@lumen-labs-dev/lang-de-de');
 const {
   LangEl,
   NormalizerEl,
@@ -76,7 +76,7 @@ const {
   StemmerEl,
   StopwordsEl,
   TokenizerEl,
-} = require('@lumen-labs-dev/lang-el');
+} = require('@lumen-labs-dev/lang-el-gr');
 const {
   LangEn,
   NormalizerEn,
@@ -84,7 +84,7 @@ const {
   StemmerEn,
   StopwordsEn,
   TokenizerEn,
-} = require('@lumen-labs-dev/lang-en');
+} = require('@lumen-labs-dev/lang-en-us');
 const {
   LangEs,
   NormalizerEs,
@@ -92,7 +92,7 @@ const {
   StemmerEs,
   StopwordsEs,
   TokenizerEs,
-} = require('@lumen-labs-dev/lang-es');
+} = require('@lumen-labs-dev/lang-es-es');
 const {
   LangEu,
   NormalizerEu,
@@ -100,7 +100,7 @@ const {
   StemmerEu,
   StopwordsEu,
   TokenizerEu,
-} = require('@lumen-labs-dev/lang-eu');
+} = require('@lumen-labs-dev/lang-eu-es');
 const {
   LangFa,
   NormalizerFa,
@@ -108,7 +108,7 @@ const {
   StemmerFa,
   StopwordsFa,
   TokenizerFa,
-} = require('@lumen-labs-dev/lang-fa');
+} = require('@lumen-labs-dev/lang-fa-ir');
 const {
   LangFi,
   NormalizerFi,
@@ -116,7 +116,7 @@ const {
   StemmerFi,
   StopwordsFi,
   TokenizerFi,
-} = require('@lumen-labs-dev/lang-fi');
+} = require('@lumen-labs-dev/lang-fi-fi');
 const {
   LangFr,
   NormalizerFr,
@@ -124,7 +124,7 @@ const {
   StemmerFr,
   StopwordsFr,
   TokenizerFr,
-} = require('@lumen-labs-dev/lang-fr');
+} = require('@lumen-labs-dev/lang-fr-fr');
 const {
   LangGa,
   NormalizerGa,
@@ -132,7 +132,7 @@ const {
   StemmerGa,
   StopwordsGa,
   TokenizerGa,
-} = require('@lumen-labs-dev/lang-ga');
+} = require('@lumen-labs-dev/lang-ga-ie');
 const {
   LangGl,
   NormalizerGl,
@@ -140,7 +140,7 @@ const {
   StemmerGl,
   StopwordsGl,
   TokenizerGl,
-} = require('@lumen-labs-dev/lang-gl');
+} = require('@lumen-labs-dev/lang-gl-es');
 const {
   LangHi,
   NormalizerHi,
@@ -148,7 +148,7 @@ const {
   StemmerHi,
   StopwordsHi,
   TokenizerHi,
-} = require('@lumen-labs-dev/lang-hi');
+} = require('@lumen-labs-dev/lang-hi-in');
 const {
   LangHu,
   NormalizerHu,
@@ -156,7 +156,7 @@ const {
   StemmerHu,
   StopwordsHu,
   TokenizerHu,
-} = require('@lumen-labs-dev/lang-hu');
+} = require('@lumen-labs-dev/lang-hu-hu');
 const {
   LangHy,
   NormalizerHy,
@@ -164,7 +164,7 @@ const {
   StemmerHy,
   StopwordsHy,
   TokenizerHy,
-} = require('@lumen-labs-dev/lang-hy');
+} = require('@lumen-labs-dev/lang-hy-am');
 const {
   LangId,
   NormalizerId,
@@ -172,7 +172,7 @@ const {
   StemmerId,
   StopwordsId,
   TokenizerId,
-} = require('@lumen-labs-dev/lang-id');
+} = require('@lumen-labs-dev/lang-id-id');
 const {
   LangIt,
   NormalizerIt,
@@ -180,7 +180,7 @@ const {
   StemmerIt,
   StopwordsIt,
   TokenizerIt,
-} = require('@lumen-labs-dev/lang-it');
+} = require('@lumen-labs-dev/lang-it-it');
 const {
   LangJa,
   NormalizerJa,
@@ -188,7 +188,7 @@ const {
   StemmerJa,
   StopwordsJa,
   TokenizerJa,
-} = require('@lumen-labs-dev/lang-ja');
+} = require('@lumen-labs-dev/lang-ja-jp');
 const {
   LangKo,
   NormalizerKo,
@@ -196,7 +196,7 @@ const {
   StemmerKo,
   StopwordsKo,
   TokenizerKo,
-} = require('@lumen-labs-dev/lang-ko');
+} = require('@lumen-labs-dev/lang-ko-kr');
 const {
   LangLt,
   NormalizerLt,
@@ -204,7 +204,7 @@ const {
   StemmerLt,
   StopwordsLt,
   TokenizerLt,
-} = require('@lumen-labs-dev/lang-lt');
+} = require('@lumen-labs-dev/lang-lt-lt');
 const {
   LangMs,
   NormalizerMs,
@@ -212,7 +212,7 @@ const {
   StemmerMs,
   StopwordsMs,
   TokenizerMs,
-} = require('@lumen-labs-dev/lang-ms');
+} = require('@lumen-labs-dev/lang-ms-my');
 const {
   LangNe,
   NormalizerNe,
@@ -220,7 +220,7 @@ const {
   StemmerNe,
   StopwordsNe,
   TokenizerNe,
-} = require('@lumen-labs-dev/lang-ne');
+} = require('@lumen-labs-dev/lang-ne-np');
 const {
   LangNl,
   NormalizerNl,
@@ -228,7 +228,7 @@ const {
   StemmerNl,
   StopwordsNl,
   TokenizerNl,
-} = require('@lumen-labs-dev/lang-nl');
+} = require('@lumen-labs-dev/lang-nl-nl');
 const {
   LangNo,
   NormalizerNo,
@@ -236,7 +236,7 @@ const {
   StemmerNo,
   StopwordsNo,
   TokenizerNo,
-} = require('@lumen-labs-dev/lang-no');
+} = require('@lumen-labs-dev/lang-no-no');
 const {
   LangPl,
   NormalizerPl,
@@ -244,7 +244,7 @@ const {
   StemmerPl,
   StopwordsPl,
   TokenizerPl,
-} = require('@lumen-labs-dev/lang-pl');
+} = require('@lumen-labs-dev/lang-pl-pl');
 const {
   LangPt,
   NormalizerPt,
@@ -252,7 +252,7 @@ const {
   StemmerPt,
   StopwordsPt,
   TokenizerPt,
-} = require('@lumen-labs-dev/lang-pt');
+} = require('@lumen-labs-dev/lang-pt-pt');
 const {
   LangPtBr,
   NormalizerPtBr,
@@ -268,7 +268,7 @@ const {
   StemmerRo,
   StopwordsRo,
   TokenizerRo,
-} = require('@lumen-labs-dev/lang-ro');
+} = require('@lumen-labs-dev/lang-ro-ro');
 const {
   LangRu,
   NormalizerRu,
@@ -276,7 +276,7 @@ const {
   StemmerRu,
   StopwordsRu,
   TokenizerRu,
-} = require('@lumen-labs-dev/lang-ru');
+} = require('@lumen-labs-dev/lang-ru-ru');
 const {
   LangSl,
   NormalizerSl,
@@ -284,7 +284,7 @@ const {
   StemmerSl,
   StopwordsSl,
   TokenizerSl,
-} = require('@lumen-labs-dev/lang-sl');
+} = require('@lumen-labs-dev/lang-sl-si');
 const {
   LangSr,
   NormalizerSr,
@@ -292,7 +292,7 @@ const {
   StemmerSr,
   StopwordsSr,
   TokenizerSr,
-} = require('@lumen-labs-dev/lang-sr');
+} = require('@lumen-labs-dev/lang-sr-rs');
 const {
   LangSv,
   NormalizerSv,
@@ -300,7 +300,7 @@ const {
   StemmerSv,
   StopwordsSv,
   TokenizerSv,
-} = require('@lumen-labs-dev/lang-sv');
+} = require('@lumen-labs-dev/lang-sv-se');
 const {
   LangTa,
   NormalizerTa,
@@ -308,7 +308,7 @@ const {
   StemmerTa,
   StopwordsTa,
   TokenizerTa,
-} = require('@lumen-labs-dev/lang-ta');
+} = require('@lumen-labs-dev/lang-ta-in');
 const {
   LangTh,
   NormalizerTh,
@@ -316,7 +316,7 @@ const {
   StemmerTh,
   StopwordsTh,
   TokenizerTh,
-} = require('@lumen-labs-dev/lang-th');
+} = require('@lumen-labs-dev/lang-th-th');
 const {
   LangTl,
   NormalizerTl,
@@ -324,7 +324,7 @@ const {
   StemmerTl,
   StopwordsTl,
   TokenizerTl,
-} = require('@lumen-labs-dev/lang-tl');
+} = require('@lumen-labs-dev/lang-tl-ph');
 const {
   LangTr,
   NormalizerTr,
@@ -332,7 +332,7 @@ const {
   StemmerTr,
   StopwordsTr,
   TokenizerTr,
-} = require('@lumen-labs-dev/lang-tr');
+} = require('@lumen-labs-dev/lang-tr-tr');
 const {
   LangUk,
   NormalizerUk,
@@ -340,7 +340,7 @@ const {
   StemmerUk,
   StopwordsUk,
   TokenizerUk,
-} = require('@lumen-labs-dev/lang-uk');
+} = require('@lumen-labs-dev/lang-uk-ua');
 const {
   LangZh,
   NormalizerZh,
@@ -348,7 +348,7 @@ const {
   StemmerZh,
   StopwordsZh,
   TokenizerZh,
-} = require('@lumen-labs-dev/lang-zh');
+} = require('@lumen-labs-dev/lang-zh-cn');
 const LangAll = require('./lang-all');
 
 const {

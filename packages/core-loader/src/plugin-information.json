@@ -59,99 +59,99 @@
   },
   "LangAr": {
     "className": "LangAr",
-    "path": "@lumen-labs-dev/lang-ar"
+    "path": "@lumen-labs-dev/lang-ar-sa"
   },
   "LangBn": {
     "className": "LangBn",
-    "path": "@lumen-labs-dev/lang-bn"
+    "path": "@lumen-labs-dev/lang-bn-bd"
   },
   "LangCa": {
     "className": "LangCa",
-    "path": "@lumen-labs-dev/lang-ca"
+    "path": "@lumen-labs-dev/lang-ca-es"
   },
   "LangCs": {
     "className": "LangCs",
-    "path": "@lumen-labs-dev/lang-cs"
+    "path": "@lumen-labs-dev/lang-cs-cz"
   },
   "LangDa": {
     "className": "LangDa",
-    "path": "@lumen-labs-dev/lang-da"
+    "path": "@lumen-labs-dev/lang-da-dk"
   },
   "LangDe": {
     "className": "LangDe",
-    "path": "@lumen-labs-dev/lang-de"
+    "path": "@lumen-labs-dev/lang-de-de"
   },
   "LangEl": {
     "className": "LangEl",
-    "path": "@lumen-labs-dev/lang-el"
+    "path": "@lumen-labs-dev/lang-el-gr"
   },
   "LangEn": {
     "className": "LangEn",
-    "path": "@lumen-labs-dev/lang-en"
+    "path": "@lumen-labs-dev/lang-en-us"
   },
   "LangEs": {
     "className": "LangEs",
-    "path": "@lumen-labs-dev/lang-es"
+    "path": "@lumen-labs-dev/lang-es-es"
   },
   "LangEu": {
     "className": "LangEu",
-    "path": "@lumen-labs-dev/lang-eu"
+    "path": "@lumen-labs-dev/lang-eu-es"
   },
   "LangFa": {
     "className": "LangFa",
-    "path": "@lumen-labs-dev/lang-fa"
+    "path": "@lumen-labs-dev/lang-fa-ir"
   },
   "LangFi": {
     "className": "LangFi",
-    "path": "@lumen-labs-dev/lang-fi"
+    "path": "@lumen-labs-dev/lang-fi-fi"
   },
   "LangFr": {
     "className": "LangFr",
-    "path": "@lumen-labs-dev/lang-fr"
+    "path": "@lumen-labs-dev/lang-fr-fr"
   },
   "LangGa": {
     "className": "LangGa",
-    "path": "@lumen-labs-dev/lang-ga"
+    "path": "@lumen-labs-dev/lang-ga-ie"
   },
   "LangGl": {
     "className": "LangGl",
-    "path": "@lumen-labs-dev/lang-gl"
+    "path": "@lumen-labs-dev/lang-gl-es"
   },
   "LangHi": {
     "className": "LangHi",
-    "path": "@lumen-labs-dev/lang-hi"
+    "path": "@lumen-labs-dev/lang-hi-in"
   },
   "LangHu": {
     "className": "LangHu",
-    "path": "@lumen-labs-dev/lang-hu"
+    "path": "@lumen-labs-dev/lang-hu-hu"
   },
   "LangHy": {
     "className": "LangHy",
-    "path": "@lumen-labs-dev/lang-hy"
+    "path": "@lumen-labs-dev/lang-hy-am"
   },
   "LangId": {
     "className": "LangId",
-    "path": "@lumen-labs-dev/lang-id"
+    "path": "@lumen-labs-dev/lang-id-id"
   },
   "LangIt": {
     "className": "LangIt",
-    "path": "@lumen-labs-dev/lang-it"
+    "path": "@lumen-labs-dev/lang-it-it"
   },
   "LangJa": {
     "className": "LangJa",
-    "path": "@lumen-labs-dev/lang-ja"
+    "path": "@lumen-labs-dev/lang-ja-jp"
   },
   "LangNl": {
     "className": "LangNl",
-    "path": "@lumen-labs-dev/lang-nl"
+    "path": "@lumen-labs-dev/lang-nl-nl"
   },
   "LangNo": {
     "className": "LangNo",
-    "path": "@lumen-labs-dev/lang-no"
+    "path": "@lumen-labs-dev/lang-no-no"
   },
   "LangPt": {
     "className": "LangPt",
-    "path": "@lumen-labs-dev/lang-pt"
+    "path": "@lumen-labs-dev/lang-pt-pt"
   },
   "LangPtBr": {
     "className": "LangPtBr",
@@ -159,43 +159,43 @@
   },
   "LangRo": {
     "className": "LangRo",
-    "path": "@lumen-labs-dev/lang-ro"
+    "path": "@lumen-labs-dev/lang-ro-ro"
   },
   "LangRu": {
     "className": "LangRu",
-    "path": "@lumen-labs-dev/lang-ru"
+    "path": "@lumen-labs-dev/lang-ru-ru"
   },
   "LangSl": {
     "className": "LangSl",
-    "path": "@lumen-labs-dev/lang-sl"
+    "path": "@lumen-labs-dev/lang-sl-si"
   },
   "LangSv": {
     "className": "LangSv",
-    "path": "@lumen-labs-dev/lang-sv"
+    "path": "@lumen-labs-dev/lang-sv-se"
   },
   "LangTa": {
     "className": "LangTa",
-    "path": "@lumen-labs-dev/lang-ta"
+    "path": "@lumen-labs-dev/lang-ta-in"
   },
   "LangTh": {
     "className": "LangTh",
-    "path": "@lumen-labs-dev/lang-th"
+    "path": "@lumen-labs-dev/lang-th-th"
   },
   "LangTl": {
     "className": "LangTl",
-    "path": "@lumen-labs-dev/lang-tl"
+    "path": "@lumen-labs-dev/lang-tl-ph"
   },
   "LangTr": {
     "className": "LangTr",
-    "path": "@lumen-labs-dev/lang-tr"
+    "path": "@lumen-labs-dev/lang-tr-tr"
   },
   "LangUk": {
     "className": "LangUk",
-    "path": "@lumen-labs-dev/lang-uk"
+    "path": "@lumen-labs-dev/lang-uk-ua"
   },
   "LangZh": {
     "className": "LangZh",
-    "path": "@lumen-labs-dev/lang-zh"
+    "path": "@lumen-labs-dev/lang-zh-cn"
   },
   "logger": {
     "className": "logger",
@@ -219,26 +219,26 @@
   },
   "LangKo": {
     "className": "LangKo",
-    "path": "@lumen-labs-dev/lang-ko"
+    "path": "@lumen-labs-dev/lang-ko-kr"
   },
   "LangLt": {
     "className": "LangLt",
-    "path": "@lumen-labs-dev/lang-lt"
+    "path": "@lumen-labs-dev/lang-lt-lt"
   },
   "LangMs": {
     "className": "LangMs",
-    "path": "@lumen-labs-dev/lang-ms"
+    "path": "@lumen-labs-dev/lang-ms-my"
   },
   "LangNe": {
     "className": "LangNe",
-    "path": "@lumen-labs-dev/lang-ne"
+    "path": "@lumen-labs-dev/lang-ne-np"
   },
   "LangPl": {
     "className": "LangPl",
-    "path": "@lumen-labs-dev/lang-pl"
+    "path": "@lumen-labs-dev/lang-pl-pl"
   },
   "LangSr": {
     "className": "LangSr",
-    "path": "@lumen-labs-dev/lang-sr"
+    "path": "@lumen-labs-dev/lang-sr-rs"
   }
 }

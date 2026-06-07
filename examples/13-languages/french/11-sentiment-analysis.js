@@ -23,7 +23,7 @@
 
 const { Container } = require('../../../packages/core/src');
 const { SentimentAnalyzer } = require('../../../packages/sentiment/src');
-const { LangFr } = require('../../../packages/lang-fr/src');
+const { LangFr } = require('../../../packages/lang-fr-fr/src');
 
 (async () => {
   const container = new Container();

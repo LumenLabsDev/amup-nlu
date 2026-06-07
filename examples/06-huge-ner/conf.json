@@ -21,6 +21,6 @@
   "use": [
     { "className": "logger", "path": "../../packages/logger/src" },
     { "className": "Nlp", "path": "../../packages/nlp/src" },
-    { "className": "LangEn", "path": "../../packages/lang-en/src" }
+    { "className": "LangEn", "path": "../../packages/lang-en-us/src" }
   ]
 }

@@ -1,6 +1,6 @@
-# @lumen-labs-dev/lang-it examples
+# @lumen-labs-dev/lang-it-it examples
 
-Those are examples to show how to use _@lumen-labs-dev/lang-it_ package.
+Those are examples to show how to use _@lumen-labs-dev/lang-it-it_ package.
 
 ## 01 normalization
 Shows the usage of the _NormalizerIt_ class to normalize a sentence.

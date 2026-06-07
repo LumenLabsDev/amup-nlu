@@ -56,7 +56,7 @@
     "@lumen-labs-dev/sentiment": "^4.27.0",
     "@lumen-labs-dev/similarity": "^4.27.0",
     "@lumen-labs-dev/xtables": "^4.27.0",
-    "@lumen-labs-dev/lang-en": "^4.27.0"
+    "@lumen-labs-dev/lang-en-us": "^4.27.0"
   },
   "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd",
   "peerDependencies": {

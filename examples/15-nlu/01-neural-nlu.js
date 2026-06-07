@@ -23,10 +23,10 @@
 
 const { containerBootstrap } = require('../../packages/core/src');
 const { NluNeural } = require('../../packages/nlu/src');
-const { LangEn } = require('../../packages/lang-en/src');
+const { LangEn } = require('../../packages/lang-en-us/src');
 // const { containerBootstrap } = require('@lumen-labs-dev/core');
 // const { NluNeural } = require('@lumen-labs-dev/nlu');
-// const { LangEn } = require('@lumen-labs-dev/lang-en');
+// const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 const corpus = require('./corpus50.json');
 
 function prepareCorpus(input, isTests = false) {

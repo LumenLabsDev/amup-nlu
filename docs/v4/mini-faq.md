@@ -22,7 +22,7 @@ I will put here a FAQ with the links to different interesting parts to documenta
 
 **- Do you have some example of a chatbot running in several languages?** You can remix this project in glitch, you'll see that it only haves one line of source code, but with only one line it creates a backend with API and exposes a react frontend with the bot, and it's multi-language. To see the frontend click on the button "show" and then "next to the code". https://glitch.com/edit/?utm_content=project_nlpjs-multi&utm_source=remix_this&utm_medium=button&utm_campaign=glitchButton#!/remix/nlpjs-multi
 
-**- Using @lumen-labs-dev/node-nlp package I need to install the languages separately?** English is included by default. For other languages, install the matching language package such as `@lumen-labs-dev/lang-es`, or install `@lumen-labs-dev/lang-all` and enable it with `useLangAll: true`.
+**- Using @lumen-labs-dev/node-nlp package I need to install the languages separately?** English is included by default. For other languages, install the matching language package such as `@lumen-labs-dev/lang-es-es`, or install `@lumen-labs-dev/lang-all` and enable it with `useLangAll: true`.
 
 **- Where I can see the languages and their locales to find the correct package to install?** Here, the one with Native Support https://github.com/axa-group/nlp.js/blob/master/docs/v4/language-support.md
 

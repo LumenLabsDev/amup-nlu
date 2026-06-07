@@ -39,18 +39,18 @@ Now you will need some HTML to run the code in the browser, we will start with t
 
 Install the libraries that will be needed to run the nlp:
 ```bash
-npm i @lumen-labs-dev/core @lumen-labs-dev/lang-en-min @lumen-labs-dev/nlp
+npm i @lumen-labs-dev/core @lumen-labs-dev/lang-en-us-min @lumen-labs-dev/nlp
 ```
 
 The @lumen-labs-dev/core is the one that installs the container system and basic architecture.
 The @lumen-labs-dev/nlp installs the nlp related things,
-and finally @lumen-labs-dev/lang-en-min installs the English language but without the sentiment dictionaries. That's because the sentiment analysis dictionaries are big in size.
+and finally @lumen-labs-dev/lang-en-us-min installs the English language but without the sentiment dictionaries. That's because the sentiment analysis dictionaries are big in size.
 
 Now create an _index.js_ with this content:
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { Nlp } = require('@lumen-labs-dev/nlp');
-const { LangEn } = require('@lumen-labs-dev/lang-en-min');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us-min');
 
 (async () => {
   const container = await containerBootstrap();
@@ -105,7 +105,7 @@ First modify the _index.js_ to not include our bot logic and to simply import ev
 ```javascript
 const core = require('@lumen-labs-dev/core');
 const nlp = require('@lumen-labs-dev/nlp');
-const langenmin = require('@lumen-labs-dev/lang-en-min');
+const langenmin = require('@lumen-labs-dev/lang-en-us-min');
 
 window.nlpjs = { ...core, ...nlp, ...langenmin };
 ```
@@ -173,7 +173,7 @@ Now we need to expose it in our _index.js_:
 ```javascript
 const core = require('@lumen-labs-dev/core');
 const nlp = require('@lumen-labs-dev/nlp');
-const langenmin = require('@lumen-labs-dev/lang-en-min');
+const langenmin = require('@lumen-labs-dev/lang-en-us-min');
 const requestrn = require('@lumen-labs-dev/request-rn');
 
 window.nlpjs = { ...core, ...nlp, ...langenmin, ...requestrn };
