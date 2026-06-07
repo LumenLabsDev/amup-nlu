@@ -21,7 +21,6 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { ConsoleConnector } = require('@lumen-labs-dev/console-connector');
 const {
   Among,
   ArrToObj,
@@ -69,7 +68,6 @@ const { logger } = require('@lumen-labs-dev/logger');
 const { Nlp } = require('@lumen-labs-dev/nlp');
 
 module.exports = {
-  ConsoleConnector,
   Among,
   ArrToObj,
   BaseStemmer,

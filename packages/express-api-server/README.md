@@ -1,6 +1,6 @@
 ![NLPjs logo](../../screenshots/nlplogo.gif)
 
-# @lumen-labs-dev/console-connector
+# @lumen-labs-dev/express-api-server
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
@@ -22,10 +22,10 @@
 
 ## Installation
 
-You can install @lumen-labs-dev/console-connector:
+You can install @lumen-labs-dev/express-api-server:
 
 ```bash
-    npm install @lumen-labs-dev/console-connector
+    npm install @lumen-labs-dev/express-api-server
 ```
 
 ## Contributing

@@ -29,9 +29,9 @@
   },
   "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd",
   "dependencies": {
-    "exceljs": "^4.1.1",
-    "https-proxy-agent": "^5.0.0",
-    "tar": "^6.0.2",
+    "exceljs": "^4.4.0",
+    "https-proxy-agent": "^7.0.6",
+    "tar": "^7.5.16",
     "@lumen-labs-dev/xtables": "^4.27.0"
   }
 }

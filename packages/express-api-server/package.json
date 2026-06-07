@@ -25,12 +25,12 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "@lumen-labs-dev/core": "^4.27.0"
   },
   "devDependencies": {
-    "supertest": "^6.0.1"
+    "supertest": "^7.2.2"
   },
   "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
 }

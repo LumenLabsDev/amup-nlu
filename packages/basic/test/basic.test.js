@@ -1,5 +1,4 @@
 const {
-  ConsoleConnector,
   Among,
   ArrToObj,
   BaseStemmer,
@@ -44,7 +43,6 @@ const {
 describe('Basic', () => {
   describe('Expose', () => {
     it('Should expose classes and functions', () => {
-      expect(ConsoleConnector).toBeDefined();
       expect(Among).toBeDefined();
       expect(ArrToObj).toBeDefined();
       expect(BaseStemmer).toBeDefined();

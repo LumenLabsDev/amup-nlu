@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { ConsoleConnector } = require('../../packages/console-connector/src');
+const readline = require('readline');
 const { Nlp } = require('../../packages/nlp/src');
 const { LangEn } = require('../../packages/lang-en/src');
 const { fs } = require('../../packages/request/src');
@@ -31,18 +31,26 @@ const nlp = new Nlp({ languages: ['en'], threshold: 0.5 });
 nlp.container.register('fs', fs);
 nlp.use(LangEn);
 
-const connector = new ConsoleConnector();
-connector.onHear = async (parent, line) => {
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+async function handleLine(line) {
   if (line.toLowerCase() === 'quit') {
-    connector.destroy();
+    rl.close();
     process.exit();
   } else {
     const result = await nlp.process(line);
-    connector.say(result.answer);
+    console.log(result.answer);
+    rl.prompt();
   }
-};
+}
 
 (async () => {
   await trainnlp(nlp);
-  connector.say('Say something!');
+  console.log('Say something!');
+  rl.setPrompt('> ');
+  rl.prompt();
+  rl.on('line', handleLine);
 })();

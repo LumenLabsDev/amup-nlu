@@ -25,7 +25,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@lumen-labs-dev/console-connector": "^4.27.0",
     "@lumen-labs-dev/core-loader": "^4.27.0",
     "@lumen-labs-dev/evaluator": "^4.27.0",
     "@lumen-labs-dev/lang-en": "^4.27.0",

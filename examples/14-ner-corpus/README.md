@@ -7,7 +7,7 @@ This example shows how to load a corpus from a json file that includes NER infor
 As being an example inside this repo, this does not includes a package.json neither installation of the packages. The packages are loaded from the routes. To use this example in your own project start by initializating a project and installing these packages:
 
 ```shell
-  npm i @lumen-labs-dev/basic @lumen-labs-dev/express-api-server @lumen-labs-dev/directline-connector
+  npm i @lumen-labs-dev/basic
 ```
 
 Also, the file _conf.json_ in this example use the plugins by className and path, in your project you can use the plugins directly by name:
@@ -18,13 +18,9 @@ Also, the file _conf.json_ in this example use the plugins by className and path
     "nlp": {
       "corpora": ["./corpus.json"],
       "nlu": { "log": true }
-    },
-    "api-server": {
-      "port": 3000,
-      "serveBot": true      
     }
   },
-  "use": ["Basic", "LangEn", "ExpressApiServer", "DirectlineConnector"]
+  "use": ["Basic", "LangEn"]
 }
 ```
 
@@ -72,8 +68,7 @@ Start the project:
   node index.js
 ```
 
-Navigate to http://localhost:3000 and you'll find a web with a bubble to open the chat.
-The chat is trained with two intents: one to know the real name of a hero ("what's the real name of spiderman?") and other one to know where a hero lives ("where spiderman lives?"). It knows three heros trained in the entity @hero: spiderman, ironman and thor. When a hero is identified it's able to retrieve the data from the json contained in _heros.json_ to give the answer.
+The NLP model is trained with two intents: one to know the real name of a hero ("what's the real name of spiderman?") and other one to know where a hero lives ("where spiderman lives?"). It knows three heros trained in the entity @hero: spiderman, ironman and thor. When a hero is identified it's able to retrieve the data from the json contained in _heros.json_ to give the answer.
 
 It's able to mantain the context, so if the chatbot knows the last hero that you were talking about, then you can omit the entity information. Example:
 ```

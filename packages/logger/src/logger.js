@@ -26,10 +26,7 @@ const pino = require('pino');
 class Logger {
   constructor() {
     this.name = 'logger';
-    this.logger = pino({
-      prettyPrint: process.env.NODE_ENV !== 'production',
-      colorize: process.env.NODE_ENV !== 'production',
-    });
+    this.logger = pino();
   }
 
   debug(...args) {

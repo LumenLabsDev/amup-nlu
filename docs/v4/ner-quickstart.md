@@ -2,9 +2,9 @@
 
 ## Install the needed packages
 
-In your node project folder, install the @lumen-labs-dev/basic, @lumen-labs-dev/express-api-server and @lumen-labs-dev/directline-connector packages.
+In your node project folder, install the @lumen-labs-dev/basic package.
 ```bash
-npm i @lumen-labs-dev/basic @lumen-labs-dev/express-api-server @lumen-labs-dev/directline-connector
+npm i @lumen-labs-dev/basic
 ```
 
 ## Create the conf.json
@@ -16,24 +16,17 @@ Create the file _conf.json_ with this content:
   "settings": {
     "nlp": {
       "corpora": ["./corpus.json"]
-    },
-    "api-server": {
-      "port": 3000,
-      "serveBot": true      
     }
   },
-  "use": ["Basic", "LangEn", "ExpressApiServer", "DirectlineConnector"]
+  "use": ["Basic", "LangEn"]
 }
 ```
 
-You are telling the applicaition to use 4 plugins:
+You are telling the application to use 2 plugins:
 - Basic: the basic plugins for an NLP backend, that includes evaluator, javascript compiler, logger, and NLP classes
 - LangEn: the plugin to use English language
-- ExpressApiServer: the plugin to have an Express API server
-- DirectlineConnector: the plugin that uses the ExpressApiServer to serve an API for the chatbot
 
-Also this configures the ExpressApiServer to be exposed at port 3000 and to serve the chatbot frontend (serveBot: true).
-Finally, it tells the NLP to import the corpus defined in the file _corpus.json_.
+It also tells the NLP to import the corpus defined in the file _corpus.json_.
 
 ## Create the corpus.json
 

@@ -24,12 +24,16 @@
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const HttpsProxyAgent = require('https-proxy-agent');
+const { HttpsProxyAgent } = require('https-proxy-agent');
 const path = require('path');
 const tar = require('tar');
 const url = require('url');
 const ProgressBar = require('./progress-bar');
 const { getAbsolutePath } = require('./fs-extra');
+
+function normalizeProxyUrl(proxy) {
+  return /^[a-z][a-z\d+\-.]*:\/\//i.test(proxy) ? proxy : `http://${proxy}`;
+}
 
 class Downloader {
   constructor(settings = {}) {
@@ -53,7 +57,7 @@ class Downloader {
         process.env.HTTPS_PROXY;
     }
     if (this.proxy) {
-      this.agent = new HttpsProxyAgent(this.proxy);
+      this.agent = new HttpsProxyAgent(normalizeProxyUrl(this.proxy));
     }
   }
 

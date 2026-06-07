@@ -5,6 +5,16 @@
     "no-param-reassign": 0,
     "class-methods-use-this": 0,
     "no-misleading-character-class": 0,
+    "no-promise-executor-return": 0,
+    "default-param-last": 0,
+    "prefer-regex-literals": 0,
+    "no-dupe-else-if": 0,
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["^http-proxy-agent$", "^https-proxy-agent$"]
+      }
+    ],
     "prettier/prettier": [
       "error",
       {

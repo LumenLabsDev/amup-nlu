@@ -25,10 +25,6 @@
       "path": "@lumen-labs-dev/evaluator"
     }
   ],
-  "Bot": {
-    "className": "Bot",
-    "path": "@lumen-labs-dev/bot"
-  },
   "BuiltinCompromise": {
     "className": "BuiltinCompromise",
     "path": "@lumen-labs-dev/builtin-compromise"
@@ -41,33 +37,17 @@
     "className": "BuiltinMicrosoft",
     "path": "@lumen-labs-dev/builtin-microsoft"
   },
-  "ConsoleConnector": {
-    "className": "ConsoleConnector",
-    "path": "@lumen-labs-dev/console-connector"
-  },
   "Database": {
     "className": "Database",
     "path": "@lumen-labs-dev/database"
-  },
-  "DirectlineConnector": {
-    "className": "DirectlineConnector",
-    "path": "@lumen-labs-dev/directline-connector"
   },
   "ExpressApiServer": {
     "className": "ExpressApiServer",
     "path": "@lumen-labs-dev/express-api-server"
   },
-  "ExpressApiServerless": {
-    "className": "ExpressApiServerless",
-    "path": "@lumen-labs-dev/express-api-serverless"
-  },
   "Evaluator": {
     "className": "Evaluator",
     "path": "@lumen-labs-dev/evaluator"
-  },
-  "FbConnector": {
-    "className": "FbConnector",
-    "path": "@lumen-labs-dev/fb-connector"
   },
   "JavascriptCompiler": {
     "className": "JavascriptCompiler",
@@ -216,18 +196,6 @@
   "logger": {
     "className": "logger",
     "path": "@lumen-labs-dev/logger"
-  },
-  "Mongodb": {
-    "className": "MongodbAdapter",
-    "path": "@lumen-labs-dev/mongodb-adapter"
-  },
-  "MongodbAdapter": {
-    "className": "MongodbAdapter",
-    "path": "@lumen-labs-dev/mongodb-adapter"
-  },
-  "MsbfConnector": {
-    "className": "MsbfConnector",
-    "path": "@lumen-labs-dev/msbf-connector"
   },
   "Nlp": {
     "className": "Nlp",

@@ -18,8 +18,6 @@ I will put here a FAQ with the links to different interesting parts to documenta
 
 **- This thing of intents is hard to understand, I just want to do a Questions and Answers bot** You have a quickstart for simple QnA here: https://github.com/axa-group/nlp.js/blob/master/docs/v4/qna.md
 
-**- How I test my chatbot in Console?** https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md#adding-your-first-connector
-
 **- How I do a multilanguage chatbot?** Installing the package for the language and adding it as a plugin https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md#adding-multilanguage
 
 **- Do you have some example of a chatbot running in several languages?** You can remix this project in glitch, you'll see that it only haves one line of source code, but with only one line it creates a backend with API and exposes a react frontend with the bot, and it's multi-language. To see the frontend click on the button "show" and then "next to the code". https://glitch.com/edit/?utm_content=project_nlpjs-multi&utm_source=remix_this&utm_medium=button&utm_campaign=glitchButton#!/remix/nlpjs-multi
@@ -27,10 +25,6 @@ I will put here a FAQ with the links to different interesting parts to documenta
 **- Using @lumen-labs-dev/node-nlp package I need to install the languages separately?** English is included by default. For other languages, install the matching language package such as `@lumen-labs-dev/lang-es`, or install `@lumen-labs-dev/lang-all` and enable it with `useLangAll: true`.
 
 **- Where I can see the languages and their locales to find the correct package to install?** Here, the one with Native Support https://github.com/axa-group/nlp.js/blob/master/docs/v4/language-support.md
-
-**- But I want to have a web for my chatbot!** Here you have how to easily expose your chatbot with directline API, and how to expose a WebChat: https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md#adding-api-and-webchat
-
-**- But this does not help on how to orchestrate a chatbot** Well, NLP.js is the set of NLP tools, not the chatbot ones. For orchestrating a chatbot I recommend you to use Microsoft Bot Framework
 
 **- When an intent is triggered I want to get the answer from an API call and I'm not using any chatbot orchestrating SDK** You can with pipelines that react to your intent, you've an example here: https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md#adding-logic-to-an-intent
 
