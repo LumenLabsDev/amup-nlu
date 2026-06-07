@@ -22,7 +22,7 @@
  */
 
 const { Container } = require('@lumen-labs-dev/core');
-const { SentimentManager } = require('../../node-nlp/src/index');
+const { SentimentAnalyzer } = require('@lumen-labs-dev/sentiment');
 const { LangEl } = require('../src');
 
 describe('Language Greek', () => {
@@ -43,12 +43,14 @@ describe('Language Greek', () => {
 
   describe('Sentiment evaluation', () => {
     test('Accentuation matching between sentiment input and afinn data', async () => {
-      const sentiment = new SentimentManager();
-      const result = await sentiment.process(
-        'el-GR',
-        'Γεια σου, τι κάνεις? Εγώ είμαι πολυ περιωρισμένος'
-      );
-      expect(result.score).toEqual(-1);
+      const container = new Container();
+      container.use(LangEl);
+      const sentiment = new SentimentAnalyzer({ container });
+      const result = await sentiment.process({
+        locale: 'el-GR',
+        utterance: 'Γεια σου, τι κάνεις? Εγώ είμαι πολυ περιωρισμένος',
+      });
+      expect(result.sentiment.score).toEqual(-1);
     });
   });
 });

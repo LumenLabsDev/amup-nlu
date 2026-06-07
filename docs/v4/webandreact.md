@@ -1,6 +1,6 @@
 # Web Bundling
 
-> **npm scope:** web bundles use the same `@lumen-labs-dev/*` packages as Node.js. The example below installs `@lumen-labs-dev/core`, `@lumen-labs-dev/nlp`, and `@lumen-labs-dev/lang-en-us-min`.
+> **npm scope:** web bundles use the same `@lumen-labs-dev/*` packages as Node.js. The example below installs `@lumen-labs-dev/core`, `@lumen-labs-dev/nlp`, and `@lumen-labs-dev/lang-en-us`.
 
 ## Preparing to generate a bundle
 
@@ -41,18 +41,18 @@ Now you will need some HTML to run the code in the browser, we will start with t
 
 Install the libraries that will be needed to run the nlp:
 ```bash
-npm i @lumen-labs-dev/core @lumen-labs-dev/lang-en-us-min @lumen-labs-dev/nlp
+npm i @lumen-labs-dev/core @lumen-labs-dev/lang-en-us @lumen-labs-dev/nlp
 ```
 
 The @lumen-labs-dev/core is the one that installs the container system and basic architecture.
 The @lumen-labs-dev/nlp installs the nlp related things,
-and finally @lumen-labs-dev/lang-en-us-min installs the English language but without the sentiment dictionaries. That's because the sentiment analysis dictionaries are big in size.
+and finally @lumen-labs-dev/lang-en-us installs the English language package.
 
 Now create an _index.js_ with this content:
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { Nlp } = require('@lumen-labs-dev/nlp');
-const { LangEn } = require('@lumen-labs-dev/lang-en-us-min');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 
 (async () => {
   const container = await containerBootstrap();
@@ -99,9 +99,9 @@ First modify the _index.js_ to not include our bot logic and to simply import ev
 ```javascript
 const core = require('@lumen-labs-dev/core');
 const nlp = require('@lumen-labs-dev/nlp');
-const langenmin = require('@lumen-labs-dev/lang-en-us-min');
+const langen = require('@lumen-labs-dev/lang-en-us');
 
-window.nlpjs = { ...core, ...nlp, ...langenmin };
+window.nlpjs = { ...core, ...nlp, ...langen };
 ```
 
 Second, compile the bundle:
@@ -144,48 +144,6 @@ Third, move your bot logic to the index.html:
 </html>
 ```
 
-## Load corpus from URL
+## Loading corpora
 
-You can download the source code of this example here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/13-languages/corpora
-
-Previously, the corpus was manually loaded into the nlp, but what if we want a corpus in a json file, like in the backend and to load it from an URL?
-First, we need to register a valid file system into our container, in our case a request plugin that uses axios.
-First install the package:
-```bash
-npm i @lumen-labs-dev/request-rn
-```
-
-Now we need to expose it in our _index.js_:
-```javascript
-const core = require('@lumen-labs-dev/core');
-const nlp = require('@lumen-labs-dev/nlp');
-const langenmin = require('@lumen-labs-dev/lang-en-us-min');
-const requestrn = require('@lumen-labs-dev/request-rn');
-
-window.nlpjs = { ...core, ...nlp, ...langenmin, ...requestrn };
-```
-
-And compile the bundle:
-```bash
-npm run browserdist
-```
-The new bundle will be 126KB, that is 15KB more than without this plugin.
-
-And in our _index.html_ we change our script:
-
-```javascript
-  const { containerBootstrap, Nlp, LangEn, fs } = window.nlpjs;
-
-  (async () => {
-    const container = await containerBootstrap();
-    container.register('fs', fs);
-    container.use(Nlp);
-    container.use(LangEn);
-    const nlp = container.get('nlp');
-    nlp.settings.autoSave = false;
-    await nlp.addCorpus('https://raw.githubusercontent.com/LumenLabsDev/amup-nlu/main/examples/13-languages/corpora/corpus-en.json');
-    await nlp.train();
-    const response = await nlp.process('en-US', 'who are you');
-    console.log(response);
-  })();
-```
+For browser bundles, load corpus JSON with your application fetch layer and pass the parsed object to `nlp.addCorpus(corpus)`. The request helper packages are no longer part of this library surface.

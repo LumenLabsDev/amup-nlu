@@ -35,7 +35,6 @@ const {
   logger,
   MemoryStorage,
 } = require('@lumen-labs-dev/core');
-const { fs: requestfs, request } = require('@lumen-labs-dev/request');
 const pluginInformation = require('./plugin-information.json');
 const {
   listFilesAbsolute,
@@ -47,6 +46,19 @@ const {
 const defaultPathConfiguration = './conf.json';
 const defaultPathPipeline = './pipelines.md';
 const defaultPathPlugins = './plugins';
+
+const nodeFs = {
+  readFile(fileName) {
+    return fs.promises.readFile(fileName, 'utf8');
+  },
+  writeFile(fileName, data) {
+    return fs.promises.writeFile(fileName, data, 'utf8');
+  },
+  existsSync: fs.existsSync.bind(fs),
+  lstatSync: fs.lstatSync.bind(fs),
+  readFileSync: fs.readFileSync.bind(fs),
+  name: 'fs',
+};
 
 function loadPipelinesStr(instance, pipelines) {
   instance.loadPipelinesFromString(pipelines);
@@ -132,8 +144,7 @@ function containerBootstrap(
   const instance = container || new Container(preffix);
   instance.parent = parent;
   if (!preffix) {
-    instance.register('fs', requestfs);
-    instance.register('request', { get: request });
+    instance.register('fs', nodeFs);
     instance.use(ArrToObj);
     instance.use(Normalizer);
     instance.use(ObjToArr);

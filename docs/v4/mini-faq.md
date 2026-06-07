@@ -1,6 +1,6 @@
 # Mini-FAQ
 
-> **npm scope:** all packages install from `@lumen-labs-dev/*` on npm. There is no unscoped `node-nlp` package in this fork. See the [package overview](../../README.md#npm-packages-lumen-labs-dev) for common entry points.
+> **npm scope:** all packages install from `@lumen-labs-dev/*` on npm. Legacy unscoped package names are not published by this fork. See the [package overview](../../README.md#npm-packages-lumen-labs-dev) for common entry points.
 
 This is a mini FAQ for some v4 topics:
 

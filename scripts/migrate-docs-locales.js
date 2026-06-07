@@ -43,7 +43,6 @@ const roots = [
   'packages/nlu/README.md',
   'packages/ner/README.md',
   'packages/lang-en-us/README.md',
-  'packages/lang-en-us-min/README.md',
   'packages/lang-id-id/README.md',
   'examples',
 ];

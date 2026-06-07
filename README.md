@@ -145,7 +145,7 @@ NLP.js v4 is split into small independent packages:
 
 ## npm packages (`@lumen-labs-dev`)
 
-Every installable package uses the `@lumen-labs-dev/` prefix. There is no unscoped `node-nlp` or `lang-en` package in this fork.
+Every installable package uses the `@lumen-labs-dev/` prefix. Legacy unscoped package names are not published by this fork.
 
 | Package | Purpose |
 |---------|---------|
@@ -154,7 +154,6 @@ Every installable package uses the `@lumen-labs-dev/` prefix. There is no unscop
 | [`@lumen-labs-dev/core`](https://www.npmjs.com/package/@lumen-labs-dev/core) | Container, plugin system, and pipelines |
 | [`@lumen-labs-dev/lang-all`](https://www.npmjs.com/package/@lumen-labs-dev/lang-all) | All native language packages in one install |
 | [`@lumen-labs-dev/lang-en-us`](https://www.npmjs.com/package/@lumen-labs-dev/lang-en-us) | English (included by `@lumen-labs-dev/basic`) |
-| [`@lumen-labs-dev/node-nlp`](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp) | Deprecated convenience wrapper; use `@lumen-labs-dev/basic` instead (see [Quick Start](docs/v4/quickstart.md)) |
 | `@lumen-labs-dev/lang-{locale}` | Per-locale language support (see [Language Support](docs/v4/language-support.md)) |
 
 **Language package naming:** locale packages follow `@lumen-labs-dev/lang-{language}-{region}`, for example `@lumen-labs-dev/lang-es-es`, `@lumen-labs-dev/lang-pt-pt`, and `@lumen-labs-dev/lang-pt-br`. Runtime locale codes such as `en`, `es`, or `pt` still work; they resolve to these packages automatically.

@@ -22,10 +22,23 @@
  */
 
 const readline = require('readline');
+const nodeFs = require('fs');
 const { Nlp } = require('../../packages/nlp/src');
 const { LangEn } = require('../../packages/lang-en-us/src');
-const { fs } = require('../../packages/request/src');
 const trainnlp = require('./train-nlp');
+
+const fs = {
+  readFile(fileName) {
+    return nodeFs.promises.readFile(fileName, 'utf8');
+  },
+  writeFile(fileName, data) {
+    return nodeFs.promises.writeFile(fileName, data, 'utf8');
+  },
+  existsSync: nodeFs.existsSync.bind(nodeFs),
+  lstatSync: nodeFs.lstatSync.bind(nodeFs),
+  readFileSync: nodeFs.readFileSync.bind(nodeFs),
+  name: 'fs',
+};
 
 const nlp = new Nlp({ languages: ['en-US'], threshold: 0.5 });
 nlp.container.register('fs', fs);

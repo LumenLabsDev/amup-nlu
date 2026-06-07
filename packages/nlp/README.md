@@ -37,7 +37,7 @@ Full v4 walkthrough: [docs/v4/quickstart.md](../../docs/v4/quickstart.md).
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { Nlp } = require('@lumen-labs-dev/nlp');
-const { LangEn } = require('@lumen-labs-dev/lang-en-us-min');
+const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 
 const container = await containerBootstrap();
 container.use(Nlp);

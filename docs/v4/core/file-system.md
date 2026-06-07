@@ -2,94 +2,39 @@
 
 ## Introduction
 
-To be able to work with files, a File System should be defined. A file system should include these methods:
-- readFile(fileName): returns a promise to read the file.
-- readFileSync(fileName): synchronous method to read a file.
-- writeFile(fileName, data, format): returns a promise to write the data into the file.
-- existsSync(fileName): synchronous method to check if a file exists.
-- lstatSync(fileName): synchronous method to get the stats of a file, used to check if a path is a directory or a file.
+To work with files, a filesystem adapter should be registered in the container. A filesystem adapter should include these methods:
 
-By default, a mock file system plugin is mounted.
+- `readFile(fileName)`: returns a promise that reads the file.
+- `readFileSync(fileName)`: synchronously reads the file.
+- `writeFile(fileName, data, format)`: returns a promise that writes the file.
+- `existsSync(fileName)`: synchronously checks if a file exists.
+- `lstatSync(fileName)`: synchronously returns file stats, used to check if a path is a directory or file.
 
 ## Mock File System
 
-The default plugin is mounted at the core.
-- readFile: returns a Promise that resolve to undefined.
-- writeFile: returns a Promise that resolve to an Error.
-- existsSync: returns false
-- lstatSync: returns undefined
-- readFileSync: returns undefined
+The core package mounts a mock filesystem by default so browser and restricted runtimes can use the container without OS file access.
 
-## Request File System
+- `readFile`: resolves to `undefined`.
+- `writeFile`: rejects with an error.
+- `existsSync`: returns `false`.
+- `lstatSync`: returns `undefined`.
+- `readFileSync`: returns `undefined`.
 
-This is the plugin mounted by the core-loader, as it's the one that fits the use at backend. It allows to read files from the OS or if you provide an URL it will load them using a request.
+## Node File System
 
-This plugin is automatically mounted when you use @lumen-labs-dev/core-loader.
+`@lumen-labs-dev/core-loader` registers a Node.js filesystem adapter by default. Use `containerBootstrap` from `@lumen-labs-dev/core-loader` when you want corpus loading, pipeline loading, or plugin loading from local files.
 
-If you want to use this plugin on your own, then install it with:
-```bash
-npm i @lumen-labs-dev/request
-```
-
-And to use the plugin in your container, register it:
 ```javascript
-const { Container } = require('@lumen-labs-dev/core');
-const { fs: requestfs } = require('@lumen-labs-dev/request');
-
+const { containerBootstrap } = require('@lumen-labs-dev/core-loader');
 
 async function main() {
-  const container = new Container();
-  container.register('fs', requestfs);
+  const container = await containerBootstrap();
   const fs = container.get('fs');
-  const readme = await fs.readFile('https://raw.githubusercontent.com/axa-group/nlp.js/master/README.md');
-  console.log(readme); // will return the content of the README.md
+  const readme = await fs.readFile('./README.md');
+  console.log(readme);
 }
 
 main();
 ```
 
-If the resolved data from the URL is a valid JSON object, then it will be returned as an object, otherwise a string containing the content will be returned.
-
-Also you can load files from the file system:
-
-```javascript
-const { Container } = require('@lumen-labs-dev/core');
-const { fs: requestfs } = require('@lumen-labs-dev/request');
-
-
-async function main() {
-  const container = new Container();
-  container.register('fs', requestfs);
-  const fs = container.get('fs');
-  const readme = await fs.readFile('./index.js');
-  console.log(readme); // will return the content of the index.js file
-}
-
-main();
-```
-
-## Request RN File System
-
-This is the file system for web runtimes where no OS file system can be accessed, but we can still load from URLs.
-If you want to use this plugin on your own, then install it with:
-
-```bash
-npm i @lumen-labs-dev/request-rn
-```
-
-And to use the plugin in your container, register it:
-```javascript
-const { Container } = require('@lumen-labs-dev/core');
-const { fs: requestfs } = require('@lumen-labs-dev/request-rn');
-
-
-async function main() {
-  const container = new Container();
-  container.register('fs', requestfs);
-  const fs = container.get('fs');
-  const readme = await fs.readFile('https://raw.githubusercontent.com/axa-group/nlp.js/master/README.md');
-  console.log(readme); // will return the content of the README.md
-}
-
-main();
-```
+For browser bundles, load remote files with your application fetch layer and pass parsed corpus objects directly to the NLP APIs.

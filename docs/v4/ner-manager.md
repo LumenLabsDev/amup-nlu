@@ -194,38 +194,28 @@ manager.addNerAfterLastCondition('en', 'fromCity', ['from']);
 
 ## Built-in entities
 
-Additionally to the entities you can define manually the framework can also parse out some built-in entities automatically using plugins. What is supported and to which level in which language depends on the chosen Builtin plugin.
+Additionally to the entities you can define manually the framework can also parse out some built-in entities automatically using the default builtin plugin.
 
-* [Builtin Compromise](../../packages/builtin-compromise/README.md) - A golden entity extractor that runs in the browser.
-* [Builtin Default](../../packages/builtin-default/README.md) - A default entity extractor for some basic entity extractions
-* [Builtin Microsoft](../../packages/builtin-microsoft/README.md) - Server-side builtin entity extraction in Node.js; language support varies (see [Language Support](./language-support.md))
-* [Builtin Duckling](../../packages/builtin-duckling/README.md) - Forwards extraction to a running Duckling server process
+* [Builtin Default](../../packages/builtin-default/README.md) - A default entity extractor for common entity extraction.
 
-The Builtin needs to added manually depending on what's wanted. As example for Facebook Duckling this can look like:
+The builtin needs to be added manually when wanted:
 
 ```javascript
 const { dockStart } = require('@lumen-labs-dev/basic');
 
 (async () => {
     const dock = await dockStart({
-        settings: {
-            'builtin-duckling': {
-                ducklingUrl: 'http://localhost:8000/parse'
-            },
-        },
-        use: ['Basic', 'BuiltinDuckling', 'LangEn'],
+        use: ['Basic', 'BuiltinDefault', 'LangEn'],
     });
 
-    // Register Builtins to parse dates automatically
-    // Register Ducking Builtins
-    const builtin = dock.get('builtin-duckling');
+    const builtin = dock.get('builtin-default');
     const ner = dock.get('ner');
     ner.container.register('extract-builtin-??', builtin, true);
 
     ...
 })();
 ```
-The code looks comparable for the other Builtin extractors. You can also specify which extractor is used for which language by registering specific extractors with the language instead the "??". 
+You can also specify which extractor is used for which language by registering specific extractors with the language instead of "??".
 
 In the returned result JSON the "sourceEntities" as returned by the plugins are included as well as mapped "entities". For an example see [Slot Filling examples](./slot-filling.md) 
 

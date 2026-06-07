@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository publishes all packages under the **`@lumen-labs-dev`** npm scope (for example `@lumen-labs-dev/node-nlp`).
+This repository publishes all packages under the **`@lumen-labs-dev`** npm scope (for example `@lumen-labs-dev/basic`).
 
 Agent guidance lives in `CLAUDE.md`.
 

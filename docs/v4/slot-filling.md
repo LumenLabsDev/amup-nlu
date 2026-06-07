@@ -94,11 +94,11 @@ const { dockStart } = require('@lumen-labs-dev/basic');
                 ]
             }
         },
-        use: ['Basic', 'BuiltinMicrosoft', 'LangEn'],
+        use: ['Basic', 'BuiltinDefault', 'LangEn'],
     });
 
     // Register Builtins to parse dates automatically
-    const builtin = dock.get('builtin-microsoft');
+    const builtin = dock.get('builtin-default');
     const ner = dock.get('ner');
     ner.container.register('extract-builtin-??', builtin, true);
 

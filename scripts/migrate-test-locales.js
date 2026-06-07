@@ -218,7 +218,6 @@ const methodPatterns = [
   ],
   [/locale: \['en', 'es'\]/g, "locale: ['en-US', 'es-ES']"],
   [/language: 'fr'/g, "language: 'fr-FR'"],
-  [/BrainNLU\(\{ language: 'fr'/g, "BrainNLU({ language: 'fr-FR'"],
   [
     /toThrow\(\s*'Domain Manager not found for locale fr'/g,
     "toThrow('Domain Manager not found for locale fr-FR')",
