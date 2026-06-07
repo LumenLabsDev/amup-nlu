@@ -16,24 +16,15 @@
   "engines": {
     "node": ">=22 <23 || >=24 <25 || >=26 <27"
   },
-  "author": {
-    "email": "opensource@axa.com",
-    "name": "Jesus Seijas"
-  },
+  "author": "Lumen Labs Dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axa-group/nlp.js.git"
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git"
   },
   "bugs": {
-    "url": "https://github.com/axa-group/nlp.js/issues"
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
   },
-  "homepage": "https://github.com/axa-group/nlp.js#readme",
-  "maintainers": [
-    {
-      "email": "opensource@axa.com",
-      "name": "Jesus Seijas"
-    }
-  ],
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
@@ -62,5 +53,6 @@
     ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node"
-  }
+  },
+  "publisher": "Lumen Labs Dev"
 }

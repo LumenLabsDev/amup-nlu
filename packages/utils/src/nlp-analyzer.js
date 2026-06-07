@@ -363,8 +363,8 @@ class NlpAnalyzer {
 
   async generateExcel(fileName, analysis, options = {}) {
     const workbook = new Excel.Workbook();
-    workbook.creator = options.creator || 'Jesús Seijas';
-    workbook.lastModifiedBy = options.lastModifiedBy || 'Jesús Seijas';
+    workbook.creator = options.creator || 'Lumen Labs Dev';
+    workbook.lastModifiedBy = options.lastModifiedBy || 'Lumen Labs Dev';
     workbook.created = options.created || new Date();
     workbook.modified = options.modified || workbook.created;
     this.generateConfusionMatrix(workbook, analysis);
@@ -374,8 +374,8 @@ class NlpAnalyzer {
 
   streamExcel(outStream, analysis, options = {}) {
     const workbook = new Excel.Workbook();
-    workbook.creator = options.creator || 'Jesús Seijas';
-    workbook.lastModifiedBy = options.lastModifiedBy || 'Jesús Seijas';
+    workbook.creator = options.creator || 'Lumen Labs Dev';
+    workbook.lastModifiedBy = options.lastModifiedBy || 'Lumen Labs Dev';
     workbook.created = options.created || new Date();
     workbook.modified = options.modified || workbook.created;
     this.generateConfusionMatrix(workbook, analysis);

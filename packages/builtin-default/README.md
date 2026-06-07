@@ -4,8 +4,8 @@
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
-[![NPM version](https://img.shields.io/npm/v/@lumen-labs-dev/node-nlp.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp)
-[![NPM downloads](https://img.shields.io/npm/dm/@lumen-labs-dev/node-nlp.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp)
+[![NPM version](https://img.shields.io/npm/v/@lumen-labs-dev/builtin-default.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/builtin-default)
+[![NPM downloads](https://img.shields.io/npm/dm/@lumen-labs-dev/builtin-default.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/builtin-default)
 
 ## Contributing
 
@@ -25,7 +25,7 @@ You can read the Code of Conduct at [Code of Conduct](../../CODE_OF_CONDUCT.md).
 
 This project is developed by AXA Group Operations Spain S.A.
 
-If you need to contact us, you can do it at the email opensource@axa.com
+Maintained by [Lumen Labs Dev](https://github.com/LumenLabsDev) under the `@lumen-labs-dev` npm scope.
 
 ## License
 

@@ -2,23 +2,15 @@
   "name": "@lumen-labs-dev/lang-pt-br",
   "version": "4.27.0",
   "description": "Brazilian Portuguese language support",
-  "author": {
-    "email": "opensource@axa.com",
-    "name": "Jesus Seijas"
-  },
+  "author": "Lumen Labs Dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axa-group/nlp.js.git"
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git",
+    "directory": "packages/lang-pt-br"
   },
   "bugs": {
-    "url": "https://github.com/axa-group/nlp.js/issues"
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
   },
-  "maintainers": [
-    {
-      "email": "opensource@axa.com",
-      "name": "Jesus Seijas"
-    }
-  ],
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
@@ -27,5 +19,7 @@
   "dependencies": {
     "@lumen-labs-dev/core": "^4.27.0",
     "@lumen-labs-dev/lang-pt-pt": "^4.27.0"
-  }
+  },
+  "publisher": "Lumen Labs Dev",
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"
 }

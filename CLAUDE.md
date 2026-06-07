@@ -4,7 +4,7 @@ Guidance for coding agents working in this repository.
 
 ## Project Shape
 
-This is a JavaScript monorepo for NLP.js-derived packages published under the `@lumen-labs-dev/*` scope. Packages live under `packages/*` and are managed with npm workspaces plus Lerna metadata.
+This is a JavaScript monorepo for NLP.js-derived packages published under the **`@lumen-labs-dev/*`** npm scope. All installable packages use this prefix (for example `@lumen-labs-dev/node-nlp`, `@lumen-labs-dev/lang-en-us`). Packages live under `packages/*` and are managed with npm workspaces plus Lerna metadata.
 
 Supported Node.js runtimes are the even-major release lines `22`, `24`, and `26`.
 

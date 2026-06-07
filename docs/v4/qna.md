@@ -1,8 +1,10 @@
 # QnA
 
+> **npm scope:** install `@lumen-labs-dev/basic` and `@lumen-labs-dev/qna-importer` (not unscoped package names).
+
 This will guide you through the process of creating a bot using a QnA tsv file instead of a corpus with intents.
 The format of the file is a text file where each line is a question and an answer, separated by a tabulator.
-You have an example of file here: https://github.com/jesus-seijas-sp/nlpjs-examples/blob/master/03.qna/01.filecorpus/qna.tsv
+You have an example of file here: https://github.com/LumenLabsDev/amup-nlu/blob/main/packages/qna-importer/test/qna.tsv
 
 The process is exactly the same as having a bot with a chatbot, so we strongly recommend to do the quickstart: https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md
 
@@ -16,7 +18,7 @@ npm i @lumen-labs-dev/basic @lumen-labs-dev/qna-importer
 
 ## Train and test a QnA file
 
-The source code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/03.qna/01.filecorpus
+The source code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/02-qna-classic
 
 Add the corpus file to your folder, and then create this index.js:
 ```javascript
@@ -38,7 +40,7 @@ Now you can execute this, and you'll see that the qna is trained and it resolves
 
 ## Extracting the configuration into a file
 
-The source code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/03.qna/02.config
+The source code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/03-qna-pipelines
 
 Now we can remove code that is configuration related into a separate file. Add a conf.json file with this content:
 

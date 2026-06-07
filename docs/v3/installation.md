@@ -1,7 +1,7 @@
 # Installation
 
-If you're looking to use NLP.js in your node application, you can install via NPM like so:
+All NLP.js packages install from the **`@lumen-labs-dev`** npm scope:
 
 ```bash
-    npm install @lumen-labs-dev/node-nlp
+npm install @lumen-labs-dev/node-nlp
 ```

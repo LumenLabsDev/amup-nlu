@@ -1,5 +1,21 @@
 # Language Support
 
+> **npm scope:** native language packages are published as `@lumen-labs-dev/lang-{language}-{region}`. Examples: `@lumen-labs-dev/lang-en-us`, `@lumen-labs-dev/lang-es-es`, `@lumen-labs-dev/lang-pt-pt`, `@lumen-labs-dev/lang-pt-br`. Install `@lumen-labs-dev/lang-all` to pull in every locale package, or install only the locales you need.
+
+## Locale packages
+
+| Runtime locale | npm package |
+|----------------|-------------|
+| `en`, `en-US` | `@lumen-labs-dev/lang-en-us` |
+| `es`, `es-ES` | `@lumen-labs-dev/lang-es-es` |
+| `fr`, `fr-FR` | `@lumen-labs-dev/lang-fr-fr` |
+| `pt`, `pt-PT` | `@lumen-labs-dev/lang-pt-pt` |
+| `pt-BR` | `@lumen-labs-dev/lang-pt-br` |
+| `zh`, `zh-CN` | `@lumen-labs-dev/lang-zh-cn` |
+| all native locales | `@lumen-labs-dev/lang-all` |
+
+English without sentiment dictionaries (smaller install): `@lumen-labs-dev/lang-en-us-min`.
+
 ## Supported languages
 
 Native Support means that the tokenizer and stemmer are included in javascript in NLP.js.

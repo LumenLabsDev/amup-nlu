@@ -1,6 +1,8 @@
 ![NLPjs logo](../../screenshots/nlplogo.gif)
 
-# NLP.js
+# NLP.js (`@lumen-labs-dev`)
+
+> Packages are published on npm under the **`@lumen-labs-dev`** scope. Install `@lumen-labs-dev/node-nlp` (not unscoped `node-nlp`).
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
@@ -225,7 +227,7 @@ You can read the Code of Conduct at [Code of Conduct](../../CODE_OF_CONDUCT.md).
 
 This project is developed by AXA Group Operations Spain S.A.
 
-If you need to contact us, you can do it at the email opensource@axa.com
+Maintained by [Lumen Labs Dev](https://github.com/LumenLabsDev) under the `@lumen-labs-dev` npm scope.
 
 ## License
 

@@ -7,9 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Eric Lara <ericzon@gmail.com>",
+  "author": "Lumen Labs Dev",
   "license": "ISC",
   "dependencies": {
     "@lumen-labs-dev/basic": "^4.27.0"
-  }
+  },
+  "publisher": "Lumen Labs Dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
+  },
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"
 }

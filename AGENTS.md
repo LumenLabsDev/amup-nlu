@@ -1,6 +1,8 @@
 # AGENTS.md
 
-This repository's agent guidance lives in `CLAUDE.md`.
+This repository publishes all packages under the **`@lumen-labs-dev`** npm scope (for example `@lumen-labs-dev/node-nlp`).
+
+Agent guidance lives in `CLAUDE.md`.
 
 Cursor-specific guidance is also available in `.cursor/rules/project-guidance.mdc`, and reusable coding behavior guidance is available as the `.cursor/skills/karpathy-guidelines` project skill.
 

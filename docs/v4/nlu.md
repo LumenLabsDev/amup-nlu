@@ -1,5 +1,7 @@
 # @lumen-labs-dev/nlu
 
+> Published on npm as **`@lumen-labs-dev/nlu`**. Part of the [`@lumen-labs-dev`](https://www.npmjs.com/org/lumen-labs-dev) NLP.js package family.
+
 ## Installation
 
 You can install @lumen-labs-dev/nlu:

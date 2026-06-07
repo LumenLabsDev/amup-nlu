@@ -26,5 +26,15 @@
         }
       ]
     }
-  }
+  },
+  "author": "Lumen Labs Dev",
+  "publisher": "Lumen Labs Dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
+  },
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"
 }

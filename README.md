@@ -1,8 +1,16 @@
 ![NLPjs logo](screenshots/nlplogo.gif)
 
-# NLP.js
+# NLP.js (`@lumen-labs-dev`)
 
-This package set is maintained under the `@lumen-labs-dev` npm scope and is based on NLP.js by its original creators. Original NLP.js attribution, contributors, and MIT license notices are preserved throughout the repository.
+**All packages in this repository are published on npm under the [`@lumen-labs-dev`](https://www.npmjs.com/org/lumen-labs-dev) scope.**
+
+Install with:
+
+```bash
+npm install @lumen-labs-dev/node-nlp
+```
+
+This monorepo is based on [NLP.js](https://github.com/axa-group/nlp.js) by its original creators. Original NLP.js attribution, contributors, and MIT license notices are preserved throughout the repository.
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
@@ -48,6 +56,7 @@ Version 4 is very different from previous versions. Before this version, NLP.js 
 
 <!--ts-->
 
+- [npm packages (`@lumen-labs-dev`)](#npm-packages-lumen-labs-dev)
 - [Installation](#installation)
 - [QuickStart](docs/v4/quickstart.md)
   - [Install the library](docs/v4/quickstart.md#install-the-library)
@@ -170,12 +179,36 @@ Version 4 is very different from previous versions. Before this version, NLP.js 
 - [License](#license)
   <!--te-->
 
+## npm packages (`@lumen-labs-dev`)
+
+Every installable package uses the `@lumen-labs-dev/` prefix. There is no unscoped `node-nlp` or `lang-en` package in this fork.
+
+| Package | Purpose |
+|---------|---------|
+| [`@lumen-labs-dev/node-nlp`](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp) | Main entry point; v3-style `NlpManager` API |
+| [`@lumen-labs-dev/basic`](https://www.npmjs.com/package/@lumen-labs-dev/basic) | v4 backend bundle (core + common plugins) |
+| [`@lumen-labs-dev/nlp`](https://www.npmjs.com/package/@lumen-labs-dev/nlp) | v4 NLP manager (used with `@lumen-labs-dev/core`) |
+| [`@lumen-labs-dev/core`](https://www.npmjs.com/package/@lumen-labs-dev/core) | Container, plugin system, and pipelines |
+| [`@lumen-labs-dev/lang-all`](https://www.npmjs.com/package/@lumen-labs-dev/lang-all) | All native language packages in one install |
+| [`@lumen-labs-dev/lang-en-us`](https://www.npmjs.com/package/@lumen-labs-dev/lang-en-us) | English (included by `@lumen-labs-dev/node-nlp`) |
+| `@lumen-labs-dev/lang-{locale}` | Per-locale language support (see [Language Support](docs/v4/language-support.md)) |
+
+**Language package naming:** locale packages follow `@lumen-labs-dev/lang-{language}-{region}`, for example `@lumen-labs-dev/lang-es-es`, `@lumen-labs-dev/lang-pt-pt`, and `@lumen-labs-dev/lang-pt-br`. Runtime locale codes such as `en`, `es`, or `pt` still work; they resolve to these packages automatically.
+
+**Migrating from upstream NLP.js:** replace unscoped or legacy package names with the matching `@lumen-labs-dev/*` package. For example, `node-nlp` becomes `@lumen-labs-dev/node-nlp`, and `lang-en` becomes `@lumen-labs-dev/lang-en-us`.
+
 ## Installation
 
-If you're looking to use NLP.js in your Node application, you can install via NPM like so:
+If you're looking to use NLP.js in your Node application, install the scoped package:
 
 ```bash
-    npm install @lumen-labs-dev/node-nlp
+npm install @lumen-labs-dev/node-nlp
+```
+
+For the v4 plugin architecture instead of the v3-style API:
+
+```bash
+npm install @lumen-labs-dev/basic
 ```
 
 ## Example of use
@@ -291,9 +324,7 @@ You can read the Code of Conduct at [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Who is behind it`?`
 
-This project is developed by AXA Group Operations Spain S.A.
-
-If you need to contact us, you can do it at the email opensource@axa.com
+NLP.js was originally developed by AXA Group Operations Spain S.A. This repository is maintained and published by **[Lumen Labs Dev](https://github.com/LumenLabsDev)** under the **`@lumen-labs-dev`** npm scope, while preserving original attribution and the MIT license.
 
 ## License
 

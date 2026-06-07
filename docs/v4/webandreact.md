@@ -1,5 +1,7 @@
 # Web Bundling
 
+> **npm scope:** web bundles use the same `@lumen-labs-dev/*` packages as Node.js. The example below installs `@lumen-labs-dev/core`, `@lumen-labs-dev/nlp`, and `@lumen-labs-dev/lang-en-us-min`.
+
 ## Preparing to generate a bundle
 
 NLP.js is developed as a Node.js project, but it can be compiled to run in web applications. The core libraries avoid APIs that cannot be executed on the web, such as direct file system access.
@@ -23,7 +25,7 @@ npm run browserdist
 
 ## Your first web NLP
 
-You can download the code for this example here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/02.web/01.bundle
+You can download the code for this example here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples
 
 Now you will need some HTML to run the code in the browser, we will start with this simple example:
 ```html
@@ -95,7 +97,7 @@ Open the index.html in a browser and take a look in the console.
 
 ## Creating a distributable version
 
-You can download the source code for this example here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/02.web/02.dist
+You can download the source code for this example here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples
 
 The problem with the previous example, is that every time that you have to modify your bot or build a new bot, you have to create the bundle again.
 But, what if we can compile and expose the classes and functions of the NLP.js modules that we want? That way we can create a bundle that can be reusable between different bots, while separating what is NLP.js from our bot logic.
@@ -160,7 +162,7 @@ Third, move your bot logic to the index.html:
 
 ## Load corpus from URL
 
-You can download the source code of this example here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/02.web/03.filecorpus
+You can download the source code of this example here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/13-languages/corpora
 
 Previously, the corpus was manually loaded into the nlp, but what if we want a corpus in a json file, like in the backend and to load it from an URL?
 First, we need to register a valid file system into our container, in our case a request plugin that uses axios.
@@ -197,7 +199,7 @@ And in our _index.html_ we change our script:
     container.use(LangEn);
     const nlp = container.get('nlp');
     nlp.settings.autoSave = false;
-    await nlp.addCorpus('https://raw.githubusercontent.com/jesus-seijas-sp/nlpjs-examples/master/01.quickstart/02.filecorpus/corpus-en.json');
+    await nlp.addCorpus('https://raw.githubusercontent.com/LumenLabsDev/amup-nlu/main/examples/13-languages/corpora/corpus-en.json');
     await nlp.train();
     const response = await nlp.process('en', 'who are you');
     console.log(response);

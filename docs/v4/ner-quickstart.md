@@ -1,5 +1,7 @@
 # NER Quick Start
 
+> **npm scope:** install `@lumen-labs-dev/basic` for this guide. All NLP.js packages use the `@lumen-labs-dev/*` prefix on npm.
+
 ## Install the needed packages
 
 In your node project folder, install the @lumen-labs-dev/basic package.

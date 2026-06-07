@@ -1,10 +1,14 @@
 # Mini-FAQ
 
-@jesus-seijas-sp collected a mini FAQ for some v4 topics:
+> **npm scope:** all packages install from `@lumen-labs-dev/*` on npm. There is no unscoped `node-nlp` package in this fork. See the [package overview](../../README.md#npm-packages-lumen-labs-dev) for common entry points.
+
+This is a mini FAQ for some v4 topics:
 
 Hi,
 
 I will put here a FAQ with the links to different interesting parts to documentation or examples. If there is something that you want to cover that is not here, just ask, and I will update the documentation with it. Also, there are 1800 unit tests that can help to understand classes and functions that are not intended to be the API for the developer (from @lumen-labs-dev/node-nlp the API for the developer is intended to be the class NlpManager).
+
+**- What is `@lumen-labs-dev`?** This repository publishes NLP.js packages under the `@lumen-labs-dev` npm scope. Install `@lumen-labs-dev/node-nlp` instead of `node-nlp`, and `@lumen-labs-dev/lang-es-es` instead of legacy `lang-es`. See [README — npm packages](../../README.md#npm-packages-lumen-labs-dev).
 
 **- Where do I find an example of use of v4?** https://github.com/axa-group/nlp.js#example-of-use
 
@@ -91,7 +95,7 @@ With threshold set to 1, the exact match of entities is done by searching words 
 
 **- I want to extract builtin (golden) entities but it only works in a few languages** You can use Duckling instead, but it requires to have an instance of duckling up and running, and connect to it through its API https://github.com/axa-group/nlp.js/blob/master/docs/v3/builtin-duckling.md
 
-**- I want to go "lowlevel" to use only the Neural Network for classifying** Here you'll find the example code if you want only to tokenize: https://github.com/jesus-seijas-sp/nlp-course/blob/master/02-classifiers/05-nlpjs-classifier.js Here you'll find the example code if you also want stemming: https://github.com/jesus-seijas-sp/nlp-course/blob/master/02-classifiers/14-nlpjs-stemmer-classifier.js
+**- I want to go "lowlevel" to use only the Neural Network for classifying** Here you'll find the example code if you want only to tokenize: ../../examples/15-nlu/01-neural-nlu.js Here you'll find the example code if you also want stemming: ../../examples/15-nlu/02-brain-nlu.js
 
 **- I want to use NGrams**
 

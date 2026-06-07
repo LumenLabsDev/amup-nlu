@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "hello world sample for NodeJS",
   "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
-  "author": "SAM CLI",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git"
+  },
+  "author": "Lumen Labs Dev",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.2"
@@ -33,5 +36,10 @@
         }
       ]
     }
-  }
+  },
+  "publisher": "Lumen Labs Dev",
+  "bugs": {
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
+  },
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"
 }

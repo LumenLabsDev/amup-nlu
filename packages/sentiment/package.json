@@ -2,23 +2,15 @@
   "name": "@lumen-labs-dev/sentiment",
   "version": "4.27.0",
   "description": "Sentiment Analysis",
-  "author": {
-    "email": "opensource@axa.com",
-    "name": "Jesus Seijas"
-  },
+  "author": "Lumen Labs Dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axa-group/nlp.js.git"
+    "url": "git+https://github.com/LumenLabsDev/amup-nlu.git",
+    "directory": "packages/sentiment"
   },
   "bugs": {
-    "url": "https://github.com/axa-group/nlp.js/issues"
+    "url": "https://github.com/LumenLabsDev/amup-nlu/issues"
   },
-  "maintainers": [
-    {
-      "email": "opensource@axa.com",
-      "name": "Jesus Seijas"
-    }
-  ],
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
@@ -29,5 +21,7 @@
     "@lumen-labs-dev/language-min": "^4.27.0",
     "@lumen-labs-dev/neural": "^4.27.0"
   },
-  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd",
+  "publisher": "Lumen Labs Dev",
+  "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"
 }

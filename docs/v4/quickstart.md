@@ -1,5 +1,7 @@
 # Quick Start
 
+> **npm scope:** install packages as `@lumen-labs-dev/*`. This guide uses `@lumen-labs-dev/basic` for v4 backend projects. For the v3-style `NlpManager` API, use `@lumen-labs-dev/node-nlp` instead (see [root README](../README.md#npm-packages-lumen-labs-dev)).
+
 ## Install the library
 At the folder where is your node project, install the basic library, that will install the core and basic plugins for working in backend.
 
@@ -8,7 +10,7 @@ npm i @lumen-labs-dev/basic
 ```
 
 ## Create the code
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/01.basic
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/01-container
 Then you can create a file called index.js with this content:
 
 ```javascript
@@ -40,7 +42,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 ```
 
 ## Extracting the corpus into a file
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/02.filecorpus
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/13-languages/corpora
 You can create the corpus as json files. The format of the json is:
 
 ```json
@@ -85,7 +87,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 
 ## Extracting the configuration into a file
 
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/03.config
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/03-qna-pipelines
 Now we can remove things that are configuration into a file. 
 
 Add a _conf.json_ file with this content:
@@ -120,7 +122,7 @@ As you can see now we don't need to provide the plugins to dockStart, nor do we 
 
 ## Creating your first pipeline
 
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/04.firstpipeline
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/06-huge-ner
 
 Now create a _pipelines.md_ file with this content:
 ```markdown
@@ -146,7 +148,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 We are defining a pipeline called _main_ and it will be executed after loading the configuration and mounting the plugins, so the train process will be executed automatically in the dockStart process.
 
 ## Adding Multilanguage
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/07.multilanguage
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/13-languages
 Now we want to add a corpus in spanish. First at all we must install the spanish language plugin:
 ```bash
 npm i @lumen-labs-dev/lang-es-es
@@ -170,7 +172,7 @@ Then add the _LangEs_ plugin in the configuration, and of course the corpus to t
 Add a Spanish corpus alongside the English corpus. The NLP process will automatically identify the language and send the utterance to the correct trained model.
 
 ## Adding logic to an intent
-The code for this example is here: https://github.com/jesus-seijas-sp/nlpjs-examples/tree/master/01.quickstart/12.onintent
+The code for this example is here: https://github.com/LumenLabsDev/amup-nlu/tree/main/examples/03-qna-pipelines
 
 Suppose that you want to have an intent for telling jokes about Chuck Norris, and you know that a service that returns random Chuck Norris jokes exists: http://api.icndb.com/jokes/random
 

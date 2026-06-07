@@ -1,8 +1,12 @@
 ![NLPjs logo](https://github.com/axa-group/nlp.js/raw/master/screenshots/nlplogo.gif)
 
-# NLP.js
+# @lumen-labs-dev/node-nlp
 
-This package is published as `@lumen-labs-dev/node-nlp` and is based on NLP.js by its original creators. Original NLP.js attribution, contributors, and MIT license notices are preserved throughout the repository.
+**npm:** [`@lumen-labs-dev/node-nlp`](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp)
+
+Main entry point for NLP.js in Node.js. Provides the v3-style `NlpManager` API and loads other `@lumen-labs-dev/*` packages (language packs, NLU, NER, etc.) on demand.
+
+This package is published under the **`@lumen-labs-dev`** scope and is based on NLP.js by its original creators. Original NLP.js attribution, contributors, and MIT license notices are preserved throughout the repository.
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
@@ -143,11 +147,11 @@ The version 4 is very different from previous versions. Until this version, NLP.
 
 ## Installation
 
-If you're looking to use NLP.js in your node application, you can install via NPM like so:
-
 ```bash
-    npm install @lumen-labs-dev/node-nlp
+npm install @lumen-labs-dev/node-nlp
 ```
+
+Optional language packages use explicit locale names, for example `@lumen-labs-dev/lang-es-es` or `@lumen-labs-dev/lang-all` for every native locale. See [Language Support](https://github.com/axa-group/nlp.js/blob/master/docs/v4/language-support.md#locale-packages).
 
 ## Example of use
 
@@ -264,7 +268,7 @@ You can read the Code of Conduct at [Code of Conduct](CODE_OF_CONDUCT.md).
 
 This project is developed by AXA Group Operations Spain S.A.
 
-If you need to contact us, you can do it at the email opensource@axa.com
+Maintained by [Lumen Labs Dev](https://github.com/LumenLabsDev) under the `@lumen-labs-dev` npm scope.
 
 ## License
 
