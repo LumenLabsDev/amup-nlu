@@ -72,6 +72,9 @@ const { dockStart } = require('../../packages/basic');
   console.log(response4.answer); // You drive a renault Twingo!
   const response5 = await nlp.process('en-US', `I use to take a car some days`);
   console.log(response5.answer); // You drive a car!
-  const response6 = await nlp.process('en-US', 'I use to drive a 206 and volvo');
+  const response6 = await nlp.process(
+    'en-US',
+    'I use to drive a 206 and volvo'
+  );
   console.log(response6.answer); // You drive many cars (206, volvo...)!
 })();

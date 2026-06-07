@@ -22,7 +22,11 @@
  */
 
 const { defaultContainer } = require('./container');
-const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
+const {
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('./locale');
 
 class Normalizer {
   constructor(container = defaultContainer) {

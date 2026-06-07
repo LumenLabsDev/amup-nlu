@@ -21,7 +21,15 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, containerBootstrap, assertLocale, migrateLegacyLocale, DEFAULT_LOCALE, getLocaleTag, resolveContainerKey } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  containerBootstrap,
+  assertLocale,
+  migrateLegacyLocale,
+  DEFAULT_LOCALE,
+  getLocaleTag,
+  resolveContainerKey,
+} = require('@lumen-labs-dev/core');
 const { NluManager, NluNeural } = require('@lumen-labs-dev/nlu');
 const {
   Ner,
@@ -156,10 +164,13 @@ class Nlp extends Clonable {
         this.useNlu(clazz, locale[i], domain, settings);
       }
     } else {
-      const localeTag = locale === '??' ? locale : getLocaleTag(assertLocale(locale));
+      const localeTag =
+        locale === '??' ? locale : getLocaleTag(assertLocale(locale));
       const className =
         typeof clazz === 'string' ? clazz : this.container.use(clazz);
-      let config = this.container.getConfiguration(`domain-manager-${localeTag}`);
+      let config = this.container.getConfiguration(
+        `domain-manager-${localeTag}`
+      );
       if (!config) {
         config = {};
         this.container.registerConfiguration(

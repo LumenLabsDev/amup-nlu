@@ -24,7 +24,12 @@
 const fs = require('fs');
 const { BuiltinMicrosoft } = require('@lumen-labs-dev/builtin-microsoft');
 const { BuiltinDuckling } = require('@lumen-labs-dev/builtin-duckling');
-const { containerBootstrap, migrateLegacyLocale, parseLocale, LocaleError } = require('@lumen-labs-dev/core-loader');
+const {
+  containerBootstrap,
+  migrateLegacyLocale,
+  parseLocale,
+  LocaleError,
+} = require('@lumen-labs-dev/core-loader');
 const { Language } = require('@lumen-labs-dev/language');
 const { Nlp } = require('@lumen-labs-dev/nlp');
 const { Evaluator, Template } = require('@lumen-labs-dev/evaluator');
@@ -342,7 +347,9 @@ class NlpManager {
       const intentData = data[i];
       const { tests } = intentData;
       for (let j = 0; j < tests.length; j += 1) {
-        promises.push(this.process(migrateLegacyLocale(corpus.locale), tests[j]));
+        promises.push(
+          this.process(migrateLegacyLocale(corpus.locale), tests[j])
+        );
         intents.push(intentData.intent);
       }
     }

@@ -115,9 +115,11 @@ function canonicalizeSubtag(subtag, index) {
 
 function canonicalizeTag(parts) {
   if (isPrivateUseTag(parts)) {
-    return parts.map((part, index) =>
-      index === 0 ? part.toLowerCase() : part.toLowerCase()
-    ).join('-');
+    return parts
+      .map((part, index) =>
+        index === 0 ? part.toLowerCase() : part.toLowerCase()
+      )
+      .join('-');
   }
   return parts.map((part, index) => canonicalizeSubtag(part, index)).join('-');
 }
@@ -150,7 +152,9 @@ function parseLocale(input, options = {}) {
   const canonical = canonicalizeTag(parts);
   const packageKey = canonical
     .split('-')
-    .map((part, index) => (index === 0 ? part.toLowerCase() : part.toLowerCase()))
+    .map((part, index) =>
+      index === 0 ? part.toLowerCase() : part.toLowerCase()
+    )
     .join('-');
 
   return { canonical, packageKey };
@@ -198,7 +202,9 @@ function resolveLocaleFromGuess(alpha2, configuredLocales) {
   if (!alpha2 || !configuredLocales || configuredLocales.length === 0) {
     return undefined;
   }
-  const normalized = configuredLocales.map((locale) => parseLocale(locale).canonical);
+  const normalized = configuredLocales.map(
+    (locale) => parseLocale(locale).canonical
+  );
   const matches = normalized.filter(
     (locale) => getLanguageSubtag(locale) === alpha2.toLowerCase()
   );

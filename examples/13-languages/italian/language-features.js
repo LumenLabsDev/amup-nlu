@@ -37,7 +37,10 @@ const stemmer = new StemmerIt();
 stemmer.stopwords = stopwords;
 
 // Normalize
-console.log('normalize:', normalizer.normalize('Questo dòvrebbe essere normalizzato'));
+console.log(
+  'normalize:',
+  normalizer.normalize('Questo dòvrebbe essere normalizzato')
+);
 
 // Tokenize
 console.log('tokenize:', tokenizer.tokenize(input));
@@ -45,8 +48,14 @@ console.log('tokenize normalized:', tokenizer.tokenize(input, true));
 
 // Stopwords
 console.log('isStopword:', stopwords.isStopword('ho'));
-console.log('removeStopwords:', stopwords.removeStopwords(['ho', 'visto', 'uno', 'sviluppatore']));
+console.log(
+  'removeStopwords:',
+  stopwords.removeStopwords(['ho', 'visto', 'uno', 'sviluppatore'])
+);
 
 // Stem
 console.log('stemWord:', stemmer.stemWord('sviluppatore'));
-console.log('stem pipeline:', stemmer.tokenizeAndStem('Ho visto uno sviluppatore', false));
+console.log(
+  'stem pipeline:',
+  stemmer.tokenizeAndStem('Ho visto uno sviluppatore', false)
+);

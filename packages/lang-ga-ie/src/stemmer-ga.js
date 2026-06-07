@@ -366,7 +366,7 @@ StemmerGa.a_0 = [
   new Among('sh', -1, 5),
   new Among('t-', -1, 1),
   new Among('th', -1, 21),
-  new Among('ts', -1, 12)
+  new Among('ts', -1, 12),
 ];
 
 StemmerGa.a_1 = [
@@ -385,7 +385,7 @@ StemmerGa.a_1 = [
   new Among('\u00EDocht', -1, 1),
   new Among('a\u00EDocht', 12, 1),
   new Among('ir\u00ED', -1, 2),
-  new Among('air\u00ED', 14, 2)
+  new Among('air\u00ED', 14, 2),
 ];
 
 StemmerGa.a_2 = [
@@ -413,7 +413,7 @@ StemmerGa.a_2 = [
   new Among('eacht', 19, 1),
   new Among('grafa\u00EDocht', -1, 4),
   new Among('arcachta\u00ED', -1, 2),
-  new Among('grafa\u00EDochta\u00ED', -1, 4)
+  new Among('grafa\u00EDochta\u00ED', -1, 4),
 ];
 
 StemmerGa.a_3 = [
@@ -428,30 +428,11 @@ StemmerGa.a_3 = [
   new Among('\u00E1il', -1, 2),
   new Among('ain', -1, 2),
   new Among('tear', -1, 2),
-  new Among('tar', -1, 2)
+  new Among('tar', -1, 2),
 ];
 
 StemmerGa.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1,
-  17,
-  4,
-  2
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17, 4, 2,
 ];
 
 module.exports = StemmerGa;

@@ -42,7 +42,9 @@ class CosineSimilarityWA {
     };
 
     /* eslint-disable */
-    const source = fs.readFileSync(path.resolve(__dirname, '../wa/cosine-similarity.wasm'));
+    const source = fs.readFileSync(
+      path.resolve(__dirname, '../wa/cosine-similarity.wasm')
+    );
     const mod = new WebAssembly.Module(new Uint8Array(source));
     this.wa_object = new WebAssembly.Instance(mod, this.wa_importObject);
     /* eslint-enable */

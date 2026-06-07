@@ -3108,26 +3108,23 @@ StemmerTr.a_0 = [
   new Among('m\u00FCz', -1, -1),
   new Among('n\u00FCz', -1, -1),
   new Among('m\u0131z', -1, -1),
-  new Among('n\u0131z', -1, -1)
+  new Among('n\u0131z', -1, -1),
 ];
 
-StemmerTr.a_1 = [
-  new Among('leri', -1, -1),
-  new Among('lar\u0131', -1, -1)
-];
+StemmerTr.a_1 = [new Among('leri', -1, -1), new Among('lar\u0131', -1, -1)];
 
 StemmerTr.a_2 = [
   new Among('ni', -1, -1),
   new Among('nu', -1, -1),
   new Among('n\u00FC', -1, -1),
-  new Among('n\u0131', -1, -1)
+  new Among('n\u0131', -1, -1),
 ];
 
 StemmerTr.a_3 = [
   new Among('in', -1, -1),
   new Among('un', -1, -1),
   new Among('\u00FCn', -1, -1),
-  new Among('\u0131n', -1, -1)
+  new Among('\u0131n', -1, -1),
 ];
 
 StemmerTr.a_4 = [new Among('a', -1, -1), new Among('e', -1, -1)];
@@ -3138,7 +3135,7 @@ StemmerTr.a_6 = [
   new Among('da', -1, -1),
   new Among('ta', -1, -1),
   new Among('de', -1, -1),
-  new Among('te', -1, -1)
+  new Among('te', -1, -1),
 ];
 
 StemmerTr.a_7 = [new Among('nda', -1, -1), new Among('nde', -1, -1)];
@@ -3147,7 +3144,7 @@ StemmerTr.a_8 = [
   new Among('dan', -1, -1),
   new Among('tan', -1, -1),
   new Among('den', -1, -1),
-  new Among('ten', -1, -1)
+  new Among('ten', -1, -1),
 ];
 
 StemmerTr.a_9 = [new Among('ndan', -1, -1), new Among('nden', -1, -1)];
@@ -3160,28 +3157,28 @@ StemmerTr.a_12 = [
   new Among('im', -1, -1),
   new Among('um', -1, -1),
   new Among('\u00FCm', -1, -1),
-  new Among('\u0131m', -1, -1)
+  new Among('\u0131m', -1, -1),
 ];
 
 StemmerTr.a_13 = [
   new Among('sin', -1, -1),
   new Among('sun', -1, -1),
   new Among('s\u00FCn', -1, -1),
-  new Among('s\u0131n', -1, -1)
+  new Among('s\u0131n', -1, -1),
 ];
 
 StemmerTr.a_14 = [
   new Among('iz', -1, -1),
   new Among('uz', -1, -1),
   new Among('\u00FCz', -1, -1),
-  new Among('\u0131z', -1, -1)
+  new Among('\u0131z', -1, -1),
 ];
 
 StemmerTr.a_15 = [
   new Among('siniz', -1, -1),
   new Among('sunuz', -1, -1),
   new Among('s\u00FCn\u00FCz', -1, -1),
-  new Among('s\u0131n\u0131z', -1, -1)
+  new Among('s\u0131n\u0131z', -1, -1),
 ];
 
 StemmerTr.a_16 = [new Among('lar', -1, -1), new Among('ler', -1, -1)];
@@ -3190,7 +3187,7 @@ StemmerTr.a_17 = [
   new Among('niz', -1, -1),
   new Among('nuz', -1, -1),
   new Among('n\u00FCz', -1, -1),
-  new Among('n\u0131z', -1, -1)
+  new Among('n\u0131z', -1, -1),
 ];
 
 StemmerTr.a_18 = [
@@ -3201,12 +3198,12 @@ StemmerTr.a_18 = [
   new Among('d\u00FCr', -1, -1),
   new Among('t\u00FCr', -1, -1),
   new Among('d\u0131r', -1, -1),
-  new Among('t\u0131r', -1, -1)
+  new Among('t\u0131r', -1, -1),
 ];
 
 StemmerTr.a_19 = [
   new Among('cas\u0131na', -1, -1),
-  new Among('cesine', -1, -1)
+  new Among('cesine', -1, -1),
 ];
 
 StemmerTr.a_20 = [
@@ -3241,7 +3238,7 @@ StemmerTr.a_20 = [
   new Among('d\u00FC', -1, -1),
   new Among('t\u00FC', -1, -1),
   new Among('d\u0131', -1, -1),
-  new Among('t\u0131', -1, -1)
+  new Among('t\u0131', -1, -1),
 ];
 
 StemmerTr.a_21 = [
@@ -3252,162 +3249,44 @@ StemmerTr.a_21 = [
   new Among('sam', -1, -1),
   new Among('sem', -1, -1),
   new Among('san', -1, -1),
-  new Among('sen', -1, -1)
+  new Among('sen', -1, -1),
 ];
 
 StemmerTr.a_22 = [
   new Among('mi\u015F', -1, -1),
   new Among('mu\u015F', -1, -1),
   new Among('m\u00FC\u015F', -1, -1),
-  new Among('m\u0131\u015F', -1, -1)
+  new Among('m\u0131\u015F', -1, -1),
 ];
 
 StemmerTr.a_23 = [
   new Among('b', -1, 1),
   new Among('c', -1, 2),
   new Among('d', -1, 3),
-  new Among('\u011F', -1, 4)
+  new Among('\u011F', -1, 4),
 ];
 
 StemmerTr.g_vowel = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  32,
-  8,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 8, 0, 0, 0, 0, 0,
+  0, 1,
 ];
 
 StemmerTr.g_U = [
-  1,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  8,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1
+  1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1,
 ];
 
 StemmerTr.g_vowel1 = [
-  1,
-  64,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1
+  1, 64, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1,
 ];
 
 StemmerTr.g_vowel2 = [
-  17,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  130
+  17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 130,
 ];
 
 StemmerTr.g_vowel3 = [
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1
 ];
 
 StemmerTr.g_vowel4 = [17];
@@ -3417,4 +3296,3 @@ StemmerTr.g_vowel5 = [65];
 StemmerTr.g_vowel6 = [65];
 
 module.exports = StemmerTr;
-

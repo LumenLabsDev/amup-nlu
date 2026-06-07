@@ -21,7 +21,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { containerBootstrap, resolveContainerKey } = require('@lumen-labs-dev/core');
+const {
+  containerBootstrap,
+  resolveContainerKey,
+} = require('@lumen-labs-dev/core');
 const { BuiltinMicrosoft } = require('../src');
 const numberAgeTests = require('./number-age.json');
 const numberTests = require('./number.json');

@@ -1,14 +1,1 @@
-{
-  "spiderman": {
-    "realName": "Peter Parker",
-    "city": "Queens, New York"
-  },
-  "ironman": {
-    "realName": "Tony Stark",
-    "city": "Stark Tower, New York"
-  },
-  "thor": {
-    "realName": "Odinson",
-    "city": "Asgard"
-  }
-}
+{"spiderman":{"realName":"Peter Parker","city":"Queens, New York"},"ironman":{"realName":"Tony Stark","city":"Stark Tower, New York"},"thor":{"realName":"Odinson","city":"Asgard"}}

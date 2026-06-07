@@ -21,7 +21,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, assertLocale, migrateLegacyLocale } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  assertLocale,
+  migrateLegacyLocale,
+} = require('@lumen-labs-dev/core');
 
 class NlgManager extends Clonable {
   constructor(settings = {}, container) {

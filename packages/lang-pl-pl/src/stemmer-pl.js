@@ -40,7 +40,9 @@ class StemmerPl extends BaseStemmer {
     }
     if (word.length > 6) {
       slice = word.slice(-4);
-      if (['acja', 'acji', 'tach', 'anie', 'enie', 'eniu', 'aniu'].includes(slice)) {
+      if (
+        ['acja', 'acji', 'tach', 'anie', 'enie', 'eniu', 'aniu'].includes(slice)
+      ) {
         return word.slice(0, -4);
       }
       if (slice === 'tyka') {
@@ -111,7 +113,19 @@ class StemmerPl extends BaseStemmer {
   stemVerb(word) {
     let slice = word.slice(-3);
     if (word.length > 5) {
-      if (['bym', 'esz', 'asz', 'cie', 'esc', 'asc', 'łem', 'amy', 'emy'].includes(slice)) {
+      if (
+        [
+          'bym',
+          'esz',
+          'asz',
+          'cie',
+          'esc',
+          'asc',
+          'łem',
+          'amy',
+          'emy',
+        ].includes(slice)
+      ) {
         return word.slice(0, -3);
       }
     }
@@ -159,7 +173,6 @@ class StemmerPl extends BaseStemmer {
       }
       if (['u', 'a', 'i', 'e', 'ł', 'y'].includes(word[word.length - 1])) {
         return word.slice(0, -1);
-
       }
     }
     return word;
@@ -174,7 +187,7 @@ class StemmerPl extends BaseStemmer {
     current = this.stemAdverb(current);
     current = this.stemPlural(current);
     current = this.stemGeneral(current);
-    this.setCurrent(current)
+    this.setCurrent(current);
   }
 }
 

@@ -21,7 +21,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, resolveContainerKey, DEFAULT_LOCALE } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  resolveContainerKey,
+  DEFAULT_LOCALE,
+} = require('@lumen-labs-dev/core');
 
 class SentimentAnalyzer extends Clonable {
   constructor(settings = {}, container) {

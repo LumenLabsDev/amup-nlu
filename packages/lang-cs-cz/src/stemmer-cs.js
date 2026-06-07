@@ -443,13 +443,13 @@ StemmerCs.a_0 = [
   new Among('\u0161t\u00E9', -1, 4),
   new Among('\u010D', -1, 1),
   new Among('\u010Dt\u011B', -1, 3),
-  new Among('\u0161t\u011B', -1, 4)
+  new Among('\u0161t\u011B', -1, 4),
 ];
 
 StemmerCs.a_1 = [
   new Among('in', -1, 2),
   new Among('ov', -1, 1),
-  new Among('\u016Fv', -1, 1)
+  new Among('\u016Fv', -1, 1),
 ];
 
 StemmerCs.a_2 = [
@@ -500,7 +500,7 @@ StemmerCs.a_2 = [
   new Among('\u00ED', -1, 2),
   new Among('\u00FD', -1, 1),
   new Among('\u011B', -1, 2),
-  new Among('\u016F', -1, 1)
+  new Among('\u016F', -1, 1),
 ];
 
 StemmerCs.a_3 = [
@@ -571,7 +571,7 @@ StemmerCs.a_3 = [
   new Among('\u00E9\u0159', -1, 4),
   new Among('n\u00E9\u0159', 64, 1),
   new Among('\u00ED\u0159', -1, 6),
-  new Among('ou\u0161', -1, 1)
+  new Among('ou\u0161', -1, 1),
 ];
 
 StemmerCs.a_4 = [
@@ -580,14 +580,14 @@ StemmerCs.a_4 = [
   new Among('l', -1, 1),
   new Among('n', -1, 1),
   new Among('t', -1, 1),
-  new Among('\u010D', -1, 1)
+  new Among('\u010D', -1, 1),
 ];
 
 StemmerCs.a_5 = [
   new Among('isk', -1, 2),
   new Among('\u00E1k', -1, 1),
   new Among('izn', -1, 2),
-  new Among('ajzn', -1, 1)
+  new Among('ajzn', -1, 1),
 ];
 
 StemmerCs.a_6 = [
@@ -632,49 +632,17 @@ StemmerCs.a_6 = [
   new Among('\u00E1\u010Dk', 0, 1),
   new Among('\u00E9\u010Dk', 0, 1),
   new Among('\u00ED\u010Dk', 0, 1),
-  new Among('u\u0161k', 0, 1)
+  new Among('u\u0161k', 0, 1),
 ];
 
 StemmerCs.a_7 = [
   new Among('ej\u0161', -1, 2),
-  new Among('\u011Bj\u0161', -1, 1)
+  new Among('\u011Bj\u0161', -1, 1),
 ];
 
 StemmerCs.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1,
-  17,
-  4,
-  18,
-  0,
-  0,
-  0,
-  4,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  64
+  17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17, 4, 18, 0, 0, 0, 4,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 64,
 ];
 
 module.exports = StemmerCs;

@@ -30,7 +30,11 @@ module.exports = async function trainnlp(manager) {
   }
   manager.addDocument('en-US', 'say about you', 'agent.acquaintance');
   manager.addDocument('en-US', 'why are you here', 'agent.acquaintance');
-  manager.addDocument('en-US', 'what is your personality', 'agent.acquaintance');
+  manager.addDocument(
+    'en-US',
+    'what is your personality',
+    'agent.acquaintance'
+  );
   manager.addDocument('en-US', 'describe yourself', 'agent.acquaintance');
   manager.addDocument('en-US', 'tell me about yourself', 'agent.acquaintance');
   manager.addDocument('en-US', 'tell me about you', 'agent.acquaintance');
@@ -142,7 +146,11 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'I fire you', 'agent.fire');
   manager.addDocument('en-US', 'you should be fired', 'agent.fire');
   manager.addDocument('en-US', 'you are dismissed', 'agent.fire');
-  manager.addDocument('en-US', "we're not working together anymore", 'agent.fire');
+  manager.addDocument(
+    'en-US',
+    "we're not working together anymore",
+    'agent.fire'
+  );
   manager.addDocument('en-US', "now you're fired", 'agent.fire');
   manager.addDocument('en-US', "I'm about to fire you", 'agent.fire');
   manager.addDocument('en-US', "You don't work for me anymore", 'agent.fire');
@@ -173,7 +181,11 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'you migth be hungry', 'agent.hungry');
   manager.addDocument('en-US', 'are you hungry', 'agent.hungry');
   manager.addDocument('en-US', 'do you want to eat', 'agent.hungry');
-  manager.addDocument('en-US', 'would you like to eat something', 'agent.hungry');
+  manager.addDocument(
+    'en-US',
+    'would you like to eat something',
+    'agent.hungry'
+  );
   manager.addDocument('en-US', 'you look very hungry', 'agent.hungry');
   manager.addDocument('en-US', 'would you like to marry me', 'agent.marryuser');
   manager.addDocument('en-US', 'I love you marry me', 'agent.marryuser');
@@ -290,7 +302,11 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'not caring', 'dialog.idontcare');
   manager.addDocument('en-US', "i don't care at all", 'dialog.idontcare');
   manager.addDocument('en-US', 'not caring at all', 'dialog.idontcare');
-  manager.addDocument('en-US', "I shouldn't care about this", 'dialog.idontcare');
+  manager.addDocument(
+    'en-US',
+    "I shouldn't care about this",
+    'dialog.idontcare'
+  );
   manager.addDocument('en-US', "I'm sorry", 'dialog.sorry');
   manager.addDocument('en-US', 'my apologies', 'dialog.sorry');
   manager.addDocument('en-US', 'excuse me', 'dialog.sorry');
@@ -311,7 +327,11 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'what about your day', 'greetings.howareyou');
   manager.addDocument('en-US', 'are you alright', 'greetings.howareyou');
   manager.addDocument('en-US', 'nice to meet you', 'greetings.nicetomeetyou');
-  manager.addDocument('en-US', 'pleased to meet you', 'greetings.nicetomeetyou');
+  manager.addDocument(
+    'en-US',
+    'pleased to meet you',
+    'greetings.nicetomeetyou'
+  );
   manager.addDocument(
     'en',
     'it was very nice to meet you',
@@ -323,13 +343,21 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'good to see you', 'greetings.nicetoseeyou');
   manager.addDocument('en-US', 'great to see you', 'greetings.nicetoseeyou');
   manager.addDocument('en-US', 'lovely to see you', 'greetings.nicetoseeyou');
-  manager.addDocument('en-US', 'nice to talk to you', 'greetings.nicetotalktoyou');
+  manager.addDocument(
+    'en-US',
+    'nice to talk to you',
+    'greetings.nicetotalktoyou'
+  );
   manager.addDocument(
     'en',
     "it's nice to talk to you",
     'greetings.nicetotalktoyou'
   );
-  manager.addDocument('en-US', 'nice talking to you', 'greetings.nicetotalktoyou');
+  manager.addDocument(
+    'en-US',
+    'nice talking to you',
+    'greetings.nicetotalktoyou'
+  );
   manager.addDocument(
     'en',
     "it's been nice talking to you",
@@ -382,7 +410,11 @@ module.exports = async function trainnlp(manager) {
   manager.addDocument('en-US', 'I think I love you', 'user.lovesagent');
   manager.addDocument('en-US', 'I need advice', 'user.needsadvice');
   manager.addDocument('en-US', 'I need some advice', 'user.needsadvice');
-  manager.addDocument('en-US', 'can you give me some advice', 'user.needsadvice');
+  manager.addDocument(
+    'en-US',
+    'can you give me some advice',
+    'user.needsadvice'
+  );
   manager.addDocument('en-US', 'what should I do', 'user.needsadvice');
   // say('Training, please wait..');
   const hrstart = process.hrtime();

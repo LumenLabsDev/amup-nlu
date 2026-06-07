@@ -251,7 +251,7 @@ StemmerHy.a_0 = [
   new Among('\u0561\u057F', -1, 1),
   new Among('\u0561\u057E\u0565\u057F', -1, 1),
   new Among('\u056F\u0578\u057F', -1, 1),
-  new Among('\u0562\u0561\u0580', -1, 1)
+  new Among('\u0562\u0561\u0580', -1, 1),
 ];
 
 StemmerHy.a_1 = [
@@ -325,7 +325,7 @@ StemmerHy.a_1 = [
   new Among('\u0561\u0581\u0580\u056B\u0576\u0584', -1, 1),
   new Among('\u0561\u0581\u056B\u0576\u0584', -1, 1),
   new Among('\u0565\u0581\u056B\u0576\u0584', -1, 1),
-  new Among('\u057E\u0565\u0581\u056B\u0576\u0584', 69, 1)
+  new Among('\u057E\u0565\u0581\u056B\u0576\u0584', 69, 1),
 ];
 
 StemmerHy.a_2 = [
@@ -368,7 +368,7 @@ StemmerHy.a_2 = [
   new Among('\u0578\u0582\u0576\u0584', 27, 1),
   new Among('\u0574\u0578\u0582\u0576\u0584', 36, 1),
   new Among('\u056B\u0579\u0584', 27, 1),
-  new Among('\u0561\u0580\u0584', 27, 1)
+  new Among('\u0561\u0580\u0584', 27, 1),
 ];
 
 StemmerHy.a_3 = [
@@ -428,7 +428,7 @@ StemmerHy.a_3 = [
   new Among('\u0576\u0565\u0580\u056B\u0581', 52, 1),
   new Among('\u0581\u056B\u0581', 48, 1),
   new Among('\u0578\u0581', 47, 1),
-  new Among('\u0578\u0582\u0581', 47, 1)
+  new Among('\u0578\u0582\u0581', 47, 1),
 ];
 
 StemmerHy.g_v = [209, 4, 128, 0, 18];

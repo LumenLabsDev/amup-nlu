@@ -1,10 +1,1 @@
-{
-  "iterations": 20000,
-  "errorThresh": 0.00005,
-  "fixedError": false,
-  "deltaErrorThresh": 0.000001,
-  "learningRate": 0.7,
-  "momentum": 0.5,
-  "alpha": 0.08,
-  "log": false
-}
+{"iterations":20000,"errorThresh":0.00005,"fixedError":false,"deltaErrorThresh":0.000001,"learningRate":0.7,"momentum":0.5,"alpha":0.08,"log":false}

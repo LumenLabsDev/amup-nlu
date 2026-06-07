@@ -1103,7 +1103,7 @@ StemmerHu.a_0 = [
   new Among('ny', -1, -1),
   new Among('sz', -1, -1),
   new Among('ty', -1, -1),
-  new Among('zs', -1, -1)
+  new Among('zs', -1, -1),
 ];
 
 StemmerHu.a_1 = [new Among('\u00E1', -1, 1), new Among('\u00E9', -1, 2)];
@@ -1131,7 +1131,7 @@ StemmerHu.a_2 = [
   new Among('nny', -1, -1),
   new Among('tty', -1, -1),
   new Among('ssz', -1, -1),
-  new Among('zz', -1, -1)
+  new Among('zz', -1, -1),
 ];
 
 StemmerHu.a_3 = [new Among('al', -1, 1), new Among('el', -1, 2)];
@@ -1180,13 +1180,13 @@ StemmerHu.a_4 = [
   new Among('hoz', -1, -1),
   new Among('h\u00F6z', -1, -1),
   new Among('v\u00E1', -1, -1),
-  new Among('v\u00E9', -1, -1)
+  new Among('v\u00E9', -1, -1),
 ];
 
 StemmerHu.a_5 = [
   new Among('\u00E1n', -1, 2),
   new Among('\u00E9n', -1, 1),
-  new Among('\u00E1nk\u00E9nt', -1, 3)
+  new Among('\u00E1nk\u00E9nt', -1, 3),
 ];
 
 StemmerHu.a_6 = [
@@ -1195,7 +1195,7 @@ StemmerHu.a_6 = [
   new Among('\u00E1stul', 0, 3),
   new Among('st\u00FCl', -1, 2),
   new Among('est\u00FCl', 3, 1),
-  new Among('\u00E9st\u00FCl', 3, 4)
+  new Among('\u00E9st\u00FCl', 3, 4),
 ];
 
 StemmerHu.a_7 = [new Among('\u00E1', -1, 1), new Among('\u00E9', -1, 2)];
@@ -1207,7 +1207,7 @@ StemmerHu.a_8 = [
   new Among('ok', 0, 5),
   new Among('\u00E1k', 0, 1),
   new Among('\u00E9k', 0, 2),
-  new Among('\u00F6k', 0, 3)
+  new Among('\u00F6k', 0, 3),
 ];
 
 StemmerHu.a_9 = [
@@ -1222,7 +1222,7 @@ StemmerHu.a_9 = [
   new Among('\u00E1k\u00E9', 4, 3),
   new Among('\u00E9k\u00E9', 4, 2),
   new Among('\u00F6k\u00E9', 4, 1),
-  new Among('\u00E9\u00E9', 3, 8)
+  new Among('\u00E9\u00E9', 3, 8),
 ];
 
 StemmerHu.a_10 = [
@@ -1256,7 +1256,7 @@ StemmerHu.a_10 = [
   new Among('\u00E9m', 22, 11),
   new Among('o', -1, 18),
   new Among('\u00E1', -1, 19),
-  new Among('\u00E9', -1, 20)
+  new Among('\u00E9', -1, 20),
 ];
 
 StemmerHu.a_11 = [
@@ -1301,30 +1301,11 @@ StemmerHu.a_11 = [
   new Among('eim', 35, 4),
   new Among('jeim', 38, 1),
   new Among('\u00E1im', 35, 2),
-  new Among('\u00E9im', 35, 3)
+  new Among('\u00E9im', 35, 3),
 ];
 
 StemmerHu.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1,
-  17,
-  52,
-  14
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17, 52, 14,
 ];
 
 module.exports = StemmerHu;

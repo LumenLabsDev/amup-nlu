@@ -973,7 +973,11 @@ describe('NLP', () => {
         languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument(
+        'en-US',
+        'convert from @ccyFrom to @ccyTo',
+        'GetForexRates'
+      );
       nlp.addAnswer(
         'en-US',
         'GetForexRates',
@@ -1010,7 +1014,11 @@ describe('NLP', () => {
         languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument(
+        'en-US',
+        'convert from @ccyFrom to @ccyTo',
+        'GetForexRates'
+      );
       nlp.addDocument(
         'en-US',
         'convert from @ccyFrom and @ccyFrom to @ccyTo',
@@ -1086,27 +1094,27 @@ describe('NLP', () => {
       };
       const nlp = new Nlp();
       await nlp.addCorpus(corpus);
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[0].domain).toEqual(
-        'domain1'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[1].domain).toEqual(
-        'domain1'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[2].domain).toEqual(
-        'domain1'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[3].domain).toEqual(
-        'domain1'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[4].domain).toEqual(
-        'domain2'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[5].domain).toEqual(
-        'domain2'
-      );
-      expect(nlp.nluManager.domainManagers['en-US'].sentences[6].domain).toEqual(
-        'domain2'
-      );
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[0].domain
+      ).toEqual('domain1');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[1].domain
+      ).toEqual('domain1');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[2].domain
+      ).toEqual('domain1');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[3].domain
+      ).toEqual('domain1');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[4].domain
+      ).toEqual('domain2');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[5].domain
+      ).toEqual('domain2');
+      expect(
+        nlp.nluManager.domainManagers['en-US'].sentences[6].domain
+      ).toEqual('domain2');
     });
 
     test('The corpus can contain entities', async () => {
@@ -1416,7 +1424,10 @@ describe('NLP', () => {
         'display',
         'screen',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', ['cpu', 'processor']);
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', [
+        'cpu',
+        'processor',
+      ]);
       nlp.addNerBetweenCondition('en-US', 'attribute', ['the'], 'of');
 
       expect(nlp.slotManager.intents.attribute_intent).toBeDefined();
@@ -1452,7 +1463,10 @@ describe('NLP', () => {
         'display',
         'screen',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', ['cpu', 'processor']);
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', [
+        'cpu',
+        'processor',
+      ]);
       nlp.addNerBetweenCondition('en-US', 'attribute', ['the'], 'of');
 
       expect(nlp.slotManager.intents.attribute_intent).toBeDefined();
@@ -1483,7 +1497,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1518,7 +1534,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1559,7 +1577,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1592,7 +1612,11 @@ describe('NLP', () => {
         languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument(
+        'en-US',
+        'convert from @ccyFrom to @ccyTo',
+        'GetForexRates'
+      );
       nlp.addAnswer(
         'en-US',
         'GetForexRates',
@@ -1632,7 +1656,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1675,7 +1701,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1721,7 +1749,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
@@ -1761,7 +1791,9 @@ describe('NLP', () => {
       nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', [
+        'mylastname',
+      ]);
       nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);

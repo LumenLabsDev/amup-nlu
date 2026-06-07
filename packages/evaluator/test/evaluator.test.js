@@ -506,7 +506,7 @@ describe('Evaluator', () => {
       const context = { a: 12, b: 2 };
       const evaluator = new Evaluator();
       // eslint-disable-next-line
-      const question = "`${a}-${b}`";
+      const question = '`${a}-${b}`';
       const result = evaluator.evaluate(question, context);
       expect(result).toEqual('12-2');
     });
@@ -521,7 +521,7 @@ describe('Evaluator', () => {
       };
       const evaluator = new Evaluator();
       // eslint-disable-next-line
-      const question = "tag`Hello ${a}hi${b}`";
+      const question = 'tag`Hello ${a}hi${b}`';
       const result = evaluator.evaluate(question, context);
       expect(result).toEqual('Hello -hi--12-2');
     });

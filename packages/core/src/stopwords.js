@@ -21,7 +21,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 const { defaultContainer } = require('./container');
-const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
+const {
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('./locale');
 
 class Stopwords {
   constructor(container = defaultContainer) {

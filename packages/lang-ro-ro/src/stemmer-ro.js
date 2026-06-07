@@ -847,7 +847,7 @@ StemmerRo.methodObject = new StemmerRo();
 StemmerRo.a_0 = [
   new Among('', -1, 3),
   new Among('I', 0, 1),
-  new Among('U', 0, 2)
+  new Among('U', 0, 2),
 ];
 
 StemmerRo.a_1 = [
@@ -866,7 +866,7 @@ StemmerRo.a_1 = [
   new Among('ul', -1, 1),
   new Among('elor', -1, 3),
   new Among('ilor', -1, 4),
-  new Among('iilor', 14, 4)
+  new Among('iilor', 14, 4),
 ];
 
 StemmerRo.a_2 = [
@@ -915,7 +915,7 @@ StemmerRo.a_2 = [
   new Among('ical\u0103', -1, 4),
   new Among('iciv\u0103', -1, 4),
   new Among('ativ\u0103', -1, 5),
-  new Among('itiv\u0103', -1, 6)
+  new Among('itiv\u0103', -1, 6),
 ];
 
 StemmerRo.a_3 = [
@@ -980,7 +980,7 @@ StemmerRo.a_3 = [
   new Among('ant\u0103', -1, 1),
   new Among('ist\u0103', -1, 3),
   new Among('ut\u0103', -1, 1),
-  new Among('iv\u0103', -1, 1)
+  new Among('iv\u0103', -1, 1),
 ];
 
 StemmerRo.a_4 = [
@@ -1077,7 +1077,7 @@ StemmerRo.a_4 = [
   new Among('ir\u0103', -1, 1),
   new Among('ur\u0103', -1, 1),
   new Among('\u00E2r\u0103', -1, 1),
-  new Among('eaz\u0103', -1, 1)
+  new Among('eaz\u0103', -1, 1),
 ];
 
 StemmerRo.a_5 = [
@@ -1085,31 +1085,11 @@ StemmerRo.a_5 = [
   new Among('e', -1, 1),
   new Among('ie', 1, 1),
   new Among('i', -1, 1),
-  new Among('\u0103', -1, 1)
+  new Among('\u0103', -1, 1),
 ];
 
 StemmerRo.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  2,
-  32,
-  0,
-  0,
-  4
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 32, 0, 0, 4,
 ];
 
 module.exports = StemmerRo;

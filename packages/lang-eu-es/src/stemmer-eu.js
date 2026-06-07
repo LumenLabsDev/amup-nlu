@@ -468,7 +468,7 @@ StemmerEu.a_0 = [
   new Among('errez', 104, 1),
   new Among('tzez', 104, 1),
   new Among('gaitz', -1, 1),
-  new Among('kaitz', -1, 1)
+  new Among('kaitz', -1, 1),
 ];
 
 StemmerEu.a_1 = [
@@ -766,7 +766,7 @@ StemmerEu.a_1 = [
   new Among('ez', 290, 1),
   new Among('eroz', 290, 1),
   new Among('tz', 290, 1),
-  new Among('koitz', 293, 1)
+  new Among('koitz', 293, 1),
 ];
 
 StemmerEu.a_2 = [
@@ -788,7 +788,7 @@ StemmerEu.a_2 = [
   new Among('go', -1, 1),
   new Among('ro', -1, 1),
   new Among('ero', 16, 1),
-  new Among('to', -1, 1)
+  new Among('to', -1, 1),
 ];
 
 StemmerEu.g_v = [17, 65, 16];

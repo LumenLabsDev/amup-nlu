@@ -66,7 +66,10 @@ const methodPatterns = [
   [/addLanguage\('pt'\)/g, "addLanguage('pt-PT')"],
   [/addLanguage\('ja'\)/g, "addLanguage('ja-JP')"],
   [/addLanguage\('zh'\)/g, "addLanguage('zh-CN')"],
-  [/addLanguage\(\['en', 'es', 'fr'\]\)/g, "addLanguage(['en-US', 'es-ES', 'fr-FR'])"],
+  [
+    /addLanguage\(\['en', 'es', 'fr'\]\)/g,
+    "addLanguage(['en-US', 'es-ES', 'fr-FR'])",
+  ],
   [/addLanguage\(\['en', 'es'\]\)/g, "addLanguage(['en-US', 'es-ES'])"],
   [/addLanguage\(\['en'\]\)/g, "addLanguage(['en-US'])"],
   [/addLanguage\(\['es'\]\)/g, "addLanguage(['es-ES'])"],
@@ -134,12 +137,21 @@ const methodPatterns = [
   [/locale: 'kl'/g, "locale: 'x-klingon'"],
   [/expect\(language\)\.toEqual\('en'\)/g, "expect(language).toEqual('en-US')"],
   [/expect\(language\)\.toEqual\('es'\)/g, "expect(language).toEqual('es-ES')"],
-  [/Object\.keys\(manager\.domainManagers\)\)\.toEqual\(\['en', 'es'\]\)/g, "Object.keys(manager.domainManagers)).toEqual(['en-US', 'es-ES'])"],
-  [/Object\.keys\(manager\.domainManagers\)\)\.toEqual\(\['en'\]\)/g, "Object.keys(manager.domainManagers)).toEqual(['en-US'])"],
+  [
+    /Object\.keys\(manager\.domainManagers\)\)\.toEqual\(\['en', 'es'\]\)/g,
+    "Object.keys(manager.domainManagers)).toEqual(['en-US', 'es-ES'])",
+  ],
+  [
+    /Object\.keys\(manager\.domainManagers\)\)\.toEqual\(\['en'\]\)/g,
+    "Object.keys(manager.domainManagers)).toEqual(['en-US'])",
+  ],
   [/settings\.locale\)\.toEqual\('en'\)/g, "settings.locale).toEqual('en-US')"],
   [/addAnswer\('en',/g, "addAnswer('en-US',"],
   [/addAnswer\('es',/g, "addAnswer('es-ES',"],
-  [/addNamedEntityText\([^,]+,[^,]+,\s*\['en'\]/g, (m) => m.replace("'en'", "'en-US'")],
+  [
+    /addNamedEntityText\([^,]+,[^,]+,\s*\['en'\]/g,
+    (m) => m.replace("'en'", "'en-US'"),
+  ],
   [/addNerRegexRule\('en',/g, "addNerRegexRule('en-US',"],
   [/addNerRegexRule\('es',/g, "addNerRegexRule('es-ES',"],
   [/addBetweenCondition\('en',/g, "addBetweenCondition('en-US',"],
@@ -153,14 +165,26 @@ const methodPatterns = [
   [/removeLanguage\('en'\)/g, "removeLanguage('en-US')"],
   [/removeLanguage\('es'\)/g, "removeLanguage('es-ES')"],
   [/removeLanguage\(\['en', 'es'\]\)/g, "removeLanguage(['en-US', 'es-ES'])"],
-  [/removeLanguage\(\['en', 'en', 'es', 'fr'\]\)/g, "removeLanguage(['en-US', 'en-US', 'es-ES', 'fr-FR'])"],
-  [/removeLanguage\(\['en', 'en', 'es', 'es', 'fr'\]\)/g, "removeLanguage(['en-US', 'en-US', 'es-ES', 'es-ES', 'fr-FR'])"],
-  [/addLanguage\(\['en', 'en', 'es', 'fr'\]\)/g, "addLanguage(['en-US', 'en-US', 'es-ES', 'fr-FR'])"],
+  [
+    /removeLanguage\(\['en', 'en', 'es', 'fr'\]\)/g,
+    "removeLanguage(['en-US', 'en-US', 'es-ES', 'fr-FR'])",
+  ],
+  [
+    /removeLanguage\(\['en', 'en', 'es', 'es', 'fr'\]\)/g,
+    "removeLanguage(['en-US', 'en-US', 'es-ES', 'es-ES', 'fr-FR'])",
+  ],
+  [
+    /addLanguage\(\['en', 'en', 'es', 'fr'\]\)/g,
+    "addLanguage(['en-US', 'en-US', 'es-ES', 'fr-FR'])",
+  ],
   [/addLanguage\(\['en', 'ja'\]\)/g, "addLanguage(['en-US', 'ja-JP'])"],
   [/addLanguage\(\['en', 'ko'\]\)/g, "addLanguage(['en-US', 'ko-KR'])"],
   [/addLanguage\(\['en', 'kl'\]\)/g, "addLanguage(['en-US', 'x-klingon'])"],
   [/addLanguage\(\['fr', 'ja'\]\)/g, "addLanguage(['fr-FR', 'ja-JP'])"],
-  [/addLanguage\(\['en', 'es', 'it', 'fr'\]\)/g, "addLanguage(['en-US', 'es-ES', 'it-IT', 'fr-FR'])"],
+  [
+    /addLanguage\(\['en', 'es', 'it', 'fr'\]\)/g,
+    "addLanguage(['en-US', 'es-ES', 'it-IT', 'fr-FR'])",
+  ],
   [/addLanguage\(\['en', 'fr'\]\)/g, "addLanguage(['en-US', 'fr-FR'])"],
   [/removeLanguage\(\['en', 'fr'\]\)/g, "removeLanguage(['en-US', 'fr-FR'])"],
   [/languages: \['en', 'ko'\]/g, "languages: ['en-US', 'ko-KR']"],
@@ -176,20 +200,53 @@ const methodPatterns = [
   [/toContain\('fr'\)/g, "toContain('fr-FR')"],
   [/toContain\('it'\)/g, "toContain('it-IT')"],
   [/not\.toContain\('fr'\)/g, "not.toContain('fr-FR')"],
-  [/addNerRuleOptionTexts\(\['en', 'es'\]/g, "addNerRuleOptionTexts(['en-US', 'es-ES']"],
-  [/removeNerRuleOptionTexts\(\['en', 'es'\]/g, "removeNerRuleOptionTexts(['en-US', 'es-ES']"],
-  [/addRuleOptionTexts\(\['en', 'es'\]/g, "addRuleOptionTexts(['en-US', 'es-ES']"],
-  [/removeRuleOptionTexts\(\['en', 'es'\]/g, "removeRuleOptionTexts(['en-US', 'es-ES']"],
+  [
+    /addNerRuleOptionTexts\(\['en', 'es'\]/g,
+    "addNerRuleOptionTexts(['en-US', 'es-ES']",
+  ],
+  [
+    /removeNerRuleOptionTexts\(\['en', 'es'\]/g,
+    "removeNerRuleOptionTexts(['en-US', 'es-ES']",
+  ],
+  [
+    /addRuleOptionTexts\(\['en', 'es'\]/g,
+    "addRuleOptionTexts(['en-US', 'es-ES']",
+  ],
+  [
+    /removeRuleOptionTexts\(\['en', 'es'\]/g,
+    "removeRuleOptionTexts(['en-US', 'es-ES']",
+  ],
   [/locale: \['en', 'es'\]/g, "locale: ['en-US', 'es-ES']"],
   [/language: 'fr'/g, "language: 'fr-FR'"],
   [/BrainNLU\(\{ language: 'fr'/g, "BrainNLU({ language: 'fr-FR'"],
-  [/toThrow\(\s*'Domain Manager not found for locale fr'/g, "toThrow('Domain Manager not found for locale fr-FR')"],
-  [/expect\(result\.localeIso2\)\.toEqual\('en-US'\)/g, "expect(result.localeIso2).toEqual('en')"],
-  [/expect\(result\.localeIso2\)\.toEqual\('es-ES'\)/g, "expect(result.localeIso2).toEqual('es')"],
-  [/expect\(result\.localeIso2\)\.toEqual\('fr-FR'\)/g, "expect(result.localeIso2).toEqual('fr')"],
-  [/expect\(result\.localeIso2\)\.toEqual\('ja-JP'\)/g, "expect(result.localeIso2).toEqual('ja')"],
-  [/expect\(actual\.localeIso2\)\.toEqual\('en-US'\)/g, "expect(actual.localeIso2).toEqual('en')"],
-  [/expect\(actual\.localeIso2\)\.toEqual\('es-ES'\)/g, "expect(actual.localeIso2).toEqual('es')"],
+  [
+    /toThrow\(\s*'Domain Manager not found for locale fr'/g,
+    "toThrow('Domain Manager not found for locale fr-FR')",
+  ],
+  [
+    /expect\(result\.localeIso2\)\.toEqual\('en-US'\)/g,
+    "expect(result.localeIso2).toEqual('en')",
+  ],
+  [
+    /expect\(result\.localeIso2\)\.toEqual\('es-ES'\)/g,
+    "expect(result.localeIso2).toEqual('es')",
+  ],
+  [
+    /expect\(result\.localeIso2\)\.toEqual\('fr-FR'\)/g,
+    "expect(result.localeIso2).toEqual('fr')",
+  ],
+  [
+    /expect\(result\.localeIso2\)\.toEqual\('ja-JP'\)/g,
+    "expect(result.localeIso2).toEqual('ja')",
+  ],
+  [
+    /expect\(actual\.localeIso2\)\.toEqual\('en-US'\)/g,
+    "expect(actual.localeIso2).toEqual('en')",
+  ],
+  [
+    /expect\(actual\.localeIso2\)\.toEqual\('es-ES'\)/g,
+    "expect(actual.localeIso2).toEqual('es')",
+  ],
 ];
 
 for (const [legacy, bcp47] of Object.entries(LEGACY_TO_BCP47)) {
@@ -208,7 +265,8 @@ function walk(dir, files = []) {
     const p = path.join(dir, name);
     const st = fs.statSync(p);
     if (st.isDirectory() && name !== 'node_modules') walk(p, files);
-    else if (/\.(test|spec)\.js$/.test(name) || name === 'domains.js') files.push(p);
+    else if (/\.(test|spec)\.js$/.test(name) || name === 'domains.js')
+      files.push(p);
   }
   return files;
 }
@@ -225,7 +283,10 @@ for (const root of roots) {
     let content = fs.readFileSync(file, 'utf8');
     const original = content;
     for (const [re, rep] of methodPatterns) {
-      content = typeof rep === 'function' ? content.replace(re, rep) : content.replace(re, rep);
+      content =
+        typeof rep === 'function'
+          ? content.replace(re, rep)
+          : content.replace(re, rep);
     }
     if (content !== original) {
       fs.writeFileSync(file, content);

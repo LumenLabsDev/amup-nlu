@@ -632,7 +632,7 @@ StemmerRu.a_0 = [
   new Among('\u044B\u0432\u0448\u0438', 3, 2),
   new Among('\u0432\u0448\u0438\u0441\u044C', -1, 1),
   new Among('\u0438\u0432\u0448\u0438\u0441\u044C', 6, 2),
-  new Among('\u044B\u0432\u0448\u0438\u0441\u044C', 6, 2)
+  new Among('\u044B\u0432\u0448\u0438\u0441\u044C', 6, 2),
 ];
 
 StemmerRu.a_1 = [
@@ -661,7 +661,7 @@ StemmerRu.a_1 = [
   new Among('\u0443\u044E', -1, 1),
   new Among('\u044E\u044E', -1, 1),
   new Among('\u0430\u044F', -1, 1),
-  new Among('\u044F\u044F', -1, 1)
+  new Among('\u044F\u044F', -1, 1),
 ];
 
 StemmerRu.a_2 = [
@@ -672,12 +672,12 @@ StemmerRu.a_2 = [
   new Among('\u044B\u0432\u0448', 2, 2),
   new Among('\u0449', -1, 1),
   new Among('\u044E\u0449', 5, 1),
-  new Among('\u0443\u044E\u0449', 6, 2)
+  new Among('\u0443\u044E\u0449', 6, 2),
 ];
 
 StemmerRu.a_3 = [
   new Among('\u0441\u044C', -1, 1),
-  new Among('\u0441\u044F', -1, 1)
+  new Among('\u0441\u044F', -1, 1),
 ];
 
 StemmerRu.a_4 = [
@@ -726,7 +726,7 @@ StemmerRu.a_4 = [
   new Among('\u0435\u0448\u044C', -1, 1),
   new Among('\u0438\u0448\u044C', -1, 2),
   new Among('\u044E', -1, 2),
-  new Among('\u0443\u044E', 44, 2)
+  new Among('\u0443\u044E', 44, 2),
 ];
 
 StemmerRu.a_5 = [
@@ -765,22 +765,21 @@ StemmerRu.a_5 = [
   new Among('\u044C\u044E', 30, 1),
   new Among('\u044F', -1, 1),
   new Among('\u0438\u044F', 33, 1),
-  new Among('\u044C\u044F', 33, 1)
+  new Among('\u044C\u044F', 33, 1),
 ];
 
 StemmerRu.a_6 = [
   new Among('\u043E\u0441\u0442', -1, 1),
-  new Among('\u043E\u0441\u0442\u044C', -1, 1)
+  new Among('\u043E\u0441\u0442\u044C', -1, 1),
 ];
 
 StemmerRu.a_7 = [
   new Among('\u0435\u0439\u0448\u0435', -1, 1),
   new Among('\u043D', -1, 2),
   new Among('\u0435\u0439\u0448', -1, 1),
-  new Among('\u044C', -1, 3)
+  new Among('\u044C', -1, 3),
 ];
 
 StemmerRu.g_v = [33, 65, 8, 232];
 
 module.exports = StemmerRu;
-

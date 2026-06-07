@@ -1,15 +1,1 @@
-{
-    "TableName": "NLPjsModelTable",
-    "KeySchema": [{
-        "AttributeName": "id",
-        "KeyType": "HASH"
-    }],
-    "AttributeDefinitions": [{
-        "AttributeName": "id",
-        "AttributeType": "S"
-    }],
-    "ProvisionedThroughput": {
-        "ReadCapacityUnits": 1,
-        "WriteCapacityUnits": 1
-    }
-}
+{"TableName":"NLPjsModelTable","KeySchema":[{"AttributeName":"id","KeyType":"HASH"}],"AttributeDefinitions":[{"AttributeName":"id","AttributeType":"S"}],"ProvisionedThroughput":{"ReadCapacityUnits":1,"WriteCapacityUnits":1}}

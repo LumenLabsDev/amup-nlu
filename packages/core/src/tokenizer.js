@@ -23,7 +23,11 @@
 
 const { defaultContainer } = require('./container');
 const Normalizer = require('./normalizer');
-const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
+const {
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('./locale');
 
 class Tokenizer {
   constructor(container = defaultContainer, shouldNormalize = false) {

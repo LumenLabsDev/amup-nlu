@@ -37,7 +37,10 @@ const stemmer = new StemmerId();
 stemmer.stopwords = stopwords;
 
 // Normalize
-console.log('normalize:', normalizer.normalize('apa yang dikembangkan perúsahaan Anda'));
+console.log(
+  'normalize:',
+  normalizer.normalize('apa yang dikembangkan perúsahaan Anda')
+);
 
 // Tokenize
 console.log('tokenize:', tokenizer.tokenize(input));
@@ -45,7 +48,10 @@ console.log('tokenize normalized:', tokenizer.tokenize(input, true));
 
 // Stopwords
 console.log('isStopword:', stopwords.isStopword('yang'));
-console.log('removeStopwords:', stopwords.removeStopwords(['apa', 'yang', 'dikembangkan', 'perusahaan']));
+console.log(
+  'removeStopwords:',
+  stopwords.removeStopwords(['apa', 'yang', 'dikembangkan', 'perusahaan'])
+);
 
 // Stem
 console.log('stemWord:', stemmer.stemWord('dikembangkan'));

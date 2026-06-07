@@ -21,7 +21,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { containerBootstrap, DEFAULT_LOCALE } = require('@lumen-labs-dev/core-loader');
+const {
+  containerBootstrap,
+  DEFAULT_LOCALE,
+} = require('@lumen-labs-dev/core-loader');
 const { NluNeural } = require('@lumen-labs-dev/nlu');
 const {
   registerDefaultLanguages,
@@ -42,7 +45,8 @@ class BrainNLU {
     );
     if (!this.settings.l)
       this.nlu = new NluNeural({
-        locale: this.settings.locale || this.settings.language || DEFAULT_LOCALE,
+        locale:
+          this.settings.locale || this.settings.language || DEFAULT_LOCALE,
         container: this.container,
       });
     this.corpus = [];

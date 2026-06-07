@@ -67,9 +67,9 @@ describe('NLP Excel Reader', () => {
       const manager = new NlpManager();
       const reader = new NlpExcelReader(manager);
       reader.load('./packages/node-nlp/test/nlp/rules.xls');
-      expect(manager.nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(
-        5
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['en-US'].sentences
+      ).toHaveLength(5);
       expect(
         manager.nlp.nluManager.domainManagers['en-US'].sentences[0].intent
       ).toEqual('whois');
@@ -85,9 +85,9 @@ describe('NLP Excel Reader', () => {
       expect(
         manager.nlp.nluManager.domainManagers['en-US'].sentences[4].intent
       ).toEqual('realname');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        4
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(4);
       expect(
         manager.nlp.nluManager.domainManagers['es-ES'].sentences[0].intent
       ).toEqual('whois');

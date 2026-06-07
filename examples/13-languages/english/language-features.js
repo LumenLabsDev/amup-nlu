@@ -45,8 +45,14 @@ console.log('tokenize normalized:', tokenizer.tokenize(input, true));
 
 // Stopwords
 console.log('isStopword:', stopwords.isStopword('is'));
-console.log('removeStopwords:', stopwords.removeStopwords(['who', 'is', 'your', 'develop']));
+console.log(
+  'removeStopwords:',
+  stopwords.removeStopwords(['who', 'is', 'your', 'develop'])
+);
 
 // Stem
 console.log('stemWord:', stemmer.stemWord('developer'));
-console.log('stem pipeline:', stemmer.tokenizeAndStem('who is your developer', false));
+console.log(
+  'stem pipeline:',
+  stemmer.tokenizeAndStem('who is your developer', false)
+);

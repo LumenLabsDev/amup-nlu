@@ -28,8 +28,8 @@ class BaseStemmer {
   constructor(container = defaultContainer, dictionary) {
     this.container = container.container || container;
     this.cache = {};
-    this.setCurrent("");
-    this.dictionary = dictionary || { before: {}, after: {}};
+    this.setCurrent('');
+    this.dictionary = dictionary || { before: {}, after: {} };
   }
 
   setCurrent(value) {
@@ -107,7 +107,10 @@ class BaseStemmer {
       s = s_size;
       s_size = s.length;
     }
-    if ((this.limit - this.cursor < s_size) || (this.current.slice(this.cursor, this.cursor + s_size) != s)) {
+    if (
+      this.limit - this.cursor < s_size ||
+      this.current.slice(this.cursor, this.cursor + s_size) != s
+    ) {
       return false;
     }
     this.cursor += s_size;
@@ -119,7 +122,10 @@ class BaseStemmer {
       s = s_size;
       s_size = s.length;
     }
-    if ((this.cursor - this.limit_backward < s_size) || (this.current.slice(this.cursor - s_size, this.cursor) != s)) {
+    if (
+      this.cursor - this.limit_backward < s_size ||
+      this.current.slice(this.cursor - s_size, this.cursor) != s
+    ) {
       return false;
     }
     this.cursor -= s_size;
@@ -281,7 +287,7 @@ class BaseStemmer {
   }
 
   slice_del() {
-    return this.slice_from("");
+    return this.slice_from('');
   }
 
   insert(c_bra, c_ket, s) {
@@ -292,7 +298,7 @@ class BaseStemmer {
 
   /* Copy the slice into the supplied StringBuffer */
   slice_to(s) {
-    let result = "";
+    let result = '';
     if (this.slice_check()) {
       result = this.current.slice(this.bra, this.ket);
     }

@@ -21,7 +21,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, compareWildcars, getLocaleTag } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  compareWildcars,
+  getLocaleTag,
+} = require('@lumen-labs-dev/core');
 
 const defaultDomainName = 'master_domain';
 

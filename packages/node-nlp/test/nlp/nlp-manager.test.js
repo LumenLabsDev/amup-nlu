@@ -45,7 +45,12 @@ function addEntities(manager) {
     ['Burguer', 'Hamburguer']
   );
   manager.addNamedEntityText('food', 'pizza', ['en-US'], ['pizza']);
-  manager.addNamedEntityText('food', 'pasta', ['en-US'], ['Pasta', 'spaghetti']);
+  manager.addNamedEntityText(
+    'food',
+    'pasta',
+    ['en-US'],
+    ['Pasta', 'spaghetti']
+  );
 }
 
 function addFrJp(manager) {
@@ -55,12 +60,20 @@ function addFrJp(manager) {
   manager.addDocument('fr-FR', 'Bonsoir', 'greet');
   manager.addDocument('fr-FR', "J'ai perdu mes clés", 'keys');
   manager.addDocument('fr-FR', 'Je ne trouve pas mes clés', 'keys');
-  manager.addDocument('fr-FR', 'Je ne me souviens pas où sont mes clés', 'keys');
+  manager.addDocument(
+    'fr-FR',
+    'Je ne me souviens pas où sont mes clés',
+    'keys'
+  );
   manager.addDocument('ja-JP', 'おはようございます', 'greet');
   manager.addDocument('ja-JP', 'こんにちは', 'greet');
   manager.addDocument('ja-JP', 'おやすみ', 'greet');
   manager.addDocument('ja-JP', '私は私の鍵を紛失した', 'keys');
-  manager.addDocument('ja-JP', '私は私の鍵がどこにあるのか覚えていない', 'keys');
+  manager.addDocument(
+    'ja-JP',
+    '私は私の鍵がどこにあるのか覚えていない',
+    'keys'
+  );
   manager.addDocument('ja-JP', '私は私の鍵が見つからない', 'keys');
 }
 
@@ -182,12 +195,12 @@ describe('NLP Manager', () => {
       const manager = new NlpManager({ nlu: { trainByDomain: true } });
       manager.addLanguage(['en-US', 'es-ES']);
       manager.addDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        1
-      );
-      expect(manager.nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(
-        0
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(1);
+      expect(
+        manager.nlp.nluManager.domainManagers['en-US'].sentences
+      ).toHaveLength(0);
     });
     test('If locale is not defined and cannot be guessed, throw an error', () => {
       const manager = new NlpManager();
@@ -207,9 +220,9 @@ describe('NLP Manager', () => {
       const manager = new NlpManager({ nlu: { trainByDomain: true } });
       manager.addLanguage(['en-US', 'es-ES']);
       manager.addDocument('es-ES', 'Dónde están las llaves', 'keys');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        1
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(1);
     });
   });
 
@@ -230,9 +243,9 @@ describe('NLP Manager', () => {
       manager.addLanguage(['en-US', 'es-ES']);
       manager.addDocument('es-ES', 'Dónde están las llaves', 'keys');
       manager.removeDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        0
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(0);
     });
     test('If locale is not defined and cannot be guessed, throw an error', () => {
       const manager = new NlpManager();
@@ -253,9 +266,9 @@ describe('NLP Manager', () => {
       manager.addLanguage(['en-US', 'es-ES']);
       manager.addDocument('es-ES', 'Dónde están las llaves', 'keys');
       manager.removeDocument('es-ES', 'Dónde están las llaves', 'keys');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        0
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(0);
     });
   });
 
@@ -536,7 +549,10 @@ describe('NLP Manager', () => {
       manager.addDocument('x-klingon', `nuqDaq ghaH ngaQHa'moHwI'mey?`, 'keys');
       manager.addDocument('x-klingon', `ngaQHa'moHwI'mey lujta' jIH`, 'keys');
       await manager.train();
-      const result = await manager.process('x-klingon', `ngaQHa'moHwI'mey nIH vay'`);
+      const result = await manager.process(
+        'x-klingon',
+        `ngaQHa'moHwI'mey nIH vay'`
+      );
       expect(result.language).toEqual('Klingon');
       expect(result.intent).toEqual('keys');
       expect(result.score).toBeGreaterThan(0.9);
@@ -611,12 +627,24 @@ describe('NLP Manager', () => {
       manager.addDocument('en-US', 'hi', 'greetings.hello');
       manager.addDocument('en-US', 'howdy', 'greetings.hello');
       manager.addDocument('en-US', 'how is your day', 'greetings.howareyou');
-      manager.addDocument('en-US', 'how is your day going', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'how is your day going',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'how are you', 'greetings.howareyou');
       manager.addDocument('en-US', 'how are you doing', 'greetings.howareyou');
-      manager.addDocument('en-US', 'what about your day', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'what about your day',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'are you alright', 'greetings.howareyou');
-      manager.addDocument('en-US', 'nice to meet you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'nice to meet you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument(
         'en-US',
         'pleased to meet you',
@@ -627,12 +655,28 @@ describe('NLP Manager', () => {
         'it was very nice to meet you',
         'greetings.nicetomeetyou'
       );
-      manager.addDocument('en-US', 'glad to meet you', 'greetings.nicetomeetyou');
-      manager.addDocument('en-US', 'nice meeting you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'glad to meet you',
+        'greetings.nicetomeetyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'nice meeting you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument('en-US', 'nice to see you', 'greetings.nicetoseeyou');
       manager.addDocument('en-US', 'good to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'great to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'lovely to see you', 'greetings.nicetoseeyou');
+      manager.addDocument(
+        'en-US',
+        'great to see you',
+        'greetings.nicetoseeyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'lovely to see you',
+        'greetings.nicetoseeyou'
+      );
       manager.addDocument(
         'en-US',
         'nice to talk to you',
@@ -732,12 +776,24 @@ describe('NLP Manager', () => {
       manager.addDocument('en-US', 'hi', 'greetings.hello');
       manager.addDocument('en-US', 'howdy', 'greetings.hello');
       manager.addDocument('en-US', 'how is your day', 'greetings.howareyou');
-      manager.addDocument('en-US', 'how is your day going', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'how is your day going',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'how are you', 'greetings.howareyou');
       manager.addDocument('en-US', 'how are you doing', 'greetings.howareyou');
-      manager.addDocument('en-US', 'what about your day', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'what about your day',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'are you alright', 'greetings.howareyou');
-      manager.addDocument('en-US', 'nice to meet you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'nice to meet you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument(
         'en-US',
         'pleased to meet you',
@@ -748,12 +804,28 @@ describe('NLP Manager', () => {
         'it was very nice to meet you',
         'greetings.nicetomeetyou'
       );
-      manager.addDocument('en-US', 'glad to meet you', 'greetings.nicetomeetyou');
-      manager.addDocument('en-US', 'nice meeting you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'glad to meet you',
+        'greetings.nicetomeetyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'nice meeting you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument('en-US', 'nice to see you', 'greetings.nicetoseeyou');
       manager.addDocument('en-US', 'good to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'great to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'lovely to see you', 'greetings.nicetoseeyou');
+      manager.addDocument(
+        'en-US',
+        'great to see you',
+        'greetings.nicetoseeyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'lovely to see you',
+        'greetings.nicetoseeyou'
+      );
       manager.addDocument(
         'en-US',
         'nice to talk to you',
@@ -874,12 +946,24 @@ describe('NLP Manager', () => {
       manager.addDocument('en-US', 'hi', 'greetings.hello');
       manager.addDocument('en-US', 'howdy', 'greetings.hello');
       manager.addDocument('en-US', 'how is your day', 'greetings.howareyou');
-      manager.addDocument('en-US', 'how is your day going', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'how is your day going',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'how are you', 'greetings.howareyou');
       manager.addDocument('en-US', 'how are you doing', 'greetings.howareyou');
-      manager.addDocument('en-US', 'what about your day', 'greetings.howareyou');
+      manager.addDocument(
+        'en-US',
+        'what about your day',
+        'greetings.howareyou'
+      );
       manager.addDocument('en-US', 'are you alright', 'greetings.howareyou');
-      manager.addDocument('en-US', 'nice to meet you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'nice to meet you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument(
         'en-US',
         'pleased to meet you',
@@ -890,12 +974,28 @@ describe('NLP Manager', () => {
         'it was very nice to meet you',
         'greetings.nicetomeetyou'
       );
-      manager.addDocument('en-US', 'glad to meet you', 'greetings.nicetomeetyou');
-      manager.addDocument('en-US', 'nice meeting you', 'greetings.nicetomeetyou');
+      manager.addDocument(
+        'en-US',
+        'glad to meet you',
+        'greetings.nicetomeetyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'nice meeting you',
+        'greetings.nicetomeetyou'
+      );
       manager.addDocument('en-US', 'nice to see you', 'greetings.nicetoseeyou');
       manager.addDocument('en-US', 'good to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'great to see you', 'greetings.nicetoseeyou');
-      manager.addDocument('en-US', 'lovely to see you', 'greetings.nicetoseeyou');
+      manager.addDocument(
+        'en-US',
+        'great to see you',
+        'greetings.nicetoseeyou'
+      );
+      manager.addDocument(
+        'en-US',
+        'lovely to see you',
+        'greetings.nicetoseeyou'
+      );
       manager.addDocument(
         'en-US',
         'nice to talk to you',
@@ -988,7 +1088,10 @@ describe('NLP Manager', () => {
       manager.addDocument('th-TH', 'กุญแจของฉันอยู่ที่ไหน', 'keys');
       manager.addDocument('th-TH', 'ฉันไม่พบกุญแจของฉัน', 'keys');
       await manager.train();
-      const result = await manager.process('th-TH', 'ฉันไม่รู้ว่ากุญแจอยู่ที่ไหน');
+      const result = await manager.process(
+        'th-TH',
+        'ฉันไม่รู้ว่ากุญแจอยู่ที่ไหน'
+      );
       expect(result).toBeDefined();
       expect(result.locale).toEqual('th-TH');
       expect(result.localeIso2).toEqual('th');
@@ -1263,9 +1366,9 @@ describe('NLP Manager', () => {
     test('The classifiers should contain the intent definition', () => {
       const manager = new NlpManager();
       manager.loadExcel('./packages/node-nlp/test/nlp/rules.xls');
-      expect(manager.nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(
-        5
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['en-US'].sentences
+      ).toHaveLength(5);
       expect(
         manager.nlp.nluManager.domainManagers['en-US'].sentences[0].intent
       ).toEqual('whois');
@@ -1281,9 +1384,9 @@ describe('NLP Manager', () => {
       expect(
         manager.nlp.nluManager.domainManagers['en-US'].sentences[4].intent
       ).toEqual('realname');
-      expect(manager.nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(
-        4
-      );
+      expect(
+        manager.nlp.nluManager.domainManagers['es-ES'].sentences
+      ).toHaveLength(4);
       expect(
         manager.nlp.nluManager.domainManagers['es-ES'].sentences[0].intent
       ).toEqual('whois');

@@ -15,13 +15,7 @@
         "ignore": ["^http-proxy-agent$", "^https-proxy-agent$"]
       }
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": "es5"
-      }
-    ],
+    "prettier/prettier": "error",
     "no-restricted-syntax": 0,
     "no-await-in-loop": "off"
   },
@@ -30,6 +24,24 @@
       "files": ["examples/**/*.js"],
       "rules": {
         "no-console": "off"
+      }
+    },
+    {
+      "files": ["scripts/**/*.js"],
+      "rules": {
+        "no-console": "off",
+        "no-continue": "off"
+      }
+    },
+    {
+      "files": ["**/*.{test,spec}.js", "**/test/**"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
       }
     }
   ],

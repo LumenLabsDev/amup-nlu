@@ -352,7 +352,7 @@ StemmerSv.a_0 = [
   new Among('at', -1, 1),
   new Among('andet', -1, 1),
   new Among('het', -1, 1),
-  new Among('ast', -1, 1)
+  new Among('ast', -1, 1),
 ];
 
 StemmerSv.a_1 = [
@@ -362,7 +362,7 @@ StemmerSv.a_1 = [
   new Among('dt', -1, -1),
   new Among('gt', -1, -1),
   new Among('kt', -1, -1),
-  new Among('tt', -1, -1)
+  new Among('tt', -1, -1),
 ];
 
 StemmerSv.a_2 = [
@@ -370,30 +370,10 @@ StemmerSv.a_2 = [
   new Among('lig', 0, 1),
   new Among('els', -1, 1),
   new Among('fullt', -1, 3),
-  new Among('l\u00F6st', -1, 2)
+  new Among('l\u00F6st', -1, 2),
 ];
 
-StemmerSv.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  24,
-  0,
-  32
-];
+StemmerSv.g_v = [17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 32];
 
 StemmerSv.g_s_ending = [119, 127, 149];
 

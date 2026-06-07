@@ -1026,13 +1026,13 @@ StemmerIt.a_0 = [
   new Among('\u00E9', 0, 2),
   new Among('\u00ED', 0, 3),
   new Among('\u00F3', 0, 4),
-  new Among('\u00FA', 0, 5)
+  new Among('\u00FA', 0, 5),
 ];
 
 StemmerIt.a_1 = [
   new Among('', -1, 3),
   new Among('I', 0, 1),
-  new Among('U', 0, 2)
+  new Among('U', 0, 2),
 ];
 
 StemmerIt.a_2 = [
@@ -1072,7 +1072,7 @@ StemmerIt.a_2 = [
   new Among('glielo', 31, -1),
   new Among('melo', 31, -1),
   new Among('telo', 31, -1),
-  new Among('velo', 31, -1)
+  new Among('velo', 31, -1),
 ];
 
 StemmerIt.a_3 = [
@@ -1080,20 +1080,20 @@ StemmerIt.a_3 = [
   new Among('endo', -1, 1),
   new Among('ar', -1, 2),
   new Among('er', -1, 2),
-  new Among('ir', -1, 2)
+  new Among('ir', -1, 2),
 ];
 
 StemmerIt.a_4 = [
   new Among('ic', -1, -1),
   new Among('abil', -1, -1),
   new Among('os', -1, -1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerIt.a_5 = [
   new Among('ic', -1, 1),
   new Among('abil', -1, 1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerIt.a_6 = [
@@ -1147,7 +1147,7 @@ StemmerIt.a_6 = [
   new Among('it\u00E0', -1, 8),
   new Among('ist\u00E0', -1, 1),
   new Among('ist\u00E8', -1, 1),
-  new Among('ist\u00EC', -1, 1)
+  new Among('ist\u00EC', -1, 1),
 ];
 
 StemmerIt.a_7 = [
@@ -1237,52 +1237,15 @@ StemmerIt.a_7 = [
   new Among('er\u00E0', -1, 1),
   new Among('ir\u00E0', -1, 1),
   new Among('er\u00F2', -1, 1),
-  new Among('ir\u00F2', -1, 1)
+  new Among('ir\u00F2', -1, 1),
 ];
 
 StemmerIt.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  128,
-  128,
-  8,
-  2,
-  1
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 128, 8, 2, 1,
 ];
 
 StemmerIt.g_AEIO = [
-  17,
-  65,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  128,
-  128,
-  8,
-  2
+  17, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 128, 8, 2,
 ];
 
 StemmerIt.g_CG = [17];

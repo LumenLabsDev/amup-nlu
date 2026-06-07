@@ -1301,13 +1301,13 @@ StemmerEn.methodObject = new StemmerEn();
 StemmerEn.a_0 = [
   new Among('arsen', -1, -1),
   new Among('commun', -1, -1),
-  new Among('gener', -1, -1)
+  new Among('gener', -1, -1),
 ];
 
 StemmerEn.a_1 = [
   new Among("'", -1, 1),
   new Among("'s'", 0, 1),
-  new Among("'s", -1, 1)
+  new Among("'s", -1, 1),
 ];
 
 StemmerEn.a_2 = [
@@ -1316,7 +1316,7 @@ StemmerEn.a_2 = [
   new Among('ies', 1, 2),
   new Among('sses', 1, 1),
   new Among('ss', 1, -1),
-  new Among('us', 1, -1)
+  new Among('us', 1, -1),
 ];
 
 StemmerEn.a_3 = [
@@ -1332,7 +1332,7 @@ StemmerEn.a_3 = [
   new Among('rr', 0, 2),
   new Among('at', 0, 1),
   new Among('tt', 0, 2),
-  new Among('iz', 0, 1)
+  new Among('iz', 0, 1),
 ];
 
 StemmerEn.a_4 = [
@@ -1341,7 +1341,7 @@ StemmerEn.a_4 = [
   new Among('ing', -1, 2),
   new Among('edly', -1, 2),
   new Among('eedly', 3, 1),
-  new Among('ingly', -1, 2)
+  new Among('ingly', -1, 2),
 ];
 
 StemmerEn.a_5 = [
@@ -1368,7 +1368,7 @@ StemmerEn.a_5 = [
   new Among('ator', -1, 7),
   new Among('iveness', -1, 11),
   new Among('fulness', -1, 9),
-  new Among('ousness', -1, 10)
+  new Among('ousness', -1, 10),
 ];
 
 StemmerEn.a_6 = [
@@ -1380,7 +1380,7 @@ StemmerEn.a_6 = [
   new Among('tional', -1, 1),
   new Among('ational', 5, 2),
   new Among('ful', -1, 5),
-  new Among('ness', -1, 5)
+  new Among('ness', -1, 5),
 ];
 
 StemmerEn.a_7 = [
@@ -1401,7 +1401,7 @@ StemmerEn.a_7 = [
   new Among('ant', -1, 1),
   new Among('ent', -1, 1),
   new Among('ment', 15, 1),
-  new Among('ement', 16, 1)
+  new Among('ement', 16, 1),
 ];
 
 StemmerEn.a_8 = [new Among('e', -1, 1), new Among('l', -1, 2)];
@@ -1414,7 +1414,7 @@ StemmerEn.a_9 = [
   new Among('inning', -1, -1),
   new Among('earring', -1, -1),
   new Among('herring', -1, -1),
-  new Among('outing', -1, -1)
+  new Among('outing', -1, -1),
 ];
 
 StemmerEn.a_10 = [
@@ -1435,7 +1435,7 @@ StemmerEn.a_10 = [
   new Among('skis', -1, 1),
   new Among('sky', -1, -1),
   new Among('tying', -1, 5),
-  new Among('ugly', -1, 8)
+  new Among('ugly', -1, 8),
 ];
 
 StemmerEn.g_v = [17, 65, 16, 1];

@@ -45,8 +45,14 @@ console.log('tokenize normalized:', tokenizer.tokenize(input, true));
 
 // Stopwords
 console.log('isStopword:', stopwords.isStopword('un'));
-console.log('removeStopwords:', stopwords.removeStopwords(['he', 'visto', 'un', 'programador']));
+console.log(
+  'removeStopwords:',
+  stopwords.removeStopwords(['he', 'visto', 'un', 'programador'])
+);
 
 // Stem
 console.log('stemWord:', stemmer.stemWord('programador'));
-console.log('stem pipeline:', stemmer.tokenizeAndStem('he visto a un programador', false));
+console.log(
+  'stem pipeline:',
+  stemmer.tokenizeAndStem('he visto a un programador', false)
+);

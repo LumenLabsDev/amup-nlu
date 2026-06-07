@@ -37,7 +37,10 @@ describe('NLU Manager', () => {
       expect(manager).toBeDefined();
     });
     test('Languages can be provided', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       expect(manager.locales).toEqual(['en-US', 'es-ES']);
       expect(Object.keys(manager.domainManagers)).toEqual(['en-US', 'es-ES']);
     });
@@ -95,7 +98,10 @@ describe('NLU Manager', () => {
 
   describe('Assign Domain', () => {
     test('Domains can be assigned to intents', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       manager.assignDomain('en-US', 'a', 'domain1');
       manager.assignDomain('en-US', 'b', 'domain1');
       manager.assignDomain('en-US', 'c', 'domain2');
@@ -117,7 +123,10 @@ describe('NLU Manager', () => {
 
   describe('Get Intent Domain', () => {
     test('I can get the domain of an intent in a given language', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       manager.assignDomain('en-US', 'a', 'domain1');
       manager.assignDomain('en-US', 'b', 'domain1');
       manager.assignDomain('en-US', 'c', 'domain2');
@@ -136,7 +145,10 @@ describe('NLU Manager', () => {
       expect(manager.getIntentDomain('es-ES', 'd')).toEqual('domain3');
     });
     test('If the intent has not domain assigned return default', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       manager.assignDomain('en-US', 'a', 'domain1');
       manager.assignDomain('en-US', 'b', 'domain1');
       manager.assignDomain('en-US', 'c', 'domain2');
@@ -148,7 +160,10 @@ describe('NLU Manager', () => {
       expect(manager.getIntentDomain('en-US', 'e')).toEqual('default');
     });
     test('If the locale does not exists return default', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       manager.assignDomain('en-US', 'a', 'domain1');
       manager.assignDomain('en-US', 'b', 'domain1');
       manager.assignDomain('en-US', 'c', 'domain2');
@@ -163,7 +178,10 @@ describe('NLU Manager', () => {
 
   describe('Get Domains', () => {
     test('It should return a tree of languages, domains an intents', () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       manager.assignDomain('en-US', 'a', 'domain1');
       manager.assignDomain('en-US', 'b', 'domain1');
       manager.assignDomain('en-US', 'c', 'domain2');
@@ -276,7 +294,10 @@ describe('NLU Manager', () => {
 
   describe('Train', () => {
     test('Can train several domains', async () => {
-      const manager = new NluManager({ container, locales: ['en-US', 'es-ES'] });
+      const manager = new NluManager({
+        container,
+        locales: ['en-US', 'es-ES'],
+      });
       addFoodDomainEn(manager);
       addPersonalityDomainEn(manager);
       addFoodDomainEs(manager);
@@ -348,7 +369,8 @@ describe('NLU Manager', () => {
       addFoodDomainEs(manager);
       addPersonalityDomainEs(manager);
       await manager.train();
-      const actual = await manager.process('es-ES',
+      const actual = await manager.process(
+        'es-ES',
         'dime quién eres tú',
         undefined,
         {

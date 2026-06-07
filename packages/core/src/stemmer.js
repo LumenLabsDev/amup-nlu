@@ -21,7 +21,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 const { defaultContainer } = require('./container');
-const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
+const {
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('./locale');
 
 class Stemmer {
   constructor(container = defaultContainer) {
@@ -37,7 +41,9 @@ class Stemmer {
     const input = srcInput;
     const rawLocale =
       input.locale ||
-      (input.settings ? input.settings.locale || DEFAULT_LOCALE : DEFAULT_LOCALE);
+      (input.settings
+        ? input.settings.locale || DEFAULT_LOCALE
+        : DEFAULT_LOCALE);
     const locale = assertLocale(rawLocale);
     const key = resolveContainerKey(locale);
     let stemmer = this.container.get(`stemmer-${key}`);

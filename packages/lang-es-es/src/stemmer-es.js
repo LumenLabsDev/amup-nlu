@@ -74,7 +74,10 @@ class StemmerEs extends BaseStemmer {
   buildAmongTree(amongs) {
     const result = {};
     for (let i = 0; i < amongs.length; i += 1) {
-      const among = typeof amongs[i] === 'string' ? { s: amongs[i], result: -1} : amongs[i];
+      const among =
+        typeof amongs[i] === 'string'
+          ? { s: amongs[i], result: -1 }
+          : amongs[i];
       const reversed = among.s.split('').reverse();
       let node = result;
       for (let j = 0; j < reversed.length; j += 1) {
@@ -397,8 +400,8 @@ class StemmerEs extends BaseStemmer {
   }
 
   r_R2b() {
-    if (this.cursor < (this.current.length / 2)) {
-    //if (!(this.I_p2 <= this.cursor)) {
+    if (this.cursor < this.current.length / 2) {
+      //if (!(this.I_p2 <= this.cursor)) {
       return false;
     }
     return true;
@@ -1104,7 +1107,7 @@ class StemmerEs extends BaseStemmer {
         if (a.endsWith('s') || a.endsWith('i')) {
           this.setCurrent(a.slice(0, -1));
         }
-      } else if (a.endsWith('zc') || (a.endsWith('qu'))) {
+      } else if (a.endsWith('zc') || a.endsWith('qu')) {
         this.setCurrent(`${a.slice(0, -2)}c`);
       } else if (a.endsWith('z')) {
         this.setCurrent(`${a.slice(0, -1)}c`);
@@ -1115,7 +1118,7 @@ class StemmerEs extends BaseStemmer {
     if (a.length <= 4) {
       if (a.endsWith('z')) {
         this.setCurrent(`${a.slice(0, -1)}c`);
-      }      
+      }
     }
   }
 }
@@ -1126,7 +1129,7 @@ StemmerEs.a_0 = [
   new Among('e', 0, 2),
   new Among('i', 0, 3),
   new Among('o', 0, 4),
-  new Among('u', 0, 5)
+  new Among('u', 0, 5),
 ];
 
 StemmerEs.a_1 = [
@@ -1142,7 +1145,7 @@ StemmerEs.a_1 = [
   new Among('les', -1, -1),
   new Among('los', -1, -1),
   new Among('selos', 10, -1),
-  new Among('nos', -1, -1)
+  new Among('nos', -1, -1),
 ];
 
 StemmerEs.a_2 = [
@@ -1151,26 +1154,26 @@ StemmerEs.a_2 = [
   new Among('yendo', -1, 7),
   new Among('ar', -1, 6),
   new Among('er', -1, 6),
-  new Among('ir', -1, 6)
+  new Among('ir', -1, 6),
 ];
 
 StemmerEs.a_3 = [
   new Among('ic', -1, -1),
   new Among('ad', -1, -1),
   new Among('os', -1, -1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerEs.a_4 = [
   new Among('able', -1, 1),
   new Among('ible', -1, 1),
-  new Among('ante', -1, 1)
+  new Among('ante', -1, 1),
 ];
 
 StemmerEs.a_5 = [
   new Among('ic', -1, 1),
   new Among('abil', -1, 1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerEs.a_6 = [
@@ -1219,7 +1222,7 @@ StemmerEs.a_6 = [
   new Among('osos', -1, 1),
   new Among('amientos', -1, 1),
   new Among('imientos', -1, 1),
-  new Among('ivos', -1, 9)
+  new Among('ivos', -1, 9),
 ];
 
 StemmerEs.a_7 = [
@@ -1233,7 +1236,7 @@ StemmerEs.a_7 = [
   new Among('yas', -1, 1),
   new Among('yes', -1, 1),
   new Among('yais', -1, 1),
-  new Among('yamos', -1, 1)
+  new Among('yamos', -1, 1),
 ];
 
 StemmerEs.a_8 = [
@@ -1282,12 +1285,12 @@ StemmerEs.a_8 = [
   new Among('idas', 'as', 2),
   new Among('aras', 'as', 2),
   new Among('ieras', 'as', 2),
-// conditional
+  // conditional
   new Among('ias', 'as', 2),
   new Among('arias', 'ias', 2),
   new Among('erias', 'ias', 2),
   new Among('irias', 'ias', 2),
-// subjunctive
+  // subjunctive
   new Among('es', -1, 1),
   new Among('ases', 'es', 2),
   new Among('ieses', 'es', 2),
@@ -1339,13 +1342,13 @@ StemmerEs.a_8 = [
   new Among('ea', -1, 2),
   new Among('ee', -1, 2),
   new Among('eo', -1, 2),
-// future
+  // future
   new Among('era', -1, 2),
   new Among('ira', -1, 2),
   new Among('are', -1, 2),
   new Among('ere', -1, 2),
   new Among('ire', -1, 2),
-// perfect past
+  // perfect past
   new Among('io', -1, 2),
   new Among('imos', -1, 2),
   new Among('s', -1, 2),
@@ -1358,30 +1361,11 @@ StemmerEs.a_9 = [
   new Among('e', -1, 2),
   new Among('o', -1, 1),
   new Among('os', -1, 1),
-  new Among('i', -1, 1)
+  new Among('i', -1, 1),
 ];
 
 StemmerEs.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  1,
-  17,
-  4,
-  10
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17, 4, 10,
 ];
 
 module.exports = StemmerEs;

@@ -493,7 +493,7 @@ describe('JavascriptCompiler', () => {
       const context = { a: 12, b: 2 };
       const evaluator = new JavascriptCompiler(container);
       // eslint-disable-next-line
-      const question = "`${a}-${b}`";
+      const question = '`${a}-${b}`';
       const result = await evaluator.evaluate(question, context);
       expect(result).toEqual('12-2');
     });
@@ -508,7 +508,7 @@ describe('JavascriptCompiler', () => {
       };
       const evaluator = new JavascriptCompiler(container);
       // eslint-disable-next-line
-      const question = "tag`Hello ${a}hi${b}`";
+      const question = 'tag`Hello ${a}hi${b}`';
       const result = await evaluator.evaluate(question, context);
       expect(result).toEqual('Hello -hi--12-2');
     });

@@ -573,7 +573,9 @@ class Ner extends Clonable {
       entityKeys.forEach((eKey) => {
         migratedRules[localeKey][eKey].rules =
           migratedRules[localeKey][eKey].type === 'regex'
-            ? migratedRules[localeKey][eKey].rules.map((rule) => Ner.str2regex(rule))
+            ? migratedRules[localeKey][eKey].rules.map((rule) =>
+                Ner.str2regex(rule)
+              )
             : migratedRules[localeKey][eKey].rules.map((rule) =>
                 typeof rule.regex === 'string'
                   ? {

@@ -91,7 +91,10 @@ describe('Compromise Integration', () => {
     });
 
     test('Compromise  English Phone Number', async () => {
-      const actual = await extract('en-US', 'The phone number is (650) 123-4567');
+      const actual = await extract(
+        'en-US',
+        'The phone number is (650) 123-4567'
+      );
       // console.log(actual)
       const expected = [
         {

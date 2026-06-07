@@ -737,7 +737,7 @@ StemmerDe.a_0 = [
   new Among('Y', 0, 1),
   new Among('\u00E4', 0, 3),
   new Among('\u00F6', 0, 4),
-  new Among('\u00FC', 0, 5)
+  new Among('\u00FC', 0, 5),
 ];
 
 StemmerDe.a_1 = [
@@ -747,14 +747,14 @@ StemmerDe.a_1 = [
   new Among('ern', -1, 1),
   new Among('er', -1, 1),
   new Among('s', -1, 3),
-  new Among('es', 5, 2)
+  new Among('es', 5, 2),
 ];
 
 StemmerDe.a_2 = [
   new Among('en', -1, 1),
   new Among('er', -1, 1),
   new Among('st', -1, 2),
-  new Among('est', 2, 1)
+  new Among('est', 2, 1),
 ];
 
 StemmerDe.a_3 = [new Among('ig', -1, 1), new Among('lich', -1, 1)];
@@ -767,30 +767,11 @@ StemmerDe.a_4 = [
   new Among('isch', -1, 2),
   new Among('ik', -1, 2),
   new Among('heit', -1, 3),
-  new Among('keit', -1, 4)
+  new Among('keit', -1, 4),
 ];
 
 StemmerDe.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  8,
-  0,
-  32,
-  8
+  17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 32, 8,
 ];
 StemmerDe.g_s_ending = [117, 30, 5];
 StemmerDe.g_st_ending = [117, 30, 4];

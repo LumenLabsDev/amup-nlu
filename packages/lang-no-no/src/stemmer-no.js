@@ -365,7 +365,7 @@ StemmerNo.a_0 = [
   new Among('et', -1, 1),
   new Among('het', 25, 1),
   new Among('ert', -1, 3),
-  new Among('ast', -1, 1)
+  new Among('ast', -1, 1),
 ];
 
 StemmerNo.a_1 = [new Among('dt', -1, -1), new Among('vt', -1, -1)];
@@ -381,30 +381,10 @@ StemmerNo.a_2 = [
   new Among('lov', -1, 1),
   new Among('elov', 7, 1),
   new Among('slov', 7, 1),
-  new Among('hetslov', 9, 1)
+  new Among('hetslov', 9, 1),
 ];
 
-StemmerNo.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  48,
-  0,
-  128
-];
+StemmerNo.g_v = [17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 128];
 
 StemmerNo.g_s_ending = [119, 125, 149, 1];
 

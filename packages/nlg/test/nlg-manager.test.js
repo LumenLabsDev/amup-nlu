@@ -166,13 +166,19 @@ describe('NLG Manager', () => {
       manager.add('en-US', 'greet', 'Hello');
       manager.add('en-US', 'greet', 'Greetings');
       manager.add('en-US', 'greet', 'Hi');
-      const result = manager.findAllAnswers({ locale: 'en-US', intent: 'greet' });
+      const result = manager.findAllAnswers({
+        locale: 'en-US',
+        intent: 'greet',
+      });
       expect(result.answers).toHaveLength(3);
     });
     test('It should return an empty array if location does not have answers', () => {
       const manager = new NlgManager({ container });
       manager.add('en-US', 'greet', 'Hello');
-      const result = manager.findAllAnswers({ locale: 'es-ES', intent: 'greet' });
+      const result = manager.findAllAnswers({
+        locale: 'es-ES',
+        intent: 'greet',
+      });
       expect(result.answers).toHaveLength(0);
     });
     test('It should return an empty array if intent does not exists', () => {
@@ -201,7 +207,10 @@ describe('NLG Manager', () => {
       manager.add('en-US', 'intent', 'a1', { condition: { a: 1 } });
       manager.add('en-US', 'intent', 'a2', { condition: { a: 2 } });
       manager.add('en-US', 'intent', 'a3', { condition: { a: 3 } });
-      const input = manager.findAllAnswers({ locale: 'en-US', intent: 'intent' });
+      const input = manager.findAllAnswers({
+        locale: 'en-US',
+        intent: 'intent',
+      });
       manager.filterAnswers(input);
       expect(input.answers).toHaveLength(3);
     });

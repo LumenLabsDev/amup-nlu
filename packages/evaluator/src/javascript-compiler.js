@@ -174,7 +174,7 @@ class JavascriptCompiler {
   async walkThis(node, context) {
     if ({}.hasOwnProperty.call(context, 'this')) {
       // eslint-disable-next-line
-      return context["this"];
+      return context['this'];
     }
     return undefined;
   }

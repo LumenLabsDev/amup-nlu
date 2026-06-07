@@ -51,7 +51,9 @@ describe('locale', () => {
     });
 
     test('Should allow legacy codes when allowLegacy is set', () => {
-      expect(parseLocale('en', { allowLegacy: true }).canonical).toEqual('en-US');
+      expect(parseLocale('en', { allowLegacy: true }).canonical).toEqual(
+        'en-US'
+      );
     });
   });
 
@@ -99,15 +101,13 @@ describe('locale', () => {
 
   describe('resolveLocaleFromGuess', () => {
     test('Should map alpha2 guess to configured locale', () => {
-      expect(
-        resolveLocaleFromGuess('en', ['en-US', 'es-ES'])
-      ).toEqual('en-US');
+      expect(resolveLocaleFromGuess('en', ['en-US', 'es-ES'])).toEqual('en-US');
     });
 
     test('Should throw when guess is ambiguous', () => {
-      expect(() =>
-        resolveLocaleFromGuess('en', ['en-US', 'en-GB'])
-      ).toThrow(LocaleError);
+      expect(() => resolveLocaleFromGuess('en', ['en-US', 'en-GB'])).toThrow(
+        LocaleError
+      );
     });
   });
 });

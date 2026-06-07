@@ -16,6 +16,9 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "dependencies": {
+    "@lumen-labs-dev/core": "^4.27.0"
+  },
   "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd",
   "publisher": "Lumen Labs Dev",
   "homepage": "https://github.com/LumenLabsDev/amup-nlu#readme"

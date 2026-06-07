@@ -1461,14 +1461,14 @@ StemmerFr.methodObject = new StemmerFr();
 StemmerFr.a_0 = [
   new Among('col', -1, -1),
   new Among('par', -1, -1),
-  new Among('tap', -1, -1)
+  new Among('tap', -1, -1),
 ];
 
 StemmerFr.a_1 = [
   new Among('', -1, 4),
   new Among('I', 0, 1),
   new Among('U', 0, 2),
-  new Among('Y', 0, 3)
+  new Among('Y', 0, 3),
 ];
 
 StemmerFr.a_2 = [
@@ -1477,13 +1477,13 @@ StemmerFr.a_2 = [
   new Among('I\u00E8r', -1, 4),
   new Among('i\u00E8r', -1, 4),
   new Among('eus', -1, 2),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerFr.a_3 = [
   new Among('ic', -1, 2),
   new Among('abil', -1, 1),
-  new Among('iv', -1, 3)
+  new Among('iv', -1, 3),
 ];
 
 StemmerFr.a_4 = [
@@ -1529,7 +1529,7 @@ StemmerFr.a_4 = [
   new Among('aux', -1, 10),
   new Among('eaux', 39, 9),
   new Among('eux', -1, 1),
-  new Among('it\u00E9', -1, 7)
+  new Among('it\u00E9', -1, 7),
 ];
 
 StemmerFr.a_5 = [
@@ -1567,7 +1567,7 @@ StemmerFr.a_5 = [
   new Among('iriez', -1, 1),
   new Among('issiez', -1, 1),
   new Among('irez', -1, 1),
-  new Among('issez', -1, 1)
+  new Among('issez', -1, 1),
 ];
 
 StemmerFr.a_6 = [
@@ -1608,7 +1608,7 @@ StemmerFr.a_6 = [
   new Among('eriez', 33, 2),
   new Among('assiez', 33, 3),
   new Among('erez', 32, 2),
-  new Among('\u00E9', -1, 2)
+  new Among('\u00E9', -1, 2),
 ];
 
 StemmerFr.a_7 = [
@@ -1618,7 +1618,7 @@ StemmerFr.a_7 = [
   new Among('ion', -1, 1),
   new Among('Ier', -1, 2),
   new Among('ier', -1, 2),
-  new Among('\u00EB', -1, 4)
+  new Among('\u00EB', -1, 4),
 ];
 
 StemmerFr.a_8 = [
@@ -1626,50 +1626,15 @@ StemmerFr.a_8 = [
   new Among('eill', -1, -1),
   new Among('enn', -1, -1),
   new Among('onn', -1, -1),
-  new Among('ett', -1, -1)
+  new Among('ett', -1, -1),
 ];
 
 StemmerFr.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  128,
-  130,
-  103,
-  8,
-  5
+  17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 130, 103, 8, 5,
 ];
 
 StemmerFr.g_keep_with_s = [
-  1,
-  65,
-  20,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  128
+  1, 65, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128,
 ];
 
 module.exports = StemmerFr;

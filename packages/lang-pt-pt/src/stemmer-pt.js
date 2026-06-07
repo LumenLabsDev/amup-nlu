@@ -954,32 +954,32 @@ StemmerPt.methodObject = new StemmerPt();
 StemmerPt.a_0 = [
   new Among('', -1, 3),
   new Among('\u00E3', 0, 1),
-  new Among('\u00F5', 0, 2)
+  new Among('\u00F5', 0, 2),
 ];
 
 StemmerPt.a_1 = [
   new Among('', -1, 3),
   new Among('a~', 0, 1),
-  new Among('o~', 0, 2)
+  new Among('o~', 0, 2),
 ];
 
 StemmerPt.a_2 = [
   new Among('ic', -1, -1),
   new Among('ad', -1, -1),
   new Among('os', -1, -1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerPt.a_3 = [
   new Among('ante', -1, 1),
   new Among('avel', -1, 1),
-  new Among('\u00EDvel', -1, 1)
+  new Among('\u00EDvel', -1, 1),
 ];
 
 StemmerPt.a_4 = [
   new Among('ic', -1, 1),
   new Among('abil', -1, 1),
-  new Among('iv', -1, 1)
+  new Among('iv', -1, 1),
 ];
 
 StemmerPt.a_5 = [
@@ -1027,7 +1027,7 @@ StemmerPt.a_5 = [
   new Among('osos', -1, 1),
   new Among('amentos', -1, 1),
   new Among('imentos', -1, 1),
-  new Among('ivos', -1, 8)
+  new Among('ivos', -1, 8),
 ];
 
 StemmerPt.a_6 = [
@@ -1150,7 +1150,7 @@ StemmerPt.a_6 = [
   new Among('ou', -1, 1),
   new Among('ar\u00E1', -1, 1),
   new Among('er\u00E1', -1, 1),
-  new Among('ir\u00E1', -1, 1)
+  new Among('ir\u00E1', -1, 1),
 ];
 
 StemmerPt.a_7 = [
@@ -1160,37 +1160,18 @@ StemmerPt.a_7 = [
   new Among('os', -1, 1),
   new Among('\u00E1', -1, 1),
   new Among('\u00ED', -1, 1),
-  new Among('\u00F3', -1, 1)
+  new Among('\u00F3', -1, 1),
 ];
 
 StemmerPt.a_8 = [
   new Among('e', -1, 1),
   new Among('\u00E7', -1, 2),
   new Among('\u00E9', -1, 1),
-  new Among('\u00EA', -1, 1)
+  new Among('\u00EA', -1, 1),
 ];
 
 StemmerPt.g_v = [
-  17,
-  65,
-  16,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  3,
-  19,
-  12,
-  2
+  17, 65, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 19, 12, 2,
 ];
 
 module.exports = StemmerPt;

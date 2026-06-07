@@ -430,14 +430,14 @@ StemmerDa.a_0 = [
   new Among('ets', 16, 1),
   new Among('erets', 28, 1),
   new Among('et', -1, 1),
-  new Among('eret', 30, 1)
+  new Among('eret', 30, 1),
 ];
 
 StemmerDa.a_1 = [
   new Among('gd', -1, -1),
   new Among('dt', -1, -1),
   new Among('gt', -1, -1),
-  new Among('kt', -1, -1)
+  new Among('kt', -1, -1),
 ];
 
 StemmerDa.a_2 = [
@@ -445,49 +445,13 @@ StemmerDa.a_2 = [
   new Among('lig', 0, 1),
   new Among('elig', 1, 1),
   new Among('els', -1, 1),
-  new Among('l\u00F8st', -1, 2)
+  new Among('l\u00F8st', -1, 2),
 ];
 
-StemmerDa.g_v = [
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  48,
-  0,
-  128
-];
+StemmerDa.g_v = [17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 128];
 
 StemmerDa.g_s_ending = [
-  239,
-  254,
-  42,
-  3,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  16
+  239, 254, 42, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16,
 ];
 
 module.exports = StemmerDa;

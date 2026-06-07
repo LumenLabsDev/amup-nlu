@@ -841,19 +841,19 @@ StemmerNl.a_0 = [
   new Among('\u00F3', 0, 4),
   new Among('\u00F6', 0, 4),
   new Among('\u00FA', 0, 5),
-  new Among('\u00FC', 0, 5)
+  new Among('\u00FC', 0, 5),
 ];
 
 StemmerNl.a_1 = [
   new Among('', -1, 3),
   new Among('I', 0, 2),
-  new Among('Y', 0, 1)
+  new Among('Y', 0, 1),
 ];
 
 StemmerNl.a_2 = [
   new Among('dd', -1, -1),
   new Among('kk', -1, -1),
-  new Among('tt', -1, -1)
+  new Among('tt', -1, -1),
 ];
 
 StemmerNl.a_3 = [
@@ -861,7 +861,7 @@ StemmerNl.a_3 = [
   new Among('se', -1, 3),
   new Among('en', -1, 2),
   new Among('heden', 2, 1),
-  new Among('s', -1, 3)
+  new Among('s', -1, 3),
 ];
 
 StemmerNl.a_4 = [
@@ -870,39 +870,20 @@ StemmerNl.a_4 = [
   new Among('ing', -1, 1),
   new Among('lijk', -1, 3),
   new Among('baar', -1, 4),
-  new Among('bar', -1, 5)
+  new Among('bar', -1, 5),
 ];
 
 StemmerNl.a_5 = [
   new Among('aa', -1, -1),
   new Among('ee', -1, -1),
   new Among('oo', -1, -1),
-  new Among('uu', -1, -1)
+  new Among('uu', -1, -1),
 ];
 
 StemmerNl.g_v = [17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128];
 
 StemmerNl.g_v_I = [
-  1,
-  0,
-  0,
-  17,
-  65,
-  16,
-  1,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  128
+  1, 0, 0, 17, 65, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128,
 ];
 
 StemmerNl.g_v_j = [17, 67, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128];

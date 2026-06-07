@@ -25,8 +25,13 @@ function replacer(translationTable) {
   const pattern = [];
   const keys = Object.keys(translationTable);
   keys.forEach((key) => {
-    // eslint-disable-next-line
-    pattern.push(`${key}`.replace(/([-()\[\]{}+?*.$\^|,:#<!\\\/])/g, '\\$1').replace(/\x08/g, '\\x08'));
+    /* eslint-disable no-useless-escape, no-control-regex */
+    pattern.push(
+      `${key}`
+        .replace(/([-()\[\]{}+?*.$\^|,:#<!\\\/])/g, '\\$1')
+        .replace(/\x08/g, '\\x08')
+    );
+    /* eslint-enable no-useless-escape, no-control-regex */
   });
   const regExp = new RegExp(pattern.join('|'), 'g');
   return (str) => str.replace(regExp, (s) => translationTable[s]);
