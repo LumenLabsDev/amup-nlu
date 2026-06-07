@@ -19,7 +19,7 @@ English without sentiment dictionaries (smaller install): `@lumen-labs-dev/lang-
 ## Supported languages
 
 Native Support means that the tokenizer and stemmer are included in javascript in NLP.js.
-BERT Support means that the tokenizer and stemmer are supported through a BERT API made in python. You can see how to create this API here: https://github.com/axa-group/nlp.js/tree/master/examples/80-bert-server
+BERT Support means that the tokenizer and stemmer are supported through a BERT API made in python. See the upstream NLP.js BERT server example: https://github.com/axa-group/nlp.js/tree/master/examples/80-bert-server
 
 Microsoft Builtins mean that the Builtin Entity extraction is supported directly in javascript, while the ones supported by Duckling requires the deployment of a Duckling instance.
 

@@ -30,7 +30,7 @@
 npm install @lumen-labs-dev/lang-es-es
 ```
 
-Runnable demos: [examples/13-languages/spanish](../../examples/13-languages/spanish/).
+Runnable demos: [examples/13-languages/english](../../examples/13-languages/english/). English demos illustrate the same language-feature API; register your locale package in the container to run equivalent flows for this language.
 
 ## Language features
 
@@ -55,11 +55,11 @@ console.log(stemmer.tokenizeAndStem('he visto a un programador', false));
 // ['hab', 'vist', 'program']
 ```
 
-See [language-features.js](../../examples/13-languages/spanish/language-features.js).
+See [language-features.js](../../examples/13-languages/english/language-features.js).
 
 ## Sentiment analysis
 
-See [11-sentiment-analysis.js](../../examples/13-languages/spanish/11-sentiment-analysis.js).
+See [11-sentiment-analysis.js](../../examples/13-languages/english/11-sentiment-analysis.js).
 
 ```javascript
 const { Container } = require('@lumen-labs-dev/core');

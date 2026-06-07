@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { containerBootstrap } = require('../../packages/core/src');
-const { Nlp } = require('../../packages/nlp/src');
+const { containerBootstrap } = require('../../../packages/core/src');
+const { Nlp } = require('../../../packages/nlp/src');
 // const { containerBootstrap } = require('@lumen-labs-dev/core');
 // const { Nlp } = require('@lumen-labs-dev/nlp');
 

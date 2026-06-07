@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const measureCorpus = require('../measure-corpus');
+const measureCorpus = require('./measure-corpus');
 const { LangEn } = require('../../../packages/lang-en-us/src');
 // const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 const corpus = require('../corpora/corpus-en.json');

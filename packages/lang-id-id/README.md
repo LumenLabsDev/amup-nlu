@@ -30,7 +30,7 @@
 npm install @lumen-labs-dev/lang-id-id
 ```
 
-Runnable demos: [examples/13-languages/indonesian](../../examples/13-languages/indonesian/).
+Runnable demos: [examples/13-languages/english](../../examples/13-languages/english/). English demos illustrate the same language-feature API; register your locale package in the container to run equivalent flows for this language.
 
 ## Language features
 
@@ -55,11 +55,11 @@ console.log(stemmer.tokenizeAndStem('apa yang dikembangkan perusahaan Anda', fal
 // ['kembang', 'usaha']
 ```
 
-See [language-features.js](../../examples/13-languages/indonesian/language-features.js).
+See [language-features.js](../../examples/13-languages/english/language-features.js).
 
 ## Sentiment analysis
 
-See [11-sentiment-analysis.js](../../examples/13-languages/indonesian/11-sentiment-analysis.js).
+See [11-sentiment-analysis.js](../../examples/13-languages/english/11-sentiment-analysis.js).
 
 ```javascript
 const { Container } = require('@lumen-labs-dev/core');

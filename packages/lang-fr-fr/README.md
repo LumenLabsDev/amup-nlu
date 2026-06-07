@@ -32,7 +32,7 @@ You can install @lumen-labs-dev/lang-fr-fr:
 
 ## Example of Usage
 
-Runnable demos: [examples/13-languages/french](../../examples/13-languages/french/).
+Runnable demos: [examples/13-languages/english](../../examples/13-languages/english/). English demos illustrate the same language-feature API; register your locale package in the container to run equivalent flows for this language.
 
 ```javascript
 const { containerBootstrap } = require('@lumen-labs-dev/core');

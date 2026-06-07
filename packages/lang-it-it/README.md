@@ -30,7 +30,7 @@
 npm install @lumen-labs-dev/lang-it-it
 ```
 
-Runnable demos: [examples/13-languages/italian](../../examples/13-languages/italian/).
+Runnable demos: [examples/13-languages/english](../../examples/13-languages/english/). English demos illustrate the same language-feature API; register your locale package in the container to run equivalent flows for this language.
 
 ## Language features
 
@@ -55,11 +55,11 @@ console.log(stemmer.tokenizeAndStem('Ho visto uno sviluppatore', false));
 // ['vist', 'svilupp']
 ```
 
-See [language-features.js](../../examples/13-languages/italian/language-features.js).
+See [language-features.js](../../examples/13-languages/english/language-features.js).
 
 ## Sentiment analysis
 
-See [11-sentiment-analysis.js](../../examples/13-languages/italian/11-sentiment-analysis.js).
+See [11-sentiment-analysis.js](../../examples/13-languages/english/11-sentiment-analysis.js).
 
 ```javascript
 const { Container } = require('@lumen-labs-dev/core');
