@@ -31,7 +31,7 @@
   "dependencies": {
     "exceljs": "^4.1.1",
     "https-proxy-agent": "^5.0.0",
-    "tar": "^6.0.2",
+    "tar": "^7.5.16",
     "@lumen-labs-dev/xtables": "^4.27.0"
   }
 }
