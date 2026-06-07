@@ -319,7 +319,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 // }
 ```
 
-Alternatively to providing the configuration in a corpus JSON you can define all this on code level as on v3 too like this:
+Alternatively to providing the configuration in a corpus JSON you can define all this in code like this:
 
 ```javascript
   manager.addNerBetweenLastCondition('en', 'fromCity', 'from', 'to');

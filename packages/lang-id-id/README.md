@@ -14,16 +14,9 @@
 <!--ts-->
 
 - [Installation](#installation)
-- [Normalization](#normalization)
-- [Tokenization](#tokenization)
-- [Identify if a word is an indonesian stopword](#identify-if-a-word-is-an-indonesian-stopword)
-- [Remove stopwords from an array of words](#remove-stopwords-from-an-array-of-words)
-- [Change the stopwords dictionary](#change-the-stopwords-dictionary)
-- [Stemming word by word](#stemming-word-by-word)
-- [Stemming an array of words](#stemming-an-array-of-words)
-- [Normalizing, Tokenizing and Stemming a sentence](#normalizing-tokenizing-and-stemming-a-sentence)
-- [Remove stopwords when stemming a sentence](#remove-stopwords-when-stemming-a-sentence)
-- [Sentiment Analysis](#sentiment-analysis)
+- [Language features](#language-features)
+- [Sentiment analysis](#sentiment-analysis)
+- [Classifier usage](#classifier-usage)
 - [Contributing](#contributing)
 - [Contributors](#contributors)
 - [Code of Conduct](#code-of-conduct)
@@ -33,204 +26,72 @@
 
 ## Installation
 
-You can install @lumen-labs-dev/lang-id-id:
-
 ```bash
-    npm install @lumen-labs-dev/lang-id-id
+npm install @lumen-labs-dev/lang-id-id
 ```
 
-## Normalization
+Runnable demos: [examples/13-languages/indonesian](../../examples/13-languages/indonesian/).
 
-Normalization of a text converts it to lowercase and remove decorations of characters.
+## Language features
 
 ```javascript
-const { NormalizerId } = require('@lumen-labs-dev/lang-id-id');
+const {
+  NormalizerId,
+  TokenizerId,
+  StopwordsId,
+  StemmerId,
+} = require('@lumen-labs-dev/lang-id-id');
 
 const normalizer = new NormalizerId();
-const input = 'apa yang dikembangkan perúsahaan Anda';
-const result = normalizer.normalize(input);
-console.log(result);
-// output: apa yang dikembangkan perusahaan anda
-```
-
-## Tokenization
-
-Tokenization splits a sentence into words.
-
-```javascript
-const { TokenizerId } = require('@lumen-labs-dev/lang-id-id');
-
 const tokenizer = new TokenizerId();
-const input = 'apa yang dikembangkan perusahaan Anda';
-const result = tokenizer.tokenize(input);
-console.log(result);
-// output: [ 'apa', 'yang', 'dikembangkan', 'perusahaan', 'Anda' ]
-```
-
-Tokenizer can also normalize the sentence before tokenizing, to do that provide a _true_ as second argument to the method _tokenize_
-
-```javascript
-const { TokenizerId } = require('@lumen-labs-dev/lang-id-id');
-
-const tokenizer = new TokenizerId();
-const input = 'apa yang dikembangkan perusahaan Anda';
-const result = tokenizer.tokenize(input, true);
-console.log(result);
-// output: [ 'apa', 'yang', 'dikembangkan', 'perusahaan', 'anda' ]
-```
-
-## Identify if a word is an indonesian stopword
-
-Using the class _StopwordsId_ you can identify if a word is an stopword:
-
-```javascript
-const { StopwordsId } = require('@lumen-labs-dev/lang-id-id');
-
 const stopwords = new StopwordsId();
-console.log(stopwords.isStopword('apa'));
-// output: true
-console.log(stopwords.isStopword('perusahaan'));
-// output: false
-```
-
-## Remove stopwords from an array of words
-
-Using the class _StopwordsId_ you can remove stopwords form an array of words:
-
-```javascript
-const { StopwordsId } = require('@lumen-labs-dev/lang-id-id');
-
-const stopwords = new StopwordsId();
-console.log(
-  stopwords.removeStopwords([
-    'apa',
-    'yang',
-    'dikembangkan',
-    'perusahaan',
-    'anda',
-  ])
-);
-// output: [ 'dikembangkan', 'perusahaan' ]
-```
-
-## Change the stopwords dictionary
-Using the class _StopwordsId_ you can restart it dictionary and build it from another set of words:
-
-```javascript
-const { StopwordsId } = require('@lumen-labs-dev/lang-id-id');
-
-const stopwords = new StopwordsId();
-stopwords.dictionary = {};
-stopwords.build(['apa', 'anda']);
-console.log(
-  stopwords.removeStopwords([
-    'apa',
-    'yang',
-    'dikembangkan',
-    'perusahaan',
-    'anda',
-  ])
-);
-// output: [ 'yang', 'dikembangkan', 'perusahaan' ]
-```
-
-## Stemming word by word
-
-An stemmer is an algorithm to calculate the _stem_ (root) of a word, removing affixes. 
-
-You can stem one word using method _stemWord_:
-
-```javascript
-const { StemmerId } = require('@lumen-labs-dev/lang-id-id');
-
 const stemmer = new StemmerId();
-const input = 'dikembangkan';
-console.log(stemmer.stemWord(input));
-// output: kembang
+stemmer.stopwords = stopwords;
+
+console.log(normalizer.normalize('apa yang dikembangkan perúsahaan Anda'));
+console.log(tokenizer.tokenize('apa yang dikembangkan perusahaan Anda', true));
+console.log(stopwords.isStopword('yang'));
+console.log(stemmer.tokenizeAndStem('apa yang dikembangkan perusahaan Anda', false));
+// ['kembang', 'usaha']
 ```
 
-## Stemming an array of words
+See [language-features.js](../../examples/13-languages/indonesian/language-features.js).
 
-You can stem an array of words using method _stem_:
+## Sentiment analysis
 
-```javascript
-const { StemmerId } = require('@lumen-labs-dev/lang-id-id');
-
-const stemmer = new StemmerId();
-const input = ['apa', 'yang', 'dikembangkan', 'perusahaan', 'Anda'];
-console.log(stemmer.stem(input));
-// outuput: [ 'apa', 'yang', 'kembang', 'usaha', 'Anda' ]
-```
-
-## Normalizing, Tokenizing and Stemming a sentence
-
-As you can see, stemmer does not do internal normalization, so words with uppercases will remain uppercased. 
-Also, stemmer works with lowercased affixes, so _perusahaan_ will be stemmed as _usaha_ but _PERUSAHAAN_ will not be changed.
-
-You can tokenize and stem a sentence, including normalization, with the method _tokenizeAndStem_:
-
-```javascript
-const { StemmerId } = require('@lumen-labs-dev/lang-id-id');
-
-const stemmer = new StemmerId();
-const input = 'apa yang dikembangkan PERUSAHAAN Anda';
-console.log(stemmer.tokenizeAndStem(input));
-// output: [ 'apa', 'yang', 'kembang', 'usaha', 'anda' ]
-```
-
-## Remove stopwords when stemming a sentence
-
-When calling _tokenizeAndStem_ method from the class _StemmerId_, the second parameter is a boolean to set if the stemmer must keep the stopwords (true) or remove them (false). Before using it, the stopwords instance must be set into the stemmer:
-
-```javascript
-const { StemmerId, StopwordsId } = require('@lumen-labs-dev/lang-id-id');
-
-const stemmer = new StemmerId();
-stemmer.stopwords = new StopwordsId();
-const input = 'apa yang dikembangkan perusahaan Anda';
-console.log(stemmer.tokenizeAndStem(input, false));
-// output: [ 'kembang', 'usaha' ]
-```
-
-## Sentiment Analysis
-
-To use sentiment analysis you'll need to create a new _Container_ and use the plugin _LangId_, because internally the _SentimentAnalyzer_ class try to retrieve the normalizer, tokenizer, stemmmer and sentiment dictionaries from the container.
+See [11-sentiment-analysis.js](../../examples/13-languages/indonesian/11-sentiment-analysis.js).
 
 ```javascript
 const { Container } = require('@lumen-labs-dev/core');
 const { SentimentAnalyzer } = require('@lumen-labs-dev/sentiment');
 const { LangId } = require('@lumen-labs-dev/lang-id-id');
 
-(async () => {
-  const container = new Container();
-  container.use(LangId);
-  const sentiment = new SentimentAnalyzer({ container });
-  const result = await sentiment.process({
-    locale: 'id',
-    text: 'kucing itu mengagumkan',
-  });
-  console.log(result.sentiment);
-})();
-// output:
-// {
-//   score: 4,
-//   numWords: 3,
-//   numHits: 1,
-//   average: 1.3333333333333333,
-//   type: 'afinn',
-//   locale: 'id',
-//   vote: 'positive'
-// }
+const container = new Container();
+container.use(LangId);
+const sentiment = new SentimentAnalyzer({ container });
+const result = await sentiment.process({ locale: 'id', text: 'saya suka kucing' });
+console.log(result.sentiment.vote);
 ```
 
-The output of the sentiment analysis includes:
-- *score*: final score of the sentence. 
-- *numWords*: total words of the sentence.
-- *numHits*: total words of the sentence identified as having a sentiment score.
-- *average*: score divided by numWords
-- *type*: type of dictionary used, values can be afinn, senticon or pattern.
-- *locale*: locale of the sentence
-- *vote*: positive if score greater than 0, negative if score lower than 0, neutral if score equals 0.
+## Classifier usage
+
+```javascript
+const { containerBootstrap } = require('@lumen-labs-dev/core');
+const { Nlp } = require('@lumen-labs-dev/nlp');
+const { LangId } = require('@lumen-labs-dev/lang-id-id');
+
+const container = await containerBootstrap();
+container.use(Nlp);
+container.use(LangId);
+const nlp = container.get('nlp');
+nlp.addLanguage('id');
+nlp.addDocument('id', 'selamat tinggal', 'greetings.bye');
+nlp.addDocument('id', 'halo', 'greetings.hello');
+await nlp.train();
+const response = await nlp.process('id', 'saya harus pergi');
+```
+
+Full walkthrough: [docs/v4/quickstart.md](../../docs/v4/quickstart.md).
 
 ## Contributing
 

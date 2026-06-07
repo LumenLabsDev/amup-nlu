@@ -21,8 +21,9 @@ Preserve attribution to the original NLP.js creators and AXA Group Operations Sp
 
 ## Package Notes
 
-- `@lumen-labs-dev/node-nlp` is the compatibility facade for the v3-style API.
-- `@lumen-labs-dev/lang-en-us` is required by `node-nlp`; other language packages load on demand, and `@lumen-labs-dev/lang-all` is optional for all-language compatibility.
+- `@lumen-labs-dev/basic` is the recommended entry point for new work (core + common plugins).
+- `@lumen-labs-dev/node-nlp` is a deprecated convenience wrapper; avoid it in new docs and examples.
+- `@lumen-labs-dev/lang-en-us` is included by `@lumen-labs-dev/basic`; other language packages load on demand, and `@lumen-labs-dev/lang-all` is optional for all-language compatibility.
 - `@lumen-labs-dev/open-question` uses optional `@tensorflow/tfjs-node`; avoid eager imports of TensorFlow native bindings.
 - Keep individual package manifests aligned with the workspace version and internal `@lumen-labs-dev/*` dependency ranges.
 

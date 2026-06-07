@@ -307,10 +307,17 @@ If you have a small number of utterances to train then it can happen that you ge
 You can disable this feature for such cases.
 
 ```javascript
-let manager = new NlpManager({ 
-    languages: ["en"], 
-    nlu: { 
-        useNoneFeature: false 
-    } 
-});
+const { dockStart } = require('@lumen-labs-dev/basic');
+
+(async () => {
+  const dock = await dockStart({
+    settings: {
+      nlu: { useNoneFeature: false },
+    },
+    use: ['Basic'],
+  });
+  const nlp = dock.get('nlp');
+  nlp.addLanguage('en');
+  // ...
+})();
 ```

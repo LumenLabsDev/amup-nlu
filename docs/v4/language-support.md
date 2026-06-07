@@ -286,57 +286,25 @@ Languages not included in this list can be still supported, but without stemming
 
 ## Example with several languages
 
-This example uses three languages, where one of the languages is Klingon, to show that NLP will work even with language support, because it will use the tokenizer but not the stemmers.
+English and Korean are auto-detected; fantasy languages (e.g. Klingon via `describeLanguage`) work with tokenization only — pass the locale explicitly when processing.
 
 ```javascript
-const { NlpManager } = require('../packages/node-nlp/src');
+const { dockStart } = require('@lumen-labs-dev/basic');
 
 (async () => {
-  const manager = new NlpManager({ languages: ['en', 'ko', 'kl'] });
-  // Gives a name for the fantasy language
-  manager.describeLanguage('kl', 'Klingon');
-  // Train Klingon
-  manager.addDocument('kl', 'nuqneH', 'hello');
-  manager.addDocument('kl', 'maj po', 'hello');
-  manager.addDocument('kl', 'maj choS', 'hello');
-  manager.addDocument('kl', 'maj ram', 'hello');
-  manager.addDocument('kl', `nuqDaq ghaH ngaQHa'moHwI'mey?`, 'keys');
-  manager.addDocument('kl', `ngaQHa'moHwI'mey lujta' jIH`, 'keys');
-  // Train Korean
-  manager.addDocument('ko', '여보세요', 'greetings.hello');
-  manager.addDocument('ko', '안녕하세요!', 'greetings.hello');
-  manager.addDocument('ko', '여보!', 'greetings.hello');
-  manager.addDocument('ko', '어이!', 'greetings.hello');
-  manager.addDocument('ko', '좋은 아침', 'greetings.hello');
-  manager.addDocument('ko', '안녕히 주무세요', 'greetings.hello');
-  manager.addDocument('ko', '안녕', 'greetings.bye');
-  manager.addDocument('ko', '친 공이 타자', 'greetings.bye');
-  manager.addDocument('ko', '상대가 없어 남는 사람', 'greetings.bye');
-  manager.addDocument('ko', '지엽적인 것', 'greetings.bye');
-  manager.addDocument('en', 'goodbye for now', 'greetings.bye');
-  manager.addDocument('en', 'bye bye take care', 'greetings.bye');
-  manager.addDocument('en', 'okay see you later', 'greetings.bye');
-  manager.addDocument('en', 'bye for now', 'greetings.bye');
-  manager.addDocument('en', 'i must go', 'greetings.bye');
-  manager.addDocument('en', 'hello', 'greetings.hello');
-  manager.addDocument('en', 'hi', 'greetings.hello');
-  manager.addDocument('en', 'howdy', 'greetings.hello');
+  const dock = await dockStart({ use: ['Basic', 'LangEn', 'LangKo'] });
+  const nlp = dock.get('nlp');
+  nlp.addLanguage('en');
+  nlp.addLanguage('ko');
+  nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
+  nlp.addDocument('en', 'hello', 'greetings.hello');
+  nlp.addDocument('ko', '안녕', 'greetings.bye');
+  nlp.addDocument('ko', '여보세요', 'greetings.hello');
+  nlp.addAnswer('en', 'greetings.bye', 'Till next time');
+  nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
 
-  // Train also the NLG
-  manager.addAnswer('en', 'greetings.bye', 'Till next time');
-  manager.addAnswer('en', 'greetings.bye', 'see you soon!');
-  manager.addAnswer('en', 'greetings.hello', 'Hey there!');
-  manager.addAnswer('en', 'greetings.hello', 'Greetings!');
-
-  // Train and save the model.
-  await manager.train();
-  manager.save();
-
-  // English and Korean can be automatically detected
-  manager.process('I have to go').then(console.log);
-  manager.process('상대가 없어 남는 편').then(console.log);
-  // For Klingon, as it cannot be automatically detected, 
-  // you must provide the locale
-  manager.process('kl', `ngaQHa'moHwI'mey nIH vay'`).then(console.log);
+  await nlp.train();
+  nlp.process('I have to go').then(console.log);
+  nlp.process('상대가 없어 남는 편').then(console.log);
 })();
 ```

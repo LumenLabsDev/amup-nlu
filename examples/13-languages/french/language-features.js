@@ -21,10 +21,32 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StemmerFr, StopwordsFr } = require('../../../packages/lang-fr-fr/src');
+const {
+  NormalizerFr,
+  TokenizerFr,
+  StopwordsFr,
+  StemmerFr,
+} = require('../../../packages/lang-fr-fr/src');
+// const { NormalizerFr, TokenizerFr, StopwordsFr, StemmerFr } = require('@lumen-labs-dev/lang-fr-fr');
 
+const input = "Ceci n'est pas encore tokenisé";
+const normalizer = new NormalizerFr();
+const tokenizer = new TokenizerFr();
+const stopwords = new StopwordsFr();
 const stemmer = new StemmerFr();
-stemmer.stopwords = new StopwordsFr();
-const input = 'Qui a crié ?';
-console.log(stemmer.tokenizeAndStem(input, false));
-// output: [ 'cri' ]
+stemmer.stopwords = stopwords;
+
+// Normalize
+console.log('normalize:', normalizer.normalize('Ceci devrait être normalisé, Je dis la vérité non ? '));
+
+// Tokenize
+console.log('tokenize:', tokenizer.tokenize(input));
+console.log('tokenize normalized:', tokenizer.tokenize(input, true));
+
+// Stopwords
+console.log('isStopword:', stopwords.isStopword('qui'));
+console.log('removeStopwords:', stopwords.removeStopwords(['qui', 'a', 'crié']));
+
+// Stem
+console.log('stemWord:', stemmer.stemWord('crié'));
+console.log('stem pipeline:', stemmer.tokenizeAndStem('Qui a crié ?', false));

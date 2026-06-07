@@ -21,9 +21,32 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StemmerFr } = require('../../../packages/lang-fr-fr/src');
+const {
+  NormalizerEn,
+  TokenizerEn,
+  StopwordsEn,
+  StemmerEn,
+} = require('../../../packages/lang-en-us/src');
+// const { NormalizerEn, TokenizerEn, StopwordsEn, StemmerEn } = require('@lumen-labs-dev/lang-en-us');
 
-const stemmer = new StemmerFr();
-const input = "Je veux qu'il sortir";
-console.log(stemmer.tokenizeAndStem(input));
-// output: [ 'je', 'veux', 'qu', 'il', 'sort' ]
+const input = "This isn't tokenized yet";
+const normalizer = new NormalizerEn();
+const tokenizer = new TokenizerEn();
+const stopwords = new StopwordsEn();
+const stemmer = new StemmerEn();
+stemmer.stopwords = stopwords;
+
+// Normalize
+console.log('normalize:', normalizer.normalize('This shóuld be normalized'));
+
+// Tokenize
+console.log('tokenize:', tokenizer.tokenize(input));
+console.log('tokenize normalized:', tokenizer.tokenize(input, true));
+
+// Stopwords
+console.log('isStopword:', stopwords.isStopword('is'));
+console.log('removeStopwords:', stopwords.removeStopwords(['who', 'is', 'your', 'develop']));
+
+// Stem
+console.log('stemWord:', stemmer.stemWord('developer'));
+console.log('stem pipeline:', stemmer.tokenizeAndStem('who is your developer', false));

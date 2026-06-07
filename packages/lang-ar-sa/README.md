@@ -37,30 +37,18 @@ const { containerBootstrap } = require('@lumen-labs-dev/core');
 const { Nlp } = require('@lumen-labs-dev/nlp');
 const { LangAr } = require('@lumen-labs-dev/lang-ar-sa');
 
-(async () => {
-  const container = await containerBootstrap();
-  container.use(Nlp);
-  container.use(LangAr);
-  const nlp = container.get('nlp');
-  nlp.settings.autoSave = false;
-  nlp.addLanguage('ar');
-  // Adds the utterances and intents for the NLP
-  nlp.addDocument('ar', 'adios por ahora', 'greetings.bye');
-  nlp.addDocument('ar', 'adios y ten cuidado', 'greetings.bye');
-  nlp.addDocument('ar', 'muy bien nos vemos luego', 'greetings.bye');
-  nlp.addDocument('ar', 'debo irme', 'greetings.bye');
-  nlp.addDocument('ar', 'hola', 'greetings.hello');
-  
-  // Train also the NLG
-  nlp.addAnswer('ar', 'greetings.bye', 'hasta la proxima');
-  nlp.addAnswer('ar', 'greetings.bye', '¡te veo pronto!');
-  nlp.addAnswer('ar', 'greetings.hello', '¡hola que tal!');
-  nlp.addAnswer('ar', 'greetings.hello', '¡salludos!');
-  await nlp.train();
-  const response = await nlp.process('ar', 'debo irme');
-  console.log(response);
-})();
+const container = await containerBootstrap();
+container.use(Nlp);
+container.use(LangAr);
+const nlp = container.get('nlp');
+nlp.addLanguage('ar');
+nlp.addDocument('ar', 'وداعا', 'greetings.bye');
+nlp.addDocument('ar', 'مرحبا', 'greetings.hello');
+await nlp.train();
+const response = await nlp.process('ar', 'وداعا');
 ```
+
+Full walkthrough: [docs/v4/quickstart.md](../../docs/v4/quickstart.md). Runnable demos: [examples/13-languages/](../../examples/13-languages/).
 
 ## Contributing
 

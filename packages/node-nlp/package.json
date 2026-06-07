@@ -1,7 +1,7 @@
 {
   "name": "@lumen-labs-dev/node-nlp",
   "version": "4.27.0",
-  "description": "Library for NLU (Natural Language Understanding) done in Node.js",
+  "description": "Deprecated convenience wrapper; use @lumen-labs-dev/basic for new projects",
   "author": "Lumen Labs Dev",
   "repository": {
     "type": "git",

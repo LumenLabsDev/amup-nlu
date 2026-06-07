@@ -1,6 +1,6 @@
-# NLP Manager
+# NLP plugin
 
-The `NlpManager` is able to manage several languages. It manages the named entities, and trains the NLP classifier for each language. Once trained, `NlpManager` is ready to process utterances. It will try to guess the language, if one isn't provided when processing an utterance. During processing, the `NlpManager` will:
+The v4 `nlp` plugin (from `@lumen-labs-dev/nlp`, loaded via `@lumen-labs-dev/basic`) manages several languages. It manages named entities and trains the NLP classifier for each language. Once trained, it is ready to process utterances. It will try to guess the language if one is not provided when processing an utterance. During processing, the NLP plugin will:
 
 - Identify the language
 - Classify the utterance, using Machine Learning (ML)
@@ -214,7 +214,8 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 ```
 
 ## Saving and Loading Models
-`NlpManager` has support for saving, and loading the models of trained managers. These models include the thetas that are produced by the ML algorithms, so they can be loaded into instances of `NlpManager` without having to train them again.
+
+The `nlp` plugin supports saving and loading trained models. These models include the thetas produced by the ML algorithms, so they can be loaded without training again.
 
 In addition to reducing startup time, this can be useful when a system doesn't have write permissions to local disk, or in cases where we benefit from deterministic results, such as A/B testing (or testing in general).
 
@@ -222,7 +223,7 @@ There are two approaches to saving and loading models: [using files](#saveload-u
 
 ### Save/Load Using Files
 
-`NlpManager.save` writes a model file to disk, and `NlpManager.load` reads a model file from disk.
+`manager.save` writes a model file to disk, and `manager.load` reads a model file from disk.
 
 By default, models are saved into the filename specified by settings property `modelFileName` after training:
 
@@ -266,7 +267,7 @@ manager.load(filename);
 
 ### Import/Export Using JSON
 
-`NlpManager.export` returns a model in JSON format, and `NlpManager.import` reads a model in JSON format. When exporting a model, you can choose whether to minify it.
+`manager.export` returns a model in JSON format, and `manager.import` reads a model in JSON format. When exporting a model, you can choose whether to minify it.
 
 Exporting a model:
 
@@ -288,17 +289,20 @@ Importing a model:
 
 ```javascript
 const fs = require('fs');
-const { NlpManager } = require('@lumen-labs-dev/node-nlp');
+const { dockStart } = require('@lumen-labs-dev/basic');
 
-const data = fs.readFileSync('model.nlp', 'utf8');
-const manager = new NlpManager();
-manager.import(data);
-// ...
+(async () => {
+  const dock = await dockStart({ use: ['Basic'] });
+  const manager = dock.get('nlp');
+  const data = fs.readFileSync('model.nlp', 'utf8');
+  manager.import(data);
+  // ...
+})();
 ```
 
 ## Context
 
-You can also provide a context to `NlpManger.process` so the NLG changes its behaviour based on the context.
+You can also provide a context to `manager.process` so the NLG changes its behaviour based on the context.
 
 In this example, the manager chooses, "Till next time, {{name}}!" as the answer, and is able to use the `@name` in the answer because context from the greeting is provided. The final result is, "Till next time, John!".
 

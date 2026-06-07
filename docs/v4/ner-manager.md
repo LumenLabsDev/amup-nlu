@@ -198,8 +198,8 @@ Additionally to the entities you can define manually the framework can also pars
 
 * [Builtin Compromise](../../packages/builtin-compromise/README.md) - A golden entity extractor that runs in the browser.
 * [Builtin Default](../../packages/builtin-default/README.md) - A default entity extractor for some basic entity extractions
-* [BuiltIn-Microsoft](../v3/builtin-entity-extraction.md) - This builtin is executed on server side in Node.js, but does not support all languages
-* [Facebook Duckling](../v3/builtin-duckling.md) - This builtin forwards the call to a running instance of a Duckling server process.
+* [Builtin Microsoft](../../packages/builtin-microsoft/README.md) - Server-side builtin entity extraction in Node.js; language support varies (see [Language Support](./language-support.md))
+* [Builtin Duckling](../../packages/builtin-duckling/README.md) - Forwards extraction to a running Duckling server process
 
 The Builtin needs to added manually depending on what's wanted. As example for Facebook Duckling this can look like:
 

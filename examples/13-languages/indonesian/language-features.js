@@ -21,11 +21,32 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { StopwordsEs } = require('../../../packages/lang-es-es/src');
-// const { StopwordsEs } = require('@lumen-labs-dev/lang-es-es');
+const {
+  NormalizerId,
+  TokenizerId,
+  StopwordsId,
+  StemmerId,
+} = require('../../../packages/lang-id-id/src');
+// const { NormalizerId, TokenizerId, StopwordsId, StemmerId } = require('@lumen-labs-dev/lang-id-id');
 
-const stopwords = new StopwordsEs();
-console.log(stopwords.isStopword('un'));
-// output: true
-console.log(stopwords.isStopword('desarrollador'));
-// output: false
+const input = 'apa yang dikembangkan perusahaan Anda';
+const normalizer = new NormalizerId();
+const tokenizer = new TokenizerId();
+const stopwords = new StopwordsId();
+const stemmer = new StemmerId();
+stemmer.stopwords = stopwords;
+
+// Normalize
+console.log('normalize:', normalizer.normalize('apa yang dikembangkan perúsahaan Anda'));
+
+// Tokenize
+console.log('tokenize:', tokenizer.tokenize(input));
+console.log('tokenize normalized:', tokenizer.tokenize(input, true));
+
+// Stopwords
+console.log('isStopword:', stopwords.isStopword('yang'));
+console.log('removeStopwords:', stopwords.removeStopwords(['apa', 'yang', 'dikembangkan', 'perusahaan']));
+
+// Stem
+console.log('stemWord:', stemmer.stemWord('dikembangkan'));
+console.log('stem pipeline:', stemmer.tokenizeAndStem(input, false));

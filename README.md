@@ -7,21 +7,19 @@
 Install with:
 
 ```bash
-npm install @lumen-labs-dev/node-nlp
+npm install @lumen-labs-dev/basic
 ```
 
 This monorepo is based on [NLP.js](https://github.com/axa-group/nlp.js) by its original creators. Original NLP.js attribution, contributors, and MIT license notices are preserved throughout the repository.
 
 [![](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/axa-group/nlp.js/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/axa-group/nlp.js/badge.svg?branch=master)](https://coveralls.io/github/axa-group/nlp.js?branch=master)
-[![NPM version](https://img.shields.io/npm/v/@lumen-labs-dev/node-nlp.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp)
-[![NPM downloads](https://img.shields.io/npm/dm/@lumen-labs-dev/node-nlp.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp)
+[![NPM version](https://img.shields.io/npm/v/@lumen-labs-dev/basic.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/basic)
+[![NPM downloads](https://img.shields.io/npm/dm/@lumen-labs-dev/basic.svg?style=flat)](https://www.npmjs.com/package/@lumen-labs-dev/basic)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=axa-group_nlp.js&metric=alert_status)](https://sonarcloud.io/dashboard?id=axa-group_nlp.js)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=axa-group_nlp.js&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=axa-group_nlp.js)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=axa-group_nlp.js&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=axa-group_nlp.js)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=axa-group_nlp.js&metric=security_rating)](https://sonarcloud.io/dashboard?id=axa-group_nlp.js)
-
-*If you're looking for the version 3 docs, you can find them here* [Version 3](docs/v3/README.md)
 
 "NLP.js" is a general natural language utility for nodejs. Currently supporting:
 
@@ -38,12 +36,11 @@ This monorepo is based on [NLP.js](https://github.com/axa-group/nlp.js) by its o
 
 ![Hybrid bot](screenshots/hybridbot.gif)
 
-## New in version 4`!`
+## Architecture
 
-Version 4 is very different from previous versions. Before this version, NLP.js was a monolithic library. The big changes:
+NLP.js v4 is split into small independent packages:
 
-- Now the library is split into small independent packages.
-- So every language has its own package
+- Every language has its own package
 - It provides a plugin system, so you can provide your own plugins or replace the existing ones.
 - It provides a container system for the plugins, settings for the plugins and also pipelines
 - A pipeline is code defining how the plugins interact. Usually it is linear: there is an input into the plugin, and this generates the input for the next one. As an example, the preparation of a utterance (the process to convert the utterance to a hashmap of stemmed features) is now a pipeline like this: `normalize -> tokenize -> removeStopwords -> stem -> arrToObj`
@@ -115,58 +112,25 @@ Version 4 is very different from previous versions. Before this version, NLP.js 
 - [Example of use](#example-of-use)
 - [False Positives](#false-positives)
 - [Log Training Progress](#log-training-progress)
-- [Benchmarking](docs/v3/benchmarking.md)
 - [Language Support](docs/v4/language-support.md)
   - [Supported languages](docs/v4/language-support.md#supported-languages)
   - [Sentiment Analysis](docs/v4/language-support.md#sentiment-analysis)
   - [Comparision with other NLP products](docs/v4/language-support.md#comparision-with-other-nlp-products)
   - [Example with several languages](docs/v4/language-support.md#example-with-several-languages)
-- [Language Guesser](docs/v3/language-guesser.md)
-- [Similar Search](docs/v3/similar-search.md)
-- [NLU](docs/v3/nlu-manager.md)
-  - [NLU Manager](docs/v3/nlu-manager.md)
-  - [Brain NLU](docs/v3/brain-nlu.md)
-  - [Bayes NLU](docs/v3/bayes-nlu.md)
-  - [Binary Relevance NLU](docs/v3/binary-relevance-nlu.md)
-  - [Logistic Regression NLU](docs/v3/logistic-regression-nlu.md)
+- [Similar Search](docs/v4/similarity.md)
+- [NLU](docs/v4/nlu.md)
 - [NER Manager](docs/v4/ner-manager.md)
   - [Enum Named Entities](docs/v4/ner-manager.md#enum-entities)
   - [Regular Expression Named Entities](docs/v4/ner-manager.md#regex-entities)
   - [Trim Named Entities](docs/v4/ner-manager.md#trim-entities)
-  - [Utterances with duplicated Entities](docs/v4/ner-manager.md#enum-entities)
-- [Integration with Duckling](docs/v3/builtin-duckling.md)
-  - [Language support](docs/v3/builtin-duckling.md#language-support)
-  - [How to integrate with duckling](docs/v3/builtin-duckling.md#how-to-integrate-with-duckling)
-  - [Email Extraction](docs/v3/builtin-duckling.md#email-extraction)
-  - [Phone Number Extraction](docs/v3/builtin-duckling.md#phone-number-extraction)
-  - [URL Extraction](docs/v3/builtin-duckling.md#url-extraction)
-  - [Number Extraction](docs/v3/builtin-duckling.md#number-extraction)
-  - [Ordinal Extraction](docs/v3/builtin-duckling.md#ordinal-extraction)
-  - [Dimension Extraction](docs/v3/builtin-duckling.md#dimension-extraction)
-  - [Quantity Extraction](docs/v3/builtin-duckling.md#quantity-extraction)
-  - [Amount of Money Extraction](docs/v3/builtin-duckling.md#amount-of-money-extraction)
-  - [Date Extraction](docs/v3/builtin-duckling.md#date-extraction)
-- [Builtin Entity Extraction](docs/v3/builtin-entity-extraction.md)
-  - [Email Extraction](docs/v3/builtin-entity-extraction.md#email-extraction)
-  - [IP Extraction](docs/v3/builtin-entity-extraction.md#ip-extraction)
-  - [Hashtag Extraction](docs/v3/builtin-entity-extraction.md#hashtag-extraction)
-  - [Phone Number Extraction](docs/v3/builtin-entity-extraction.md#phone-number-extraction)
-  - [URL Extraction](docs/v3/builtin-entity-extraction.md#url-extraction)
-  - [Number Extraction](docs/v3/builtin-entity-extraction.md#number-extraction)
-  - [Ordinal Extraction](docs/v3/builtin-entity-extraction.md#ordinal-extraction)
-  - [Percentage Extraction](docs/v3/builtin-entity-extraction.md#percentage-extraction)
-  - [Age Extraction](docs/v3/builtin-entity-extraction.md#age-extraction)
-  - [Currency Extraction](docs/v3/builtin-entity-extraction.md#currency-extraction)
-  - [Date Extraction](docs/v3/builtin-entity-extraction.md#date-extraction)
-  - [Duration Extraction](docs/v3/builtin-entity-extraction.md#duration-extraction)
-- [Sentiment Analysis](docs/v3/sentiment-analysis.md)
+  - [Built-in entities](docs/v4/ner-manager.md#built-in-entities)
+  - [Utterances with duplicated Entities](docs/v4/ner-manager.md#utterances-with-duplicated-entities)
 - [NLP Manager](docs/v4/nlp-manager.md)
   - [Load/Save](docs/v4/nlp-manager.md#loadsave)
   - [Import/Export](docs/v4/nlp-manager.md#importexport)
   - [Context](docs/v4/nlp-manager.md#context)
   - [Intent Logic (Actions, Pipelines)](docs/v4/nlp-intent-logics.md)
 - [Slot Filling](docs/v4/slot-filling.md)
-- [Loading from Excel](docs/v3/loading-from-excel.md)
 - Languages
   - [English](https://github.com/axa-group/nlp.js/blob/master/packages/lang-en-us/README.md)
   - [Indonesian](https://github.com/axa-group/nlp.js/blob/master/packages/lang-id-id/README.md)
@@ -185,27 +149,21 @@ Every installable package uses the `@lumen-labs-dev/` prefix. There is no unscop
 
 | Package | Purpose |
 |---------|---------|
-| [`@lumen-labs-dev/node-nlp`](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp) | Main entry point; v3-style `NlpManager` API |
-| [`@lumen-labs-dev/basic`](https://www.npmjs.com/package/@lumen-labs-dev/basic) | v4 backend bundle (core + common plugins) |
-| [`@lumen-labs-dev/nlp`](https://www.npmjs.com/package/@lumen-labs-dev/nlp) | v4 NLP manager (used with `@lumen-labs-dev/core`) |
+| [`@lumen-labs-dev/basic`](https://www.npmjs.com/package/@lumen-labs-dev/basic) | Primary entry point for new projects (core + common plugins) |
+| [`@lumen-labs-dev/nlp`](https://www.npmjs.com/package/@lumen-labs-dev/nlp) | NLP manager plugin (used with `@lumen-labs-dev/core`) |
 | [`@lumen-labs-dev/core`](https://www.npmjs.com/package/@lumen-labs-dev/core) | Container, plugin system, and pipelines |
 | [`@lumen-labs-dev/lang-all`](https://www.npmjs.com/package/@lumen-labs-dev/lang-all) | All native language packages in one install |
-| [`@lumen-labs-dev/lang-en-us`](https://www.npmjs.com/package/@lumen-labs-dev/lang-en-us) | English (included by `@lumen-labs-dev/node-nlp`) |
+| [`@lumen-labs-dev/lang-en-us`](https://www.npmjs.com/package/@lumen-labs-dev/lang-en-us) | English (included by `@lumen-labs-dev/basic`) |
+| [`@lumen-labs-dev/node-nlp`](https://www.npmjs.com/package/@lumen-labs-dev/node-nlp) | Deprecated convenience wrapper; use `@lumen-labs-dev/basic` instead (see [Quick Start](docs/v4/quickstart.md)) |
 | `@lumen-labs-dev/lang-{locale}` | Per-locale language support (see [Language Support](docs/v4/language-support.md)) |
 
 **Language package naming:** locale packages follow `@lumen-labs-dev/lang-{language}-{region}`, for example `@lumen-labs-dev/lang-es-es`, `@lumen-labs-dev/lang-pt-pt`, and `@lumen-labs-dev/lang-pt-br`. Runtime locale codes such as `en`, `es`, or `pt` still work; they resolve to these packages automatically.
 
-**Migrating from upstream NLP.js:** replace unscoped or legacy package names with the matching `@lumen-labs-dev/*` package. For example, `node-nlp` becomes `@lumen-labs-dev/node-nlp`, and `lang-en` becomes `@lumen-labs-dev/lang-en-us`.
+**Migrating from upstream NLP.js:** use `@lumen-labs-dev/basic` for new projects. Replace unscoped or legacy package names with the matching `@lumen-labs-dev/*` package (for example, `lang-en` becomes `@lumen-labs-dev/lang-en-us`).
 
 ## Installation
 
-If you're looking to use NLP.js in your Node application, install the scoped package:
-
-```bash
-npm install @lumen-labs-dev/node-nlp
-```
-
-For the v4 plugin architecture instead of the v3-style API:
+Install the v4 backend bundle:
 
 ```bash
 npm install @lumen-labs-dev/basic
@@ -213,75 +171,31 @@ npm install @lumen-labs-dev/basic
 
 ## Example of use
 
-You can see a great example of use in the folder [`/examples/02-qna-classic`](https://github.com/axa-group/nlp.js/tree/master/examples/02-qna-classic). This example is able to train the bot and save the model to a file, so when the bot is started again, the model is loaded instead of being trained again.
-
-You can start to build your NLP from scratch with a few lines:
+You can see a persisted model example in [`examples/02-qna-classic`](examples/02-qna-classic). To get started from scratch:
 
 ```javascript
-const { NlpManager } = require('@lumen-labs-dev/node-nlp');
+const { dockStart } = require('@lumen-labs-dev/basic');
 
-const manager = new NlpManager({ languages: ['en'], forceNER: true });
-// Adds the utterances and intents for the NLP
-manager.addDocument('en', 'goodbye for now', 'greetings.bye');
-manager.addDocument('en', 'bye bye take care', 'greetings.bye');
-manager.addDocument('en', 'okay see you later', 'greetings.bye');
-manager.addDocument('en', 'bye for now', 'greetings.bye');
-manager.addDocument('en', 'i must go', 'greetings.bye');
-manager.addDocument('en', 'hello', 'greetings.hello');
-manager.addDocument('en', 'hi', 'greetings.hello');
-manager.addDocument('en', 'howdy', 'greetings.hello');
+(async () => {
+  const dock = await dockStart({ use: ['Basic'] });
+  const nlp = dock.get('nlp');
+  nlp.addLanguage('en');
+  nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
+  nlp.addDocument('en', 'i must go', 'greetings.bye');
+  nlp.addDocument('en', 'hello', 'greetings.hello');
+  nlp.addDocument('en', 'hi', 'greetings.hello');
+  nlp.addAnswer('en', 'greetings.bye', 'Till next time');
+  nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
 
-// Train also the NLG
-manager.addAnswer('en', 'greetings.bye', 'Till next time');
-manager.addAnswer('en', 'greetings.bye', 'see you soon!');
-manager.addAnswer('en', 'greetings.hello', 'Hey there!');
-manager.addAnswer('en', 'greetings.hello', 'Greetings!');
-
-// Train and save the model.
-(async() => {
-    await manager.train();
-    manager.save();
-    const response = await manager.process('en', 'I should go now');
-    console.log(response);
+  await nlp.train();
+  const response = await nlp.process('en', 'I should go now');
+  console.log(response.intent, response.score, response.answer, response.sentiment.vote);
 })();
 ```
 
-This produces the following result in a console:
+Example output: `greetings.bye 0.69 Till next time positive`
 
-```bash
-{ utterance: 'I should go now',
-  locale: 'en',
-  languageGuessed: false,
-  localeIso2: 'en',
-  language: 'English',
-  domain: 'default',
-  classifications:
-   [ { label: 'greetings.bye', value: 0.698219120207268 },
-     { label: 'None', value: 0.30178087979273216 },
-     { label: 'greetings.hello', value: 0 } ],
-  intent: 'greetings.bye',
-  score: 0.698219120207268,
-  entities:
-   [ { start: 12,
-       end: 14,
-       len: 3,
-       accuracy: 0.95,
-       sourceText: 'now',
-       utteranceText: 'now',
-       entity: 'datetime',
-       resolution: [Object] } ],
-  sentiment:
-   { score: 1,
-     comparative: 0.25,
-     vote: 'positive',
-     numWords: 4,
-     numHits: 2,
-     type: 'senticon',
-     language: 'en' },
-  actions: [],
-  srcAnswer: 'Till next time',
-  answer: 'Till next time' }
-```
+See the full [Quick Start](docs/v4/quickstart.md) for corpus files, pipelines, and multilanguage setup.
 
 ## False Positives
 
@@ -289,7 +203,16 @@ By default, the neural network tries to avoid false positives. To achieve that, 
 If you don't want to avoid those false positives, and you feel more comfortable with classifications into the intents that you declare, then you can disable this behavior by setting the `useNoneFeature` to false:
 
 ```javascript
-const manager = new NlpManager({ languages: ['en'], nlu: { useNoneFeature: false } });
+const { dockStart } = require('@lumen-labs-dev/basic');
+
+(async () => {
+  const dock = await dockStart({
+    settings: { nlu: { useNoneFeature: false } },
+    use: ['Basic'],
+  });
+  const nlp = dock.get('nlp');
+  // ...
+})();
 ```
 
 ## Log Training Progress
@@ -298,14 +221,32 @@ You can also add a log progress, so you can trace what is happening during the t
 You can log the progress to the console:
 
 ```javascript
-const nlpManager = new NlpManager({ languages: ['en'], nlu: { log: true } });
+const { dockStart } = require('@lumen-labs-dev/basic');
+
+(async () => {
+  const dock = await dockStart({
+    settings: { nlu: { log: true } },
+    use: ['Basic'],
+  });
+  const nlp = dock.get('nlp');
+  // ...
+})();
 ```
 
 Or you can provide your own log function:
 
 ```javascript
+const { dockStart } = require('@lumen-labs-dev/basic');
+
 const logfn = (status, time) => console.log(status, time);
-const nlpManager = new NlpManager({ languages: ['en'], nlu: { log: logfn } });
+(async () => {
+  const dock = await dockStart({
+    settings: { nlu: { log: logfn } },
+    use: ['Basic'],
+  });
+  const nlp = dock.get('nlp');
+  // ...
+})();
 ```
 
 ## Contributing
