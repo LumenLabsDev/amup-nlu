@@ -49,6 +49,7 @@ const { LangNl } = require('@lumen-labs-dev/lang-nl');
 const { LangNo } = require('@lumen-labs-dev/lang-no');
 const { LangPl } = require('@lumen-labs-dev/lang-pl');
 const { LangPt } = require('@lumen-labs-dev/lang-pt');
+const { LangPtBr } = require('@lumen-labs-dev/lang-pt-br');
 const { LangRo } = require('@lumen-labs-dev/lang-ro');
 const { LangRu } = require('@lumen-labs-dev/lang-ru');
 const { LangSl } = require('@lumen-labs-dev/lang-sl');
@@ -92,6 +93,7 @@ class LangAll {
     container.use(LangNo);
     container.use(LangPl);
     container.use(LangPt);
+    container.use(LangPtBr);
     container.use(LangRo);
     container.use(LangRu);
     container.use(LangSl);

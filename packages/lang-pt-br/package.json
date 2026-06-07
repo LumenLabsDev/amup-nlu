@@ -1,0 +1,31 @@
+{
+  "name": "@lumen-labs-dev/lang-pt-br",
+  "version": "4.27.0",
+  "description": "Brazilian Portuguese language support",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lumen-labs-dev/core": "^4.27.0",
+    "@lumen-labs-dev/lang-pt": "^4.27.0"
+  }
+}

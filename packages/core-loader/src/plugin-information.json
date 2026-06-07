@@ -153,6 +153,10 @@
     "className": "LangPt",
     "path": "@lumen-labs-dev/lang-pt"
   },
+  "LangPtBr": {
+    "className": "LangPtBr",
+    "path": "@lumen-labs-dev/lang-pt-br"
+  },
   "LangRo": {
     "className": "LangRo",
     "path": "@lumen-labs-dev/lang-ro"

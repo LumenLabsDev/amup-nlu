@@ -254,6 +254,14 @@ const {
   TokenizerPt,
 } = require('@lumen-labs-dev/lang-pt');
 const {
+  LangPtBr,
+  NormalizerPtBr,
+  SentimentPtBr,
+  StemmerPtBr,
+  StopwordsPtBr,
+  TokenizerPtBr,
+} = require('@lumen-labs-dev/lang-pt-br');
+const {
   LangRo,
   NormalizerRo,
   SentimentRo,
@@ -563,6 +571,13 @@ module.exports = {
   StemmerPt,
   StopwordsPt,
   TokenizerPt,
+
+  LangPtBr,
+  NormalizerPtBr,
+  SentimentPtBr,
+  StemmerPtBr,
+  StopwordsPtBr,
+  TokenizerPtBr,
 
   LangRo,
   NormalizerRo,

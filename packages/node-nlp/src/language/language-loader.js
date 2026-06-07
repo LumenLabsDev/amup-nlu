@@ -55,6 +55,7 @@ const languagePackages = {
   no: () => require('@lumen-labs-dev/lang-no'),
   pl: () => require('@lumen-labs-dev/lang-pl'),
   pt: () => require('@lumen-labs-dev/lang-pt'),
+  'pt-br': () => require('@lumen-labs-dev/lang-pt-br'),
   ro: () => require('@lumen-labs-dev/lang-ro'),
   ru: () => require('@lumen-labs-dev/lang-ru'),
   sl: () => require('@lumen-labs-dev/lang-sl'),
@@ -69,13 +70,20 @@ const languagePackages = {
 };
 
 function getLocale(locale) {
-  return typeof locale === 'string'
-    ? locale.substr(0, 2).toLowerCase()
-    : undefined;
+  if (typeof locale !== 'string') {
+    return undefined;
+  }
+  const normalized = locale.toLowerCase().replace('_', '-');
+  return normalized === 'pt-br' ? normalized : normalized.substr(0, 2);
 }
 
 function getClassSuffix(locale) {
-  return locale ? `${locale[0].toUpperCase()}${locale.slice(1)}` : undefined;
+  return locale
+    ? locale
+        .split('-')
+        .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+        .join('')
+    : undefined;
 }
 
 function getLanguagePackage(locale) {

@@ -28,6 +28,7 @@ const langNl = require('@lumen-labs-dev/lang-nl');
 const langNo = require('@lumen-labs-dev/lang-no');
 const langPl = require('@lumen-labs-dev/lang-pl');
 const langPt = require('@lumen-labs-dev/lang-pt');
+const langPtBr = require('@lumen-labs-dev/lang-pt-br');
 const langRo = require('@lumen-labs-dev/lang-ro');
 const langRu = require('@lumen-labs-dev/lang-ru');
 const langSl = require('@lumen-labs-dev/lang-sl');
@@ -70,6 +71,7 @@ const langs = {
   no: langNo,
   pl: langPl,
   pt: langPt,
+  'pt-br': langPtBr,
   ro: langRo,
   ru: langRu,
   sl: langSl,
@@ -95,6 +97,10 @@ for (let i = 0; i < keys.length; i += 1) {
   langDict[langData.name.toLowerCase()] = key;
 }
 
+langDict['pt-br'] = 'pt-br';
+langDict.pt_br = 'pt-br';
+langDict['brazilian portuguese'] = 'pt-br';
+
 function getLangClass(inputLanguage, className) {
   let locale = langDict[inputLanguage.toLowerCase()];
   if (!locale) {
@@ -106,9 +112,10 @@ function getLangClass(inputLanguage, className) {
       `Language classes not found for language "${inputLanguage}"`
     );
   }
-  const localeCapitalized = `${locale.charAt(0).toUpperCase()}${locale.slice(
-    1
-  )}`;
+  const localeCapitalized = locale
+    .split('-')
+    .map((part) => `${part.charAt(0).toUpperCase()}${part.slice(1)}`)
+    .join('');
   return lang[`${className}${localeCapitalized}`];
 }
 
