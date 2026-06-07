@@ -36,6 +36,7 @@
   "dependencies": {
     "@lumen-labs-dev/builtin-duckling": "^4.27.0",
     "@lumen-labs-dev/builtin-microsoft": "^4.27.0",
+    "@lumen-labs-dev/core": "^4.27.0",
     "@lumen-labs-dev/core-loader": "^4.27.0",
     "@lumen-labs-dev/emoji": "^4.27.0",
     "@lumen-labs-dev/evaluator": "^4.27.0",

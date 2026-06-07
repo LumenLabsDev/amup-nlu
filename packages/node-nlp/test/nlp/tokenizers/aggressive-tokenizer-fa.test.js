@@ -23,7 +23,7 @@
 
 const { NlpUtil } = require('../../../src/nlp');
 
-const tokenizer = NlpUtil.getTokenizer('fa');
+const tokenizer = NlpUtil.getTokenizer('fa-IR');
 
 describe('Aggressive Tokenizer Fa', () => {
   describe('Constructor', () => {

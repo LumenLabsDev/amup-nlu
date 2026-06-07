@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const { Tokenizer } = require('@lumen-labs-dev/core');
+const { DEFAULT_LOCALE, Tokenizer } = require('@lumen-labs-dev/core');
 const {
   MultiBertWordPieceTokenizer,
 } = require('@lumen-labs-dev/bert-tokenizer');
@@ -80,7 +80,7 @@ class TokenizerBert extends Tokenizer {
     return false;
   }
 
-  innerTokenizeMulti(text, locale = 'en') {
+  innerTokenizeMulti(text, locale = DEFAULT_LOCALE) {
     const bertTokenizer = this.multi.getTokenizer(locale);
     if (bertTokenizer) {
       return bertTokenizer.encode(text);

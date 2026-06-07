@@ -88,7 +88,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
         settings: {
             nlp: {
                 forceNER: true,
-                languages: ['en'],
+                languages: ['en-US'],
                 corpora: [
                     "./corpus2.json"
                 ]
@@ -108,9 +108,9 @@ const { dockStart } = require('@lumen-labs-dev/basic');
     await manager.train();
 
     const context = {};
-    const result = await manager.process('en', 'I want to travel to Madrid tomorrow', context);
+    const result = await manager.process('en-US', 'I want to travel to Madrid tomorrow', context);
     console.log(JSON.stringify(result, null, 2));
-    const result2 = await manager.process('en', 'From Berlin', context);
+    const result2 = await manager.process('en-US', 'From Berlin', context);
     console.log(JSON.stringify(result2, null, 2));
 
 })();
@@ -331,8 +331,8 @@ Alternatively to providing the configuration in a corpus JSON you can define all
   manager.slotManager.addSlot('travel', 'toCity', true, { en: 'Where do you want to go?' });
   manager.slotManager.addSlot('travel', 'date', true, { en: 'When do you want to travel from {{fromCity}} to {{toCity}}?' });
   
-  manager.addDocument('en', 'I want to travel from @fromCity to @toCity @date', 'travel');
-  manager.addDocument('en', 'I want to travel from @fromCity @date', 'travel');
+  manager.addDocument('en-US', 'I want to travel from @fromCity to @toCity @date', 'travel');
+  manager.addDocument('en-US', 'I want to travel from @fromCity @date', 'travel');
   // and the other possible documents too
 ```
 
@@ -399,7 +399,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
         settings: {
             nlp: {
                 forceNER: true,
-                languages: ['en'],
+                languages: ['en-US'],
                 corpora: [
                     "./corpus2.json"
                 ]

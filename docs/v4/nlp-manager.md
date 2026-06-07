@@ -60,7 +60,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
     settings: {
       nlp: {
         forceNER: true,
-        languages: ['en'],
+        languages: ['en-US'],
         corpora: [
           "./corpus.json"
         ]
@@ -74,7 +74,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
   // Train the network
   await manager.train();
 
-  const result = await manager.process('en', 'I saw spiderman eating spaghetti today in the city!');
+  const result = await manager.process('en-US', 'I saw spiderman eating spaghetti today in the city!');
   console.log(JSON.stringify(result, null, 2));
 
 // Output:
@@ -164,7 +164,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
     settings: {
       nlp: {
         forceNER: true,
-        languages: ['en'],
+        languages: ['en-US'],
         corpora: [
           "./corpus.json"
         ],
@@ -197,18 +197,18 @@ const { dockStart } = require('@lumen-labs-dev/basic');
     manager.addNamedEntityText('en', 'food', 'pizza', ['pizza']);
     manager.addNamedEntityText('en', 'food', 'pasta', ['Pasta', 'spaghetti']);
     
-    manager.addDocument('en', 'I saw @hero eating @food', 'sawhero');
+    manager.addDocument('en-US', 'I saw @hero eating @food', 'sawhero');
     manager.addDocument(
         'en',
         'I have seen @hero, he was eating @food',
         'sawhero',
     );
-    manager.addDocument('en', 'I want to eat @food', 'wanteat');
+    manager.addDocument('en-US', 'I want to eat @food', 'wanteat');
     
   // Train the network
   await manager.train();
 
-  const result = await manager.process('en', 'I saw spiderman eating spaghetti today in the city!');
+  const result = await manager.process('en-US', 'I saw spiderman eating spaghetti today in the city!');
   console.log(JSON.stringify(result, null, 2));
 })();
 ```
@@ -231,7 +231,7 @@ By default, models are saved into the filename specified by settings property `m
 const dock = await dockStart({
     settings: {
         nlp: {
-            languages: ['en'],
+            languages: ['en-US'],
             modelFileName: './model.nlp',
         }
     },
@@ -247,7 +247,7 @@ Saving can also be done manually with `manager.save()`:
 const dock = await dockStart({
     settings: {
         nlp: {
-            languages: ['en'],
+            languages: ['en-US'],
             autoSave: false,
         }
     },
@@ -275,7 +275,7 @@ Exporting a model:
 const dock = await dockStart({
     settings: {
         nlp: {
-            languages: ['en'],
+            languages: ['en-US'],
         }
     },
 });
@@ -314,7 +314,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
         settings: {
             nlp: {
                 forceNER: true,
-                languages: ['en'],
+                languages: ['en-US'],
             }
         },
         use: ['Basic', 'LangEn'],
@@ -325,19 +325,19 @@ const { dockStart } = require('@lumen-labs-dev/basic');
     // Train the network
     await manager.train();
 
-    manager.addDocument('en', 'Hello my name is @name', 'greeting.hello');
-    manager.addDocument('en', 'Hello I\'m @name', 'greeting.hello');
+    manager.addDocument('en-US', 'Hello my name is @name', 'greeting.hello');
+    manager.addDocument('en-US', 'Hello I\'m @name', 'greeting.hello');
     manager.addNerAfterLastCondition('en', 'name', ['is', 'I\'m']);
 
-    manager.addDocument('en', 'I have to go', 'greeting.bye');
+    manager.addDocument('en-US', 'I have to go', 'greeting.bye');
     manager.addAnswer('en', 'greeting.hello', 'Hey there!');
     manager.addAnswer('en', 'greeting.bye', 'Till next time, {{name}}!');
 
     await manager.train();
 
     const context = {};
-    const result1 = await manager.process('en', 'Hello my name is John', context);
-    const result2 = await manager.process('en', 'I have to go', context);
+    const result1 = await manager.process('en-US', 'Hello my name is John', context);
+    const result2 = await manager.process('en-US', 'I have to go', context);
     console.log(result2.answer);
 })();
 
@@ -362,7 +362,7 @@ By default entities are only processed when there is at least one intent has at 
         settings: {
             nlp: {
                 forceNER: true,
-                languages: ['en'],
+                languages: ['en-US'],
             }
         },
         use: ['Basic', 'LangEn'],

@@ -26,14 +26,14 @@ const { NlpUtil } = require('../../../src/nlp');
 describe('Bengali Stemmer', () => {
   describe('Constructor', () => {
     test('It should create a new instance', () => {
-      const stemmer = NlpUtil.getStemmer('bn');
+      const stemmer = NlpUtil.getStemmer('bn-BD');
       expect(stemmer).toBeDefined();
     });
   });
   describe('Stem', () => {
     test('Should tokenize and stem bengali text', () => {
       const text = 'বলেছেন খেয়েছেন';
-      const stemmer = NlpUtil.getStemmer('bn');
+      const stemmer = NlpUtil.getStemmer('bn-BD');
       const actual = stemmer.tokenizeAndStem(text);
       const expected = ['বলে', 'খেযে'];
       expect(actual).toEqual(expected);

@@ -52,103 +52,103 @@ describe('NLG Manager', () => {
   describe('Add answer', () => {
     test('Should add an answer with no condition', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      expect(manager.responses.en.greet).toHaveLength(1);
-      expect(manager.responses.en.greet[0].answer).toEqual('Hello');
-      expect(manager.responses.en.greet[0].opts).toBeUndefined();
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
+      expect(manager.responses['en-US'].greet[0].answer).toEqual('Hello');
+      expect(manager.responses['en-US'].greet[0].opts).toBeUndefined();
     });
     test('Should add an answer with condition', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(1);
-      expect(manager.responses.en.greet[0].answer).toEqual('Hello');
-      expect(manager.responses.en.greet[0].opts).toEqual('a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
+      expect(manager.responses['en-US'].greet[0].answer).toEqual('Hello');
+      expect(manager.responses['en-US'].greet[0].opts).toEqual('a === 1');
     });
     test('Should not add a duplicate entry', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(1);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
     });
     test('Should be able to create several responses for the same intent and locale', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Greetings', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hi', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(3);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Greetings', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hi', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
     });
     test('Should be able to create responses for different intents of a locale', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Greetings', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hi', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Goodbye', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Bye', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Greetings', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hi', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Goodbye', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Bye', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
     });
     test('Should be able to create responses for different intents and locales', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Greetings', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hi', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Goodbye', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Bye', 'a === 1');
-      manager.addAnswer('es', 'greet', 'Hola', 'a === 1');
-      manager.addAnswer('es', 'greet', 'Holi!', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Hasta luego', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Hasta otra', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Nos vemos!', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
-      expect(manager.responses.es.greet).toHaveLength(2);
-      expect(manager.responses.es.bye).toHaveLength(3);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Greetings', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hi', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Goodbye', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Bye', 'a === 1');
+      manager.addAnswer('es-ES', 'greet', 'Hola', 'a === 1');
+      manager.addAnswer('es-ES', 'greet', 'Holi!', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Hasta luego', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Hasta otra', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Nos vemos!', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
+      expect(manager.responses['es-ES'].greet).toHaveLength(2);
+      expect(manager.responses['es-ES'].bye).toHaveLength(3);
     });
   });
 
   describe('Remove Answer', () => {
     test('I can remove an added response', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Greetings', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hi', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Goodbye', 'a === 1');
-      manager.addAnswer('en', 'bye', 'Bye', 'a === 1');
-      manager.addAnswer('es', 'greet', 'Hola', 'a === 1');
-      manager.addAnswer('es', 'greet', 'Holi!', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Hasta luego', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Hasta otra', 'a === 1');
-      manager.addAnswer('es', 'bye', 'Nos vemos!', 'a === 1');
-      manager.removeAnswer('es', 'greet', 'Holi!', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
-      expect(manager.responses.es.greet).toHaveLength(1);
-      expect(manager.responses.es.bye).toHaveLength(3);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Greetings', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hi', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Goodbye', 'a === 1');
+      manager.addAnswer('en-US', 'bye', 'Bye', 'a === 1');
+      manager.addAnswer('es-ES', 'greet', 'Hola', 'a === 1');
+      manager.addAnswer('es-ES', 'greet', 'Holi!', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Hasta luego', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Hasta otra', 'a === 1');
+      manager.addAnswer('es-ES', 'bye', 'Nos vemos!', 'a === 1');
+      manager.removeAnswer('es-ES', 'greet', 'Holi!', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
+      expect(manager.responses['es-ES'].greet).toHaveLength(1);
+      expect(manager.responses['es-ES'].bye).toHaveLength(3);
     });
     test('If the answer does not exists, do nothing', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.removeAnswer('en', 'greet', 'Hell', 'a === 1');
-      expect(manager.responses.en.greet).toHaveLength(1);
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.removeAnswer('en-US', 'greet', 'Hell', 'a === 1');
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
     });
   });
 
   describe('Find all answers', () => {
     test('It should return all answers from intent and locale with no condition', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      manager.addAnswer('en', 'greet', 'Greetings');
-      manager.addAnswer('en', 'greet', 'Hi');
-      const result = manager.findAllAnswers('en', 'greet', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      manager.addAnswer('en-US', 'greet', 'Greetings');
+      manager.addAnswer('en-US', 'greet', 'Hi');
+      const result = manager.findAllAnswers('en-US', 'greet', {});
       expect(result).toHaveLength(3);
     });
     test('It should return all answers with true condition or no condition', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Greetings', 'a === 1');
-      manager.addAnswer('en', 'greet', 'Hi', 'a === 2');
-      manager.addAnswer('en', 'greet', 'Good day');
-      const result = manager.findAllAnswers('en', 'greet', { a: 1 });
+      manager.addAnswer('en-US', 'greet', 'Hello', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Greetings', 'a === 1');
+      manager.addAnswer('en-US', 'greet', 'Hi', 'a === 2');
+      manager.addAnswer('en-US', 'greet', 'Good day');
+      const result = manager.findAllAnswers('en-US', 'greet', { a: 1 });
       expect(result).toHaveLength(3);
       expect(result[0].response).toEqual('Hello');
       expect(result[1].response).toEqual('Greetings');
@@ -156,14 +156,14 @@ describe('NLG Manager', () => {
     });
     test('It should return an empty array if location does not have answers', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      const result = manager.findAllAnswers('es', 'greet', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      const result = manager.findAllAnswers('es-ES', 'greet', {});
       expect(result).toHaveLength(0);
     });
     test('It should return an empty array if intent does not exists', () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      const result = manager.findAllAnswers('en', 'bye', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      const result = manager.findAllAnswers('en-US', 'bye', {});
       expect(result).toHaveLength(0);
     });
   });
@@ -171,24 +171,24 @@ describe('NLG Manager', () => {
   describe('Find answer', () => {
     test('It should return one answer from intent and locale with no condition', async () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      manager.addAnswer('en', 'greet', 'Greetings');
-      manager.addAnswer('en', 'greet', 'Hi');
-      const result = await manager.findAnswer('en', 'greet', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      manager.addAnswer('en-US', 'greet', 'Greetings');
+      manager.addAnswer('en-US', 'greet', 'Hi');
+      const result = await manager.findAnswer('en-US', 'greet', {});
       expect(result).toBeDefined();
     });
     test('It should return undefined if there is no answer', async () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      manager.addAnswer('en', 'greet', 'Greetings');
-      manager.addAnswer('en', 'greet', 'Hi');
-      const result = await manager.findAnswer('en', 'bye', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      manager.addAnswer('en-US', 'greet', 'Greetings');
+      manager.addAnswer('en-US', 'greet', 'Hi');
+      const result = await manager.findAnswer('en-US', 'bye', {});
       expect(result).toBeUndefined();
     });
     test('It should return the existing answer if there is only 1', async () => {
       const manager = new NlgManager();
-      manager.addAnswer('en', 'greet', 'Hello');
-      const result = await manager.findAnswer('en', 'greet', {});
+      manager.addAnswer('en-US', 'greet', 'Hello');
+      const result = await manager.findAnswer('en-US', 'greet', {});
       expect(result.response).toEqual('Hello');
     });
   });

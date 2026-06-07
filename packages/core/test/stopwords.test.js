@@ -120,7 +120,7 @@ describe('Stopwords', () => {
       const input = {
         settings: { keepStopwords: false },
         tokens: ['esto', 'debe', 'quitar', 'esto', 'y', 'esto'],
-        locale: 'es',
+        locale: 'es-ES',
       };
       const actual = stopwords.run(input);
       expect(actual.tokens).toEqual(['debe', 'y']);

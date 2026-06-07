@@ -23,7 +23,7 @@
 
 const { NlpUtil } = require('../../../src/nlp');
 
-const tokenizer = NlpUtil.getTokenizer('ja');
+const tokenizer = NlpUtil.getTokenizer('ja-JP');
 
 describe('Tokenizer Ja', () => {
   describe('Constructor', () => {

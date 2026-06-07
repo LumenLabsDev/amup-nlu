@@ -248,18 +248,18 @@ describe('Extractor Enum', () => {
   describe('Extract', () => {
     test('It should extract enum entities without tokenizer', async () => {
       const ner = new Ner();
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spederman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -280,18 +280,18 @@ describe('Extractor Enum', () => {
 
     test('It should extract enum entities when exact is marked without tokenizer', async () => {
       const ner = new Ner({ threshold: 1 });
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spiderman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -312,12 +312,12 @@ describe('Extractor Enum', () => {
 
     test('It should extract enum entities with spaced japanese also without tokenizer', async () => {
       const ner = new Ner({ threshold: 1 });
-      ner.addRuleOptionTexts('ja', 'person', 'employee', ['山田', '佐藤']);
-      ner.addRuleOptionTexts('ja', 'person', 'superior', ['田中', '嶋田']);
-      ner.addRuleOptionTexts('ja', 'food', 'sushi', ['穴子', 'マグロ']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'employee', ['山田', '佐藤']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'superior', ['田中', '嶋田']);
+      ner.addRuleOptionTexts('ja-JP', 'food', 'sushi', ['穴子', 'マグロ']);
       const input = {
         text: '山田さん と 田中さん は 穴子寿司を 食べました',
-        locale: 'ja',
+        locale: 'ja-JP',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -362,12 +362,12 @@ describe('Extractor Enum', () => {
 
     test('It should extract only one enum entity with unspaced japanese and no tokenizer', async () => {
       const ner = new Ner({ threshold: 1 });
-      ner.addRuleOptionTexts('ja', 'person', 'employee', ['山田', '佐藤']);
-      ner.addRuleOptionTexts('ja', 'person', 'superior', ['田中', '嶋田']);
-      ner.addRuleOptionTexts('ja', 'food', 'sushi', ['穴子', 'マグロ']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'employee', ['山田', '佐藤']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'superior', ['田中', '嶋田']);
+      ner.addRuleOptionTexts('ja-JP', 'food', 'sushi', ['穴子', 'マグロ']);
       const input = {
         text: '山田さんと田中さんは穴子寿司を食べました',
-        locale: 'ja',
+        locale: 'ja-JP',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -389,18 +389,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities with default tokenizer', async () => {
       const container = containerBootstrap();
       const ner = new Ner({}, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spederman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -422,18 +422,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities with default tokenizer and forced position correction', async () => {
       const container = containerBootstrap();
       const ner = new Ner({}, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spederman eating spaghetti in the city.',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -455,18 +455,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities with default tokenizer and a point instead of space', async () => {
       const container = containerBootstrap();
       const ner = new Ner({}, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw.spederman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -488,18 +488,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities with default tokenizer and a double space before entity', async () => {
       const container = containerBootstrap();
       const ner = new Ner({}, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw  spederman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -521,18 +521,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities with default tokenizer and a double space after entity', async () => {
       const container = containerBootstrap();
       const ner = new Ner({}, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spederman eating  spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -554,18 +554,18 @@ describe('Extractor Enum', () => {
     test('It should extract enum entities when exact is marked with tokenizer', async () => {
       const container = containerBootstrap();
       const ner = new Ner({ threshold: 1 }, container);
-      ner.addRuleOptionTexts('en', 'hero', 'spiderman', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'spiderman', [
         'Spiderman',
         'spider-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'iron man', [
+      ner.addRuleOptionTexts('en-US', 'hero', 'iron man', [
         'iron man',
         'iron-man',
       ]);
-      ner.addRuleOptionTexts('en', 'hero', 'thor', ['Thor']);
+      ner.addRuleOptionTexts('en-US', 'hero', 'thor', ['Thor']);
       const input = {
         text: 'I saw spiderman eating spaghetti in the city',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -588,12 +588,12 @@ describe('Extractor Enum', () => {
       const container = containerBootstrap();
       container.use(LangJa);
       const ner = new Ner({ threshold: 1 }, container);
-      ner.addRuleOptionTexts('ja', 'person', 'employee', ['山田', '佐藤']);
-      ner.addRuleOptionTexts('ja', 'person', 'superior', ['田中', '嶋田']);
-      ner.addRuleOptionTexts('ja', 'food', 'sushi', ['穴子', 'マグロ']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'employee', ['山田', '佐藤']);
+      ner.addRuleOptionTexts('ja-JP', 'person', 'superior', ['田中', '嶋田']);
+      ner.addRuleOptionTexts('ja-JP', 'food', 'sushi', ['穴子', 'マグロ']);
       const input = {
         text: '山田さんと田中さんは穴子寿司を食べました',
-        locale: 'ja',
+        locale: 'ja-JP',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -640,7 +640,7 @@ describe('Extractor Enum', () => {
     test('It should extract entities from utterance without tokenizer', async () => {
       const ner = new Ner();
       const result = ner.getEntitiesFromUtterance(
-        'en',
+        'en-US',
         'I saw a @hero eating @food in the @place'
       );
       expect(result).toEqual(['hero', 'food', 'place']);

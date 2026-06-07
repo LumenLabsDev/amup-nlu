@@ -44,7 +44,7 @@ function buildExpected(value, start, entityName, typeName) {
   return result;
 }
 
-function buildInput(text, builtins, locale = 'en') {
+function buildInput(text, builtins, locale = 'en-US') {
   const result = {
     text,
     locale,
@@ -69,7 +69,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'Email'));
       const expected = {
         edges: [buildExpected('something@mail.com', 12, 'email')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Email'],
       };
@@ -83,7 +83,7 @@ describe('Builtin Default', () => {
           buildExpected('something@mail.com', 12, 'email'),
           buildExpected('other@mail.com', 40, 'email'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Email'],
       };
@@ -97,7 +97,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'IpAddress'));
       const expected = {
         edges: [buildExpected('8.8.8.8', 9, 'ip', 'ipv4')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['IpAddress'],
       };
@@ -111,7 +111,7 @@ describe('Builtin Default', () => {
           buildExpected('8.8.8.8', 9, 'ip', 'ipv4'),
           buildExpected('192.168.0.1', 30, 'ip', 'ipv4'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['IpAddress'],
       };
@@ -122,7 +122,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'IpAddress'));
       const expected = {
         edges: [buildExpected('ABEF:452::FE10', 9, 'ip', 'ipv6')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['IpAddress'],
       };
@@ -136,7 +136,7 @@ describe('Builtin Default', () => {
           buildExpected('ABEF:452::FE10', 9, 'ip', 'ipv6'),
           buildExpected('ABEF:452::AE10', 37, 'ip', 'ipv6'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['IpAddress'],
       };
@@ -150,7 +150,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'URL'));
       const expected = {
         edges: [buildExpected('https://www.uri.com', 10, 'url')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['URL'],
       };
@@ -165,7 +165,7 @@ describe('Builtin Default', () => {
           buildExpected('https://www.uri.com', 10, 'url'),
           buildExpected('http://me.com/more/things?a=7&b=test', 39, 'url'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['URL'],
       };
@@ -179,7 +179,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'PhoneNumber'));
       const expected = {
         edges: [buildExpected('541-754-3010', 22, 'phonenumber')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['PhoneNumber'],
       };
@@ -193,7 +193,7 @@ describe('Builtin Default', () => {
           buildExpected('541-754-3010', 19, 'phonenumber'),
           buildExpected('555-911-7340', 41, 'phonenumber'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['PhoneNumber'],
       };
@@ -207,7 +207,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'Hashtag'));
       const expected = {
         edges: [buildExpected('#hashtag', 8, 'hashtag')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Hashtag'],
       };
@@ -221,7 +221,7 @@ describe('Builtin Default', () => {
           buildExpected('#hashtag', 8, 'hashtag'),
           buildExpected('#party', 21, 'hashtag'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Hashtag'],
       };
@@ -238,7 +238,7 @@ describe('Builtin Default', () => {
           buildExpected('12', 5, 'number', 'integer'),
           buildExpected('-7', 17, 'number', 'integer'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Number'],
       };
@@ -254,7 +254,7 @@ describe('Builtin Default', () => {
           buildExpected('12.1', 5, 'number', 'float'),
           buildExpected('-7.2', 19, 'number', 'float'),
         ],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Number'],
       };
@@ -270,7 +270,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'Date'));
       const expected = {
         edges: [buildExpected('29/02/2020', 8, 'date')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Date'],
       };
@@ -282,7 +282,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'Date'));
       const expected = {
         edges: [buildExpected('2020-02-29', 8, 'date')],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Date'],
       };
@@ -294,7 +294,7 @@ describe('Builtin Default', () => {
       const actual = builtin.extract(buildInput(input, 'Date'));
       const expected = {
         edges: [],
-        locale: 'en',
+        locale: 'en-US',
         text: input,
         builtins: ['Date'],
       };

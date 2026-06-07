@@ -54,7 +54,7 @@ describe('NLU Neural', () => {
   describe('Train and process', () => {
     test('It can train and process a corpus', async () => {
       const nlu = new NluNeural(
-        { locale: 'en', useNoneFeature: true },
+        { locale: 'en-US', useNoneFeature: true },
         bootstrap()
       );
       const status = await nlu.train(corpus);
@@ -84,7 +84,7 @@ describe('NLU Neural', () => {
 
     test('It can explain the results', async () => {
       const nlu = new NluNeural(
-        { locale: 'en', returnExplanation: true, useNoneFeature: true },
+        { locale: 'en-US', returnExplanation: true, useNoneFeature: true },
         bootstrap()
       );
       await nlu.train(corpus);
@@ -121,7 +121,7 @@ describe('NLU Neural', () => {
 
     test('An allow list can be added', async () => {
       const nlu = new NluNeural(
-        { locale: 'en', useNoneFeature: true },
+        { locale: 'en-US', useNoneFeature: true },
         bootstrap()
       );
       await nlu.train(corpus);
@@ -138,7 +138,7 @@ describe('NLU Neural', () => {
 
     test('An allow list with wildcars can be added', async () => {
       const nlu = new NluNeural(
-        { locale: 'en', useNoneFeature: true },
+        { locale: 'en-US', useNoneFeature: true },
         bootstrap()
       );
       await nlu.train(corpus);
@@ -155,7 +155,7 @@ describe('NLU Neural', () => {
 
     test('Allow list can be an object', async () => {
       const nlu = new NluNeural(
-        { locale: 'en', useNoneFeature: true },
+        { locale: 'en-US', useNoneFeature: true },
         bootstrap()
       );
       await nlu.train(corpus);

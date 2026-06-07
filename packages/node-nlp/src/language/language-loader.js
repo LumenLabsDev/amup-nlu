@@ -23,50 +23,13 @@
 
 /* eslint-disable global-require, import/no-extraneous-dependencies */
 
-const loadedContainers = new WeakMap();
+const {
+  DEFAULT_LOCALE,
+  LocaleError,
+  parseLocale,
+} = require('@lumen-labs-dev/core');
 
-const defaultLocales = {
-  ar: 'ar-sa',
-  bn: 'bn-bd',
-  ca: 'ca-es',
-  cs: 'cs-cz',
-  da: 'da-dk',
-  de: 'de-de',
-  el: 'el-gr',
-  en: 'en-us',
-  es: 'es-es',
-  eu: 'eu-es',
-  fa: 'fa-ir',
-  fi: 'fi-fi',
-  fr: 'fr-fr',
-  ga: 'ga-ie',
-  gl: 'gl-es',
-  hi: 'hi-in',
-  hu: 'hu-hu',
-  hy: 'hy-am',
-  id: 'id-id',
-  it: 'it-it',
-  ja: 'ja-jp',
-  ko: 'ko-kr',
-  lt: 'lt-lt',
-  ms: 'ms-my',
-  ne: 'ne-np',
-  nl: 'nl-nl',
-  no: 'no-no',
-  pl: 'pl-pl',
-  pt: 'pt-pt',
-  ro: 'ro-ro',
-  ru: 'ru-ru',
-  sl: 'sl-si',
-  sr: 'sr-rs',
-  sv: 'sv-se',
-  ta: 'ta-in',
-  th: 'th-th',
-  tl: 'tl-ph',
-  tr: 'tr-tr',
-  uk: 'uk-ua',
-  zh: 'zh-cn',
-};
+const loadedContainers = new WeakMap();
 
 const classSuffixes = {
   'ar-sa': 'Ar',
@@ -156,23 +119,49 @@ const languagePackages = {
   'zh-cn': () => require('@lumen-labs-dev/lang-zh-cn'),
 };
 
+function getPackageKey(locale) {
+  if (typeof locale !== 'string') {
+    return undefined;
+  }
+  return parseLocale(locale).packageKey;
+}
+
+function isPrivateUseLocale(locale) {
+  if (typeof locale !== 'string') {
+    return false;
+  }
+  try {
+    const { canonical } = parseLocale(locale);
+    return canonical.split('-')[0].toLowerCase() === 'x';
+  } catch (error) {
+    return false;
+  }
+}
+
 function getLocale(locale) {
   if (typeof locale !== 'string') {
     return undefined;
   }
-  const normalized = locale.toLowerCase().replace('_', '-');
-  return languagePackages[normalized]
-    ? normalized
-    : defaultLocales[normalized.substr(0, 2)] || normalized.substr(0, 2);
+  const { canonical, packageKey } = parseLocale(locale);
+  if (isPrivateUseLocale(locale)) {
+    return canonical;
+  }
+  if (!languagePackages[packageKey]) {
+    throw new LocaleError(
+      `Language package @lumen-labs-dev/lang-${packageKey} is required for locale "${canonical}". ` +
+        `Install it or install @lumen-labs-dev/lang-all for all bundled languages.`
+    );
+  }
+  return canonical;
 }
 
 function getClassSuffix(locale) {
-  const normalized = getLocale(locale);
-  if (classSuffixes[normalized]) {
-    return classSuffixes[normalized];
+  const packageKey = getPackageKey(locale);
+  if (classSuffixes[packageKey]) {
+    return classSuffixes[packageKey];
   }
-  return normalized
-    ? normalized
+  return packageKey
+    ? packageKey
         .split('-')
         .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
         .join('')
@@ -180,8 +169,8 @@ function getClassSuffix(locale) {
 }
 
 function getLanguagePackage(locale) {
-  const truncated = getLocale(locale);
-  const loader = languagePackages[truncated];
+  const packageKey = getPackageKey(locale);
+  const loader = languagePackages[packageKey];
   if (!loader) {
     return undefined;
   }
@@ -189,33 +178,38 @@ function getLanguagePackage(locale) {
     return loader();
   } catch (error) {
     throw new Error(
-      `Language package @lumen-labs-dev/lang-${truncated} is required for locale "${truncated}". ` +
+      `Language package @lumen-labs-dev/lang-${packageKey} is required for locale "${getLocale(locale)}". ` +
         `Install it or install @lumen-labs-dev/lang-all for all bundled languages.`
     );
   }
 }
 
 function getLanguageClass(locale) {
-  const truncated = getLocale(locale);
-  const languagePackage = getLanguagePackage(truncated);
-  const suffix = getClassSuffix(truncated);
+  const languagePackage = getLanguagePackage(locale);
+  const suffix = getClassSuffix(locale);
   return languagePackage && languagePackage[`Lang${suffix}`];
 }
 
 function registerLanguage(container, locale) {
-  const truncated = getLocale(locale);
-  const LanguageClass = getLanguageClass(truncated);
+  if (isPrivateUseLocale(locale)) {
+    return true;
+  }
+  const packageKey = getPackageKey(locale);
+  const LanguageClass = getLanguageClass(locale);
   if (!LanguageClass) {
-    return false;
+    throw new LocaleError(
+      `Language package @lumen-labs-dev/lang-${packageKey} is required for locale "${getLocale(locale)}". ` +
+        `Install it or install @lumen-labs-dev/lang-all for all bundled languages.`
+    );
   }
   let loaded = loadedContainers.get(container);
   if (!loaded) {
     loaded = new Set();
     loadedContainers.set(container, loaded);
   }
-  if (!loaded.has(truncated)) {
+  if (!loaded.has(packageKey)) {
     container.use(LanguageClass);
-    loaded.add(truncated);
+    loaded.add(packageKey);
   }
   return true;
 }
@@ -240,21 +234,21 @@ function registerDefaultLanguages(container, settings = {}) {
       );
     }
   }
-  registerLanguage(container, 'en');
+  registerLanguage(container, DEFAULT_LOCALE);
   registerLanguages(container, settings.languages);
   registerLanguages(container, settings.locales);
 }
 
 function getClass(locale, prefix) {
-  const truncated = getLocale(locale);
-  const languagePackage = getLanguagePackage(truncated);
-  const suffix = getClassSuffix(truncated);
+  const languagePackage = getLanguagePackage(locale);
+  const suffix = getClassSuffix(locale);
   return languagePackage && languagePackage[`${prefix}${suffix}`];
 }
 
 module.exports = {
   getClass,
   getLocale,
+  getPackageKey,
   registerDefaultLanguages,
   registerLanguage,
   registerLanguages,

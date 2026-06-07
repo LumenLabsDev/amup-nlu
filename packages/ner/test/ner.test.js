@@ -37,10 +37,10 @@ describe('NER', () => {
   describe('Add Rule', () => {
     test('Rules can be added by locale, name and type', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
       expect(instance.rules).toBeDefined();
-      expect(instance.rules.en).toBeDefined();
-      expect(instance.rules.en.A1).toEqual({
+      expect(instance.rules['en-US']).toBeDefined();
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi],
@@ -59,11 +59,11 @@ describe('NER', () => {
     });
     test('Rules can be added to same locale and mane', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
       expect(instance.rules).toBeDefined();
-      expect(instance.rules.en).toBeDefined();
-      expect(instance.rules.en.A1).toEqual({
+      expect(instance.rules['en-US']).toBeDefined();
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -74,10 +74,10 @@ describe('NER', () => {
   describe('Remove Rule', () => {
     test('Rules can be added by locale, name and type', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
-      instance.removeRule('en', 'A1', /t/gi);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
+      instance.removeRule('en-US', 'A1', /t/gi);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/b/gi],
@@ -96,10 +96,10 @@ describe('NER', () => {
     });
     test('If locale does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
-      instance.removeRule('es', 'A1', /t/gi);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
+      instance.removeRule('es-ES', 'A1', /t/gi);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -107,10 +107,10 @@ describe('NER', () => {
     });
     test('If name does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
-      instance.removeRule('en', 'A2', /t/gi);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
+      instance.removeRule('en-US', 'A2', /t/gi);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -118,10 +118,10 @@ describe('NER', () => {
     });
     test('If rule does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
-      instance.removeRule('en', 'A1', /c/gi);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
+      instance.removeRule('en-US', 'A1', /c/gi);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -129,19 +129,19 @@ describe('NER', () => {
     });
     test('If only locale and name are provided, remove the rule by name', () => {
       const instance = new Ner({ container });
-      instance.addRule('en', 'A1', 'regex', /t/gi);
-      instance.addRule('en', 'A1', 'regex', /b/gi);
-      instance.addRule('en', 'A2', 'regex', /b/gi);
-      instance.removeRule('en', 'A1');
-      expect(instance.rules.en.A1).toBeUndefined();
+      instance.addRule('en-US', 'A1', 'regex', /t/gi);
+      instance.addRule('en-US', 'A1', 'regex', /b/gi);
+      instance.addRule('en-US', 'A2', 'regex', /b/gi);
+      instance.removeRule('en-US', 'A1');
+      expect(instance.rules['en-US'].A1).toBeUndefined();
     });
   });
 
   describe('Add rule option texts', () => {
     test('A text can be added to an option of a rule for a locale', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', 'text1');
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', 'text1');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -154,8 +154,8 @@ describe('NER', () => {
     });
     test('A text can be added to an option of a rule for several locales', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts(['en', 'es'], 'A1', 'opt1', 'text1');
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', 'text1');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -165,7 +165,7 @@ describe('NER', () => {
           },
         ],
       });
-      expect(instance.rules.es.A1).toEqual({
+      expect(instance.rules['es-ES'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -178,8 +178,8 @@ describe('NER', () => {
     });
     test('Several texts can be added to an option of a rule for a locale', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', ['text1', 'text2']);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', ['text1', 'text2']);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -192,9 +192,9 @@ describe('NER', () => {
     });
     test('Several texts can be added to an option of a rule for a locale at different moments', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', ['text1', 'text2']);
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', ['text3', 'text4']);
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', ['text1', 'text2']);
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', ['text3', 'text4']);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -207,8 +207,8 @@ describe('NER', () => {
     });
     test('If no text is provided use the option name', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1');
-      expect(instance.rules.en.A1).toEqual({
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -224,14 +224,14 @@ describe('NER', () => {
   describe('Remove rule option texts', () => {
     test('A text can be removed', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('en', 'A1', 'opt1', 'text2');
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('en-US', 'A1', 'opt1', 'text2');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -244,15 +244,15 @@ describe('NER', () => {
     });
     test('If the locale does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('es', 'A1', 'opt1', 'text2');
-      expect(instance.rules.es).toBeUndefined();
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('es-ES', 'A1', 'opt1', 'text2');
+      expect(instance.rules['es-ES']).toBeUndefined();
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -265,15 +265,15 @@ describe('NER', () => {
     });
     test('If the rule name does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('en', 'A2', 'opt1', 'text2');
-      expect(instance.rules.en.A2).toBeUndefined();
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('en-US', 'A2', 'opt1', 'text2');
+      expect(instance.rules['en-US'].A2).toBeUndefined();
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -286,14 +286,14 @@ describe('NER', () => {
     });
     test('If the option does not exists do not crash', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('en', 'A1', 'opt2', 'text2');
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('en-US', 'A1', 'opt2', 'text2');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -306,14 +306,14 @@ describe('NER', () => {
     });
     test('The texts can be a list', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('en', 'A1', 'opt1', ['text2', 'text3']);
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('en-US', 'A1', 'opt1', ['text2', 'text3']);
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -326,14 +326,14 @@ describe('NER', () => {
     });
     test('If no text is defined use the option name', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'opt1',
         'text4',
       ]);
-      instance.removeRuleOptionTexts('en', 'A1', 'opt1');
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts('en-US', 'A1', 'opt1');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -346,14 +346,14 @@ describe('NER', () => {
     });
     test('The locale can be a list', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts(['en', 'es'], 'A1', 'opt1', [
+      instance.addRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      instance.removeRuleOptionTexts(['en', 'es'], 'A1', 'opt1', 'text2');
-      expect(instance.rules.en.A1).toEqual({
+      instance.removeRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', 'text2');
+      expect(instance.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -363,7 +363,7 @@ describe('NER', () => {
           },
         ],
       });
-      expect(instance.rules.es.A1).toEqual({
+      expect(instance.rules['es-ES'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -378,17 +378,17 @@ describe('NER', () => {
   describe('Get rules', () => {
     test('It can get all the rules of a locale', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
       ]);
-      instance.addRuleOptionTexts('en', 'A1', 'opt2', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt2', [
         'text4',
         'text5',
         'text6',
       ]);
-      const actual = instance.getRules('en');
+      const actual = instance.getRules('en-US');
       expect(actual).toEqual([
         {
           name: 'A1',
@@ -408,7 +408,7 @@ describe('NER', () => {
     });
     test('It should add the wildcard rules', () => {
       const instance = new Ner({ container });
-      instance.addRuleOptionTexts('en', 'A1', 'opt1', [
+      instance.addRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
@@ -418,7 +418,7 @@ describe('NER', () => {
         'text5',
         'text6',
       ]);
-      const actual = instance.getRules('en');
+      const actual = instance.getRules('en-US');
       expect(actual).toEqual([
         {
           name: 'A1',
@@ -449,7 +449,7 @@ describe('NER', () => {
         'text5',
         'text6',
       ]);
-      const actual = instance.getRules('en');
+      const actual = instance.getRules('en-US');
       expect(actual).toEqual([
         {
           name: 'A1',
@@ -488,11 +488,11 @@ describe('NER', () => {
   describe('To & from JSON', () => {
     test('It deserializes regular expressions', () => {
       const instance = new Ner({ container });
-      instance.addBetweenCondition('en', 'test', 'from', 'to');
+      instance.addBetweenCondition('en-US', 'test', 'from', 'to');
       const json = JSON.stringify(instance.toJSON());
       const instance2 = new Ner({ container });
       instance2.fromJSON(JSON.parse(json));
-      const actual = instance2.getRules('en');
+      const actual = instance2.getRules('en-US');
       expect(actual).toEqual([
         {
           name: 'test',

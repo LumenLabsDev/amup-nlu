@@ -43,11 +43,11 @@ const container = await containerBootstrap();
 container.use(Nlp);
 container.use(LangEn);
 const nlp = container.get('nlp');
-nlp.addLanguage('en');
-nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
-nlp.addDocument('en', 'hello', 'greetings.hello');
+nlp.addLanguage('en-US');
+nlp.addDocument('en-US', 'goodbye for now', 'greetings.bye');
+nlp.addDocument('en-US', 'hello', 'greetings.hello');
 await nlp.train();
-const response = await nlp.process('en', 'I should go now');
+const response = await nlp.process('en-US', 'I should go now');
 ```
 
 ## Contributing

@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable } = require('@lumen-labs-dev/core');
+const { Clonable, assertLocale, migrateLegacyLocale } = require('@lumen-labs-dev/core');
 
 class NlgManager extends Clonable {
   constructor(settings = {}, container) {
@@ -53,6 +53,7 @@ class NlgManager extends Clonable {
 
   findAllAnswers(srcInput) {
     const input = srcInput;
+    input.locale = assertLocale(input.locale);
     if (this.responses[input.locale]) {
       input.answers = this.responses[input.locale][input.intent] || [];
     } else {
@@ -146,13 +147,14 @@ class NlgManager extends Clonable {
   }
 
   indexOfAnswer(locale, intent, answer, opts) {
-    if (!this.responses[locale]) {
+    const key = assertLocale(locale);
+    if (!this.responses[key]) {
       return -1;
     }
-    if (!this.responses[locale][intent]) {
+    if (!this.responses[key][intent]) {
       return -1;
     }
-    const potential = this.responses[locale][intent];
+    const potential = this.responses[key][intent];
     for (let i = 0; i < potential.length; i += 1) {
       const response = potential[i];
       if (
@@ -166,25 +168,27 @@ class NlgManager extends Clonable {
   }
 
   add(locale, intent, answer, opts) {
-    const index = this.indexOfAnswer(locale, intent, answer, opts);
+    const key = assertLocale(locale);
+    const index = this.indexOfAnswer(key, intent, answer, opts);
     if (index !== -1) {
-      return this.responses[locale][intent][index];
+      return this.responses[key][intent][index];
     }
-    if (!this.responses[locale]) {
-      this.responses[locale] = {};
+    if (!this.responses[key]) {
+      this.responses[key] = {};
     }
-    if (!this.responses[locale][intent]) {
-      this.responses[locale][intent] = [];
+    if (!this.responses[key][intent]) {
+      this.responses[key][intent] = [];
     }
     const obj = { answer, opts };
-    this.responses[locale][intent].push(obj);
+    this.responses[key][intent].push(obj);
     return obj;
   }
 
   remove(locale, intent, answer, opts) {
-    const index = this.indexOfAnswer(locale, intent, answer, opts);
+    const key = assertLocale(locale);
+    const index = this.indexOfAnswer(key, intent, answer, opts);
     if (index !== -1) {
-      this.responses[locale][intent].splice(index, 1);
+      this.responses[key][intent].splice(index, 1);
     }
   }
 
@@ -198,7 +202,7 @@ class NlgManager extends Clonable {
 
   find(locale, intent, context, settings) {
     const input = {
-      locale,
+      locale: assertLocale(locale),
       intent,
       context,
       settings: settings || this.settings,
@@ -229,7 +233,12 @@ class NlgManager extends Clonable {
 
   fromJSON(json) {
     this.applySettings(this.settings, json.settings);
-    this.responses = json.responses;
+    this.responses = {};
+    const locales = Object.keys(json.responses || {});
+    for (let i = 0; i < locales.length; i += 1) {
+      const locale = migrateLegacyLocale(locales[i]);
+      this.responses[locale] = json.responses[locales[i]];
+    }
   }
 }
 

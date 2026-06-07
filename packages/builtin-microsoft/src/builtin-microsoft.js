@@ -21,7 +21,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, defaultContainer } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  defaultContainer,
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('@lumen-labs-dev/core');
 const Recognizers = require('@microsoft/recognizers-text-suite');
 const BuiltinDictionary = require('./builtin-dictionary.json');
 const BuiltinInverse = require('./builtin-inverse.json');
@@ -49,7 +55,11 @@ const cultures = {
   zh: 'zh-cn',
 };
 
-function getCulture(locale) {
+function getCulture(srcLocale) {
+  const locale =
+    srcLocale && !srcLocale.includes('-')
+      ? srcLocale
+      : resolveContainerKey(assertLocale(srcLocale || DEFAULT_LOCALE));
   const result = cultures[locale];
   if (result) {
     return result;
@@ -304,15 +314,16 @@ class BuiltinMicrosoft extends Clonable {
   findBuiltinEntities(utterance, locale, srcBuiltins) {
     const result = [];
     const source = [];
-    const culture = getCulture(locale);
+    const key = resolveContainerKey(assertLocale(locale || DEFAULT_LOCALE));
+    const culture = getCulture(key);
     const builtins = srcBuiltins || this.settings.builtins;
     builtins.forEach((name) => {
       try {
         const entities =
-          name === 'Currency' && locale === 'pt'
+          name === 'Currency' && key === 'pt'
             ? Recognizers[`recognize${name}`](utterance, getCulture('en'))
             : Recognizers[`recognize${name}`](utterance, culture);
-        if (name === 'Number' && locale !== 'en') {
+        if (name === 'Number' && key !== 'en') {
           entities.push(
             ...Recognizers.recognizeNumber(utterance, getCulture('en'))
           );
@@ -339,7 +350,7 @@ class BuiltinMicrosoft extends Clonable {
               entity: entity.entity,
               rawEntity: entity.typeName,
             };
-            const resolution = this.calculateResolution(entity, locale);
+            const resolution = this.calculateResolution(entity, key);
             if (resolution) {
               edge.resolution = resolution;
             }

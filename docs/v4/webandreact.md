@@ -60,16 +60,16 @@ const { LangEn } = require('@lumen-labs-dev/lang-en-us-min');
   container.use(LangEn);
   const nlp = container.get('nlp');
   nlp.settings.autoSave = false;
-  nlp.addLanguage('en');
+  nlp.addLanguage('en-US');
   // Adds the utterances and intents for the NLP
-  nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
-  nlp.addDocument('en', 'i must go', 'greetings.bye');
-  nlp.addDocument('en', 'hello', 'greetings.hello');
-  nlp.addDocument('en', 'hi', 'greetings.hello');
-  nlp.addAnswer('en', 'greetings.bye', 'Till next time');
-  nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
+  nlp.addDocument('en-US', 'goodbye for now', 'greetings.bye');
+  nlp.addDocument('en-US', 'i must go', 'greetings.bye');
+  nlp.addDocument('en-US', 'hello', 'greetings.hello');
+  nlp.addDocument('en-US', 'hi', 'greetings.hello');
+  nlp.addAnswer('en-US', 'greetings.bye', 'Till next time');
+  nlp.addAnswer('en-US', 'greetings.hello', 'Hey there!');
   await nlp.train();
-  const response = await nlp.process('en', 'I should go now');
+  const response = await nlp.process('en-US', 'I should go now');
   console.log(response);
 })();
 ```
@@ -125,16 +125,16 @@ Third, move your bot logic to the index.html:
     container.use(LangEn);
     const nlp = container.get('nlp');
     nlp.settings.autoSave = false;
-    nlp.addLanguage('en');
+    nlp.addLanguage('en-US');
     // Adds the utterances and intents for the NLP
-    nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
-    nlp.addDocument('en', 'i must go', 'greetings.bye');
-    nlp.addDocument('en', 'hello', 'greetings.hello');
-    nlp.addDocument('en', 'hi', 'greetings.hello');
-    nlp.addAnswer('en', 'greetings.bye', 'Till next time');
-    nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
+    nlp.addDocument('en-US', 'goodbye for now', 'greetings.bye');
+    nlp.addDocument('en-US', 'i must go', 'greetings.bye');
+    nlp.addDocument('en-US', 'hello', 'greetings.hello');
+    nlp.addDocument('en-US', 'hi', 'greetings.hello');
+    nlp.addAnswer('en-US', 'greetings.bye', 'Till next time');
+    nlp.addAnswer('en-US', 'greetings.hello', 'Hey there!');
     await nlp.train();
-    const response = await nlp.process('en', 'I should go now');
+    const response = await nlp.process('en-US', 'I should go now');
     console.log(response);
   })();
   </script>
@@ -185,7 +185,7 @@ And in our _index.html_ we change our script:
     nlp.settings.autoSave = false;
     await nlp.addCorpus('https://raw.githubusercontent.com/LumenLabsDev/amup-nlu/main/examples/13-languages/corpora/corpus-en.json');
     await nlp.train();
-    const response = await nlp.process('en', 'who are you');
+    const response = await nlp.process('en-US', 'who are you');
     console.log(response);
   })();
 ```

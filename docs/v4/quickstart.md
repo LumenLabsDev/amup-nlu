@@ -20,15 +20,15 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 (async () => {
   const dock = await dockStart({ use: ['Basic'] });
   const nlp = dock.get('nlp');
-  nlp.addLanguage('en');
-  nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
-  nlp.addDocument('en', 'i must go', 'greetings.bye');
-  nlp.addDocument('en', 'hello', 'greetings.hello');
-  nlp.addDocument('en', 'hi', 'greetings.hello');
-  nlp.addAnswer('en', 'greetings.bye', 'Till next time');
-  nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
+  nlp.addLanguage('en-US');
+  nlp.addDocument('en-US', 'goodbye for now', 'greetings.bye');
+  nlp.addDocument('en-US', 'i must go', 'greetings.bye');
+  nlp.addDocument('en-US', 'hello', 'greetings.hello');
+  nlp.addDocument('en-US', 'hi', 'greetings.hello');
+  nlp.addAnswer('en-US', 'greetings.bye', 'Till next time');
+  nlp.addAnswer('en-US', 'greetings.hello', 'Hey there!');
   await nlp.train();
-  const response = await nlp.process('en', 'I should go now');
+  const response = await nlp.process('en-US', 'I should go now');
   console.log(response);
 })();
 ```
@@ -57,7 +57,7 @@ Replace inline training with:
 ```javascript
 await nlp.addCorpus('./corpus-en.json');
 await nlp.train();
-const response = await nlp.process('en', 'Who are you');
+const response = await nlp.process('en-US', 'Who are you');
 ```
 
 ## Extracting the configuration into a file
@@ -83,7 +83,7 @@ Simplify `index.js` — `dockStart()` loads config automatically:
 const dock = await dockStart();
 const nlp = dock.get('nlp');
 await nlp.train();
-const response = await nlp.process('en', 'Who are you');
+const response = await nlp.process('en-US', 'Who are you');
 ```
 
 ## Creating your first pipeline

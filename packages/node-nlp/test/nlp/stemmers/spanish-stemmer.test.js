@@ -26,7 +26,7 @@ const { NlpUtil } = require('../../../src/nlp');
 describe('Spanish Stemmer', () => {
   describe('Constructor', () => {
     test('It should create a new instance', () => {
-      const stemmer = NlpUtil.getStemmer('es');
+      const stemmer = NlpUtil.getStemmer('es-ES');
       expect(stemmer).toBeDefined();
     });
   });
@@ -34,7 +34,7 @@ describe('Spanish Stemmer', () => {
     test('Should tokenize and stem spanish text', () => {
       const text =
         'Amigos, nos aburrimos. Compraría gato trepador perfectamente si lo considerara aconsejable y reiremos';
-      const stemmer = NlpUtil.getStemmer('es');
+      const stemmer = NlpUtil.getStemmer('es-ES');
       const actual = stemmer.tokenizeAndStem(text);
       const expected = [
         'amig',

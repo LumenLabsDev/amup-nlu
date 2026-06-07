@@ -26,14 +26,14 @@ const { NlpUtil } = require('../../../src/nlp');
 describe('Ukrainian Stemmer', () => {
   describe('Constructor', () => {
     test('It should create a new instance', () => {
-      const stemmer = NlpUtil.getStemmer('uk');
+      const stemmer = NlpUtil.getStemmer('uk-UA');
       expect(stemmer).toBeDefined();
     });
   });
   describe('Stem', () => {
     test('Should tokenize and stem ukrainian text', () => {
       const text = 'історія hola випробування Чепинога';
-      const stemmer = NlpUtil.getStemmer('uk');
+      const stemmer = NlpUtil.getStemmer('uk-UA');
       const actual = stemmer.tokenizeAndStem(text);
       const expected = ['істор', 'hola', 'випробуван', 'чепиног'];
       expect(actual).toEqual(expected);

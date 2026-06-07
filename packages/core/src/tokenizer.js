@@ -23,6 +23,7 @@
 
 const { defaultContainer } = require('./container');
 const Normalizer = require('./normalizer');
+const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
 
 class Tokenizer {
   constructor(container = defaultContainer, shouldNormalize = false) {
@@ -93,8 +94,9 @@ class Tokenizer {
 
   async run(srcInput) {
     const input = srcInput;
-    const locale = input.locale || 'en';
-    let tokenizer = this.container.get(`tokenizer-${locale}`);
+    const locale = assertLocale(input.locale || DEFAULT_LOCALE);
+    const key = resolveContainerKey(locale);
+    let tokenizer = this.container.get(`tokenizer-${key}`);
     if (!tokenizer) {
       const tokenizerBert = this.container.get(`tokenizer-bert`);
       if (tokenizerBert && tokenizerBert.activeFor(locale)) {

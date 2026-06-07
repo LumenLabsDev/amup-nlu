@@ -110,13 +110,13 @@ const feats = {
 describe('Greek Stemmer', () => {
   describe('Constructor', () => {
     test('It should create a new instance', () => {
-      const stemmer = NlpUtil.getStemmer('el');
+      const stemmer = NlpUtil.getStemmer('el-GR');
       expect(stemmer).toBeDefined();
     });
   });
   describe('Stem', () => {
     test('Should execute step1', () => {
-      const stemmer = NlpUtil.getStemmer('el');
+      const stemmer = NlpUtil.getStemmer('el-GR');
       const keys = Object.keys(feats);
       for (let i = 0; i < keys.length; i += 1) {
         const expected = [feats[keys[i]].toLowerCase().replace('ς', 'σ')];

@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, compareWildcars } = require('@lumen-labs-dev/core');
+const { Clonable, compareWildcars, getLocaleTag } = require('@lumen-labs-dev/core');
 const { SpellCheck } = require('@lumen-labs-dev/similarity');
 
 class Nlu extends Clonable {
@@ -34,9 +34,9 @@ class Nlu extends Clonable {
       container
     );
     this.applySettings(this.settings, settings);
-    this.applySettings(this.settings, { locale: 'en' });
+    this.applySettings(this.settings, { locale: 'en-US' });
     if (!this.settings.tag) {
-      this.settings.tag = `nlu-${this.settings.locale}`;
+      this.settings.tag = `nlu-${getLocaleTag(this.settings.locale)}`;
     }
     this.registerDefault();
     this.applySettings(
@@ -53,7 +53,7 @@ class Nlu extends Clonable {
 
   registerDefault() {
     this.container.registerConfiguration(
-      'nlu-??',
+      'nlu-*',
       {
         keepStopwords: true,
         nonefeatureValue: 1,
@@ -66,7 +66,7 @@ class Nlu extends Clonable {
       false
     );
     this.container.registerPipeline(
-      'nlu-??-train',
+      'nlu-*-train',
       ['.prepareCorpus', '.addNoneFeature', '.innerTrain'],
       false
     );

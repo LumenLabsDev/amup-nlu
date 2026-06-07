@@ -42,7 +42,7 @@ describe('Sentiment Analyzer', () => {
       expect(result.numHits).toEqual(2);
       expect(result.average).toEqual(0.125);
       expect(result.type).toEqual('senticon');
-      expect(result.locale).toEqual('en');
+      expect(result.locale).toEqual('en-US');
     });
     test('Get negative sentiment', async () => {
       const analyzer = new SentimentAnalyzer();
@@ -54,7 +54,7 @@ describe('Sentiment Analyzer', () => {
       expect(result.numHits).toEqual(1);
       expect(result.average).toEqual(-0.15);
       expect(result.type).toEqual('senticon');
-      expect(result.locale).toEqual('en');
+      expect(result.locale).toEqual('en-US');
     });
   });
 });

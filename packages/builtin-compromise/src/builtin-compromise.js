@@ -21,7 +21,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, defaultContainer } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  defaultContainer,
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('@lumen-labs-dev/core');
 
 // allow for using compromise with react
 const compromise = require('compromise');
@@ -202,6 +208,9 @@ class BuiltinCompromise extends Clonable {
 
   async extract(srcInput) {
     const input = srcInput;
+    if (input.locale) {
+      input.locale = assertLocale(input.locale);
+    }
     const entities = await this.findBuiltinEntities(
       input.text || input.utterance,
       input.locale
@@ -227,12 +236,18 @@ class BuiltinCompromise extends Clonable {
 
   run(srcInput) {
     const input = srcInput;
-    const locale = input.locale || 'en';
+    const locale = resolveContainerKey(
+      assertLocale(input.locale || DEFAULT_LOCALE)
+    );
     const extractor = this.container.get(`extract-builtin-${locale}`) || this;
     return extractor.extract(input);
   }
 
-  static getCulture(locale) {
+  static getCulture(srcLocale) {
+    const locale =
+      srcLocale && !srcLocale.includes('-')
+        ? srcLocale
+        : resolveContainerKey(assertLocale(srcLocale || DEFAULT_LOCALE));
     const result = cultures[locale];
     if (result) {
       return result;

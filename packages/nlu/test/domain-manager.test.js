@@ -36,20 +36,20 @@ describe('Domain Manager', () => {
       expect(manager).toBeDefined();
     });
     test('A locale can be provided', () => {
-      const manager = new DomainManager({ container, locale: 'es' });
-      expect(manager.settings.locale).toEqual('es');
+      const manager = new DomainManager({ container, locale: 'es-ES' });
+      expect(manager.settings.locale).toEqual('es-ES');
     });
     test('If the locale is not provided, will be en by default', () => {
       const manager = new DomainManager({ container });
-      expect(manager.settings.locale).toEqual('en');
+      expect(manager.settings.locale).toEqual('en-US');
     });
     test('A tag can be provided', () => {
       const manager = new DomainManager({ container, tag: 'different-tag' });
       expect(manager.settings.tag).toEqual('different-tag');
     });
     test('If a tag is not provided, creates a default one based on locale', () => {
-      const manager = new DomainManager({ container, locale: 'es' });
-      expect(manager.settings.tag).toEqual('domain-manager-es');
+      const manager = new DomainManager({ container, locale: 'es-ES' });
+      expect(manager.settings.tag).toEqual('domain-manager-es-es');
     });
     test('A default domain should be added', () => {
       const manager = new DomainManager({ container });

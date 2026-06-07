@@ -97,7 +97,7 @@ describe('Normalizer', () => {
 
     test('If a normalizer for the input locale exists at the container, then use it', () => {
       const container = getContainer();
-      const input = { text: 'Ñam aquí, Lérn', locale: 'es' };
+      const input = { text: 'Ñam aquí, Lérn', locale: 'es-ES' };
       const expected = 'n*m *qui, lern';
       const normalizer = new Normalizer(container);
       const actual = normalizer.run(input);

@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { containerBootstrap } = require('@lumen-labs-dev/core');
+const { containerBootstrap, resolveContainerKey } = require('@lumen-labs-dev/core');
 const { BuiltinMicrosoft } = require('../src');
 const numberAgeTests = require('./number-age.json');
 const numberTests = require('./number.json');
@@ -77,6 +77,7 @@ expect.extend({
 
 function addTests(base, locale, entityTypeName) {
   const instance = new BuiltinMicrosoft({ container });
+  const localeKey = resolveContainerKey(locale);
   for (let i = 0; i < base.length; i += 1) {
     const testCase = base[i];
     const keys = Object.keys(testCase);
@@ -97,8 +98,8 @@ function addTests(base, locale, entityTypeName) {
         testCase.rawEntitiy = entityTypeName;
       }
     }
-    if (!testCase.avoid || !testCase.avoid.includes(locale)) {
-      const upperLocale = `${locale.charAt(0).toUpperCase()}${locale.slice(1)}`;
+    if (!testCase.avoid || !testCase.avoid.includes(localeKey)) {
+      const upperLocale = `${localeKey.charAt(0).toUpperCase()}${localeKey.slice(1)}`;
       const utteranceName = `utterance${upperLocale}`;
       const utterance = testCase[utteranceName] || testCase.utterance;
       const resultName = `result${upperLocale}`;
@@ -119,12 +120,12 @@ function addTests(base, locale, entityTypeName) {
 }
 
 const languages = [
-  { locale: 'en', name: 'English' },
-  { locale: 'es', name: 'Spanish' },
-  { locale: 'fr', name: 'French' },
-  { locale: 'pt', name: 'Portuguese' },
-  { locale: 'zh', name: 'Chinese' },
-  { locale: 'ja', name: 'Japanese' },
+  { locale: 'en-US', name: 'English' },
+  { locale: 'es-ES', name: 'Spanish' },
+  { locale: 'fr-FR', name: 'French' },
+  { locale: 'pt-PT', name: 'Portuguese' },
+  { locale: 'zh-CN', name: 'Chinese' },
+  { locale: 'ja-JP', name: 'Japanese' },
 ];
 
 describe('NER Manager builtins', () => {
@@ -159,7 +160,7 @@ describe('NER Manager builtins', () => {
       const instance = new BuiltinMicrosoft({ container });
       const input = {
         utterance: 'tomorrow morning',
-        locale: 'en',
+        locale: 'en-US',
       };
       const results = await instance.extract(input);
       const result = results.edges[0];

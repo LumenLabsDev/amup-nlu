@@ -49,7 +49,7 @@ describe('Compromise Integration', () => {
     });
 
     test('From known culture', () => {
-      const actual = BuiltinCompromise.getCulture('ja');
+      const actual = BuiltinCompromise.getCulture('ja-JP');
       const expected = 'ja_JP';
       expect(actual).toEqual(expected);
     });
@@ -63,13 +63,13 @@ describe('Compromise Integration', () => {
 
   describe('English', () => {
     test('When there is an exception, return empty array', async () => {
-      const actual = await extract('en', 'raise exception');
+      const actual = await extract('en-US', 'raise exception');
       const expected = [];
       expect(actual.edges).toEqual(expected);
     });
     test('Compromise  English Email', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'The email is user@user.com, check it out'
       );
       // console.log(actual)
@@ -91,7 +91,7 @@ describe('Compromise Integration', () => {
     });
 
     test('Compromise  English Phone Number', async () => {
-      const actual = await extract('en', 'The phone number is (650) 123-4567');
+      const actual = await extract('en-US', 'The phone number is (650) 123-4567');
       // console.log(actual)
       const expected = [
         {
@@ -112,7 +112,7 @@ describe('Compromise Integration', () => {
 
     test('Compromise  English URL', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'The url is https://subdomain.domain.com/something'
       );
 
@@ -136,7 +136,7 @@ describe('Compromise Integration', () => {
 
     test('Compromise  English Number', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'The number is one hundred and twelve'
       );
       // console.log(actual)
@@ -161,7 +161,7 @@ describe('Compromise Integration', () => {
 
     test('Compromise  English Ordinal', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'The second is the seventh prime number'
       );
       const expected = [
@@ -191,7 +191,7 @@ describe('Compromise Integration', () => {
 
     test('Compromise  English Number Float', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'The number is one hundred and twelve point 5'
       );
 
@@ -215,7 +215,7 @@ describe('Compromise Integration', () => {
     });
 
     test('Compromise  English Time', async () => {
-      const actual = await extract('en', '12/12/2019 at 9am');
+      const actual = await extract('en-US', '12/12/2019 at 9am');
 
       const expected = [
         {
@@ -235,7 +235,7 @@ describe('Compromise Integration', () => {
     });
 
     test('Compromise  English Date 2', async () => {
-      const actual = await extract('en', 'Next Friday');
+      const actual = await extract('en-US', 'Next Friday');
       expect(actual.edges).toHaveLength(1);
       const edge = actual.edges[0];
       expect(edge.entity).toEqual('date');
@@ -250,7 +250,7 @@ describe('Compromise Integration', () => {
 
     test('Compromise  Various', async () => {
       const actual = await extract(
-        'en',
+        'en-US',
         'Its amazing #checkitout  I am moving to California to work at Google with Joe Jimson'
       );
 

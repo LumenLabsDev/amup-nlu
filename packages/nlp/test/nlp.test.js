@@ -73,15 +73,15 @@ describe('NLP', () => {
         'spa',
         ' deos de  lala  y  a es ón iónrecereder coe lel en ienchoentechcióacio aa p ela lal as e d enna onas dda nte toad enecon pr sutod seho los peperers loo d tician dcio esidaresa ttieionrsote do  inson re lito dadtade sestproquemen poa eodanci qu unue ne n es ylibsu  nas enacia e etra paor adoa dnesra se uala cer porcomnalrtaa sber o ones pdosrá stalesdesibesereraar ertter dialel dntohosdelicaa as nn cociimiio o ere y le cantcci aslasparame cuiciaraencs tndi soo smietosunabredicclas le al pprentro tialy anidn pa ymanomoso n l alalis ano  igs se pntaumatenguaadey esocmo  fuiguo pn thumd dranriay dadativl ecas cavidl ts cidodasdiss i hus onadfun maracndaelisarund acunimbra udiee iquia i halar trodoca tico yctilidorindoari meta indesacuaun iertalespsegeleonsitoontivas hd ynosistrse lecieideediecciosl mr emedtorstin arimuiepletriibrsuslo ectpeny can e hn serntarl yegugururaintondmatl rr aisfote'
       );
-      manager.addLanguage(['en', 'es']);
+      manager.addLanguage(['en-US', 'es-ES']);
       let language = manager.guessLanguage('what is?');
-      expect(language).toEqual('en');
+      expect(language).toEqual('en-US');
       language = manager.guessLanguage('¿Qué es?');
-      expect(language).toEqual('es');
+      expect(language).toEqual('es-ES');
     });
     test('Should return undefined if cannot be guessed', () => {
       const manager = new Nlp();
-      manager.addLanguage(['en', 'es']);
+      manager.addLanguage(['en-US', 'es-ES']);
       const language = manager.guessLanguage('');
       expect(language).toBeUndefined();
     });
@@ -90,40 +90,40 @@ describe('NLP', () => {
   describe('Add Document', () => {
     test('A document can be added', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(1);
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(1);
     });
     test('A document can be added training by domain', () => {
       const nlp = new Nlp({ nlu: { trainByDomain: true } });
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(1);
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(1);
     });
     test('If locale is not defined, then guess it', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
+      nlp.addLanguage(['en-US', 'es-ES']);
       nlp.addDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(1);
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(1);
     });
     test('If locale is not defined, then guess it training by domain', () => {
       const nlp = new Nlp({ trainByDomain: true });
-      nlp.addLanguage(['en', 'es']);
+      nlp.addLanguage(['en-US', 'es-ES']);
       nlp.addDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(1);
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(1);
     });
     test('If locale is not defined and cannot be guessed, throw an error', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
+      nlp.addLanguage(['en-US', 'es-ES']);
       expect(() => nlp.addDocument(undefined, '', 'keys')).toThrow(
         'Locale must be defined'
       );
     });
     test('If there is not domain for the given language, throw an error', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
-      expect(() => nlp.addDocument('fr', 'Bonjour', 'greet')).toThrow(
-        'Domain Manager not found for locale fr'
+      nlp.addLanguage(['en-US', 'es-ES']);
+      expect(() => nlp.addDocument('fr-FR', 'Bonjour', 'greet')).toThrow(
+        'Domain Manager not found for locale fr-FR'
       );
     });
   });
@@ -131,44 +131,44 @@ describe('NLP', () => {
   describe('Remove Document', () => {
     test('A document can be removed', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
-      nlp.removeDocument('es', 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(0);
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
+      nlp.removeDocument('es-ES', 'Dónde están las llaves', 'keys');
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(0);
     });
     test('A document can be removed training by domain', () => {
       const nlp = new Nlp({ trainByDomain: true });
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
-      nlp.removeDocument('es', 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(0);
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
+      nlp.removeDocument('es-ES', 'Dónde están las llaves', 'keys');
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(0);
     });
     test('If locale is not defined then guess it', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
       nlp.removeDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(0);
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(0);
     });
     test('If locale is not defined then guess it training by domain', () => {
       const nlp = new Nlp({ trainByDomain: true });
-      nlp.addLanguage(['en', 'es']);
-      nlp.addDocument('es', 'Dónde están las llaves', 'keys');
+      nlp.addLanguage(['en-US', 'es-ES']);
+      nlp.addDocument('es-ES', 'Dónde están las llaves', 'keys');
       nlp.removeDocument(undefined, 'Dónde están las llaves', 'keys');
-      expect(nlp.nluManager.domainManagers.es.sentences).toHaveLength(0);
+      expect(nlp.nluManager.domainManagers['es-ES'].sentences).toHaveLength(0);
     });
     test('If locale cannot be guessed then throw an error', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
+      nlp.addLanguage(['en-US', 'es-ES']);
       expect(() => nlp.removeDocument(undefined, '', 'keys')).toThrow(
         'Locale must be defined'
       );
     });
     test('If there is not domain for the given language, throw an error', () => {
       const nlp = new Nlp();
-      nlp.addLanguage(['en', 'es']);
-      expect(() => nlp.removeDocument('fr', 'Bonjour', 'greet')).toThrow(
-        'Domain Manager not found for locale fr'
+      nlp.addLanguage(['en-US', 'es-ES']);
+      expect(() => nlp.removeDocument('fr-FR', 'Bonjour', 'greet')).toThrow(
+        'Domain Manager not found for locale fr-FR'
       );
     });
   });
@@ -176,10 +176,10 @@ describe('NLP', () => {
   describe('Add NER Rule', () => {
     test('Rules can be added by locale, name and type', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
       expect(nlp.ner.rules).toBeDefined();
-      expect(nlp.ner.rules.en).toBeDefined();
-      expect(nlp.ner.rules.en.A1).toEqual({
+      expect(nlp.ner.rules['en-US']).toBeDefined();
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi],
@@ -198,11 +198,11 @@ describe('NLP', () => {
     });
     test('Rules can be added to same locale and mane', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
       expect(nlp.ner.rules).toBeDefined();
-      expect(nlp.ner.rules.en).toBeDefined();
-      expect(nlp.ner.rules.en.A1).toEqual({
+      expect(nlp.ner.rules['en-US']).toBeDefined();
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -213,10 +213,10 @@ describe('NLP', () => {
   describe('Remove NER Rule', () => {
     test('Rules can be added by locale, name and type', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
-      nlp.removeNerRule('en', 'A1', /t/gi);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
+      nlp.removeNerRule('en-US', 'A1', /t/gi);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/b/gi],
@@ -235,10 +235,10 @@ describe('NLP', () => {
     });
     test('If locale does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
-      nlp.removeNerRule('es', 'A1', /t/gi);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
+      nlp.removeNerRule('es-ES', 'A1', /t/gi);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -246,10 +246,10 @@ describe('NLP', () => {
     });
     test('If name does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
-      nlp.removeNerRule('en', 'A2', /t/gi);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
+      nlp.removeNerRule('en-US', 'A2', /t/gi);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -257,10 +257,10 @@ describe('NLP', () => {
     });
     test('If rule does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
-      nlp.removeNerRule('en', 'A1', /c/gi);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
+      nlp.removeNerRule('en-US', 'A1', /c/gi);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'regex',
         rules: [/t/gi, /b/gi],
@@ -268,26 +268,26 @@ describe('NLP', () => {
     });
     test('If only locale and name are provided, remove the rule by name', () => {
       const nlp = new Nlp();
-      nlp.addNerRule('en', 'A1', 'regex', /t/gi);
-      nlp.addNerRule('en', 'A1', 'regex', /b/gi);
-      nlp.addNerRule('en', 'A2', 'regex', /b/gi);
-      nlp.removeNerRule('en', 'A1');
-      expect(nlp.ner.rules.en.A1).toBeUndefined();
+      nlp.addNerRule('en-US', 'A1', 'regex', /t/gi);
+      nlp.addNerRule('en-US', 'A1', 'regex', /b/gi);
+      nlp.addNerRule('en-US', 'A2', 'regex', /b/gi);
+      nlp.removeNerRule('en-US', 'A1');
+      expect(nlp.ner.rules['en-US'].A1).toBeUndefined();
     });
     test('Rules removal selects properly the rule to remove', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', 'text1');
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt2', 'text2');
-      nlp.addNerRuleOptionTexts('en', 'A2', 'opt1', 'text1');
-      nlp.addNerRuleOptionTexts('en', 'A2', 'opt2', 'text2');
-      nlp.addNerRuleOptionTexts('en', 'A2', 'opt3', 'text3');
-      nlp.addNerRuleOptionTexts('en', 'A3', 'opt2', 'text2');
-      nlp.removeNerRule('en', 'A1');
-      nlp.removeNerRule('en', 'A2', { option: 'opt2', texts: ['text2'] });
-      expect(nlp.ner.rules.en.A1).toBeUndefined();
-      expect(nlp.ner.rules.en.A2).toBeDefined();
-      expect(nlp.ner.rules.en.A3).toBeDefined();
-      expect(nlp.ner.rules.en.A2).toEqual({
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', 'text1');
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt2', 'text2');
+      nlp.addNerRuleOptionTexts('en-US', 'A2', 'opt1', 'text1');
+      nlp.addNerRuleOptionTexts('en-US', 'A2', 'opt2', 'text2');
+      nlp.addNerRuleOptionTexts('en-US', 'A2', 'opt3', 'text3');
+      nlp.addNerRuleOptionTexts('en-US', 'A3', 'opt2', 'text2');
+      nlp.removeNerRule('en-US', 'A1');
+      nlp.removeNerRule('en-US', 'A2', { option: 'opt2', texts: ['text2'] });
+      expect(nlp.ner.rules['en-US'].A1).toBeUndefined();
+      expect(nlp.ner.rules['en-US'].A2).toBeDefined();
+      expect(nlp.ner.rules['en-US'].A3).toBeDefined();
+      expect(nlp.ner.rules['en-US'].A2).toEqual({
         name: 'A2',
         type: 'enum',
         rules: [
@@ -301,7 +301,7 @@ describe('NLP', () => {
           },
         ],
       });
-      expect(nlp.ner.rules.en.A3).toEqual({
+      expect(nlp.ner.rules['en-US'].A3).toEqual({
         name: 'A3',
         type: 'enum',
         rules: [
@@ -317,8 +317,8 @@ describe('NLP', () => {
   describe('Add NER rule option texts', () => {
     test('A text can be added to an option of a rule for a locale', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', 'text1');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', 'text1');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -331,8 +331,8 @@ describe('NLP', () => {
     });
     test('A text can be added to an option of a rule for several locales', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts(['en', 'es'], 'A1', 'opt1', 'text1');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', 'text1');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -342,7 +342,7 @@ describe('NLP', () => {
           },
         ],
       });
-      expect(nlp.ner.rules.es.A1).toEqual({
+      expect(nlp.ner.rules['es-ES'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -355,8 +355,8 @@ describe('NLP', () => {
     });
     test('Several texts can be added to an option of a rule for a locale', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', ['text1', 'text2']);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', ['text1', 'text2']);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -369,9 +369,9 @@ describe('NLP', () => {
     });
     test('Several texts can be added to an option of a rule for a locale at different moments', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', ['text1', 'text2']);
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', ['text3', 'text4']);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', ['text1', 'text2']);
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', ['text3', 'text4']);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -384,8 +384,8 @@ describe('NLP', () => {
     });
     test('If no text is provided use the option name', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -414,7 +414,7 @@ describe('NLP', () => {
           ],
         },
       });
-      expect(nlp.ner.rules.en).toEqual({
+      expect(nlp.ner.rules['en-US']).toEqual({
         regex_all_string: {
           name: 'regex_all_string',
           type: 'regex',
@@ -468,7 +468,7 @@ describe('NLP', () => {
       });
 
       p = await nlp.process(
-        'en',
+        'en-US',
         '8 days ago i saw spider-man coming from heaven'
       );
       expect(p.entities).toEqual([
@@ -492,7 +492,7 @@ describe('NLP', () => {
       });
 
       p = await nlp.process(
-        'en',
+        'en-US',
         '8 days ago i saw spider-man coming from heaven'
       );
       expect(p.entities).toEqual([
@@ -526,7 +526,7 @@ describe('NLP', () => {
       });
 
       p = await nlp.process(
-        'en',
+        'en-US',
         '8 days ago i saw spider-man coming from heaven'
       );
       expect(p.entities).toEqual([
@@ -574,7 +574,7 @@ describe('NLP', () => {
       });
 
       p = await nlp.process(
-        'en',
+        'en-US',
         '8 days ago i saw spider-man coming from heaven'
       );
       expect(p.entities).toEqual([
@@ -621,14 +621,14 @@ describe('NLP', () => {
   describe('Remove NER rule option texts', () => {
     test('A text can be removed', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('en', 'A1', 'opt1', 'text2');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('en-US', 'A1', 'opt1', 'text2');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -641,15 +641,15 @@ describe('NLP', () => {
     });
     test('If the locale does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('es', 'A1', 'opt1', 'text2');
-      expect(nlp.ner.rules.es).toBeUndefined();
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('es-ES', 'A1', 'opt1', 'text2');
+      expect(nlp.ner.rules['es-ES']).toBeUndefined();
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -662,15 +662,15 @@ describe('NLP', () => {
     });
     test('If the rule name does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('en', 'A2', 'opt1', 'text2');
-      expect(nlp.ner.rules.en.A2).toBeUndefined();
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('en-US', 'A2', 'opt1', 'text2');
+      expect(nlp.ner.rules['en-US'].A2).toBeUndefined();
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -683,14 +683,14 @@ describe('NLP', () => {
     });
     test('If the option does not exists do not crash', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('en', 'A1', 'opt2', 'text2');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('en-US', 'A1', 'opt2', 'text2');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -703,14 +703,14 @@ describe('NLP', () => {
     });
     test('The texts can be a list', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('en', 'A1', 'opt1', ['text2', 'text3']);
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('en-US', 'A1', 'opt1', ['text2', 'text3']);
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -723,14 +723,14 @@ describe('NLP', () => {
     });
     test('If no text is defined use the option name', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts('en', 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts('en-US', 'A1', 'opt1', [
         'text1',
         'text2',
         'opt1',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts('en', 'A1', 'opt1');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts('en-US', 'A1', 'opt1');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -743,14 +743,14 @@ describe('NLP', () => {
     });
     test('The locale can be a list', () => {
       const nlp = new Nlp();
-      nlp.addNerRuleOptionTexts(['en', 'es'], 'A1', 'opt1', [
+      nlp.addNerRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', [
         'text1',
         'text2',
         'text3',
         'text4',
       ]);
-      nlp.removeNerRuleOptionTexts(['en', 'es'], 'A1', 'opt1', 'text2');
-      expect(nlp.ner.rules.en.A1).toEqual({
+      nlp.removeNerRuleOptionTexts(['en-US', 'es-ES'], 'A1', 'opt1', 'text2');
+      expect(nlp.ner.rules['en-US'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -760,7 +760,7 @@ describe('NLP', () => {
           },
         ],
       });
-      expect(nlp.ner.rules.es.A1).toEqual({
+      expect(nlp.ner.rules['es-ES'].A1).toEqual({
         name: 'A1',
         type: 'enum',
         rules: [
@@ -777,7 +777,7 @@ describe('NLP', () => {
     test('When the input contains `from.id` do not crash', async () => {
       const nlp = new Nlp();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
         from: { id: 'jo.bloggs@example.org', name: 'Jo', role: 'user' },
       };
@@ -792,10 +792,10 @@ describe('NLP', () => {
   describe('Process an utterance with actions', () => {
     test('The action is executed when intent matches', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -803,7 +803,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
       };
       const output = await nlp.process(input);
@@ -814,11 +814,11 @@ describe('NLP', () => {
     });
     test('The action is executed after answer generation (default) and answer returned in object', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are HAL');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are HAL');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -828,7 +828,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
       };
       const output = await nlp.process(input);
@@ -839,11 +839,11 @@ describe('NLP', () => {
     });
     test('The action is executed after answer generation (default) and answer returned as string', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are HAL');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are HAL');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -852,7 +852,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
       };
       const output = await nlp.process(input);
@@ -863,12 +863,12 @@ describe('NLP', () => {
     });
     test('The action is executed before answer generation (when configured that way) and answer determined normally when no answer set', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         executeActionsBeforeAnswers: true,
       });
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are HAL');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are HAL');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -877,7 +877,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
       };
       const output = await nlp.process(input);
@@ -888,12 +888,12 @@ describe('NLP', () => {
     });
     test('The action is executed before answer generation (when configured that way) and answer set in action is used', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         executeActionsBeforeAnswers: true,
       });
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are HAL');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are HAL');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         actionCalled = true;
@@ -903,7 +903,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Who am i?',
       };
       const output = await nlp.process(input);
@@ -915,14 +915,14 @@ describe('NLP', () => {
 
     test('The action is executed before answer generation so a set entity can be used when answer is rendered', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         executeActionsBeforeAnswers: true,
       });
 
       nlp.container.register('Template', TemplateMock, true);
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are {{ name }}');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are {{ name }}');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -932,7 +932,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const context = {};
-      const output = await nlp.process('en', 'Who am i?', context);
+      const output = await nlp.process('en-US', 'Who am i?', context);
       expect(output.utterance).toEqual('Who am i?');
       expect(output.intent).toEqual('who_am_i');
       expect(output.answer).toEqual('You are HAL');
@@ -941,14 +941,14 @@ describe('NLP', () => {
     });
     test('The action is executed after answer generation so a set entity can not be used when answer is rendered', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         executeActionsBeforeAnswers: false,
       });
 
       nlp.container.register('Template', TemplateMock, true);
-      nlp.addDocument('en', 'Who am i?', 'who_am_i');
-      nlp.addAnswer('en', 'who_am_i', 'You are {{ name }}');
+      nlp.addDocument('en-US', 'Who am i?', 'who_am_i');
+      nlp.addAnswer('en-US', 'who_am_i', 'You are {{ name }}');
       let actionCalled = false;
       nlp.addAction('who_am_i', 'testaction', ['param1'], (data, param1) => {
         expect(param1).toEqual('param1');
@@ -958,7 +958,7 @@ describe('NLP', () => {
       });
       await nlp.train();
       const context = {};
-      const output = await nlp.process('en', 'Who am i?', context);
+      const output = await nlp.process('en-US', 'Who am i?', context);
       expect(output.utterance).toEqual('Who am i?');
       expect(output.intent).toEqual('who_am_i');
       expect(output.answer).toEqual('You are {{ name }}');
@@ -970,30 +970,30 @@ describe('NLP', () => {
   describe('Dynamically add entity utterances and process', () => {
     test('add additional utterances based on the defined enum entities with one utterance', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
       nlp.addAnswer(
-        'en',
+        'en-US',
         'GetForexRates',
         '{{ ccyFrom }} is equal to 76 {{ ccyTo }}'
       );
 
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'aud', ['AUD']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'gbp', ['GBP', 'Pound']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'aud', ['AUD']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'gbp', ['GBP', 'Pound']);
 
-      const manager = nlp.nluManager.consolidateManager('en');
+      const manager = nlp.nluManager.consolidateManager('en-US');
       expect(manager.sentences.length).toEqual(1);
       nlp.addAdditionalEnumEntityUtterances();
       expect(manager.sentences.length).toEqual(29);
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'convert from USD to INR',
       };
       const output = await nlp.process(input);
@@ -1007,35 +1007,35 @@ describe('NLP', () => {
     });
     test('add additional utterances based on the defined enum entities with multiple utterances', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
       nlp.addDocument(
-        'en',
+        'en-US',
         'convert from @ccyFrom and @ccyFrom to @ccyTo',
         'GetForexRates'
       );
       nlp.addAnswer(
-        'en',
+        'en-US',
         'GetForexRates',
         '{{ ccyFrom }} is equal to 76 {{ ccyTo }}'
       );
 
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'aud', ['AUD']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'gbp', ['GBP', 'Pound']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'aud', ['AUD']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'gbp', ['GBP', 'Pound']);
 
-      const manager = nlp.nluManager.consolidateManager('en');
+      const manager = nlp.nluManager.consolidateManager('en-US');
       expect(manager.sentences.length).toEqual(2);
       nlp.addAdditionalEnumEntityUtterances();
       expect(manager.sentences.length).toEqual(142);
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'convert from USD to INR',
       };
       const output = await nlp.process(input);
@@ -1053,7 +1053,7 @@ describe('NLP', () => {
     test('A corpus can be added as a json', async () => {
       const nlp = new Nlp();
       await nlp.addCorpus(defaultCorpus);
-      expect(nlp.nluManager.domainManagers.en.sentences).toHaveLength(7);
+      expect(nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(7);
     });
     test('A corpus with domains can be added as a json', async () => {
       const corpus = {
@@ -1086,25 +1086,25 @@ describe('NLP', () => {
       };
       const nlp = new Nlp();
       await nlp.addCorpus(corpus);
-      expect(nlp.nluManager.domainManagers.en.sentences[0].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[0].domain).toEqual(
         'domain1'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[1].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[1].domain).toEqual(
         'domain1'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[2].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[2].domain).toEqual(
         'domain1'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[3].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[3].domain).toEqual(
         'domain1'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[4].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[4].domain).toEqual(
         'domain2'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[5].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[5].domain).toEqual(
         'domain2'
       );
-      expect(nlp.nluManager.domainManagers.en.sentences[6].domain).toEqual(
+      expect(nlp.nluManager.domainManagers['en-US'].sentences[6].domain).toEqual(
         'domain2'
       );
     });
@@ -1127,7 +1127,7 @@ describe('NLP', () => {
         ],
         entities: {
           hero: {
-            locale: ['en', 'es'],
+            locale: ['en-US', 'es-ES'],
             type: 'text',
             options: {
               spiderman: ['spiderman', 'spider-man'],
@@ -1136,11 +1136,11 @@ describe('NLP', () => {
             },
           },
           email: {
-            locale: ['en', 'es'],
+            locale: ['en-US', 'es-ES'],
             regex: '/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi',
           },
           fromCity: {
-            locale: ['en', 'es'],
+            locale: ['en-US', 'es-ES'],
             trim: [
               {
                 position: 'betweenLast',
@@ -1160,19 +1160,19 @@ describe('NLP', () => {
       };
       const nlp = new Nlp();
       await nlp.addCorpus(corpus);
-      expect(nlp.ner.rules.en).toBeDefined();
-      expect(nlp.ner.rules.es).toBeDefined();
-      expect(nlp.ner.rules.en.hero).toBeDefined();
-      expect(nlp.ner.rules.en.email).toBeDefined();
-      expect(nlp.ner.rules.en.fromCity).toBeDefined();
-      expect(nlp.ner.rules.es.hero).toBeDefined();
-      expect(nlp.ner.rules.es.email).toBeDefined();
-      expect(nlp.ner.rules.es.fromCity).toBeDefined();
-      expect(nlp.ner.rules.es.fromCity.type).toEqual('trim');
-      expect(nlp.ner.rules.es.fromCity.rules).toBeDefined();
-      expect(nlp.ner.rules.es.fromCity.rules[0]).toBeDefined();
+      expect(nlp.ner.rules['en-US']).toBeDefined();
+      expect(nlp.ner.rules['es-ES']).toBeDefined();
+      expect(nlp.ner.rules['en-US'].hero).toBeDefined();
+      expect(nlp.ner.rules['en-US'].email).toBeDefined();
+      expect(nlp.ner.rules['en-US'].fromCity).toBeDefined();
+      expect(nlp.ner.rules['es-ES'].hero).toBeDefined();
+      expect(nlp.ner.rules['es-ES'].email).toBeDefined();
+      expect(nlp.ner.rules['es-ES'].fromCity).toBeDefined();
+      expect(nlp.ner.rules['es-ES'].fromCity.type).toEqual('trim');
+      expect(nlp.ner.rules['es-ES'].fromCity.rules).toBeDefined();
+      expect(nlp.ner.rules['es-ES'].fromCity.rules[0]).toBeDefined();
       // Verify betweenlast was converted to a between Rule on example of this es rule
-      expect(nlp.ner.rules.es.fromCity.rules[0].type).toEqual('between');
+      expect(nlp.ner.rules['es-ES'].fromCity.rules[0].type).toEqual('between');
     });
 
     test('The corpus can contain entities with slotFilling details', async () => {
@@ -1227,15 +1227,15 @@ describe('NLP', () => {
       };
       const nlp = new Nlp();
       await nlp.addCorpus(corpus);
-      expect(nlp.ner.rules.en).toBeDefined();
-      expect(nlp.ner.rules.en.fromCity).toBeDefined();
-      expect(nlp.ner.rules.en.toCity).toBeDefined();
-      expect(nlp.ner.rules.en.date).toBeUndefined();
+      expect(nlp.ner.rules['en-US']).toBeDefined();
+      expect(nlp.ner.rules['en-US'].fromCity).toBeDefined();
+      expect(nlp.ner.rules['en-US'].toCity).toBeDefined();
+      expect(nlp.ner.rules['en-US'].date).toBeUndefined();
       expect(nlp.slotManager.intents.travel).toBeDefined();
       expect(nlp.slotManager.intents.travel.fromCity).toBeDefined();
       expect(nlp.slotManager.intents.travel.fromCity.mandatory).toEqual(true);
       expect(nlp.slotManager.intents.travel.fromCity.locales).toBeDefined();
-      expect(nlp.slotManager.intents.travel.fromCity.locales.en).toEqual(
+      expect(nlp.slotManager.intents.travel.fromCity.locales['en-US']).toEqual(
         'From where you are traveling?'
       );
       expect(nlp.slotManager.intents.travel.toCity).toBeDefined();
@@ -1243,7 +1243,7 @@ describe('NLP', () => {
       expect(nlp.slotManager.intents.travel.date).toBeDefined();
       expect(nlp.slotManager.intents.travel.date.mandatory).toEqual(true);
       expect(nlp.slotManager.intents.travel.date.locales).toBeDefined();
-      expect(nlp.slotManager.intents.travel.date.locales.en).toEqual(
+      expect(nlp.slotManager.intents.travel.date.locales['en-US']).toEqual(
         'When do you want to travel from {{fromCity}} to {{toCity}}?'
       );
     });
@@ -1295,18 +1295,18 @@ describe('NLP', () => {
         ],
       };
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
       await nlp.addCorpus(corpus);
-      expect(nlp.ner.rules.en).toBeDefined();
-      expect(nlp.ner.rules.en.clientName).toBeDefined();
-      expect(nlp.ner.rules.en.location).toBeDefined();
+      expect(nlp.ner.rules['en-US']).toBeDefined();
+      expect(nlp.ner.rules['en-US'].clientName).toBeDefined();
+      expect(nlp.ner.rules['en-US'].location).toBeDefined();
       expect(nlp.slotManager.intents['user.introduce']).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'my name is John',
       };
       const actual = await nlp.process(input);
@@ -1376,12 +1376,12 @@ describe('NLP', () => {
     test('A corpora can be added as a json', async () => {
       const nlp = new Nlp();
       await nlp.addCorpora([defaultCorpus]);
-      expect(nlp.nluManager.domainManagers.en.sentences).toHaveLength(7);
+      expect(nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(7);
     });
     test('A corpora can be added as a json but not an array', async () => {
       const nlp = new Nlp();
       await nlp.addCorpora(defaultCorpus);
-      expect(nlp.nluManager.domainManagers.en.sentences).toHaveLength(7);
+      expect(nlp.nluManager.domainManagers['en-US'].sentences).toHaveLength(7);
     });
     test('If corpora is not defined, it should not crash', async () => {
       const nlp = new Nlp();
@@ -1393,39 +1393,39 @@ describe('NLP', () => {
   describe('Process an utterance with entities', () => {
     test('The entity is registered in slotManager with addDocument', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'hi_intent');
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'hi_intent');
       expect(nlp.slotManager.intents.hi_intent).toBeDefined();
       expect(nlp.slotManager.intents.hi_intent.forename).toBeDefined();
       expect(nlp.ner.rules).toEqual({});
     });
     test('An enum entity is selected when matching and a trim definition is also existing for the entity', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
       nlp.addDocument(
-        'en',
+        'en-US',
         'Tell me about the @attribute of the device',
         'attribute_intent'
       );
 
-      nlp.addNerRuleOptionTexts('en', 'attribute', 'display', [
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'display', [
         'display',
         'screen',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'attribute', 'cpu', ['cpu', 'processor']);
-      nlp.addNerBetweenCondition('en', 'attribute', ['the'], 'of');
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', ['cpu', 'processor']);
+      nlp.addNerBetweenCondition('en-US', 'attribute', ['the'], 'of');
 
       expect(nlp.slotManager.intents.attribute_intent).toBeDefined();
       expect(nlp.slotManager.intents.attribute_intent.attribute).toBeDefined();
-      expect(nlp.ner.rules.en.attribute).toBeDefined();
+      expect(nlp.ner.rules['en-US'].attribute).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Tell me about the screen of the device',
       };
       const output = await nlp.process(input);
@@ -1439,29 +1439,29 @@ describe('NLP', () => {
     });
     test('A trim entity is selected when matching and a parallel enum do not match', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
       nlp.addDocument(
-        'en',
+        'en-US',
         'Tell me about the @attribute of the device',
         'attribute_intent'
       );
 
-      nlp.addNerRuleOptionTexts('en', 'attribute', 'display', [
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'display', [
         'display',
         'screen',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'attribute', 'cpu', ['cpu', 'processor']);
-      nlp.addNerBetweenCondition('en', 'attribute', ['the'], 'of');
+      nlp.addNerRuleOptionTexts('en-US', 'attribute', 'cpu', ['cpu', 'processor']);
+      nlp.addNerBetweenCondition('en-US', 'attribute', ['the'], 'of');
 
       expect(nlp.slotManager.intents.attribute_intent).toBeDefined();
       expect(nlp.slotManager.intents.attribute_intent.attribute).toBeDefined();
-      expect(nlp.ner.rules.en.attribute).toBeDefined();
+      expect(nlp.ner.rules['en-US'].attribute).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'Tell me about the mainboard of the device',
       };
       const output = await nlp.process(input);
@@ -1476,30 +1476,30 @@ describe('NLP', () => {
     });
     test('The intent entities get priority over non-intent entities when matching (standard)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'forename_intent');
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'forename_intent');
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeUndefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2!',
       };
       const output = await nlp.process(input);
@@ -1511,30 +1511,30 @@ describe('NLP', () => {
     });
     test('We discover two entities, also an additional one which is not in any intent-utterance (standard)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'forename_intent');
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'forename_intent');
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeUndefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 mylastname!',
       };
       const output = await nlp.process(input);
@@ -1548,34 +1548,34 @@ describe('NLP', () => {
     });
     test('We discover two entities, also when overlapping (standard)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
       nlp.addDocument(
-        'en',
+        'en-US',
         'Hi, my name is @forename @lastname!',
         'forename_intent'
       );
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeDefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 myforename2!',
       };
       const output = await nlp.process(input);
@@ -1589,26 +1589,26 @@ describe('NLP', () => {
     });
     test('We discover two entities, also when overlapping #2 (standard)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
       });
-      nlp.addDocument('en', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
+      nlp.addDocument('en-US', 'convert from @ccyFrom to @ccyTo', 'GetForexRates');
       nlp.addAnswer(
-        'en',
+        'en-US',
         'GetForexRates',
         '{{ ccyFrom }} is equal to 76 {{ ccyTo }}'
       );
 
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyFrom', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'usd', ['USD', 'Dollar']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'inr', ['INR', 'rupee']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'aud', ['AUD']);
-      nlp.addNerRuleOptionTexts('en', 'ccyTo', 'gbp', ['GBP', 'Pound']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyFrom', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'usd', ['USD', 'Dollar']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'inr', ['INR', 'rupee']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'aud', ['AUD']);
+      nlp.addNerRuleOptionTexts('en-US', 'ccyTo', 'gbp', ['GBP', 'Pound']);
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'convert from USD to INR',
       };
       const output = await nlp.process(input);
@@ -1622,33 +1622,33 @@ describe('NLP', () => {
     });
     test('Non intent entities are ignored in matching when considerOnlyIntentEntities is used', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         ner: {
           considerOnlyIntentEntities: true,
         },
       });
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'forename_intent');
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'forename_intent');
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeUndefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 mylastname!',
       };
       const output = await nlp.process(input);
@@ -1661,37 +1661,37 @@ describe('NLP', () => {
     });
     test('We discover two entities, also when overlapping (also with considerOnlyIntentEntities)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         ner: {
           considerOnlyIntentEntities: true,
         },
       });
       nlp.addDocument(
-        'en',
+        'en-US',
         'Hi, my name is @forename @lastname!',
         'forename_intent'
       );
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeDefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 myforename2!',
       };
       const output = await nlp.process(input);
@@ -1705,39 +1705,39 @@ describe('NLP', () => {
     });
     test('We discover two entities, also when overlapping and multiple utterances (also with considerOnlyIntentEntities)', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         ner: {
           considerOnlyIntentEntities: true,
         },
       });
       nlp.addDocument(
-        'en',
+        'en-US',
         'Hi, my name is @forename @lastname!',
         'name_intent'
       );
-      nlp.addDocument('en', 'Hi, my name is @lastname!', 'name_intent');
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'name_intent');
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addDocument('en-US', 'Hi, my name is @lastname!', 'name_intent');
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'name_intent');
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.name_intent).toBeDefined();
       expect(nlp.slotManager.intents.name_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.name_intent.lastname).toBeDefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 myforename2!',
       };
       const output = await nlp.process(input);
@@ -1751,33 +1751,33 @@ describe('NLP', () => {
     });
     test('Non intent entities are ignored in matching when considerOnlyIntentEntities is used, multi same entity still possible', async () => {
       const nlp = new Nlp({
-        languages: ['en'],
+        languages: ['en-US'],
         autoSave: false,
         ner: {
           considerOnlyIntentEntities: true,
         },
       });
-      nlp.addDocument('en', 'Hi, my name is @forename!', 'forename_intent');
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'myforename2', [
+      nlp.addDocument('en-US', 'Hi, my name is @forename!', 'forename_intent');
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'myforename2', [
         'myforename2',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'lastname', 'mylastname', ['mylastname']);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename1', [
+      nlp.addNerRuleOptionTexts('en-US', 'lastname', 'mylastname', ['mylastname']);
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename1', [
         'myforename1',
       ]);
-      nlp.addNerRuleOptionTexts('en', 'forename', 'myforename2', [
+      nlp.addNerRuleOptionTexts('en-US', 'forename', 'myforename2', [
         'myforename2',
       ]);
 
       expect(nlp.slotManager.intents.forename_intent).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.forename).toBeDefined();
       expect(nlp.slotManager.intents.forename_intent.lastname).toBeUndefined();
-      expect(nlp.ner.rules.en.forename).toBeDefined();
-      expect(nlp.ner.rules.en.lastname).toBeDefined();
+      expect(nlp.ner.rules['en-US'].forename).toBeDefined();
+      expect(nlp.ner.rules['en-US'].lastname).toBeDefined();
 
       await nlp.train();
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         utterance: 'my name is myforename2 myforename1!',
       };
       const output = await nlp.process(input, {});
@@ -1794,9 +1794,9 @@ describe('NLP', () => {
   describe('addNerBetweenCondition', () => {
     test('It should extract a between rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBetweenCondition('en', 'entity', 'from', 'to');
+      nlp.addNerBetweenCondition('en-US', 'entity', 'from', 'to');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid to Barcelona',
       };
       const actual = await nlp.process(input);
@@ -1816,9 +1816,9 @@ describe('NLP', () => {
     });
     test('It should extract a between rule and return longest string', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBetweenCondition('en', 'entity', 'from', 'to');
+      nlp.addNerBetweenCondition('en-US', 'entity', 'from', 'to');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid to Barcelona and then back from Barcelona to Madrid',
       };
       const actual = await nlp.process(input);
@@ -1841,9 +1841,9 @@ describe('NLP', () => {
   describe('addNerBetweenLastCondition', () => {
     test('It should extract a between last rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBetweenLastCondition('en', 'entity', 'from', 'to');
+      nlp.addNerBetweenLastCondition('en-US', 'entity', 'from', 'to');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid to Barcelona and then back from Barcelona to Madrid',
       };
       const actual = await nlp.process(input);
@@ -1866,9 +1866,9 @@ describe('NLP', () => {
   describe('addNerBeforeCondition', () => {
     test('It should extract a before rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBeforeCondition('en', 'entity', 'from');
+      nlp.addNerBeforeCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);
@@ -1904,9 +1904,9 @@ describe('NLP', () => {
   describe('addNerBeforeLastCondition', () => {
     test('It should extract a before last rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBeforeLastCondition('en', 'entity', 'from');
+      nlp.addNerBeforeLastCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);
@@ -1929,9 +1929,9 @@ describe('NLP', () => {
   describe('addNerBeforeFirstCondition', () => {
     test('It should extract a before first rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerBeforeFirstCondition('en', 'entity', 'from');
+      nlp.addNerBeforeFirstCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);
@@ -1954,9 +1954,9 @@ describe('NLP', () => {
   describe('addNerAfterCondition', () => {
     test('It should extract a get after rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerAfterCondition('en', 'entity', 'from');
+      nlp.addNerAfterCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);
@@ -1992,9 +1992,9 @@ describe('NLP', () => {
   describe('addNerAfterFirstCondition', () => {
     test('It should extract a get after first rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerAfterFirstCondition('en', 'entity', 'from');
+      nlp.addNerAfterFirstCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);
@@ -2017,9 +2017,9 @@ describe('NLP', () => {
   describe('addNerAfterLastCondition', () => {
     test('It should extract a get after last rule', async () => {
       const nlp = new Nlp({ forceNER: true });
-      nlp.addNerAfterLastCondition('en', 'entity', 'from');
+      nlp.addNerAfterLastCondition('en-US', 'entity', 'from');
       const input = {
-        locale: 'en',
+        locale: 'en-US',
         text: 'I have to go from Madrid from Barcelona',
       };
       const actual = await nlp.process(input);

@@ -21,7 +21,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  DEFAULT_LOCALE,
+  assertLocale,
+  migrateLegacyLocale,
+} = require('@lumen-labs-dev/core');
 const ExtractorEnum = require('./extractor-enum');
 const ExtractorRegex = require('./extractor-regex');
 const ExtractorTrim = require('./extractor-trim');
@@ -31,6 +36,13 @@ const { TrimType } = require('./trim-types');
 
 function isObject(obj) {
   return obj !== undefined && obj !== null && obj.constructor === Object;
+}
+
+function resolveLocale(locale) {
+  if (locale === undefined || locale === null || locale === '*') {
+    return '*';
+  }
+  return assertLocale(locale);
 }
 
 class Ner extends Clonable {
@@ -61,23 +73,24 @@ class Ner extends Clonable {
   registerDefault() {}
 
   getRulesByName(locale = '*', name = '', force = false) {
-    if (!this.rules[locale]) {
+    const key = resolveLocale(locale);
+    if (!this.rules[key]) {
       if (!force) {
         return undefined;
       }
-      this.rules[locale] = {};
+      this.rules[key] = {};
     }
-    if (!this.rules[locale][name]) {
+    if (!this.rules[key][name]) {
       if (!force) {
         return undefined;
       }
-      this.rules[locale][name] = {
+      this.rules[key][name] = {
         name,
         type: 'enum',
         rules: [],
       };
     }
-    return this.rules[locale][name];
+    return this.rules[key][name];
   }
 
   addRule(locale = '*', name, type, rule) {
@@ -86,17 +99,18 @@ class Ner extends Clonable {
         this.addRule(locale[i], name, type, rule);
       }
     } else {
-      if (!this.rules[locale]) {
-        this.rules[locale] = {};
+      const key = resolveLocale(locale);
+      if (!this.rules[key]) {
+        this.rules[key] = {};
       }
-      if (!this.rules[locale][name]) {
-        this.rules[locale][name] = {
+      if (!this.rules[key][name]) {
+        this.rules[key][name] = {
           name,
           type,
           rules: [],
         };
       }
-      this.rules[locale][name].rules.push(rule);
+      this.rules[key][name].rules.push(rule);
     }
   }
 
@@ -123,14 +137,15 @@ class Ner extends Clonable {
   }
 
   removeRule(locale = '*', name, rule) {
-    if (this.rules[locale]) {
-      if (this.rules[locale][name]) {
+    const key = resolveLocale(locale);
+    if (this.rules[key]) {
+      if (this.rules[key][name]) {
         if (!rule) {
-          delete this.rules[locale][name];
+          delete this.rules[key][name];
         } else {
-          const index = this.findRule(this.rules[locale][name].rules, rule);
+          const index = this.findRule(this.rules[key][name].rules, rule);
           if (index > -1) {
-            this.rules[locale][name].rules.splice(index, 1);
+            this.rules[key][name].rules.splice(index, 1);
           }
         }
       }
@@ -138,14 +153,15 @@ class Ner extends Clonable {
   }
 
   getRules(locale = '*') {
+    const key = resolveLocale(locale);
     const result = [];
-    if (this.rules[locale]) {
-      const keys = Object.keys(this.rules[locale]);
+    if (this.rules[key]) {
+      const keys = Object.keys(this.rules[key]);
       for (let i = 0; i < keys.length; i += 1) {
-        result.push(this.rules[locale][keys[i]]);
+        result.push(this.rules[key][keys[i]]);
       }
     }
-    if (locale !== '*' && this.rules['*']) {
+    if (key !== '*' && this.rules['*']) {
       const keys = Object.keys(this.rules['*']);
       for (let i = 0; i < keys.length; i += 1) {
         result.push(this.rules['*'][keys[i]]);
@@ -156,7 +172,10 @@ class Ner extends Clonable {
 
   decideRules(srcInput, intentEntities) {
     const input = srcInput;
-    let nerRules = this.getRules(input.locale || 'en');
+    if (input.locale) {
+      input.locale = assertLocale(input.locale);
+    }
+    let nerRules = this.getRules(input.locale || DEFAULT_LOCALE);
     if (intentEntities && this.settings.considerOnlyIntentEntities) {
       nerRules = nerRules.filter((rule) => intentEntities.includes(rule.name));
     } else if (intentEntities) {
@@ -414,6 +433,9 @@ class Ner extends Clonable {
       threshold: this.settings.threshold || 0.8,
       ...srcInput,
     };
+    if (input.locale) {
+      input.locale = assertLocale(input.locale);
+    }
     let result;
     if (input.locale) {
       const pipeline = this.container.getPipeline(
@@ -485,7 +507,7 @@ class Ner extends Clonable {
   getEntitiesFromUtterance(locale, utterance) {
     if (!utterance) {
       utterance = locale;
-      locale = 'es';
+      locale = DEFAULT_LOCALE;
     }
     const tokens = utterance.split(/[\s,.!?;:([\]'"¡¿)/]+/).filter((x) => x);
     const result = [];
@@ -500,7 +522,7 @@ class Ner extends Clonable {
 
   async generateEntityUtterance(locale, utterance) {
     let input = {
-      locale,
+      locale: assertLocale(locale),
       utterance,
     };
     input = await this.process(input);
@@ -540,16 +562,19 @@ class Ner extends Clonable {
   fromJSON(json) {
     this.applySettings(this.settings, json.settings);
 
+    const migratedRules = {};
     const rulesKeys = Object.keys(json.rules);
 
     rulesKeys.forEach((rKey) => {
+      const localeKey = rKey === '*' ? rKey : migrateLegacyLocale(rKey);
       const entityKeys = Object.keys(json.rules[rKey]);
+      migratedRules[localeKey] = json.rules[rKey];
 
       entityKeys.forEach((eKey) => {
-        json.rules[rKey][eKey].rules =
-          json.rules[rKey][eKey].type === 'regex'
-            ? json.rules[rKey][eKey].rules.map((rule) => Ner.str2regex(rule))
-            : json.rules[rKey][eKey].rules.map((rule) =>
+        migratedRules[localeKey][eKey].rules =
+          migratedRules[localeKey][eKey].type === 'regex'
+            ? migratedRules[localeKey][eKey].rules.map((rule) => Ner.str2regex(rule))
+            : migratedRules[localeKey][eKey].rules.map((rule) =>
                 typeof rule.regex === 'string'
                   ? {
                       ...rule,
@@ -560,7 +585,7 @@ class Ner extends Clonable {
       });
     });
 
-    this.rules = json.rules;
+    this.rules = migratedRules;
   }
 }
 

@@ -33,14 +33,14 @@ describe('Brain NLU', () => {
 
   describe('add', () => {
     test('Should add an utterance and intent', () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       nlu.add('Bonjour', 'greet');
       expect(nlu.corpus).toHaveLength(1);
       nlu.add('bonne nuit', 'greet');
       expect(nlu.corpus).toHaveLength(2);
     });
     test('Should add an utterance and intent even to different intents', () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       nlu.add('Bonjour', 'greet');
       expect(nlu.corpus).toHaveLength(1);
       nlu.add('bonne nuit', 'greet');
@@ -51,14 +51,14 @@ describe('Brain NLU', () => {
       expect(nlu.corpus).toHaveLength(4);
     });
     test('Should check that the utterance is an string', () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       expect(() => nlu.add(1, 'greet')).toThrow('Utterance must be an string');
       expect(() => nlu.add(undefined, 'greet')).toThrow(
         'Utterance must be an string'
       );
     });
     test('Should check that the intent is an string', () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       expect(() => nlu.add('Bonjour', 1)).toThrow('Intent must be an string');
       expect(() => nlu.add('Bonjour', undefined)).toThrow(
         'Intent must be an string'
@@ -68,7 +68,7 @@ describe('Brain NLU', () => {
 
   describe('train', () => {
     test('Even if no observation is provided, train should not fail', async () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       const result = await nlu.train();
       expect(result).toBeDefined();
     });
@@ -76,7 +76,7 @@ describe('Brain NLU', () => {
 
   describe('get classifications', () => {
     test('Should give the classifications for an utterance', async () => {
-      const nlu = new BrainNLU({ language: 'fr', useNoneFeature: true });
+      const nlu = new BrainNLU({ language: 'fr-FR', useNoneFeature: true });
       nlu.add('Bonjour', 'greet');
       nlu.add('bonne nuit', 'greet');
       nlu.add('Bonsoir', 'greet');
@@ -90,7 +90,7 @@ describe('Brain NLU', () => {
       expect(classification[0].score).toBeGreaterThan(0.7);
     });
     it('Should work even for japanese', async () => {
-      const nlu = new BrainNLU({ language: 'ja' });
+      const nlu = new BrainNLU({ language: 'ja-JP' });
       nlu.add('おはようございます', 'greet');
       nlu.add('こんにちは', 'greet');
       nlu.add('おやすみ', 'greet');
@@ -108,7 +108,7 @@ describe('Brain NLU', () => {
 
   describe('Get Best Classification', () => {
     test('Should give the classifications for an utterance', async () => {
-      const nlu = new BrainNLU({ language: 'fr' });
+      const nlu = new BrainNLU({ language: 'fr-FR' });
       nlu.add('Bonjour', 'greet');
       nlu.add('bonne nuit', 'greet');
       nlu.add('Bonsoir', 'greet');
@@ -122,7 +122,7 @@ describe('Brain NLU', () => {
       expect(classification.score).toBeGreaterThan(0.7);
     });
     it('Should work even for japanese', async () => {
-      const nlu = new BrainNLU({ language: 'ja' });
+      const nlu = new BrainNLU({ language: 'ja-JP' });
       nlu.add('おはようございます', 'greet');
       nlu.add('こんにちは', 'greet');
       nlu.add('おやすみ', 'greet');

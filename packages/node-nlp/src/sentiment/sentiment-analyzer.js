@@ -24,6 +24,7 @@
 const {
   SentimentAnalyzer: SentimentAnalyzerBase,
 } = require('@lumen-labs-dev/sentiment');
+const { DEFAULT_LOCALE, assertLocale } = require('@lumen-labs-dev/core-loader');
 const { Nlu } = require('@lumen-labs-dev/nlu');
 const {
   registerDefaultLanguages,
@@ -37,11 +38,12 @@ class SentimentAnalyzer extends SentimentAnalyzerBase {
     this.container.use(Nlu);
   }
 
-  async getSentiment(utterance, locale = 'en', settings = {}) {
-    registerLanguage(this.container, locale);
+  async getSentiment(utterance, locale = DEFAULT_LOCALE, settings = {}) {
+    const canonical = assertLocale(locale);
+    registerLanguage(this.container, canonical);
     const input = {
       utterance,
-      locale,
+      locale: canonical,
       ...settings,
     };
     const result = await this.process(input);

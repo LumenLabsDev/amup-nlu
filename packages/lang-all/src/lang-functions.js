@@ -1,4 +1,5 @@
 const { Language } = require('@lumen-labs-dev/language');
+const { DEFAULT_LOCALE, parseLocale } = require('@lumen-labs-dev/core');
 const langAr = require('@lumen-labs-dev/lang-ar-sa');
 const langBr = require('@lumen-labs-dev/lang-bn-bd');
 const langCa = require('@lumen-labs-dev/lang-ca-es');
@@ -193,27 +194,23 @@ langDict.pt_pt = 'pt-pt';
 langDict['portuguese portugal'] = 'pt-pt';
 
 function getLangClass(inputLanguage, className) {
-  const normalized = inputLanguage.toLowerCase().replace('_', '-');
-  let locale = langDict[normalized];
-  if (!locale) {
-    locale = langDict[normalized.slice(0, 2)] || defaultLocales.en;
-  }
-  const lang = langs[locale];
+  const { packageKey } = parseLocale(inputLanguage);
+  const lang = langs[packageKey];
   if (!lang) {
     throw new Error(
       `Language classes not found for language "${inputLanguage}"`
     );
   }
   const localeCapitalized =
-    classSuffixes[locale] ||
-    locale
+    classSuffixes[packageKey] ||
+    packageKey
       .split('-')
       .map((part) => `${part.charAt(0).toUpperCase()}${part.slice(1)}`)
       .join('');
   return lang[`${className}${localeCapitalized}`];
 }
 
-function getNormalizer(inputLanguage = 'en') {
+function getNormalizer(inputLanguage = DEFAULT_LOCALE) {
   const Clazz = getLangClass(inputLanguage, 'Normalizer');
   if (Clazz) {
     return new Clazz();
@@ -221,7 +218,7 @@ function getNormalizer(inputLanguage = 'en') {
   return undefined;
 }
 
-function getTokenizer(inputLanguage = 'en') {
+function getTokenizer(inputLanguage = DEFAULT_LOCALE) {
   const Clazz = getLangClass(inputLanguage, 'Tokenizer');
   if (Clazz) {
     return new Clazz();
@@ -229,7 +226,7 @@ function getTokenizer(inputLanguage = 'en') {
   return undefined;
 }
 
-function getStemmer(inputLanguage = 'en') {
+function getStemmer(inputLanguage = DEFAULT_LOCALE) {
   const Clazz = getLangClass(inputLanguage, 'Stemmer');
   if (Clazz) {
     return new Clazz();
@@ -237,7 +234,7 @@ function getStemmer(inputLanguage = 'en') {
   return undefined;
 }
 
-function getStopwords(inputLanguage = 'en') {
+function getStopwords(inputLanguage = DEFAULT_LOCALE) {
   const Clazz = getLangClass(inputLanguage, 'Stopwords');
   if (Clazz) {
     return new Clazz();
@@ -245,7 +242,7 @@ function getStopwords(inputLanguage = 'en') {
   return undefined;
 }
 
-function getSentiment(inputLanguage = 'en') {
+function getSentiment(inputLanguage = DEFAULT_LOCALE) {
   const Clazz = getLangClass(inputLanguage, 'Sentiment');
   if (Clazz) {
     return new Clazz();
@@ -253,17 +250,17 @@ function getSentiment(inputLanguage = 'en') {
   return undefined;
 }
 
-function normalize(text, locale = 'en') {
+function normalize(text, locale = DEFAULT_LOCALE) {
   const normalizer = getNormalizer(locale);
   return normalizer.normalize(text);
 }
 
-function tokenize(text, locale = 'en', shouldNormalize = false) {
+function tokenize(text, locale = DEFAULT_LOCALE, shouldNormalize = false) {
   const tokenizer = getTokenizer(locale);
   return tokenizer.tokenize(text, shouldNormalize);
 }
 
-function stem(text, locale = 'en') {
+function stem(text, locale = DEFAULT_LOCALE) {
   const stemmer = getStemmer(locale);
   if (Array.isArray(text)) {
     return stemmer.stem(text);
@@ -273,12 +270,12 @@ function stem(text, locale = 'en') {
   return stemmer.stem(tokenizer.tokenize(normalizer.normalize(text)));
 }
 
-function removeStopwords(tokens, locale = 'en') {
+function removeStopwords(tokens, locale = DEFAULT_LOCALE) {
   const stopwords = getStopwords(locale);
   return stopwords.removeStopwords(tokens);
 }
 
-function dict(sentences, locale = 'en', useStemmer = false) {
+function dict(sentences, locale = DEFAULT_LOCALE, useStemmer = false) {
   const freqs = {};
   for (let i = 0; i < sentences.length; i += 1) {
     const current = useStemmer

@@ -26,38 +26,11 @@ const {
   Tokenizer,
   defaultContainer,
   containerBootstrap,
+  DEFAULT_LOCALE,
+  getLanguageSubtag,
+  parseLocale,
 } = require('@lumen-labs-dev/core-loader');
 const { getClass, registerLanguage } = require('../language/language-loader');
-
-const cultures = {
-  ar: 'ar-ae', // Arabic
-  bn: 'bn-bd', // Bengali
-  ca: 'ca-es', // Catalan
-  cs: 'cs-cz', // Czech
-  da: 'da-dk', // Danish
-  el: 'el-gr', // Greek
-  en: 'en-us', // English
-  eu: 'eu-es', // Basque
-  fa: 'fa-ir', // Farsi
-  ga: 'ga-ie', // Irish
-  gl: 'gl-es', // Galician
-  hi: 'hi-in', // Hindi
-  hy: 'hy-am', // Armenian
-  ja: 'ja-jp', // Japanese
-  ko: 'ko-kr', // Korean
-  pl: 'pl-pl', // Polish
-  lt: 'lt-lt', // Lithuanian
-  ne: 'ne-ne', // Nepali
-  pt: 'pt-br', // Portuguese
-  sr: 'sr-rs', // Serbian
-  sv: 'sv-se', // Swedish
-  ta: 'ta-in', // Tamil
-  tl: 'tl-ph', // Tagalog
-  uk: 'uk-ua', // Ukraine
-  zh: 'zh-cn', // Chinese
-  id: 'id-id', // Indonesian,
-  ms: 'id-id', // Malay
-};
 
 class NlpUtil {
   /**
@@ -66,7 +39,7 @@ class NlpUtil {
    * @returns {String} Locale in 2 character length.
    */
   static getTruncatedLocale(locale) {
-    return locale ? locale.substr(0, 2).toLowerCase() : undefined;
+    return locale ? getLanguageSubtag(locale) : undefined;
   }
 
   static getStemmer(locale) {
@@ -93,7 +66,7 @@ class NlpUtil {
     if (!locale) {
       return 'en-us';
     }
-    return cultures[locale] || `${locale}-${locale}`;
+    return parseLocale(locale).packageKey;
   }
 }
 
@@ -142,6 +115,6 @@ NlpUtil.useNoneFeature = {
 NlpUtil.tokenizers = {};
 
 containerBootstrap({}, true, defaultContainer);
-registerLanguage(defaultContainer, 'en');
+registerLanguage(defaultContainer, DEFAULT_LOCALE);
 
 module.exports = NlpUtil;

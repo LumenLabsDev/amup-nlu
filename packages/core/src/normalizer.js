@@ -22,6 +22,7 @@
  */
 
 const { defaultContainer } = require('./container');
+const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
 
 class Normalizer {
   constructor(container = defaultContainer) {
@@ -38,8 +39,9 @@ class Normalizer {
 
   run(srcInput) {
     const input = srcInput;
-    const locale = input.locale || 'en';
-    const normalizer = this.container.get(`normalizer-${locale}`) || this;
+    const locale = assertLocale(input.locale || DEFAULT_LOCALE);
+    const key = resolveContainerKey(locale);
+    const normalizer = this.container.get(`normalizer-${key}`) || this;
     input.text = normalizer.normalize(input.text, input);
     return input;
   }

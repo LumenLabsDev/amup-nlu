@@ -77,108 +77,108 @@ describe('NLG Manager', () => {
   describe('Add', () => {
     test('Should add an answer with no condition', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello');
-      expect(manager.responses.en.greet).toHaveLength(1);
-      expect(manager.responses.en.greet[0].answer).toEqual('Hello');
-      expect(manager.responses.en.greet[0].condition).toBeUndefined();
+      manager.add('en-US', 'greet', 'Hello');
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
+      expect(manager.responses['en-US'].greet[0].answer).toEqual('Hello');
+      expect(manager.responses['en-US'].greet[0].condition).toBeUndefined();
     });
     test('Should add an answer with condition', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(1);
-      expect(manager.responses.en.greet[0].answer).toEqual('Hello');
-      expect(manager.responses.en.greet[0].opts).toEqual({
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
+      expect(manager.responses['en-US'].greet[0].answer).toEqual('Hello');
+      expect(manager.responses['en-US'].greet[0].opts).toEqual({
         condition: 'a === 1',
       });
     });
     test('Should not add a duplicate entry', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(1);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
     });
     test('Should be able to create several responses for the same intent and locale', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Greetings', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Hi', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(3);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Greetings', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Hi', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
     });
     test('Should be able to create responses for different intents of a locale', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Greetings', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Hi', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Goodbye', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Bye', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Greetings', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Hi', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Goodbye', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Bye', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
     });
     test('Should be able to create responses for different intents and locales', () => {
       const manager = new NlgManager();
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Greetings', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Hi', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Goodbye', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Bye', { condition: 'a === 1' });
-      manager.add('es', 'greet', 'Hola', { condition: 'a === 1' });
-      manager.add('es', 'greet', 'Holi!', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Hasta luego', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Hasta otra', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Nos vemos!', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
-      expect(manager.responses.es.greet).toHaveLength(2);
-      expect(manager.responses.es.bye).toHaveLength(3);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Greetings', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Hi', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Goodbye', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Bye', { condition: 'a === 1' });
+      manager.add('es-ES', 'greet', 'Hola', { condition: 'a === 1' });
+      manager.add('es-ES', 'greet', 'Holi!', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Hasta luego', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Hasta otra', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Nos vemos!', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
+      expect(manager.responses['es-ES'].greet).toHaveLength(2);
+      expect(manager.responses['es-ES'].bye).toHaveLength(3);
     });
   });
 
   describe('Remove', () => {
     test('I can remove an added response', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Greetings', { condition: 'a === 1' });
-      manager.add('en', 'greet', 'Hi', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Goodbye', { condition: 'a === 1' });
-      manager.add('en', 'bye', 'Bye', { condition: 'a === 1' });
-      manager.add('es', 'greet', 'Hola', { condition: 'a === 1' });
-      manager.add('es', 'greet', 'Holi!', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Hasta luego', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Hasta otra', { condition: 'a === 1' });
-      manager.add('es', 'bye', 'Nos vemos!', { condition: 'a === 1' });
-      manager.remove('es', 'greet', 'Holi!', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(3);
-      expect(manager.responses.en.bye).toHaveLength(2);
-      expect(manager.responses.es.greet).toHaveLength(1);
-      expect(manager.responses.es.bye).toHaveLength(3);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Greetings', { condition: 'a === 1' });
+      manager.add('en-US', 'greet', 'Hi', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Goodbye', { condition: 'a === 1' });
+      manager.add('en-US', 'bye', 'Bye', { condition: 'a === 1' });
+      manager.add('es-ES', 'greet', 'Hola', { condition: 'a === 1' });
+      manager.add('es-ES', 'greet', 'Holi!', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Hasta luego', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Hasta otra', { condition: 'a === 1' });
+      manager.add('es-ES', 'bye', 'Nos vemos!', { condition: 'a === 1' });
+      manager.remove('es-ES', 'greet', 'Holi!', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(3);
+      expect(manager.responses['en-US'].bye).toHaveLength(2);
+      expect(manager.responses['es-ES'].greet).toHaveLength(1);
+      expect(manager.responses['es-ES'].bye).toHaveLength(3);
     });
     test('If the answer does not exists, do nothing', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello', { condition: 'a === 1' });
-      manager.remove('en', 'greet', 'Hell', { condition: 'a === 1' });
-      expect(manager.responses.en.greet).toHaveLength(1);
+      manager.add('en-US', 'greet', 'Hello', { condition: 'a === 1' });
+      manager.remove('en-US', 'greet', 'Hell', { condition: 'a === 1' });
+      expect(manager.responses['en-US'].greet).toHaveLength(1);
     });
   });
 
   describe('Find all answers', () => {
     test('It should return all answers from intent and locale with no condition', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello');
-      manager.add('en', 'greet', 'Greetings');
-      manager.add('en', 'greet', 'Hi');
-      const result = manager.findAllAnswers({ locale: 'en', intent: 'greet' });
+      manager.add('en-US', 'greet', 'Hello');
+      manager.add('en-US', 'greet', 'Greetings');
+      manager.add('en-US', 'greet', 'Hi');
+      const result = manager.findAllAnswers({ locale: 'en-US', intent: 'greet' });
       expect(result.answers).toHaveLength(3);
     });
     test('It should return an empty array if location does not have answers', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello');
-      const result = manager.findAllAnswers({ locale: 'es', intent: 'greet' });
+      manager.add('en-US', 'greet', 'Hello');
+      const result = manager.findAllAnswers({ locale: 'es-ES', intent: 'greet' });
       expect(result.answers).toHaveLength(0);
     });
     test('It should return an empty array if intent does not exists', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'greet', 'Hello');
-      const result = manager.findAllAnswers({ locale: 'en', intent: 'bye' });
+      manager.add('en-US', 'greet', 'Hello');
+      const result = manager.findAllAnswers({ locale: 'en-US', intent: 'bye' });
       expect(result.answers).toHaveLength(0);
     });
   });
@@ -198,10 +198,10 @@ describe('NLG Manager', () => {
     });
     test('If no evaluator do nothing', () => {
       const manager = new NlgManager({ container });
-      manager.add('en', 'intent', 'a1', { condition: { a: 1 } });
-      manager.add('en', 'intent', 'a2', { condition: { a: 2 } });
-      manager.add('en', 'intent', 'a3', { condition: { a: 3 } });
-      const input = manager.findAllAnswers({ locale: 'en', intent: 'intent' });
+      manager.add('en-US', 'intent', 'a1', { condition: { a: 1 } });
+      manager.add('en-US', 'intent', 'a2', { condition: { a: 2 } });
+      manager.add('en-US', 'intent', 'a3', { condition: { a: 3 } });
+      const input = manager.findAllAnswers({ locale: 'en-US', intent: 'intent' });
       manager.filterAnswers(input);
       expect(input.answers).toHaveLength(3);
     });
@@ -209,11 +209,11 @@ describe('NLG Manager', () => {
       const otherContainer = new Container();
       otherContainer.register('Evaluator', Evaluator, true);
       const manager = new NlgManager({ container: otherContainer });
-      manager.add('en', 'intent', 'a1', { condition: { a: 1 } });
-      manager.add('en', 'intent', 'a2', { condition: { a: 2 } });
-      manager.add('en', 'intent', 'a3', { condition: { a: 3 } });
+      manager.add('en-US', 'intent', 'a1', { condition: { a: 1 } });
+      manager.add('en-US', 'intent', 'a2', { condition: { a: 2 } });
+      manager.add('en-US', 'intent', 'a3', { condition: { a: 3 } });
       const input = manager.findAllAnswers({
-        locale: 'en',
+        locale: 'en-US',
         intent: 'intent',
         context: { a: 2 },
       });
@@ -225,8 +225,8 @@ describe('NLG Manager', () => {
   describe('Render patterns', () => {
     test('It should render patterns in answer', async () => {
       const manager = new NlgManager();
-      manager.add('en', 'intent', '(Hi|Hello) user');
-      const actual = await manager.run({ locale: 'en', intent: 'intent' });
+      manager.add('en-US', 'intent', '(Hi|Hello) user');
+      const actual = await manager.run({ locale: 'en-US', intent: 'intent' });
       expect(['Hi user', 'Hello user'].includes(actual.answer)).toBeTruthy();
     });
   });

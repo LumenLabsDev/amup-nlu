@@ -29,7 +29,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
   const nlp = dock.get('nlp');
   await nlp.addCorpus({ filename: './qna.tsv', importer: 'qna', locale: 'en' });
   await nlp.train();
-  const response = await nlp.process('en', 'Who are you');
+  const response = await nlp.process('en-US', 'Who are you');
   console.log(response);
 })();
 ```
@@ -66,7 +66,7 @@ const { dockStart } = require('@lumen-labs-dev/basic');
   const dock = await dockStart();
   const nlp = dock.get('nlp');
   await nlp.train();
-  const response = await nlp.process('en', 'Who are you');
+  const response = await nlp.process('en-US', 'Who are you');
   console.log(response);
 })();
 ```

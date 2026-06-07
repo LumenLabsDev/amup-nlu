@@ -27,7 +27,7 @@ const { LangEn } = require('../../packages/lang-en-us/src');
 const { fs } = require('../../packages/request/src');
 const trainnlp = require('./train-nlp');
 
-const nlp = new Nlp({ languages: ['en'], threshold: 0.5 });
+const nlp = new Nlp({ languages: ['en-US'], threshold: 0.5 });
 nlp.container.register('fs', fs);
 nlp.use(LangEn);
 

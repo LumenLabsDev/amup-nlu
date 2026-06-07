@@ -21,7 +21,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable } = require('@lumen-labs-dev/core');
+const {
+  Clonable,
+  assertLocale,
+  getLanguageSubtag,
+  migrateLegacyLocale,
+  resolveLocaleFromGuess,
+} = require('@lumen-labs-dev/core');
 const { Language } = require('@lumen-labs-dev/language-min');
 const DomainManager = require('./domain-manager');
 
@@ -70,14 +76,15 @@ class NluManager extends Clonable {
   }
 
   describeLanguage(locale, name) {
-    this.languageNames[locale] = { locale, name };
+    const canonical = assertLocale(locale);
+    this.languageNames[canonical] = { locale: canonical, name };
   }
 
   addLanguage(srcLocales) {
     if (srcLocales) {
       const locales = Array.isArray(srcLocales) ? srcLocales : [srcLocales];
       for (let i = 0; i < locales.length; i += 1) {
-        const locale = locales[i].substr(0, 2).toLowerCase();
+        const locale = assertLocale(locales[i]);
         if (!this.locales.includes(locale)) {
           this.locales.push(locale);
         }
@@ -100,8 +107,9 @@ class NluManager extends Clonable {
     if (Array.isArray(locales)) {
       locales.forEach((locale) => this.removeLanguage(locale));
     } else {
-      delete this.domainManagers[locales];
-      const index = this.locales.indexOf(locales);
+      const locale = assertLocale(locales);
+      delete this.domainManagers[locale];
+      const index = this.locales.indexOf(locale);
       if (index !== -1) {
         this.locales.splice(index, 1);
       }
@@ -122,17 +130,15 @@ class NluManager extends Clonable {
       return isString ? undefined : input;
     }
     if (!isString && input.locale) {
+      input.locale = assertLocale(input.locale);
       return input;
     }
     const utterance = isString ? input : input.utterance;
-    if (this.locales.length === 1) {
-      if (isString) {
-        return this.locales[0];
-      }
-      [input.locale] = this.locales;
-    }
     const guess = this.guesser.guess(utterance, this.locales, 1);
-    const locale = guess && guess.length > 0 ? guess[0].alpha2 : undefined;
+    const alpha2 = guess && guess.length > 0 ? guess[0].alpha2 : undefined;
+    const locale = alpha2
+      ? resolveLocaleFromGuess(alpha2, this.locales)
+      : undefined;
     if (isString) {
       return locale;
     }
@@ -141,7 +147,7 @@ class NluManager extends Clonable {
   }
 
   assignDomain(srcLocale, srcIntent, srcDomain) {
-    const locale = srcDomain ? srcLocale.substr(0, 2).toLowerCase() : undefined;
+    const locale = srcDomain ? assertLocale(srcLocale) : undefined;
     const intent = srcDomain ? srcIntent : srcLocale;
     const domain = srcDomain || srcIntent;
     if (locale) {
@@ -157,7 +163,7 @@ class NluManager extends Clonable {
   }
 
   getIntentDomain(srcLocale, intent) {
-    const locale = srcLocale.substr(0, 2).toLowerCase();
+    const locale = assertLocale(srcLocale);
     if (!this.intentDomains[locale]) {
       return 'default';
     }
@@ -185,7 +191,7 @@ class NluManager extends Clonable {
 
   consolidateLocale(srcLocale, utterance) {
     const locale = srcLocale
-      ? srcLocale.substr(0, 2).toLowerCase()
+      ? assertLocale(srcLocale)
       : this.guessLanguage(utterance);
     if (!locale) {
       throw new Error('Locale must be defined');
@@ -205,7 +211,7 @@ class NluManager extends Clonable {
     const locale = this.consolidateLocale(srcLocale, utterance);
     const manager = this.consolidateManager(locale);
     const domain = this.getIntentDomain(locale, intent);
-    this.guesser.addExtraSentence(locale, utterance);
+    this.guesser.addExtraSentence(getLanguageSubtag(locale), utterance);
     manager.add(domain, utterance, intent);
   }
 
@@ -242,10 +248,13 @@ class NluManager extends Clonable {
     if (!input.locale) {
       input.locale = this.guessLanguage(input.utterance);
       input.languageGuessed = true;
+    } else {
+      input.locale = assertLocale(input.locale);
     }
     if (input.locale) {
-      input.localeIso2 = input.locale.substr(0, 2).toLowerCase();
+      input.localeIso2 = getLanguageSubtag(input.locale);
       input.language = (
+        this.languageNames[input.locale] ||
         this.languageNames[input.localeIso2] ||
         this.guesser.languagesAlpha2[input.localeIso2] ||
         {}
@@ -275,7 +284,7 @@ class NluManager extends Clonable {
 
   async innerClassify(srcInput) {
     const input = srcInput;
-    const domain = this.domainManagers[input.localeIso2];
+    const domain = this.domainManagers[input.locale];
     if (!domain) {
       input.classifications = [];
       input.domain = undefined;
@@ -349,15 +358,27 @@ class NluManager extends Clonable {
   fromJSON(json) {
     this.applySettings(this.settings, json.settings);
     for (let i = 0; i < json.locales.length; i += 1) {
-      this.addLanguage(json.locales[i]);
+      this.addLanguage(migrateLegacyLocale(json.locales[i]));
     }
-    this.languageNames = json.languageNames;
-    this.intentDomains = json.intentDomains;
+    this.languageNames = {};
+    const nameKeys = Object.keys(json.languageNames || {});
+    for (let i = 0; i < nameKeys.length; i += 1) {
+      const key = nameKeys[i];
+      this.languageNames[migrateLegacyLocale(key)] = json.languageNames[key];
+    }
+    this.intentDomains = {};
+    const intentKeys = Object.keys(json.intentDomains || {});
+    for (let i = 0; i < intentKeys.length; i += 1) {
+      const key = intentKeys[i];
+      this.intentDomains[migrateLegacyLocale(key)] = json.intentDomains[key];
+    }
 
     const keys = Object.keys(json.domainManagers);
     for (let i = 0; i < keys.length; i += 1) {
-      const key = keys[i];
-      this.domainManagers[key].fromJSON(json.domainManagers[key]);
+      const key = migrateLegacyLocale(keys[i]);
+      if (this.domainManagers[key]) {
+        this.domainManagers[key].fromJSON(json.domainManagers[keys[i]]);
+      }
     }
     for (let i = 0; i < json.extraSentences.length; i += 1) {
       const sentence = json.extraSentences[i];

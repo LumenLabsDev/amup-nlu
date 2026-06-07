@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const { Container } = require('@lumen-labs-dev/core-loader');
+const { Container, LocaleError } = require('@lumen-labs-dev/core-loader');
 const {
   getClass,
   getLocale,
@@ -30,21 +30,24 @@ const {
 describe('Language loader', () => {
   describe('getLocale', () => {
     test('Should preserve Brazilian Portuguese locale', () => {
-      expect(getLocale('pt-BR')).toEqual('pt-br');
-      expect(getLocale('pt_br')).toEqual('pt-br');
-      expect(getLocale('pt-br')).toEqual('pt-br');
+      expect(getLocale('pt-BR')).toEqual('pt-BR');
+      expect(getLocale('pt_br')).toEqual('pt-BR');
+      expect(getLocale('pt-br')).toEqual('pt-BR');
     });
 
-    test('Should canonicalize plain Portuguese to Portugal Portuguese locale', () => {
-      expect(getLocale('pt')).toEqual('pt-pt');
-      expect(getLocale('pt-PT')).toEqual('pt-pt');
-      expect(getLocale('pt_PT')).toEqual('pt-pt');
+    test('Should canonicalize Portugal Portuguese locale', () => {
+      expect(getLocale('pt-PT')).toEqual('pt-PT');
+      expect(getLocale('pt_PT')).toEqual('pt-PT');
     });
 
-    test('Should canonicalize language codes to explicit locale packages', () => {
-      expect(getLocale('en')).toEqual('en-us');
-      expect(getLocale('en-US')).toEqual('en-us');
-      expect(getLocale('es')).toEqual('es-es');
+    test('Should canonicalize explicit locale packages', () => {
+      expect(getLocale('en-US')).toEqual('en-US');
+      expect(getLocale('es-ES')).toEqual('es-ES');
+    });
+
+    test('Should reject bare language codes', () => {
+      expect(() => getLocale('en')).toThrow(LocaleError);
+      expect(() => getLocale('pt')).toThrow(LocaleError);
     });
   });
 
@@ -58,9 +61,9 @@ describe('Language loader', () => {
       );
     });
 
-    test('Should register plain Portuguese classes', () => {
+    test('Should register Portugal Portuguese classes', () => {
       const container = new Container();
-      const registered = registerLanguage(container, 'pt');
+      const registered = registerLanguage(container, 'pt-PT');
       expect(registered).toEqual(true);
       expect(container.get('tokenizer-pt').constructor.name).toEqual(
         'TokenizerPt'
@@ -71,7 +74,7 @@ describe('Language loader', () => {
   describe('getClass', () => {
     test('Should resolve Brazilian Portuguese class names', () => {
       expect(getClass('pt_BR', 'Tokenizer').name).toEqual('TokenizerPtBr');
-      expect(getClass('pt', 'Tokenizer').name).toEqual('TokenizerPt');
+      expect(getClass('pt-PT', 'Tokenizer').name).toEqual('TokenizerPt');
     });
   });
 });

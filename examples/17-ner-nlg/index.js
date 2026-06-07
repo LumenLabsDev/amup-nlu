@@ -62,16 +62,16 @@ const { dockStart } = require('../../packages/basic');
 
   await nlp.train();
 
-  const response1 = await nlp.process('en', 'I drove a volvo');
+  const response1 = await nlp.process('en-US', 'I drove a volvo');
   console.log(response1.answer); // You drive a volvo!
-  const response2 = await nlp.process('en', 'I like to drive with my 206');
+  const response2 = await nlp.process('en-US', 'I like to drive with my 206');
   console.log(response2.answer); // You drive a peugeot 206!
-  const response3 = await nlp.process('en', 'I like to drive');
+  const response3 = await nlp.process('en-US', 'I like to drive');
   console.log(response3.answer); // You drive a car!
-  const response4 = await nlp.process('en', `We don't fit in your twingo`);
+  const response4 = await nlp.process('en-US', `We don't fit in your twingo`);
   console.log(response4.answer); // You drive a renault Twingo!
-  const response5 = await nlp.process('en', `I use to take a car some days`);
+  const response5 = await nlp.process('en-US', `I use to take a car some days`);
   console.log(response5.answer); // You drive a car!
-  const response6 = await nlp.process('en', 'I use to drive a 206 and volvo');
+  const response6 = await nlp.process('en-US', 'I use to drive a 206 and volvo');
   console.log(response6.answer); // You drive many cars (206, volvo...)!
 })();

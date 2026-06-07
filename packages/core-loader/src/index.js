@@ -38,6 +38,16 @@ const {
   MemoryStorage,
   uuid,
   Context,
+  DEFAULT_LOCALE,
+  LocaleError,
+  assertLocale,
+  getLanguageSubtag,
+  getLocaleTag,
+  isLanguageOnlyTag,
+  migrateLegacyLocale,
+  parseLocale,
+  resolveContainerKey,
+  resolveLocaleFromGuess,
 } = require('@lumen-labs-dev/core');
 
 const containerBootstrap = require('./container-bootstrap');
@@ -89,4 +99,14 @@ module.exports = {
   dock,
   Context,
   dockStart,
+  DEFAULT_LOCALE,
+  LocaleError,
+  assertLocale,
+  getLanguageSubtag,
+  getLocaleTag,
+  isLanguageOnlyTag,
+  migrateLegacyLocale,
+  parseLocale,
+  resolveContainerKey,
+  resolveLocaleFromGuess,
 };

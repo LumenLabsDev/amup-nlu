@@ -23,7 +23,7 @@
 
 const { NlpUtil } = require('../../../src/nlp');
 
-const tokenizer = NlpUtil.getTokenizer('it');
+const tokenizer = NlpUtil.getTokenizer('it-IT');
 
 describe('Aggressive Tokenizer It', () => {
   describe('Constructor', () => {

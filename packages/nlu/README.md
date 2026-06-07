@@ -201,83 +201,83 @@ const { LangEn } = require('@lumen-labs-dev/lang-en-us');
 const { LangEs } = require('@lumen-labs-dev/lang-es-es');
 
 function addFoodDomainEn(manager) {
-  manager.assignDomain('en', 'order.check', 'food');
-  manager.add('en', 'what do I have in my basket', 'order.check');
-  manager.add('en', 'check my cart', 'order.check');
-  manager.add('en', "show me what I've ordered", 'order.check');
-  manager.add('en', "what's in my basket", 'order.check');
-  manager.add('en', 'check my order', 'order.check');
-  manager.add('en', 'check what I have ordered', 'order.check');
-  manager.add('en', 'show my order', 'order.check');
-  manager.add('en', 'check my basket', 'order.check');
+  manager.assignDomain('en-US', 'order.check', 'food');
+  manager.add('en-US', 'what do I have in my basket', 'order.check');
+  manager.add('en-US', 'check my cart', 'order.check');
+  manager.add('en-US', "show me what I've ordered", 'order.check');
+  manager.add('en-US', "what's in my basket", 'order.check');
+  manager.add('en-US', 'check my order', 'order.check');
+  manager.add('en-US', 'check what I have ordered', 'order.check');
+  manager.add('en-US', 'show my order', 'order.check');
+  manager.add('en-US', 'check my basket', 'order.check');
 
-  manager.assignDomain('en', 'order.check_status', 'food');
-  manager.add('en', 'how soon will it be delivered', 'order.check_status');
-  manager.add('en', 'check the status of my delivery', 'order.check_status');
-  manager.add('en', 'when should I expect delivery', 'order.check_status');
-  manager.add('en', 'check my order status', 'order.check_status');
-  manager.add('en', 'where is my order', 'order.check_status');
-  manager.add('en', 'where is my delivery', 'order.check_status');
-  manager.add('en', 'status of my order', 'order.check_status');
+  manager.assignDomain('en-US', 'order.check_status', 'food');
+  manager.add('en-US', 'how soon will it be delivered', 'order.check_status');
+  manager.add('en-US', 'check the status of my delivery', 'order.check_status');
+  manager.add('en-US', 'when should I expect delivery', 'order.check_status');
+  manager.add('en-US', 'check my order status', 'order.check_status');
+  manager.add('en-US', 'where is my order', 'order.check_status');
+  manager.add('en-US', 'where is my delivery', 'order.check_status');
+  manager.add('en-US', 'status of my order', 'order.check_status');
 }
 
 function addFoodDomainEs(manager) {
-  manager.assignDomain('es', 'order.check', 'food');
-  manager.add('es', 'qué tengo en mi cesta', 'order.check');
-  manager.add('es', 'comprueba mi carrito', 'order.check');
-  manager.add('es', 'enséñame qué he pedido', 'order.check');
-  manager.add('es', 'qué hay en mi carrito?', 'order.check');
-  manager.add('es', 'comprueba mi compra', 'order.check');
-  manager.add('es', 'comprueba qué he comprado', 'order.check');
-  manager.add('es', 'muéstrame mi compra', 'order.check');
+  manager.assignDomain('es-ES', 'order.check', 'food');
+  manager.add('es-ES', 'qué tengo en mi cesta', 'order.check');
+  manager.add('es-ES', 'comprueba mi carrito', 'order.check');
+  manager.add('es-ES', 'enséñame qué he pedido', 'order.check');
+  manager.add('es-ES', 'qué hay en mi carrito?', 'order.check');
+  manager.add('es-ES', 'comprueba mi compra', 'order.check');
+  manager.add('es-ES', 'comprueba qué he comprado', 'order.check');
+  manager.add('es-ES', 'muéstrame mi compra', 'order.check');
 
-  manager.assignDomain('es', 'order.check_status', 'food');
-  manager.add('es', 'cuándo me lo van a traer?', 'order.check_status');
-  manager.add('es', 'cómo va la entrega?', 'order.check_status');
-  manager.add('es', 'cuándo me traerán mi pedido?', 'order.check_status');
-  manager.add('es', 'en qué estado está mi pedido?', 'order.check_status');
-  manager.add('es', 'dónde está mi compra?', 'order.check_status');
-  manager.add('es', 'dónde está mi pedido?', 'order.check_status');
-  manager.add('es', 'estado de mi compra', 'order.check_status');
+  manager.assignDomain('es-ES', 'order.check_status', 'food');
+  manager.add('es-ES', 'cuándo me lo van a traer?', 'order.check_status');
+  manager.add('es-ES', 'cómo va la entrega?', 'order.check_status');
+  manager.add('es-ES', 'cuándo me traerán mi pedido?', 'order.check_status');
+  manager.add('es-ES', 'en qué estado está mi pedido?', 'order.check_status');
+  manager.add('es-ES', 'dónde está mi compra?', 'order.check_status');
+  manager.add('es-ES', 'dónde está mi pedido?', 'order.check_status');
+  manager.add('es-ES', 'estado de mi compra', 'order.check_status');
 }
 
 function addPersonalityDomainEn(manager) {
-  manager.assignDomain('en', 'agent.acquaintance', 'personality');
-  manager.add('en', 'say about you', 'agent.acquaintance');
-  manager.add('en', 'why are you here', 'agent.acquaintance');
-  manager.add('en', 'what is your personality', 'agent.acquaintance');
-  manager.add('en', 'describe yourself', 'agent.acquaintance');
-  manager.add('en', 'tell me about yourself', 'agent.acquaintance');
-  manager.add('en', 'tell me about you', 'agent.acquaintance');
-  manager.add('en', 'what are you', 'agent.acquaintance');
-  manager.add('en', 'who are you', 'agent.acquaintance');
-  manager.add('en', 'talk about yourself', 'agent.acquaintance');
+  manager.assignDomain('en-US', 'agent.acquaintance', 'personality');
+  manager.add('en-US', 'say about you', 'agent.acquaintance');
+  manager.add('en-US', 'why are you here', 'agent.acquaintance');
+  manager.add('en-US', 'what is your personality', 'agent.acquaintance');
+  manager.add('en-US', 'describe yourself', 'agent.acquaintance');
+  manager.add('en-US', 'tell me about yourself', 'agent.acquaintance');
+  manager.add('en-US', 'tell me about you', 'agent.acquaintance');
+  manager.add('en-US', 'what are you', 'agent.acquaintance');
+  manager.add('en-US', 'who are you', 'agent.acquaintance');
+  manager.add('en-US', 'talk about yourself', 'agent.acquaintance');
 
-  manager.assignDomain('en', 'agent.age', 'personality');
-  manager.add('en', 'your age', 'agent.age');
-  manager.add('en', 'how old is your platform', 'agent.age');
-  manager.add('en', 'how old are you', 'agent.age');
-  manager.add('en', "what's your age", 'agent.age');
-  manager.add('en', "I'd like to know your age", 'agent.age');
-  manager.add('en', 'tell me your age', 'agent.age');
+  manager.assignDomain('en-US', 'agent.age', 'personality');
+  manager.add('en-US', 'your age', 'agent.age');
+  manager.add('en-US', 'how old is your platform', 'agent.age');
+  manager.add('en-US', 'how old are you', 'agent.age');
+  manager.add('en-US', "what's your age", 'agent.age');
+  manager.add('en-US', "I'd like to know your age", 'agent.age');
+  manager.add('en-US', 'tell me your age', 'agent.age');
 }
 
 function addPersonalityDomainEs(manager) {
-  manager.assignDomain('es', 'agent.acquaintance', 'personality');
-  manager.add('es', 'cuéntame sobre ti', 'agent.acquaintance');
-  manager.add('es', 'qué haces aquí?', 'agent.acquaintance');
-  manager.add('es', 'cómo es tu personalidad?', 'agent.acquaintance');
-  manager.add('es', 'descríbete', 'agent.acquaintance');
-  manager.add('es', 'quién eres?', 'agent.acquaintance');
-  manager.add('es', 'qué eres?', 'agent.acquaintance');
-  manager.add('es', 'háblame de ti', 'agent.acquaintance');
+  manager.assignDomain('es-ES', 'agent.acquaintance', 'personality');
+  manager.add('es-ES', 'cuéntame sobre ti', 'agent.acquaintance');
+  manager.add('es-ES', 'qué haces aquí?', 'agent.acquaintance');
+  manager.add('es-ES', 'cómo es tu personalidad?', 'agent.acquaintance');
+  manager.add('es-ES', 'descríbete', 'agent.acquaintance');
+  manager.add('es-ES', 'quién eres?', 'agent.acquaintance');
+  manager.add('es-ES', 'qué eres?', 'agent.acquaintance');
+  manager.add('es-ES', 'háblame de ti', 'agent.acquaintance');
 
-  manager.assignDomain('es', 'agent.age', 'personality');
-  manager.add('es', 'qué edad tienes?', 'agent.age');
-  manager.add('es', 'cuántos años tienes?', 'agent.age');
-  manager.add('es', 'cuál es tu edad?', 'agent.age');
-  manager.add('es', 'quiero saber tu edad', 'agent.age');
-  manager.add('es', 'dime tu edad', 'agent.age');
+  manager.assignDomain('es-ES', 'agent.age', 'personality');
+  manager.add('es-ES', 'qué edad tienes?', 'agent.age');
+  manager.add('es-ES', 'cuántos años tienes?', 'agent.age');
+  manager.add('es-ES', 'cuál es tu edad?', 'agent.age');
+  manager.add('es-ES', 'quiero saber tu edad', 'agent.age');
+  manager.add('es-ES', 'dime tu edad', 'agent.age');
 }
 
 (async () => {
@@ -287,7 +287,7 @@ function addPersonalityDomainEs(manager) {
   container.use(NluNeural);
   const manager = new NluManager({
     container,
-    locales: ['en', 'es'],
+    locales: ['en-US', 'es-ES'],
     trainByDomain: false,
   });
   addFoodDomainEn(manager);
@@ -296,7 +296,7 @@ function addPersonalityDomainEs(manager) {
   addPersonalityDomainEs(manager);
   await manager.train();
   // You can provide the locale of the language
-  let actual = await manager.process('es', 'dime quién eres tú');
+  let actual = await manager.process('es-ES', 'dime quién eres tú');
   console.log(actual);
   // If the locale is not provided, then the language is guessed
   actual = await manager.process('dime quién eres tú');

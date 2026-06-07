@@ -45,7 +45,7 @@ describe('Language Greek', () => {
     test('Accentuation matching between sentiment input and afinn data', async () => {
       const sentiment = new SentimentManager();
       const result = await sentiment.process(
-        'el',
+        'el-GR',
         'Γεια σου, τι κάνεις? Εγώ είμαι πολυ περιωρισμένος'
       );
       expect(result.score).toEqual(-1);

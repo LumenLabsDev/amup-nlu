@@ -24,6 +24,8 @@ I will put here a FAQ with the links to different interesting parts to documenta
 
 **- Do I need to install languages separately?** English is included by default with `@lumen-labs-dev/basic`. For other languages, install the matching language package such as `@lumen-labs-dev/lang-es-es`, or install `@lumen-labs-dev/lang-all` and enable it in your dock configuration.
 
+**- Why does `nlp.addLanguage('en-US')` throw?** v4 requires BCP 47 locale tags at public locale entry points. Use full tags such as `en-US`, `es-ES`, `pt-BR`, or private-use tags for custom languages such as `x-klingon`. Bare ISO 639 codes like `en` or `es` are no longer accepted. Saved models with legacy two-letter locales are migrated when loaded.
+
 **- Where I can see the languages and their locales to find the correct package to install?** See [Language Support](./language-support.md#supported-languages).
 
 **- When an intent is triggered I want to get the answer from an API call and I'm not using any chatbot orchestrating SDK** You can with pipelines that react to your intent; see [Adding logic to an intent](./quickstart.md#adding-logic-to-an-intent).
@@ -39,13 +41,13 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 
 (async () => {
   const dock = await dockStart({
-    settings: { nlp: { forceNER: true, languages: ['en'] } },
+    settings: { nlp: { forceNER: true, languages: ['en-US'] } },
     use: ['Basic', 'LangEn'],
   });
   const nlp = dock.get('nlp');
-  nlp.addNamedEntityText('hero', 'spiderman', ['en'], ['Spiderman', 'Spider-man']);
+  nlp.addNamedEntityText('hero', 'spiderman', ['en-US'], ['Spiderman', 'Spider-man']);
   await nlp.train();
-  const result = await nlp.process('en', 'I saw spiderman eating spaghetti');
+  const result = await nlp.process('en-US', 'I saw spiderman eating spaghetti');
   console.log(result);
 })();
 ```
@@ -53,13 +55,13 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 **- This is not extracting the entities...** Set `forceNER: true` in your dock `nlp` settings. This activates the NER even if you don't have entities associated to intents.
 
 ```js
-settings: { nlp: { forceNER: true, languages: ['en'] } }
+settings: { nlp: { forceNER: true, languages: ['en-US'] } }
 ```
 
 **- The enum entity extraction is slow** By default the NER threshold is 0.8, that allows users to have "mistakes" when they write, but also makes the problem to identify the entities to be heavier. Right now, until this process performance is improved, the way to do that is to set the threshold to 1:
 
 ```js
-settings: { nlp: { forceNER: true, languages: ['en'], ner: { threshold: 1 } } }
+settings: { nlp: { forceNER: true, languages: ['en-US'], ner: { threshold: 1 } } }
 ```
 
 With threshold set to 1, the exact match of entities is done by searching words in a dictionary, so the process is able to search over millions of posible values in miliseconds.

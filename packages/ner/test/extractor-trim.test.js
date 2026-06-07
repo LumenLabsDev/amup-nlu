@@ -34,10 +34,10 @@ describe('Extractor Trim', () => {
   describe('Extract', () => {
     test('It should extract a between rule', async () => {
       const ner = new Ner();
-      ner.addBetweenCondition('en', 'entity', 'from', 'to');
+      ner.addBetweenCondition('en-US', 'entity', 'from', 'to');
       const input = {
         text: 'I have to go from Madrid to Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -57,11 +57,11 @@ describe('Extractor Trim', () => {
 
     test('It should not extract an empty entity', async () => {
       const ner = new Ner();
-      ner.addBeforeFirstCondition('en', 'entity', 'profile');
-      ner.addAfterLastCondition('en', 'entity', 'of');
+      ner.addBeforeFirstCondition('en-US', 'entity', 'profile');
+      ner.addAfterLastCondition('en-US', 'entity', 'of');
       const input = {
         text: 'profile of',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([]);
@@ -69,11 +69,11 @@ describe('Extractor Trim', () => {
 
     test('It should extract an entity when one trim rule matches', async () => {
       const ner = new Ner();
-      ner.addBeforeFirstCondition('en', 'entity', 'profile');
-      ner.addAfterLastCondition('en', 'entity', 'of');
+      ner.addBeforeFirstCondition('en-US', 'entity', 'profile');
+      ner.addAfterLastCondition('en-US', 'entity', 'of');
       const input = {
         text: 'profile of User',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -92,11 +92,11 @@ describe('Extractor Trim', () => {
     });
     test('It should extract two entities when two trim rule matches', async () => {
       const ner = new Ner();
-      ner.addBeforeFirstCondition('en', 'entity', 'profile');
-      ner.addAfterLastCondition('en', 'entity', 'of');
+      ner.addBeforeFirstCondition('en-US', 'entity', 'profile');
+      ner.addAfterLastCondition('en-US', 'entity', 'of');
       const input = {
         text: 'First profile of User',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -127,10 +127,10 @@ describe('Extractor Trim', () => {
 
     test('It should extract a between rule finding simplest solution', async () => {
       const ner = new Ner();
-      ner.addBetweenCondition('en', 'destination', ['to'], ['from']);
+      ner.addBetweenCondition('en-US', 'destination', ['to'], ['from']);
       const input = {
         text: 'I want to travel to Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -150,10 +150,10 @@ describe('Extractor Trim', () => {
 
     test('It should extract a between rule finding closest solution', async () => {
       const ner = new Ner();
-      ner.addBetweenLastCondition('en', 'destination', ['to'], ['from']);
+      ner.addBetweenLastCondition('en-US', 'destination', ['to'], ['from']);
       const input = {
         text: 'I want to travel to Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -173,10 +173,10 @@ describe('Extractor Trim', () => {
 
     test('It should extract a get before rule', async () => {
       const ner = new Ner();
-      ner.addBeforeCondition('en', 'entity', 'from');
+      ner.addBeforeCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -206,10 +206,10 @@ describe('Extractor Trim', () => {
     });
     test('It should extract a get before last rule', async () => {
       const ner = new Ner();
-      ner.addBeforeLastCondition('en', 'entity', 'from');
+      ner.addBeforeLastCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -228,10 +228,10 @@ describe('Extractor Trim', () => {
     });
     test('It should extract a get before first rule', async () => {
       const ner = new Ner();
-      ner.addBeforeFirstCondition('en', 'entity', 'from');
+      ner.addBeforeFirstCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -250,10 +250,10 @@ describe('Extractor Trim', () => {
     });
     test('It should extract a get after rule', async () => {
       const ner = new Ner();
-      ner.addAfterCondition('en', 'entity', 'from');
+      ner.addAfterCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -283,10 +283,10 @@ describe('Extractor Trim', () => {
     });
     test('It should extract a get after first rule', async () => {
       const ner = new Ner();
-      ner.addAfterFirstCondition('en', 'entity', 'from');
+      ner.addAfterFirstCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -305,10 +305,10 @@ describe('Extractor Trim', () => {
     });
     test('It should extract a get after last rule', async () => {
       const ner = new Ner();
-      ner.addAfterLastCondition('en', 'entity', 'from');
+      ner.addAfterLastCondition('en-US', 'entity', 'from');
       const input = {
         text: 'I have to go from Madrid from Barcelona',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([
@@ -328,10 +328,10 @@ describe('Extractor Trim', () => {
 
     test('It should be able to retrieve at start of utterance', async () => {
       const ner = new Ner();
-      ner.addAfterLastCondition('en', 'entity', 'from');
+      ner.addAfterLastCondition('en-US', 'entity', 'from');
       const input = {
         text: 'from Barcelona to Madrid',
-        locale: 'en',
+        locale: 'en-US',
       };
       const actual = await ner.process(input);
       expect(actual.entities).toEqual([

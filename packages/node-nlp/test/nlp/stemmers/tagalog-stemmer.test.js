@@ -26,7 +26,7 @@ const { NlpUtil } = require('../../../src/nlp');
 describe('Tagalog Stemmer', () => {
   describe('Constructor', () => {
     test('It should create a new instance', () => {
-      const stemmer = NlpUtil.getStemmer('tl');
+      const stemmer = NlpUtil.getStemmer('tl-PH');
       expect(stemmer).toBeDefined();
     });
   });
@@ -34,7 +34,7 @@ describe('Tagalog Stemmer', () => {
     test('Patuloy pa din sila sa paghahanap ng posibleng gamot sa malubhang sakit ng dinaramdam ng kanyang ina', () => {
       const text =
         'Patuloy pa din sila sa paghahanap ng posibleng gamot sa malubhang sakit ng dinaramdam ng kanyang ina';
-      const stemmer = NlpUtil.getStemmer('tl');
+      const stemmer = NlpUtil.getStemmer('tl-PH');
       const actual = stemmer.tokenizeAndStem(text);
       const expected = [
         'tuloy',

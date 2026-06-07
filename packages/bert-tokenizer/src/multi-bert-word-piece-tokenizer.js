@@ -22,7 +22,12 @@
  */
 
 const fs = require('fs');
+const { assertLocale } = require('@lumen-labs-dev/core');
 const BertWordPieceTokenizer = require('./bert-word-piece-tokenizer');
+
+function resolveTokenizerKey(locale) {
+  return locale === '*' ? locale : assertLocale(locale);
+}
 
 class MultiBertWordPieceTokenizer {
   constructor(settings = {}) {
@@ -34,10 +39,10 @@ class MultiBertWordPieceTokenizer {
     const tokenizer = new BertWordPieceTokenizer({ ...settings, vocabContent });
     if (Array.isArray(locales)) {
       for (let i = 0; i < locales.length; i += 1) {
-        this.tokenizers[locales[i]] = tokenizer;
+        this.tokenizers[resolveTokenizerKey(locales[i])] = tokenizer;
       }
     } else {
-      this.tokenizers[locales] = tokenizer;
+      this.tokenizers[resolveTokenizerKey(locales)] = tokenizer;
     }
   }
 
@@ -58,8 +63,9 @@ class MultiBertWordPieceTokenizer {
   }
 
   getTokenizer(locale) {
-    if (this.tokenizers[locale]) {
-      return this.tokenizers[locale];
+    const key = resolveTokenizerKey(locale);
+    if (this.tokenizers[key]) {
+      return this.tokenizers[key];
     }
     if (this.tokenizers['*']) {
       return this.tokenizers['*'];

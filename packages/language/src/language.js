@@ -248,10 +248,16 @@ class Language {
   transformAllowList(allowList) {
     const result = [];
     for (let i = 0; i < allowList.length; i += 1) {
-      if (allowList[i].length === 3) {
-        result.push(allowList[i]);
+      const entry = allowList[i];
+      if (entry.length === 3 && !entry.includes('-')) {
+        result.push(entry);
+      } else if (entry.toLowerCase().startsWith('x-')) {
+        result.push(entry.toLowerCase());
       } else {
-        const language = this.languagesAlpha2[allowList[i]];
+        const langSubtag = entry.includes('-')
+          ? entry.split('-')[0].toLowerCase()
+          : entry.toLowerCase();
+        const language = this.languagesAlpha2[langSubtag];
         if (language) {
           result.push(language.alpha3);
         }
@@ -271,7 +277,15 @@ class Language {
     const scores = Language.detectAll(utterance, options);
     const result = [];
     for (let i = 0; i < scores.length; i += 1) {
-      const language = this.languagesAlpha3[scores[i][0]];
+      const alpha3Key = scores[i][0];
+      let language = this.languagesAlpha3[alpha3Key];
+      if (!language && alpha3Key.startsWith('x-')) {
+        language = {
+          alpha3: alpha3Key,
+          alpha2: alpha3Key,
+          name: alpha3Key,
+        };
+      }
       if (language) {
         result.push({
           alpha3: language.alpha3,

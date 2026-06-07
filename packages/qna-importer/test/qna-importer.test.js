@@ -37,10 +37,10 @@ describe('QnA Importer', () => {
     it('Should transform a qna into a corpus', () => {
       const content = fs.readFileSync(path.join(__dirname, 'qna.tsv'), 'utf8');
       const instance = new QnaImporter();
-      const corpus = instance.transform(content, { locale: 'en' })[0];
+      const corpus = instance.transform(content, { locale: 'en-US' })[0];
       expect(corpus).toBeDefined();
-      expect(corpus.name).toEqual('corpus_en');
-      expect(corpus.locale).toEqual('en');
+      expect(corpus.name).toEqual('corpus_en-US');
+      expect(corpus.locale).toEqual('en-US');
       expect(corpus.data).toHaveLength(90);
     });
   });

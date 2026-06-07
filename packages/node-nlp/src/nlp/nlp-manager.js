@@ -24,7 +24,7 @@
 const fs = require('fs');
 const { BuiltinMicrosoft } = require('@lumen-labs-dev/builtin-microsoft');
 const { BuiltinDuckling } = require('@lumen-labs-dev/builtin-duckling');
-const { containerBootstrap } = require('@lumen-labs-dev/core-loader');
+const { containerBootstrap, migrateLegacyLocale, parseLocale, LocaleError } = require('@lumen-labs-dev/core-loader');
 const { Language } = require('@lumen-labs-dev/language');
 const { Nlp } = require('@lumen-labs-dev/nlp');
 const { Evaluator, Template } = require('@lumen-labs-dev/evaluator');
@@ -86,12 +86,26 @@ class NlpManager {
     } else if (corpus.domains) {
       corpus.domains.forEach((domain) => this.registerCorpusLanguages(domain));
     } else if (corpus.locale) {
-      this.registerLanguage(corpus.locale);
+      this.registerLanguage(migrateLegacyLocale(corpus.locale));
+    }
+  }
+
+  registerLanguageIfValid(locale) {
+    if (typeof locale !== 'string') {
+      return;
+    }
+    try {
+      parseLocale(locale);
+      this.registerLanguage(locale);
+    } catch (error) {
+      if (!(error instanceof LocaleError)) {
+        throw error;
+      }
     }
   }
 
   addDocument(locale, utterance, intent) {
-    this.registerLanguage(locale);
+    this.registerLanguageIfValid(locale);
     return this.nlp.addDocument(locale, utterance, intent);
   }
 
@@ -157,7 +171,6 @@ class NlpManager {
   }
 
   async getSentiment(locale, utterance) {
-    this.registerLanguage(locale);
     const sentiment = await this.nlp.getSentiment(locale, utterance);
     return this.sentimentManager.translate(sentiment.sentiment);
   }
@@ -243,12 +256,12 @@ class NlpManager {
   }
 
   classify(locale, utterance, settings) {
-    this.registerLanguage(locale);
+    this.registerLanguageIfValid(locale);
     return this.nlp.classify(locale, utterance, settings);
   }
 
   async process(locale, utterance, context, settings) {
-    this.registerLanguage(locale);
+    this.registerLanguageIfValid(locale);
     const result = await this.nlp.process(locale, utterance, context, settings);
     if (this.settings.processTransformer) {
       return this.settings.processTransformer(result);
@@ -257,7 +270,7 @@ class NlpManager {
   }
 
   extractEntities(locale, utterance, context, settings) {
-    this.registerLanguage(locale);
+    this.registerLanguageIfValid(locale);
     return this.nlp.extractEntities(locale, utterance, context, settings);
   }
 
@@ -329,7 +342,7 @@ class NlpManager {
       const intentData = data[i];
       const { tests } = intentData;
       for (let j = 0; j < tests.length; j += 1) {
-        promises.push(this.process(corpus.locale.slice(0, 2), tests[j]));
+        promises.push(this.process(migrateLegacyLocale(corpus.locale), tests[j]));
         intents.push(intentData.intent);
       }
     }

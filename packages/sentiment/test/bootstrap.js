@@ -25,7 +25,7 @@ const { containerBootstrap } = require('@lumen-labs-dev/core');
 
 const container = containerBootstrap();
 container.registerPipeline(
-  'nlu-??-prepare',
+  'nlu-*-prepare',
   [
     'normalize',
     'tokenize',

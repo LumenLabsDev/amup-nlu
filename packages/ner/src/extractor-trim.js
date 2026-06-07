@@ -21,7 +21,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { defaultContainer } = require('@lumen-labs-dev/core');
+const {
+  defaultContainer,
+  DEFAULT_LOCALE,
+  assertLocale,
+  resolveContainerKey,
+} = require('@lumen-labs-dev/core');
 const reduceEdges = require('./reduce-edges');
 const { TrimType } = require('./trim-types');
 
@@ -336,7 +341,9 @@ class ExtractorTrim {
 
   run(srcInput) {
     const input = srcInput;
-    const locale = input.locale || 'en';
+    const locale = resolveContainerKey(
+      assertLocale(input.locale || DEFAULT_LOCALE)
+    );
     const extractor = this.container.get(`extract-trim-${locale}`) || this;
     return extractor.extract(input);
   }

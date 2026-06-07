@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, compareWildcars } = require('@lumen-labs-dev/core');
+const { Clonable, compareWildcars, getLocaleTag } = require('@lumen-labs-dev/core');
 
 const defaultDomainName = 'master_domain';
 
@@ -35,9 +35,9 @@ class DomainManager extends Clonable {
       container
     );
     this.applySettings(this.settings, settings);
-    this.applySettings(this.settings, { locale: 'en' });
+    this.applySettings(this.settings, { locale: 'en-US' });
     if (!this.settings.tag) {
-      this.settings.tag = `domain-manager-${this.settings.locale}`;
+      this.settings.tag = `domain-manager-${getLocaleTag(this.settings.locale)}`;
     }
     this.registerDefault();
     this.applySettings(
@@ -57,7 +57,7 @@ class DomainManager extends Clonable {
 
   registerDefault() {
     this.container.registerConfiguration(
-      'domain-manager-??',
+      'domain-manager-*',
       {
         nluByDomain: {
           default: {
@@ -71,7 +71,7 @@ class DomainManager extends Clonable {
       false
     );
     this.container.registerPipeline(
-      'domain-manager-??-train',
+      'domain-manager-*-train',
       [
         '.trainStemmer',
         '.generateCorpus',

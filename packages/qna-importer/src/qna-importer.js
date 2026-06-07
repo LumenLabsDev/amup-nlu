@@ -21,6 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+const { DEFAULT_LOCALE, assertLocale } = require('@lumen-labs-dev/core');
+
 class QnaImporter {
   constructor(container) {
     this.container = container ? container.container || container : undefined;
@@ -37,9 +39,10 @@ class QnaImporter {
       hasHeader: false,
       questionPos: 0,
       answerPos: 1,
-      locale: 'es',
+      locale: DEFAULT_LOCALE,
       ...inputOptions,
     };
+    options.locale = assertLocale(options.locale);
     const result = {};
     const lines = content.split(/\r?\n/);
     const start = options.hasHeader ? 1 : 0;

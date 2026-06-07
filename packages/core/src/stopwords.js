@@ -21,6 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 const { defaultContainer } = require('./container');
+const { DEFAULT_LOCALE, assertLocale, resolveContainerKey } = require('./locale');
 
 class Stopwords {
   constructor(container = defaultContainer) {
@@ -50,8 +51,9 @@ class Stopwords {
   run(srcInput) {
     if (srcInput.settings && srcInput.settings.keepStopwords === false) {
       const input = srcInput;
-      const locale = input.locale || 'en';
-      const remover = this.container.get(`stopwords-${locale}`) || this;
+      const locale = assertLocale(input.locale || DEFAULT_LOCALE);
+      const key = resolveContainerKey(locale);
+      const remover = this.container.get(`stopwords-${key}`) || this;
       input.tokens = remover
         .removeStopwords(input.tokens, input)
         .filter((x) => x);

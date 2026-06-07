@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable, containerBootstrap } = require('@lumen-labs-dev/core');
+const { Clonable, containerBootstrap, assertLocale, migrateLegacyLocale, DEFAULT_LOCALE, getLocaleTag, resolveContainerKey } = require('@lumen-labs-dev/core');
 const { NluManager, NluNeural } = require('@lumen-labs-dev/nlu');
 const {
   Ner,
@@ -156,13 +156,14 @@ class Nlp extends Clonable {
         this.useNlu(clazz, locale[i], domain, settings);
       }
     } else {
+      const localeTag = locale === '??' ? locale : getLocaleTag(assertLocale(locale));
       const className =
         typeof clazz === 'string' ? clazz : this.container.use(clazz);
-      let config = this.container.getConfiguration(`domain-manager-${locale}`);
+      let config = this.container.getConfiguration(`domain-manager-${localeTag}`);
       if (!config) {
         config = {};
         this.container.registerConfiguration(
-          `domain-manager-${locale}`,
+          `domain-manager-${localeTag}`,
           config
         );
       }
@@ -435,10 +436,10 @@ class Nlp extends Clonable {
       }
       let finalLocale = entity.locale;
       if (!finalLocale) {
-        finalLocale = locale || 'en';
+        finalLocale = locale || DEFAULT_LOCALE;
       }
       if (typeof finalLocale === 'string') {
-        finalLocale = finalLocale.slice(0, 2);
+        finalLocale = assertLocale(finalLocale);
       }
       if (entity.options) {
         const optionNames = Object.keys(entity.options);
@@ -589,7 +590,7 @@ class Nlp extends Clonable {
         for (let i = 0; i < corpus.domains.length; i += 1) {
           const domain = corpus.domains[i];
           const { data, entities } = domain;
-          const locale = domain.locale.slice(0, 2);
+          const locale = migrateLegacyLocale(domain.locale);
           this.addLanguage(locale);
           if (entities) {
             this.addEntities(entities, locale);
@@ -597,7 +598,7 @@ class Nlp extends Clonable {
           this.addData(data, locale, domain);
         }
       } else {
-        const locale = corpus.locale.slice(0, 2);
+        const locale = migrateLegacyLocale(corpus.locale);
         this.addLanguage(locale);
         const { data, entities } = corpus;
         if (entities) {
@@ -809,7 +810,9 @@ class Nlp extends Clonable {
       output.entities = [];
       output.sourceEntities = [];
     }
-    const stemmer = this.container.get(`stemmer-${output.locale}`);
+    const stemmer = this.container.get(
+      `stemmer-${resolveContainerKey(output.locale || DEFAULT_LOCALE)}`
+    );
     if (stemmer && stemmer.lastFill) {
       stemmer.lastFill(output);
     }

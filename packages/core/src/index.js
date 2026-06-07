@@ -46,6 +46,7 @@ const MemoryStorage = require('./memory-storage');
 const uuid = require('./uuid');
 const dock = require('./dock');
 const Context = require('./context');
+const locale = require('./locale');
 
 async function dockStart(settings, mustLoadEnv) {
   await dock.start(settings, mustLoadEnv);
@@ -78,4 +79,5 @@ module.exports = {
   dock,
   Context,
   dockStart,
+  ...locale,
 };

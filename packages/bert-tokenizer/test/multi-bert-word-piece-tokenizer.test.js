@@ -38,11 +38,11 @@ describe('Multi BERT word piece tokenizer', () => {
   describe('Define tokenizers', () => {
     test('Can be defined as array of locales', () => {
       const multi = new MultiBertWordPieceTokenizer({ fs });
-      multi.loadTokenizersFromFile(['en', 'aa'], fileNameEn);
+      multi.loadTokenizersFromFile(['en-US', 'aa-AA'], fileNameEn);
       multi.loadTokenizersFromFile('*', fileNameMulti);
-      const tokenizerEn = multi.getTokenizer('en');
-      const tokenizerAa = multi.getTokenizer('aa');
-      const tokenizerEs = multi.getTokenizer('es');
+      const tokenizerEn = multi.getTokenizer('en-US');
+      const tokenizerAa = multi.getTokenizer('aa-AA');
+      const tokenizerEs = multi.getTokenizer('es-ES');
       expect(tokenizerEn).toBeDefined();
       expect(tokenizerEn).toBe(tokenizerAa);
       expect(tokenizerEs).toBeDefined();

@@ -6,7 +6,7 @@
 
 | Runtime locale | npm package |
 |----------------|-------------|
-| `en`, `en-US` | `@lumen-labs-dev/lang-en-us` |
+| `en-US` | `@lumen-labs-dev/lang-en-us` |
 | `es`, `es-ES` | `@lumen-labs-dev/lang-es-es` |
 | `fr`, `fr-FR` | `@lumen-labs-dev/lang-fr-fr` |
 | `pt`, `pt-PT` | `@lumen-labs-dev/lang-pt-pt` |
@@ -294,14 +294,14 @@ const { dockStart } = require('@lumen-labs-dev/basic');
 (async () => {
   const dock = await dockStart({ use: ['Basic', 'LangEn', 'LangKo'] });
   const nlp = dock.get('nlp');
-  nlp.addLanguage('en');
-  nlp.addLanguage('ko');
-  nlp.addDocument('en', 'goodbye for now', 'greetings.bye');
-  nlp.addDocument('en', 'hello', 'greetings.hello');
-  nlp.addDocument('ko', '안녕', 'greetings.bye');
-  nlp.addDocument('ko', '여보세요', 'greetings.hello');
-  nlp.addAnswer('en', 'greetings.bye', 'Till next time');
-  nlp.addAnswer('en', 'greetings.hello', 'Hey there!');
+  nlp.addLanguage('en-US');
+  nlp.addLanguage('ko-KR');
+  nlp.addDocument('en-US', 'goodbye for now', 'greetings.bye');
+  nlp.addDocument('en-US', 'hello', 'greetings.hello');
+  nlp.addDocument('ko-KR', '안녕', 'greetings.bye');
+  nlp.addDocument('ko-KR', '여보세요', 'greetings.hello');
+  nlp.addAnswer('en-US', 'greetings.bye', 'Till next time');
+  nlp.addAnswer('en-US', 'greetings.hello', 'Hey there!');
 
   await nlp.train();
   nlp.process('I have to go').then(console.log);

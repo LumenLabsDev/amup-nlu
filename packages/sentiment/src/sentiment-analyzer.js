@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { Clonable } = require('@lumen-labs-dev/core');
+const { Clonable, resolveContainerKey, DEFAULT_LOCALE } = require('@lumen-labs-dev/core');
 
 class SentimentAnalyzer extends Clonable {
   constructor(settings = {}, container) {
@@ -52,6 +52,7 @@ class SentimentAnalyzer extends Clonable {
   }
 
   prepare(locale, text, settings, stemmed) {
+    const key = resolveContainerKey(locale || DEFAULT_LOCALE);
     const pipeline = this.getPipeline(`${this.settings.tag}-prepare`);
     if (pipeline) {
       const input = {
@@ -63,14 +64,14 @@ class SentimentAnalyzer extends Clonable {
     }
     if (stemmed) {
       const stemmer =
-        this.container.get(`stemmer-${locale}`) ||
+        this.container.get(`stemmer-${key}`) ||
         this.container.get(`stemmer-en`);
       if (stemmer) {
         return stemmer.tokenizeAndStem(text);
       }
     }
     const tokenizer =
-      this.container.get(`tokenizer-${locale}`) ||
+      this.container.get(`tokenizer-${key}`) ||
       this.container.get(`tokenizer-en`);
     if (tokenizer) {
       return tokenizer.tokenize(text, true);
@@ -84,7 +85,8 @@ class SentimentAnalyzer extends Clonable {
 
   async getDictionary(srcInput) {
     const input = srcInput;
-    const dictionaries = this.container.get(`sentiment-${input.locale}`);
+    const key = resolveContainerKey(input.locale || DEFAULT_LOCALE);
+    const dictionaries = this.container.get(`sentiment-${key}`);
     let type;
     if (dictionaries) {
       if (dictionaries.senticon) {
