@@ -1,0 +1,15 @@
+{
+  "name": "17-ner-nlg",
+  "version": "1.0.0",
+  "description": "Example of using NER",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eric Lara <ericzon@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@lumen-labs-dev/basic": "^4.27.0"
+  }
+}

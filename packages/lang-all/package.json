@@ -1,0 +1,72 @@
+{
+  "name": "@lumen-labs-dev/lang-all",
+  "version": "4.27.0",
+  "description": "Core",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lumen-labs-dev/core": "^4.27.0",
+    "@lumen-labs-dev/lang-ar": "^4.27.0",
+    "@lumen-labs-dev/lang-bn": "^4.27.0",
+    "@lumen-labs-dev/lang-ca": "^4.27.0",
+    "@lumen-labs-dev/lang-cs": "^4.27.0",
+    "@lumen-labs-dev/lang-da": "^4.27.0",
+    "@lumen-labs-dev/lang-de": "^4.27.0",
+    "@lumen-labs-dev/lang-el": "^4.27.0",
+    "@lumen-labs-dev/lang-en": "^4.27.0",
+    "@lumen-labs-dev/lang-es": "^4.27.0",
+    "@lumen-labs-dev/lang-eu": "^4.27.0",
+    "@lumen-labs-dev/lang-fa": "^4.27.0",
+    "@lumen-labs-dev/lang-fi": "^4.27.0",
+    "@lumen-labs-dev/lang-fr": "^4.27.0",
+    "@lumen-labs-dev/lang-ga": "^4.27.0",
+    "@lumen-labs-dev/lang-gl": "^4.27.0",
+    "@lumen-labs-dev/lang-hi": "^4.27.0",
+    "@lumen-labs-dev/lang-hu": "^4.27.0",
+    "@lumen-labs-dev/lang-hy": "^4.27.0",
+    "@lumen-labs-dev/lang-id": "^4.27.0",
+    "@lumen-labs-dev/lang-it": "^4.27.0",
+    "@lumen-labs-dev/lang-ja": "^4.27.0",
+    "@lumen-labs-dev/lang-ko": "^4.27.0",
+    "@lumen-labs-dev/lang-lt": "^4.27.0",
+    "@lumen-labs-dev/lang-ms": "^4.27.0",
+    "@lumen-labs-dev/lang-ne": "^4.27.0",
+    "@lumen-labs-dev/lang-nl": "^4.27.0",
+    "@lumen-labs-dev/lang-no": "^4.27.0",
+    "@lumen-labs-dev/lang-pl": "^4.27.0",
+    "@lumen-labs-dev/lang-pt": "^4.27.0",
+    "@lumen-labs-dev/lang-ro": "^4.27.0",
+    "@lumen-labs-dev/lang-ru": "^4.27.0",
+    "@lumen-labs-dev/lang-sl": "^4.27.0",
+    "@lumen-labs-dev/lang-sr": "^4.27.0",
+    "@lumen-labs-dev/lang-sv": "^4.27.0",
+    "@lumen-labs-dev/lang-ta": "^4.27.0",
+    "@lumen-labs-dev/lang-th": "^4.27.0",
+    "@lumen-labs-dev/lang-tl": "^4.27.0",
+    "@lumen-labs-dev/lang-tr": "^4.27.0",
+    "@lumen-labs-dev/lang-uk": "^4.27.0",
+    "@lumen-labs-dev/lang-zh": "^4.27.0",
+    "@lumen-labs-dev/language": "^4.27.0"
+  },
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+}

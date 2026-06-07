@@ -1,0 +1,14 @@
+---
+description: Core agent guidance for the amup-nlp-packages monorepo
+alwaysApply: true
+---
+
+# Project Guidance
+
+- Read `CLAUDE.md` before substantial coding work.
+- Make surgical changes that directly support the user request; do not refactor or reformat unrelated code.
+- Preserve original NLP.js/AXA attribution and existing MIT license notices.
+- Match the repository's CommonJS style and package boundaries under `packages/*`.
+- Use root npm workspace commands for validation: `npm run lint` and `npm run test:jest`.
+- Treat optional-heavy packages carefully: avoid eager TensorFlow loading in `packages/open-question`, and avoid eager `lang-all` loading in `packages/node-nlp`.
+- Use the `karpathy-guidelines` skill when writing, reviewing, or refactoring code where overcomplication or scope creep is a risk.

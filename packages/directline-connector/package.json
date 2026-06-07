@@ -1,0 +1,37 @@
+{
+  "name": "@lumen-labs-dev/directline-connector",
+  "version": "4.27.0",
+  "description": "Directline Connector",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "formidable": "^2.0.1",
+    "node-fetch": "^2.6.7",
+    "@lumen-labs-dev/connector": "^4.27.0",
+    "@lumen-labs-dev/core": "^4.27.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@lumen-labs-dev/basic",
+  "version": "4.27.0",
+  "description": "Basic dependencies for node",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lumen-labs-dev/console-connector": "^4.27.0",
+    "@lumen-labs-dev/core-loader": "^4.27.0",
+    "@lumen-labs-dev/evaluator": "^4.27.0",
+    "@lumen-labs-dev/lang-en": "^4.27.0",
+    "@lumen-labs-dev/logger": "^4.27.0",
+    "@lumen-labs-dev/nlp": "^4.27.0"
+  },
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+}

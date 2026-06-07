@@ -1,0 +1,36 @@
+{
+  "name": "@lumen-labs-dev/nlp",
+  "version": "4.27.0",
+  "description": "Natural Language Processing",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@lumen-labs-dev/core": "^4.27.0",
+    "@lumen-labs-dev/ner": "^4.27.0",
+    "@lumen-labs-dev/nlg": "^4.27.0",
+    "@lumen-labs-dev/nlu": "^4.27.0",
+    "@lumen-labs-dev/sentiment": "^4.27.0",
+    "@lumen-labs-dev/slot": "^4.27.0"
+  },
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+}

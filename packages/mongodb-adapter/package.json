@@ -1,0 +1,35 @@
+{
+  "name": "@lumen-labs-dev/mongodb-adapter",
+  "version": "4.27.0",
+  "description": "Database adapter for MongoDB",
+  "author": {
+    "email": "opensource@axa.com",
+    "name": "Jesus Seijas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axa-group/nlp.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axa-group/nlp.js/issues"
+  },
+  "maintainers": [
+    {
+      "email": "opensource@axa.com",
+      "name": "Jesus Seijas"
+    }
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "mongodb": "^3.5.9",
+    "@lumen-labs-dev/core": "^4.27.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "cc4249fa994c58d220e6f10a6c94fdad05df32fd"
+}
